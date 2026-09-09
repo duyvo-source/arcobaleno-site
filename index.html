@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backtest Forensics — Arcobaleno Research</title>
+<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Five defects found and published against our own work — reproducibility, data integrity, cost models, staleness.">
+<link rel="canonical" href="https://arcobaleno.cloud/">
+<meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arcobaleno Research">
+<meta property="og:url" content="https://arcobaleno.cloud/">
+<meta property="og:title" content="Backtest Forensics — Arcobaleno Research">
+<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Five defects found and published against our own work — reproducibility, data integrity, cost models, staleness.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
+<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Five defects found and published against our own work — reproducibility, data integrity, cost models, staleness.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><text y='46' x='32' text-anchor='middle' font-size='40' font-family='Georgia,serif' fill='%236FC3AC'>&#8594;</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --paper:#EFF1EE;
+    --raised:#F7F8F6;
+    --ink:#16191A;
+    --muted:#5E6663;
+    --faint:#858C88;
+    --rule:#D2D8D1;
+    --rule-strong:#B4BDB3;
+    --wrong:#A6321E;
+    --wrong-bg:#F3E2DE;
+    --right:#1B5849;
+    --right-bg:#DDE9E4;
+    --shadow:0 1px 0 rgba(22,25,26,.06);
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101413;
+      --raised:#171C1A;
+      --ink:#E6EAE7;
+      --muted:#9BA5A0;
+      --faint:#78837E;
+      --rule:#28302D;
+      --rule-strong:#3A443F;
+      --wrong:#E8836C;
+      --wrong-bg:#2E1C18;
+      --right:#6FC3AC;
+      --right-bg:#132A25;
+      --shadow:0 1px 0 rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101413;
+    --raised:#171C1A;
+    --ink:#E6EAE7;
+    --muted:#9BA5A0;
+    --faint:#78837E;
+    --rule:#28302D;
+    --rule-strong:#3A443F;
+    --wrong:#E8836C;
+    --wrong-bg:#2E1C18;
+    --right:#6FC3AC;
+    --right-bg:#132A25;
+    --shadow:0 1px 0 rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .col{max-width:660px}
+
+  /* ---------- masthead ---------- */
+  header.mast{border-bottom:2px solid var(--ink);padding:56px 0 22px}
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  }
+  .eyebrow .dot{color:var(--rule-strong)}
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.6rem,7vw,4.6rem);
+    line-height:.98;letter-spacing:-.028em;
+    margin:20px 0 0;text-wrap:balance;
+  }
+  .standfirst{
+    font-size:clamp(1.12rem,2.1vw,1.32rem);
+    line-height:1.5;color:var(--muted);
+    margin:20px 0 0;max-width:34em;text-wrap:pretty;
+  }
+  .standfirst strong{color:var(--ink);font-weight:600}
+
+  /* ---------- the signature device ---------- */
+  .correction{
+    display:grid;grid-template-columns:1fr auto 1fr;
+    align-items:stretch;gap:0;
+    border:1px solid var(--rule-strong);
+    background:var(--raised);
+    margin:26px 0;
+    overflow:hidden;
+  }
+  .correction > div{padding:16px 20px;min-width:0}
+  .corr-label{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:7px;
+  }
+  .corr-val{
+    font-family:var(--mono);font-size:clamp(1.15rem,2.6vw,1.55rem);
+    font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;
+    overflow-wrap:break-word;
+  }
+  .corr-note{font-size:14px;line-height:1.45;color:var(--muted);margin-top:6px}
+  .corr-published{background:var(--wrong-bg)}
+  .corr-published .corr-val{color:var(--wrong)}
+  .corr-actual{background:var(--right-bg)}
+  .corr-actual .corr-val{color:var(--right)}
+  .corr-arrow{
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:17px;color:var(--faint);
+    padding:0 12px;border-left:1px solid var(--rule-strong);
+    border-right:1px solid var(--rule-strong);background:var(--raised);
+  }
+  @media (max-width:640px){
+    .correction{grid-template-columns:1fr}
+    .corr-arrow{
+      border-left:none;border-right:none;
+      border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
+      padding:7px 0;transform:rotate(90deg) scale(.9);
+    }
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0}
+  .section-rule{border-top:1px solid var(--rule)}
+  h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.02em;
+    line-height:1.14;margin:0 0 14px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;
+    font-size:1.16rem;letter-spacing:-.01em;
+    margin:30px 0 8px;text-wrap:balance;
+  }
+  p{margin:0 0 15px}
+  .lede{font-size:1.08rem;color:var(--muted);max-width:36em}
+  strong{font-weight:600}
+  em{font-style:italic}
+  code,.m{font-family:var(--mono);font-size:.87em;font-variant-numeric:tabular-nums}
+  a{color:var(--right);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--right);outline-offset:3px;border-radius:2px}
+
+  /* ---------- case entries ---------- */
+  .case{padding:38px 0;border-top:1px solid var(--rule)}
+  .case:first-of-type{border-top:2px solid var(--ink)}
+  .case-head{
+    display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;
+    margin-bottom:12px;
+  }
+  .class-tag{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink);border:1px solid var(--rule-strong);
+    padding:3px 9px;white-space:nowrap;
+  }
+  .case h2{margin:0;flex:1 1 22ch}
+  .verdict{
+    font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+    color:var(--muted);
+  }
+  .why{
+    border-left:3px solid var(--right);
+    padding:2px 0 2px 18px;margin:20px 0 0;
+    font-size:1.02rem;
+  }
+  .why .tag{
+    display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--right);
+    margin-bottom:5px;
+  }
+  .src{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    margin-top:16px;line-height:1.6;overflow-wrap:break-word;
+  }
+
+  /* ---------- seed table ---------- */
+  .tbl-scroll{overflow-x:auto;margin:18px 0}
+  table{border-collapse:collapse;font-family:var(--mono);font-size:13.5px;min-width:280px}
+  th,td{
+    text-align:left;padding:7px 22px 7px 0;
+    border-bottom:1px solid var(--rule);
+    font-variant-numeric:tabular-nums;white-space:nowrap;
+  }
+  th{
+    font-size:10.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ---------- tiers ---------- */
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong);margin-top:26px}
+  .tier{background:var(--raised);padding:22px 20px;display:flex;flex-direction:column;gap:9px}
+  .tier-name{font-family:var(--display);font-weight:700;font-size:1.1rem}
+  .tier-price{font-family:var(--mono);font-weight:600;font-size:1.5rem;color:var(--right);font-variant-numeric:tabular-nums}
+  .tier-scope{font-size:14.5px;line-height:1.5;color:var(--muted);flex:1}
+  .tier-days{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);border-top:1px solid var(--rule);padding-top:9px}
+
+  /* ---------- checklist ---------- */
+  ol.checks{list-style:none;padding:0;margin:22px 0 0;counter-reset:c;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
+  ol.checks li{
+    counter-increment:c;background:var(--paper);
+    padding:13px 0 13px 44px;position:relative;font-size:15.5px;line-height:1.5;
+  }
+  ol.checks li::before{
+    content:counter(c,decimal-leading-zero);
+    position:absolute;left:0;top:13px;
+    font-family:var(--mono);font-size:11.5px;font-weight:600;
+    color:var(--faint);letter-spacing:.06em;
+  }
+  ol.checks b{font-weight:600}
+
+  /* ---------- common thread ---------- */
+  .thread{background:var(--raised);border:1px solid var(--rule-strong);padding:30px 28px}
+  ul.thread-list{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px}
+  ul.thread-list li{display:flex;gap:13px;align-items:baseline;font-size:15.5px;line-height:1.5}
+  ul.thread-list .k{
+    font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);
+    letter-spacing:.08em;white-space:nowrap;padding-top:2px;
+  }
+
+  /* ---------- close ---------- */
+  .close{border-top:2px solid var(--ink);padding:46px 0 68px}
+  .close h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+  .contact-block{
+    display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;
+    border:1px solid var(--rule-strong);background:var(--raised);
+    padding:22px 24px;margin-top:28px;
+  }
+  .contact-who{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.75;flex:1 1 15em}
+  .contact-who b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+  a.mailto{
+    display:inline-flex;align-items:baseline;gap:10px;
+    font-family:var(--mono);font-size:clamp(.95rem,2.2vw,1.12rem);font-weight:600;
+    color:var(--paper);background:var(--right);
+    padding:13px 20px;text-decoration:none;
+    border:1px solid var(--right);white-space:nowrap;
+    transition:background .12s ease,color .12s ease;
+  }
+  a.mailto .arrow{font-weight:400;opacity:.75}
+  a.mailto:hover,a.mailto:focus-visible{background:var(--paper);color:var(--right)}
+  a.mailto:focus-visible{outline:2px solid var(--right);outline-offset:3px}
+  .contact-note{
+    font-family:var(--mono);font-size:12px;color:var(--faint);
+    margin-top:14px;line-height:1.7;
+  }
+  .disclaimer{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    line-height:1.7;margin-top:30px;padding-top:16px;
+    border-top:1px solid var(--rule);max-width:60em;
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  /* standalone reset — the Artifact host supplied these; a plain webserver does not */
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="eyebrow">
+      <span>Arcobaleno Research</span><span class="dot">/</span>
+      <span>Backtest Forensics</span><span class="dot">/</span>
+      <span>Fixed scope, fixed price</span>
+    </div>
+    <h1>Is the number real?</h1>
+    <p class="standfirst">
+      We audit quantitative research for the one thing that matters before capital moves:
+      <strong>whether the published result survives being checked.</strong> Every case below is a bug
+      we found in <em>our own</em> work, and published against ourselves.
+    </p>
+  </header>
+
+  <section>
+    <div class="col">
+      <h2>Most backtests are not wrong. They are unchecked.</h2>
+      <p class="lede">
+        The checks a researcher would run are, almost by definition, the checks that already passed.
+        Failures live in the space nobody thought needed testing — a filter that doesn't test the
+        property it's named for, a cost convention inherited rather than measured, a sort whose ties
+        break differently on every run.
+      </p>
+      <p class="lede">
+        None of the findings below required new data or a cleverer model. Each was within reach of
+        the original author on any day they thought to look.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-rule">
+    <h2>Five findings, from our own research base</h2>
+    <p class="lede">Each links to a dated internal artifact and a script that reproduces it.</p>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Reproducibility</span>
+        <h2>The backtest its own author could not reproduce</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Published result</div>
+          <div class="corr-val">−1.3191%</div>
+          <div class="corr-note">Mean net return per period, reported as the strategy's performance.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">What it actually was</div>
+          <div class="corr-val">One draw</div>
+          <div class="corr-note">A sample from a distribution that changed on every process launch.</div>
+        </div>
+      </div>
+      <p>
+        The ranking step sorted with <code>sorted(signals.keys(), key=…)</code>, where
+        <code>signals</code> was built by iterating a <strong>set</strong>. Python's sort is stable, so
+        ties broke on set iteration order — randomised per process by <code>PYTHONHASHSEED</code>.
+      </p>
+      <p>
+        Ties were not exotic. Roughly <strong>55% of this venue's funding settlements sit exactly at
+        the clamped interest baseline</strong>, so any asset pinned there across a 168-hour window had
+        an identical trailing mean. Different assets entered the portfolio on different runs.
+      </p>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Hash seed</th><th>Mean net / period</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>−0.013679</td></tr>
+            <tr><td>2</td><td>−0.012256</td></tr>
+            <tr><td>3</td><td>−0.012569</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Median error across failing periods: <strong>157 basis points</strong> — different assets in
+        the portfolio, not floating-point noise.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        The reproduction gate was unmeetable by the original author re-running their own code, and no
+        care in reimplementation closes it. Every downstream decision — deploy, size, shelve — rested
+        on a number that would not come back. The fix was one line: sort by <code>(signal, asset)</code>.
+      </div>
+      <div class="src">Internal: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Data integrity</span>
+        <h2>One corrupt day, thirty corrupt months</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Reported by the data feed</div>
+          <div class="corr-val">172,635%</div>
+          <div class="corr-note">A single day's base APY for one liquidity pool.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">That pool's median</div>
+          <div class="corr-val">0.91%</div>
+          <div class="corr-note">The value the same feed reported on every other day.</div>
+        </div>
+      </div>
+      <p>
+        That one day contaminated <strong>30 rolling 30-day windows</strong> and produced a pool-level
+        result of <strong>+192.66%/yr</strong> on a WBTC–WETH pool — two highly correlated majors,
+        where that return is structurally impossible.
+      </p>
+      <p>
+        It passed everything. The validation checks all operated on <em>windows</em>, and the
+        corruption entered <em>before</em> the windows were formed. The result looked like an outlier
+        worth investigating, not like bad data.
+      </p>
+      <p>
+        The research already had the right check — implied fee tier against published fee tier — and
+        had run it on two pools, on one day. That is a spot check. Applied across the panel, it catches
+        the corruption immediately.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        The difference between a spot check and a guard is whether it runs on every row. A value that
+        is obviously impossible to a human can be completely invisible to code, because the code was
+        never asked.
+      </div>
+      <div class="src">Internal: research/runs/amm-lp-v1/ · standing lesson 23</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Cost model</span>
+        <h2>Three strategies closed for a reason that wasn't true</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Cost as charged</div>
+          <div class="corr-val">≈2.0% / period</div>
+          <div class="corr-note">Summed across positions while P&amp;L was averaged across them.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">Cost as incurred</div>
+          <div class="corr-val">0.10% / period</div>
+          <div class="corr-note">Overstated by a factor of 19–20 — the position count.</div>
+        </div>
+      </div>
+      <p>
+        Cost per unit notional therefore <em>rose as a fixed book was split across more names</em>,
+        which cannot happen under correct book-level accounting: more names at constant gross means
+        smaller positions. Verified across all <strong>590 periods</strong> of three backtest ledgers
+        against the identity <code>net == (long + short)/2 − cost</code>.
+      </p>
+      <p>
+        Corrected, one strategy moved from <strong>Sharpe −8.73 to +0.34</strong>; another from
+        <strong>−2.83 to +1.39</strong>.
+      </p>
+      <p>
+        <strong>All three stayed closed.</strong> The corrected figures were in-sample with intervals
+        spanning zero, and the untouched holdout was the only thing that could settle it. Read under a
+        pre-registration, the best of the three was <strong>falsified out of sample</strong> — losing
+        money both before and after its training window. Overfitting, not decay.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        A wrong cost model is dangerous in both directions: it buries live strategies and it flatters
+        dead ones. Finding the bug is half the job. Refusing to let it resurrect a corpse is the other
+        half — and it is the half a motivated author will skip.
+      </div>
+      <div class="src">Internal: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Staleness</span>
+        <h2>The recency filter that only counted rows</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">The guard, as written</div>
+          <div class="corr-val">len(recent) &gt; 100</div>
+          <div class="corr-note">Named and trusted as a staleness filter.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">What it tested</div>
+          <div class="corr-val">Row count</div>
+          <div class="corr-note">Never a date. Frozen assets stayed selectable indefinitely.</div>
+        </div>
+      </div>
+      <p>
+        A data migration froze 65 files. Because the filter counted rows rather than checking recency,
+        frozen assets remained eligible for roughly <strong>26 days of silent stale inclusion</strong>.
+        Basket composition changed completely from one week to the next — which read as a strategy
+        regime change and was in fact a data artifact.
+      </p>
+      <p>
+        A <strong>second freeze was then found inside the restarted clock</strong>: three assets
+        stopped updating on the same date in the live schema, and one was held in a basket having
+        frozen seven days before it was selected.
+      </p>
+      <p>
+        Underneath it, the finding that mattered most: one held position had
+        <strong>0 of 1,441 one-minute bars with non-zero volume</strong> across its entire holding
+        period. A full-size position, booked at a return describing a trade nobody could have made.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        A filter named for a property does not necessarily test that property. And when a strategy
+        appears to change behaviour, the first hypothesis should be that the data changed underneath
+        it — not that the market did.
+      </div>
+      <div class="src">Internal: research/runs/weekend-drift-selection-audit/ · standing lessons 50, 74</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Execution cost</span>
+        <h2>Three documents, one question, three different answers</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Measured at the touch</div>
+          <div class="corr-val">25.7 bp</div>
+          <div class="corr-note">0.68× the assumption — reads as conservative.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">Walking the book at size</div>
+          <div class="corr-val">47.8 bp</div>
+          <div class="corr-note">1.26× the assumption. The two disagree in <em>direction</em>.</div>
+        </div>
+      </div>
+      <p>
+        Quoted spreads on that basket were <strong>0.4–3.3bp</strong> while the true round trip was
+        <strong>28–78bp</strong>. The cost lived entirely in depth; a touch-based measure cannot see it.
+      </p>
+      <p>That prompted an audit of every cost model in the research base. It found:</p>
+      <p>
+        A standing study charged <em>fee plus half the quoted spread</em> and asserted the venue's
+        worst possible round trip was <strong>31bp</strong>. Measured by walking the book,
+        <strong>40 of 122 assets exceed 31bp</strong> at $10,000 per name — worst
+        <strong>92bp</strong> — and that is on the <em>most liquid</em> names available.
+      </p>
+      <p>
+        Its own follow-up note had already corrected it using a theoretical impact model, and
+        <strong>overstated by ~1.8×</strong> in the other direction — as that note itself suspected it
+        might. Measured, the truth sat between them, and the original conclusion survived at the size
+        it was written for while failing an order of magnitude up.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        A cost model is not a convention to inherit. And the error is largest exactly where a ranking
+        rule tends to select — because ranking rules select for something other than liquidity.
+      </div>
+      <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
+    </article>
+  </section>
+
+  <section class="section-rule">
+    <div class="thread">
+      <h2>What these five have in common</h2>
+      <p class="lede" style="margin-bottom:0">
+        Not one was found by out-thinking the author. Each was found by checking something nobody
+        thought needed checking.
+      </p>
+      <ul class="thread-list">
+        <li><span class="k">01</span><span>Running the same code twice, in different processes.</span></li>
+        <li><span class="k">02</span><span>Running an existing validation on every row instead of one.</span></li>
+        <li><span class="k">03</span><span>Testing an accounting identity that had never been written down.</span></li>
+        <li><span class="k">04</span><span>Asking whether a filter tests the property it is named for.</span></li>
+        <li><span class="k">05</span><span>Measuring a cost instead of inheriting a convention.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-rule">
+    <h2>What gets checked</h2>
+    <p class="lede">
+      The standing checklist is derived from failure modes actually encountered, not from a textbook.
+    </p>
+    <ol class="checks">
+      <li><b>Reproduction.</b> Does the published number come out of the code, twice, in different processes?</li>
+      <li><b>Survivorship.</b> Was the universe enumerated as-of, or on today's survivors? Was any fix checked against the property it is named for?</li>
+      <li><b>Cost model.</b> Fee basis sourced to a schedule? Charged at book level or per position? Measured at the touch, or by walking the book at the intended size?</li>
+      <li><b>Data integrity.</b> Input series validated across the panel, or spot-checked? Rolling windows inspected for single-day contamination?</li>
+      <li><b>Staleness.</b> Are the recency filters actually recency filters?</li>
+      <li><b>Selection.</b> Was the tested variant chosen before or after seeing the data? Is the holdout genuinely untouched?</li>
+      <li><b>Tradability.</b> Could every position in the result actually have been traded, at the price used?</li>
+      <li><b>Statistical claim.</b> Point estimate or interval? One-sided or two? Does the interval exclude the thing being claimed?</li>
+    </ol>
+  </section>
+
+  <section class="section-rule">
+    <h2>Engagements</h2>
+    <p class="lede">
+      Fixed scope, fixed price, no retainer, no ongoing obligation. Every finding ships with a
+      reproduction you can run yourself — no finding is asserted without one.
+    </p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Triage</div>
+        <div class="tier-price">$2,500</div>
+        <div class="tier-scope">One strategy, one result. Is the headline number reproducible from the artifacts you provide? A 3–5 page memo: reproduces, doesn't, or does with caveats — and the specific reason.</div>
+        <div class="tier-days">2–3 days</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Full audit</div>
+        <div class="tier-price">$7,500</div>
+        <div class="tier-scope">One strategy end to end: data provenance, survivorship, cost model, selection, and the statistical claim. A 15–25 page report, every finding with a reproduction script.</div>
+        <div class="tier-days">5–8 days</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Portfolio review</div>
+        <div class="tier-price">$20,000</div>
+        <div class="tier-scope">Three to six strategies plus the shared infrastructure they run on. A report per strategy, and a cross-cutting section — shared bugs are the common case, not the exception.</div>
+        <div class="tier-days">12–15 days</div>
+      </div>
+    </div>
+    <h3>How it runs</h3>
+    <p>
+      A free 30-minute scoping call comes first. <strong>If the artifacts needed for reproduction
+      don't exist, we say so on that call and decline the engagement</strong> — an audit that cannot
+      reproduce anything wastes your money and our time. Otherwise: you send code, data or data
+      access, and the result being claimed; we quote against one of the three tiers; you get the
+      report and one follow-up call to walk it.
+    </p>
+  </section>
+
+  <div class="close">
+    <div class="col">
+      <h2>Who this is for</h2>
+      <p>
+        Whoever carries the loss if the number is wrong — a fund partner deploying on an internal
+        backtest, an allocator running diligence on a manager's track record, a treasury committee
+        shown a yield strategy, a founder raising on a quant claim before a serious counterparty
+        checks it.
+      </p>
+      <div class="contact-block">
+        <div class="contact-who">
+          <b>Arcobaleno Research</b>
+          Backtest forensics &amp; research due diligence
+        </div>
+        <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
+      </div>
+      <p class="contact-note">
+        Start with a free 30-minute scoping call. Tell us what the strategy is and what artifacts
+        exist — code, data, and the result being claimed. If they aren't enough to reproduce anything,
+        we'll say so on that call and decline the engagement.
+      </p>
+      <p class="disclaimer">
+        Research due-diligence and code-audit services only. Not investment advice, not a
+        recommendation to buy or sell any instrument, and not an offer to manage money. Findings
+        describe whether a stated result is reproducible from the artifacts supplied — they are not
+        an opinion on the future performance of any strategy. All case studies describe defects found
+        in Arcobaleno's own internal research; no client work is described. Figures are quoted as they
+        appear in the dated internal artifacts named beneath each case.
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
