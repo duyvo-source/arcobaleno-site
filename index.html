@@ -295,250 +295,258 @@
     </div>
     <h1>Is the number real?</h1>
     <p class="standfirst">
-      We audit quantitative research for the one thing that matters before capital moves:
-      <strong>whether the published result survives being checked.</strong> Every case below is a bug
-      we found in <em>our own</em> work, and published against ourselves.
+      Before anyone puts money behind a trading strategy, someone should check that its track record
+      is actually true. <strong>That is the whole job.</strong> Every example on this page is a
+      mistake we found in <em>our own</em> research, and published against ourselves.
     </p>
   </header>
 
   <section>
     <div class="col">
-      <h2>Most backtests are not wrong. They are unchecked.</h2>
+      <h2>Most backtests aren't wrong. They're just unchecked.</h2>
       <p class="lede">
-        The checks a researcher would run are, almost by definition, the checks that already passed.
-        Failures live in the space nobody thought needed testing — a filter that doesn't test the
-        property it's named for, a cost convention inherited rather than measured, a sort whose ties
-        break differently on every run.
+        A backtest is a trading strategy run against past market data to see what it would have made.
+        That one number decides everything that follows — whether to fund it, how much to risk on it,
+        whether to walk away.
       </p>
       <p class="lede">
-        None of the findings below required new data or a cleverer model. Each was within reach of
-        the original author on any day they thought to look.
+        The trouble is that people check the things they thought to check. Mistakes survive in the
+        places nobody thought to look: a filter that doesn't do what its name says, a fee copied from
+        somewhere else instead of measured, a list that sorts itself differently every time the
+        program runs.
+      </p>
+      <p class="lede">
+        None of the problems below needed new data or a cleverer model. Every one of them was within
+        reach of the person who wrote the code, on any day they thought to look.
       </p>
     </div>
   </section>
 
   <section class="section-rule">
-    <h2>Five findings, from our own research base</h2>
-    <p class="lede">Each links to a dated internal artifact and a script that reproduces it.</p>
+    <h2>Five findings, from our own research</h2>
+    <p class="lede">Each one names the dated internal document it came from, and a script that reproduces it.</p>
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">Reproducibility</span>
-        <h2>The backtest its own author could not reproduce</h2>
+        <span class="class-tag">Repeatability</span>
+        <h2>The backtest its own author couldn't run twice</h2>
       </div>
       <div class="correction">
         <div class="corr-published">
-          <div class="corr-label">Published result</div>
+          <div class="corr-label">The reported result</div>
           <div class="corr-val">−1.3191%</div>
-          <div class="corr-note">Mean net return per period, reported as the strategy's performance.</div>
+          <div class="corr-note">Average return per period, published as the strategy's performance.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
-          <div class="corr-label">What it actually was</div>
-          <div class="corr-val">One draw</div>
-          <div class="corr-note">A sample from a distribution that changed on every process launch.</div>
+          <div class="corr-label">What it really was</div>
+          <div class="corr-val">A different number every run</div>
+          <div class="corr-note">Same code, same data, no answer that came back twice.</div>
         </div>
       </div>
       <p>
-        The ranking step sorted with <code>sorted(signals.keys(), key=…)</code>, where
-        <code>signals</code> was built by iterating a <strong>set</strong>. Python's sort is stable, so
-        ties broke on set iteration order — randomised per process by <code>PYTHONHASHSEED</code>.
+        The code ranked assets and bought the best ones. When two assets tied, something had to break
+        the tie — and the program broke ties <strong>differently each time it was started</strong>.
+        Different assets went into the portfolio on different runs.
       </p>
       <p>
-        Ties were not exotic. Roughly <strong>55% of this venue's funding settlements sit exactly at
-        the clamped interest baseline</strong>, so any asset pinned there across a 168-hour window had
-        an identical trailing mean. Different assets entered the portfolio on different runs.
+        Ties weren't some rare edge case. About <strong>55% of this exchange's funding payments sit at
+        exactly the same floor value</strong>, so any two assets resting on that floor looked
+        identical to the ranking code.
       </p>
       <div class="tbl-scroll">
         <table>
-          <thead><tr><th>Hash seed</th><th>Mean net / period</th></tr></thead>
+          <thead><tr><th>Same code, same data</th><th>Result it produced</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>−0.013679</td></tr>
-            <tr><td>2</td><td>−0.012256</td></tr>
-            <tr><td>3</td><td>−0.012569</td></tr>
+            <tr><td>Run 1</td><td>−1.3679%</td></tr>
+            <tr><td>Run 2</td><td>−1.2256%</td></tr>
+            <tr><td>Run 3</td><td>−1.2569%</td></tr>
           </tbody>
         </table>
       </div>
       <p>
-        Median error across failing periods: <strong>157 basis points</strong> — different assets in
-        the portfolio, not floating-point noise.
+        In the periods where the runs disagreed, the typical gap was <strong>1.57 percentage
+        points</strong>. That isn't rounding. That's a different portfolio.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
-        The reproduction gate was unmeetable by the original author re-running their own code, and no
-        care in reimplementation closes it. Every downstream decision — deploy, size, shelve — rested
-        on a number that would not come back. The fix was one line: sort by <code>(signal, asset)</code>.
+        Nobody could have reproduced this number — including the person who wrote it, running their own
+        code on their own machine. Every decision that followed rested on a figure that would not come
+        back. The fix was one line.
       </div>
       <div class="src">Internal: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
     </article>
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">Data integrity</span>
-        <h2>One corrupt day, thirty corrupt months</h2>
+        <span class="class-tag">Bad data</span>
+        <h2>One bad day, thirty bad months</h2>
       </div>
       <div class="correction">
         <div class="corr-published">
-          <div class="corr-label">Reported by the data feed</div>
+          <div class="corr-label">What the data provider sent</div>
           <div class="corr-val">172,635%</div>
-          <div class="corr-note">A single day's base APY for one liquidity pool.</div>
+          <div class="corr-note">One day's annual return, for one investment pool.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
-          <div class="corr-label">That pool's median</div>
+          <div class="corr-label">What that pool normally earned</div>
           <div class="corr-val">0.91%</div>
-          <div class="corr-note">The value the same feed reported on every other day.</div>
+          <div class="corr-note">The figure the same provider sent on every other day.</div>
         </div>
       </div>
       <p>
-        That one day contaminated <strong>30 rolling 30-day windows</strong> and produced a pool-level
-        result of <strong>+192.66%/yr</strong> on a WBTC–WETH pool — two highly correlated majors,
-        where that return is structurally impossible.
+        That single day fed into <strong>thirty separate monthly averages</strong>, and produced a
+        result of <strong>+192.66% a year</strong>. The pool held two of the largest and most closely
+        linked crypto assets, where a return like that isn't merely unlikely — it can't happen.
       </p>
       <p>
-        It passed everything. The validation checks all operated on <em>windows</em>, and the
-        corruption entered <em>before</em> the windows were formed. The result looked like an outlier
-        worth investigating, not like bad data.
+        Every safety check passed. The checks all looked at the <em>averages</em>, and the bad number
+        got in <em>before</em> the averages were built. On screen it looked like an exciting outlier,
+        not like broken data.
       </p>
       <p>
-        The research already had the right check — implied fee tier against published fee tier — and
-        had run it on two pools, on one day. That is a spot check. Applied across the panel, it catches
-        the corruption immediately.
+        The research already contained the right test. It had been run — on two pools, on one day.
+        That's a spot check. Run across everything, it catches the bad day immediately.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
-        The difference between a spot check and a guard is whether it runs on every row. A value that
-        is obviously impossible to a human can be completely invisible to code, because the code was
-        never asked.
+        A spot check and a real safeguard look the same when you read the code. The difference is
+        whether it runs on <em>every</em> row. A number any human would catch in a second can be
+        completely invisible to software that was never asked to look.
       </div>
       <div class="src">Internal: research/runs/amm-lp-v1/ · standing lesson 23</div>
     </article>
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">Cost model</span>
-        <h2>Three strategies closed for a reason that wasn't true</h2>
+        <span class="class-tag">Trading costs</span>
+        <h2>Three strategies shut down for a reason that wasn't true</h2>
       </div>
       <div class="correction">
         <div class="corr-published">
-          <div class="corr-label">Cost as charged</div>
-          <div class="corr-val">≈2.0% / period</div>
-          <div class="corr-note">Summed across positions while P&amp;L was averaged across them.</div>
+          <div class="corr-label">Costs the code charged</div>
+          <div class="corr-val">≈2.0%</div>
+          <div class="corr-note">Per period. Added up across positions, while profit was averaged across them.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
-          <div class="corr-label">Cost as incurred</div>
-          <div class="corr-val">0.10% / period</div>
-          <div class="corr-note">Overstated by a factor of 19–20 — the position count.</div>
+          <div class="corr-label">Costs actually incurred</div>
+          <div class="corr-val">0.10%</div>
+          <div class="corr-note">Per period. Overcharged by roughly twenty times.</div>
         </div>
       </div>
       <p>
-        Cost per unit notional therefore <em>rose as a fixed book was split across more names</em>,
-        which cannot happen under correct book-level accounting: more names at constant gross means
-        smaller positions. Verified across all <strong>590 periods</strong> of three backtest ledgers
-        against the identity <code>net == (long + short)/2 − cost</code>.
+        The effect was backwards on its face: spreading the <em>same</em> pot of money across more
+        assets made it look <em>more</em> expensive to trade. It can't. Splitting a fixed amount
+        across more positions makes each position smaller. We checked the arithmetic across all
+        <strong>590 periods</strong> of three sets of records.
       </p>
       <p>
-        Corrected, one strategy moved from <strong>Sharpe −8.73 to +0.34</strong>; another from
+        Corrected, the strategies looked transformed. On the standard risk-adjusted score — where
+        below zero means it lost money — one went from <strong>−8.73 to +0.34</strong>, another from
         <strong>−2.83 to +1.39</strong>.
       </p>
       <p>
-        <strong>All three stayed closed.</strong> The corrected figures were in-sample with intervals
-        spanning zero, and the untouched holdout was the only thing that could settle it. Read under a
-        pre-registration, the best of the three was <strong>falsified out of sample</strong> — losing
-        money both before and after its training window. Overfitting, not decay.
+        <strong>All three stayed shut.</strong> Those flattering new numbers came from the very data
+        the strategies were built on, and the margin of error was wide enough to include zero — so the
+        improvement might be nothing at all. The only honest test was data the strategy had never seen.
+        Against that, the best of the three <strong>failed outright</strong>, losing money both before
+        and after the stretch it was built on. It was over-fitted, not worn out.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
-        A wrong cost model is dangerous in both directions: it buries live strategies and it flatters
-        dead ones. Finding the bug is half the job. Refusing to let it resurrect a corpse is the other
-        half — and it is the half a motivated author will skip.
+        A wrong cost assumption is dangerous in both directions — it buries strategies that work and
+        flatters ones that don't. Finding the bug is half the job. Refusing to let it raise the dead is
+        the other half, and it's the half someone with a stake in the answer will skip.
       </div>
       <div class="src">Internal: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
     </article>
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">Staleness</span>
-        <h2>The recency filter that only counted rows</h2>
+        <span class="class-tag">Stale data</span>
+        <h2>The "recent data" filter that never looked at a date</h2>
       </div>
       <div class="correction">
         <div class="corr-published">
-          <div class="corr-label">The guard, as written</div>
-          <div class="corr-val">len(recent) &gt; 100</div>
-          <div class="corr-note">Named and trusted as a staleness filter.</div>
+          <div class="corr-label">The safeguard, as written</div>
+          <div class="corr-val">Count the rows</div>
+          <div class="corr-note">Named and trusted as the check that kept out stale data.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
-          <div class="corr-label">What it tested</div>
-          <div class="corr-val">Row count</div>
-          <div class="corr-note">Never a date. Frozen assets stayed selectable indefinitely.</div>
+          <div class="corr-label">What it actually checked</div>
+          <div class="corr-val">Nothing about time</div>
+          <div class="corr-note">It never read a date. Frozen data stayed eligible indefinitely.</div>
         </div>
       </div>
       <p>
-        A data migration froze 65 files. Because the filter counted rows rather than checking recency,
-        frozen assets remained eligible for roughly <strong>26 days of silent stale inclusion</strong>.
-        Basket composition changed completely from one week to the next — which read as a strategy
-        regime change and was in fact a data artifact.
+        A data migration quietly froze 65 files — they simply stopped updating. Because the filter
+        counted rows instead of reading dates, those frozen assets stayed eligible for about
+        <strong>26 days</strong>. The strategy's holdings changed completely from one week to the next,
+        which read like the strategy responding to the market. It was the data breaking underneath it.
       </p>
       <p>
-        A <strong>second freeze was then found inside the restarted clock</strong>: three assets
-        stopped updating on the same date in the live schema, and one was held in a basket having
-        frozen seven days before it was selected.
+        Then a <strong>second freeze was found inside the restarted clock</strong>: three more assets
+        stopped updating on the same day, and one was bought into a portfolio a full week after it had
+        already gone dead.
       </p>
       <p>
-        Underneath it, the finding that mattered most: one held position had
-        <strong>0 of 1,441 one-minute bars with non-zero volume</strong> across its entire holding
-        period. A full-size position, booked at a return describing a trade nobody could have made.
+        Underneath that sat the worst of it. One position the strategy held had not traded at all —
+        <strong>zero out of 1,441 minutes with a single trade in them</strong>. A full-size position,
+        booked at a profit, describing a trade nobody on earth could have made.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
-        A filter named for a property does not necessarily test that property. And when a strategy
-        appears to change behaviour, the first hypothesis should be that the data changed underneath
-        it — not that the market did.
+        A filter named after a job does not necessarily do that job. And when a strategy suddenly starts
+        behaving differently, the first thing to suspect is the data — not the market.
       </div>
       <div class="src">Internal: research/runs/weekend-drift-selection-audit/ · standing lessons 50, 74</div>
     </article>
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">Execution cost</span>
-        <h2>Three documents, one question, three different answers</h2>
+        <span class="class-tag">What trading really costs</span>
+        <h2>One question, three documents, three different answers</h2>
       </div>
       <div class="correction">
         <div class="corr-published">
-          <div class="corr-label">Measured at the touch</div>
-          <div class="corr-val">25.7 bp</div>
-          <div class="corr-note">0.68× the assumption — reads as conservative.</div>
+          <div class="corr-label">Measured at the screen price</div>
+          <div class="corr-val">0.26%</div>
+          <div class="corr-note">Cheaper than the strategy assumed. Looks reassuring.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
-          <div class="corr-label">Walking the book at size</div>
-          <div class="corr-val">47.8 bp</div>
-          <div class="corr-note">1.26× the assumption. The two disagree in <em>direction</em>.</div>
+          <div class="corr-label">Measured by filling a real order</div>
+          <div class="corr-val">0.48%</div>
+          <div class="corr-note">Dearer than it assumed. The two don't just differ in size — they differ in <em>direction</em>.</div>
         </div>
       </div>
       <p>
-        Quoted spreads on that basket were <strong>0.4–3.3bp</strong> while the true round trip was
-        <strong>28–78bp</strong>. The cost lived entirely in depth; a touch-based measure cannot see it.
+        The price on your screen is the price for a tiny trade. Put a real order through and you eat
+        into worse and worse prices as you go. On this basket the screen price suggested a cost of
+        <strong>0.004%–0.033%</strong>, while getting in and back out actually cost
+        <strong>0.28%–0.78%</strong>. A measurement taken at the screen price cannot see that, at all.
       </p>
-      <p>That prompted an audit of every cost model in the research base. It found:</p>
+      <p>So we went back and audited every cost assumption in the research. It found this:</p>
       <p>
-        A standing study charged <em>fee plus half the quoted spread</em> and asserted the venue's
-        worst possible round trip was <strong>31bp</strong>. Measured by walking the book,
-        <strong>40 of 122 assets exceed 31bp</strong> at $10,000 per name — worst
-        <strong>92bp</strong> — and that is on the <em>most liquid</em> names available.
+        A standing study had assumed the worst possible round trip on that exchange was
+        <strong>0.31%</strong>. Filling real orders, <strong>40 of 122 assets cost more than that</strong>
+        at $10,000 apiece — the worst of them <strong>0.92%</strong>. And those were the
+        <em>easiest-to-trade</em> assets available.
       </p>
       <p>
-        Its own follow-up note had already corrected it using a theoretical impact model, and
-        <strong>overstated by ~1.8×</strong> in the other direction — as that note itself suspected it
-        might. Measured, the truth sat between them, and the original conclusion survived at the size
-        it was written for while failing an order of magnitude up.
+        That study's own follow-up note had already tried to fix it with a textbook formula — and
+        overshot by about <strong>1.8×</strong> the other way, exactly as the note itself suspected it
+        might. Measured properly, the truth sat between the two. The original conclusion survived at
+        the size it was written for, and failed at ten times that size.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
-        A cost model is not a convention to inherit. And the error is largest exactly where a ranking
-        rule tends to select — because ranking rules select for something other than liquidity.
+        Trading cost is something to measure, not something to inherit. And it is worst precisely where
+        a ranking rule tends to pick, because ranking rules choose for returns — not for how easily
+        something can be bought and sold.
       </div>
       <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
     </article>
@@ -548,69 +556,69 @@
     <div class="thread">
       <h2>What these five have in common</h2>
       <p class="lede" style="margin-bottom:0">
-        Not one was found by out-thinking the author. Each was found by checking something nobody
-        thought needed checking.
+        Not one was found by out-thinking the author. Each came from checking something nobody thought
+        needed checking.
       </p>
       <ul class="thread-list">
-        <li><span class="k">01</span><span>Running the same code twice, in different processes.</span></li>
-        <li><span class="k">02</span><span>Running an existing validation on every row instead of one.</span></li>
-        <li><span class="k">03</span><span>Testing an accounting identity that had never been written down.</span></li>
-        <li><span class="k">04</span><span>Asking whether a filter tests the property it is named for.</span></li>
-        <li><span class="k">05</span><span>Measuring a cost instead of inheriting a convention.</span></li>
+        <li><span class="k">01</span><span>Running the same code twice.</span></li>
+        <li><span class="k">02</span><span>Running a check that already existed on every row, instead of one.</span></li>
+        <li><span class="k">03</span><span>Testing whether the arithmetic actually added up.</span></li>
+        <li><span class="k">04</span><span>Asking whether a filter does what its name says.</span></li>
+        <li><span class="k">05</span><span>Measuring a cost instead of assuming one.</span></li>
       </ul>
     </div>
   </section>
 
   <section class="section-rule">
-    <h2>What gets checked</h2>
+    <h2>What we check</h2>
     <p class="lede">
-      The standing checklist is derived from failure modes actually encountered, not from a textbook.
+      This list comes from mistakes we have actually hit, not from a textbook.
     </p>
     <ol class="checks">
-      <li><b>Reproduction.</b> Does the published number come out of the code, twice, in different processes?</li>
-      <li><b>Survivorship.</b> Was the universe enumerated as-of, or on today's survivors? Was any fix checked against the property it is named for?</li>
-      <li><b>Cost model.</b> Fee basis sourced to a schedule? Charged at book level or per position? Measured at the touch, or by walking the book at the intended size?</li>
-      <li><b>Data integrity.</b> Input series validated across the panel, or spot-checked? Rolling windows inspected for single-day contamination?</li>
-      <li><b>Staleness.</b> Are the recency filters actually recency filters?</li>
-      <li><b>Selection.</b> Was the tested variant chosen before or after seeing the data? Is the holdout genuinely untouched?</li>
-      <li><b>Tradability.</b> Could every position in the result actually have been traded, at the price used?</li>
-      <li><b>Statistical claim.</b> Point estimate or interval? One-sided or two? Does the interval exclude the thing being claimed?</li>
+      <li><b>Does it repeat?</b> Run the code twice, on two different machines. Does the same number come back?</li>
+      <li><b>Are the dead ones missing?</b> Was the list of assets built as it looked <em>back then</em>, or from the ones still around today? The ones that disappeared are usually the losers.</li>
+      <li><b>Are the costs real?</b> Where did the fee figure come from? Is it charged correctly? Was it measured on realistic order sizes, or taken off the screen?</li>
+      <li><b>Is the data clean?</b> Was every row checked, or just a sample? Can one bad day poison a long average?</li>
+      <li><b>Is the data current?</b> Do the filters meant to exclude stale data actually look at dates?</li>
+      <li><b>Was it cherry-picked?</b> Was this version chosen before or after seeing how it performed? Is there genuinely untouched data left to test against?</li>
+      <li><b>Could you have traded it?</b> Could every position in the result actually have been bought and sold, at the price used?</li>
+      <li><b>What is really being claimed?</b> A single number, or a range? Is the margin of error wide enough to include zero — meaning it might be nothing?</li>
     </ol>
   </section>
 
   <section class="section-rule">
-    <h2>Engagements</h2>
+    <h2>What it costs</h2>
     <p class="lede">
-      Fixed scope, fixed price, no retainer, no ongoing obligation. Every finding ships with a
-      reproduction you can run yourself — no finding is asserted without one.
+      Fixed scope, fixed price. No retainer, nothing ongoing. Every finding comes with a script you can
+      run yourself — we don't claim anything we can't show you.
     </p>
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Triage</div>
         <div class="tier-price">$2,500</div>
-        <div class="tier-scope">One strategy, one result. Is the headline number reproducible from the artifacts you provide? A 3–5 page memo: reproduces, doesn't, or does with caveats — and the specific reason.</div>
+        <div class="tier-scope">One strategy, one number. Can we get your headline result out of the code and data you send us? You get a 3–5 page memo: it reproduces, it doesn't, or it does with caveats — and exactly why.</div>
         <div class="tier-days">2–3 days</div>
       </div>
       <div class="tier">
         <div class="tier-name">Full audit</div>
         <div class="tier-price">$7,500</div>
-        <div class="tier-scope">One strategy end to end: data provenance, survivorship, cost model, selection, and the statistical claim. A 15–25 page report, every finding with a reproduction script.</div>
+        <div class="tier-scope">One strategy, start to finish: where the data came from, how the asset list was built, what trading was assumed to cost, how the version was chosen, and whether the claim holds up. A 15–25 page report, every finding with a script that reproduces it.</div>
         <div class="tier-days">5–8 days</div>
       </div>
       <div class="tier">
         <div class="tier-name">Portfolio review</div>
         <div class="tier-price">$20,000</div>
-        <div class="tier-scope">Three to six strategies plus the shared infrastructure they run on. A report per strategy, and a cross-cutting section — shared bugs are the common case, not the exception.</div>
+        <div class="tier-scope">Three to six strategies, plus the shared code they all run on. A report for each, and a section on what they have in common — shared bugs are the normal case, not the exception.</div>
         <div class="tier-days">12–15 days</div>
       </div>
     </div>
-    <h3>How it runs</h3>
+    <h3>How it works</h3>
     <p>
-      A free 30-minute scoping call comes first. <strong>If the artifacts needed for reproduction
-      don't exist, we say so on that call and decline the engagement</strong> — an audit that cannot
-      reproduce anything wastes your money and our time. Otherwise: you send code, data or data
-      access, and the result being claimed; we quote against one of the three tiers; you get the
-      report and one follow-up call to walk it.
+      It starts with a free 30-minute call. <strong>If you don't have what's needed to reproduce the
+      result, we'll say so on that call and turn the work down</strong> — an audit that can't reproduce
+      anything wastes your money and our time. Otherwise: you send the code, the data or access to it,
+      and the result you're claiming. We quote one of the three prices above. You get the report, plus
+      a follow-up call to walk you through it.
     </p>
   </section>
 
@@ -618,10 +626,9 @@
     <div class="col">
       <h2>Who this is for</h2>
       <p>
-        Whoever carries the loss if the number is wrong — a fund partner deploying on an internal
-        backtest, an allocator running diligence on a manager's track record, a treasury committee
-        shown a yield strategy, a founder raising on a quant claim before a serious counterparty
-        checks it.
+        Whoever loses money if the number is wrong. A partner about to fund a strategy built in-house.
+        An allocator checking a manager's track record. A treasury committee being shown a yield
+        product. A founder raising money on a performance claim, before someone else checks it for them.
       </p>
       <div class="contact-block">
         <div class="contact-who">
@@ -631,17 +638,17 @@
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
-        Start with a free 30-minute scoping call. Tell us what the strategy is and what artifacts
-        exist — code, data, and the result being claimed. If they aren't enough to reproduce anything,
-        we'll say so on that call and decline the engagement.
+        Start with a free 30-minute call. Tell us what the strategy is and what you have — code, data,
+        and the result being claimed. If that isn't enough to reproduce anything, we'll tell you on the
+        call and turn the work down.
       </p>
       <p class="disclaimer">
-        Research due-diligence and code-audit services only. Not investment advice, not a
-        recommendation to buy or sell any instrument, and not an offer to manage money. Findings
-        describe whether a stated result is reproducible from the artifacts supplied — they are not
-        an opinion on the future performance of any strategy. All case studies describe defects found
-        in Arcobaleno's own internal research; no client work is described. Figures are quoted as they
-        appear in the dated internal artifacts named beneath each case.
+        Research due-diligence and code-audit services only. This is not investment advice, not a
+        recommendation to buy or sell anything, and not an offer to manage money. Our findings say
+        whether a stated result can be reproduced from the material supplied — they are not an opinion
+        on how any strategy will perform in future. Every case study on this page describes a defect
+        found in Arcobaleno's own internal research; no client work is described. Figures are quoted as
+        they appear in the dated internal documents named beneath each case.
       </p>
     </div>
   </div>
