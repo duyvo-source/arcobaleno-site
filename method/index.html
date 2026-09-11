@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What we check — Arcobaleno Research</title>
+<meta name="description" content="What a backtest audit from Arcobaleno Research actually checks: the eight standing tests, what we need from you, and the asset classes we do and do not cover.">
+<link rel="canonical" href="https://arcobaleno.cloud/method/">
+<meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arcobaleno Research">
+<meta property="og:url" content="https://arcobaleno.cloud/method/">
+<meta property="og:title" content="What we check — Arcobaleno Research">
+<meta property="og:description" content="What a backtest audit from Arcobaleno Research actually checks: the eight standing tests, what we need from you, and the asset classes we do and do not cover.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What we check — Arcobaleno Research">
+<meta name="twitter:description" content="What a backtest audit from Arcobaleno Research actually checks: the eight standing tests, what we need from you, and the asset classes we do and do not cover.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><path d='M32 18.25A17 17 0 0 1 32 45.75A17 17 0 0 1 32 18.25Z' fill='%2396D5F2'/><g fill='none' stroke-width='5'><circle cx='22' cy='32' r='17' stroke='%233B7EB4'/><circle cx='42' cy='32' r='17' stroke='%236CBAE6'/></g></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  /* Design tokens are DUPLICATED from page.html — each page is built standalone, so there is no
+     shared stylesheet to import. If a colour changes there it must change here too. */
+  :root{
+    --paper:#EFF1EE;
+    --raised:#F7F8F6;
+    --ink:#16191A;
+    --muted:#5E6663;
+    --faint:#858C88;
+    --rule:#D2D8D1;
+    --rule-strong:#B4BDB3;
+    --wrong:#A6321E;
+    --wrong-bg:#F3E2DE;
+    --right:#1B5849;
+    --right-bg:#DDE9E4;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101413;
+      --raised:#171C1A;
+      --ink:#E6EAE7;
+      --muted:#9BA5A0;
+      --faint:#78837E;
+      --rule:#28302D;
+      --rule-strong:#3A443F;
+      --wrong:#E8836C;
+      --wrong-bg:#2E1C18;
+      --right:#6FC3AC;
+      --right-bg:#132A25;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101413;
+    --raised:#171C1A;
+    --ink:#E6EAE7;
+    --muted:#9BA5A0;
+    --faint:#78837E;
+    --rule:#28302D;
+    --rule-strong:#3A443F;
+    --wrong:#E8836C;
+    --wrong-bg:#2E1C18;
+    --right:#6FC3AC;
+    --right-bg:#132A25;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .col{max-width:660px}
+
+  /* ---------- masthead ---------- */
+  header.mast{border-bottom:2px solid var(--ink);padding:56px 0 22px}
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  }
+  .eyebrow .dot{color:var(--rule-strong)}
+  .eyebrow a{color:var(--muted);text-decoration-thickness:1px;text-underline-offset:2px}
+  .eyebrow a:hover{color:var(--right)}
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.4rem,6.4vw,4.2rem);
+    line-height:1;letter-spacing:-.028em;
+    margin:20px 0 0;text-wrap:balance;
+  }
+  .standfirst{
+    font-size:clamp(1.12rem,2.1vw,1.32rem);
+    line-height:1.5;color:var(--muted);
+    margin:20px 0 0;max-width:34em;text-wrap:pretty;
+  }
+  .standfirst strong{color:var(--ink);font-weight:600}
+
+
+
+  /* ---------- wordmark: the overlap ---------- */
+  /* Two runs of the same backtest as two circles; the filled lens is where they agree.
+     Palette is "blue, five steps" — one hue, five values. Only 2, 4 and 5 are used by the
+     drawing; all five are declared so the scale is documented and swappable in one place. */
+  :root{
+    --mark1:#0E2C4A; --mark2:#15477B; --mark3:#1C639E; --mark4:#3C88C2; --mark5:#6FB2E0;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+    }
+  }
+  :root[data-theme="dark"]{
+    --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+  }
+  .brand{display:flex;align-items:center;gap:13px;margin-bottom:20px;text-decoration:none}
+  .brand .mark{display:block;height:30px;width:auto;flex:none}
+  .brand-name{
+    font-family:var(--display);font-weight:800;font-size:1.06rem;
+    letter-spacing:-.012em;color:var(--ink);white-space:nowrap;
+  }
+  a.brand:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  .mark .lens{fill:var(--mark5)}
+  .mark .run{fill:none;stroke-width:3}
+  .mark .run-a{stroke:var(--mark2)}
+  .mark .run-b{stroke:var(--mark4)}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0}
+  .section-rule{border-top:1px solid var(--rule)}
+  h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.02em;
+    line-height:1.14;margin:0 0 14px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;
+    font-size:1.16rem;letter-spacing:-.01em;
+    margin:30px 0 8px;text-wrap:balance;
+  }
+  p{margin:0 0 15px}
+  .lede{font-size:1.08rem;color:var(--muted);max-width:36em}
+  strong{font-weight:600}
+  em{font-style:italic}
+  code,.m{font-family:var(--mono);font-size:.87em;font-variant-numeric:tabular-nums}
+  a{color:var(--right);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--right);outline-offset:3px;border-radius:2px}
+
+  /* ---------- the eight tests ---------- */
+  ol.tests{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
+  ol.tests li{background:var(--paper);padding:20px 0}
+  .t-head{display:flex;flex-wrap:wrap;gap:7px 13px;align-items:baseline;margin-bottom:7px}
+  .fc{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink);border:1px solid var(--rule-strong);
+    padding:3px 9px;white-space:nowrap;
+  }
+  .t-name{font-family:var(--display);font-weight:700;font-size:1.06rem;letter-spacing:-.01em}
+  .t-ask{font-size:15.5px;line-height:1.55;margin:0;max-width:44em}
+  .t-fail{
+    display:block;margin-top:9px;padding-left:14px;
+    border-left:3px solid var(--wrong);
+    font-size:14.5px;line-height:1.5;color:var(--muted);max-width:44em;
+  }
+  .t-fail b{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--wrong);display:block;margin-bottom:3px;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl-scroll{overflow-x:auto;margin:22px 0}
+  table{border-collapse:collapse;font-size:14.5px;min-width:340px}
+  th,td{
+    text-align:left;padding:9px 24px 9px 0;
+    border-bottom:1px solid var(--rule);vertical-align:top;
+  }
+  th{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);white-space:nowrap;
+  }
+  td.k{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted)}
+  td b{font-weight:600}
+
+  /* ---------- send / scope blocks ---------- */
+  .panel{background:var(--raised);border:1px solid var(--rule-strong);padding:26px 26px 22px;margin-top:24px}
+  ol.send{margin:16px 0 0;padding-left:22px}
+  ol.send li{margin-bottom:9px;font-size:15.5px;line-height:1.5}
+  ul.plain{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+  ul.plain li{display:flex;gap:12px;align-items:baseline;font-size:15.5px;line-height:1.5}
+  ul.plain .k{
+    font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);
+    letter-spacing:.08em;white-space:nowrap;padding-top:2px;min-width:5.5em;
+  }
+  .yes .k{color:var(--right)}
+  .no .k{color:var(--wrong)}
+
+  /* ---------- steps ---------- */
+  ol.steps{list-style:none;padding:0;margin:22px 0 0;counter-reset:s;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
+  ol.steps li{
+    counter-increment:s;background:var(--paper);
+    padding:13px 0 13px 44px;position:relative;font-size:15.5px;line-height:1.5;
+  }
+  ol.steps li::before{
+    content:counter(s,decimal-leading-zero);
+    position:absolute;left:0;top:13px;
+    font-family:var(--mono);font-size:11.5px;font-weight:600;
+    color:var(--faint);letter-spacing:.06em;
+  }
+  ol.steps b{font-weight:600}
+
+  /* ---------- close ---------- */
+  .close{border-top:2px solid var(--ink);padding:46px 0 68px}
+  .close h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+  .contact-block{
+    display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;
+    border:1px solid var(--rule-strong);background:var(--raised);
+    padding:22px 24px;margin-top:28px;
+  }
+  .contact-who{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.75;flex:1 1 15em}
+  .contact-who b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+  a.mailto{
+    display:inline-flex;align-items:baseline;gap:10px;
+    font-family:var(--mono);font-size:clamp(.95rem,2.2vw,1.12rem);font-weight:600;
+    color:var(--paper);background:var(--right);
+    padding:13px 20px;text-decoration:none;
+    border:1px solid var(--right);white-space:nowrap;
+    transition:background .12s ease,color .12s ease;
+  }
+  a.mailto .arrow{font-weight:400;opacity:.75}
+  a.mailto:hover,a.mailto:focus-visible{background:var(--paper);color:var(--right)}
+  a.mailto:focus-visible{outline:2px solid var(--right);outline-offset:3px}
+  .contact-note{
+    font-family:var(--mono);font-size:12px;color:var(--faint);
+    margin-top:14px;line-height:1.7;
+  }
+  .disclaimer{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    line-height:1.7;margin-top:30px;padding-top:16px;
+    border-top:1px solid var(--rule);max-width:60em;
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  /* standalone reset — the Artifact host supplied these; a plain webserver does not */
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 46 32" role="img" aria-labelledby="markTitle">
+        <title id="markTitle">Arcobaleno — we split the number into what actually produced it</title>
+        <path class="lens" d="M23 5.05A13 13 0 0 1 23 26.95A13 13 0 0 1 23 5.05Z"></path>
+        <circle class="run run-a" cx="16" cy="16" r="13"></circle>
+        <circle class="run run-b" cx="30" cy="16" r="13"></circle>
+      </svg>
+      <span class="brand-name">Arcobaleno Research</span>
+    </a>
+    <div class="eyebrow">
+      <span>Backtest Forensics</span><span class="dot">/</span>
+      <span>What we check</span>
+    </div>
+    <h1>The eight checks, and what we need from you</h1>
+    <p class="standfirst">
+      So you can tell before you email us whether there is a job here, what it would involve, and
+      whether we are the right people for it. <strong>If we aren't, we would rather you knew now.</strong>
+    </p>
+  </header>
+
+  <section>
+    <div class="col">
+      <h2>Every audit runs the same eight checks</h2>
+      <p class="lede">
+        They come from mistakes we have actually hit in our own research — not from a textbook. Five
+        of the eight are <a href="/">published on our front page</a> as case studies against
+        ourselves, with the dated internal document each one came from.
+      </p>
+      <p class="lede">
+        We number them <span class="m">FC-1</span> to <span class="m">FC-8</span> so that findings in
+        your report point at something specific. A finding reads <span class="m">FC-3</span>, not
+        "we had concerns about costs".
+      </p>
+    </div>
+
+    <ol class="tests">
+      <li>
+        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
+        <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually something unfixed in how the program orders or seeds its work.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
+        <p class="t-ask">Was the list of assets built as it looked <em>back then</em>, or from the ones still trading today? And if something was already patched to fix this, does the patch actually test the thing it claims to?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The names that disappeared are absent from the test — and the ones that disappear are usually the losers, so the record flatters itself.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
+        <p class="t-ask">Where did the fee figure come from? Is it charged the right way round — per book, or per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
+        <p class="t-ask">Was every row checked, or a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A single bad print carries thirty months of apparent return, and removing it removes the strategy.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
+        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what the variable is called.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A filter named for recency that never reads a timestamp — it counts rows and wears the name.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
+        <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of variants tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
+        <p class="t-ask">Could every position in the result actually have been bought and sold, at the price used, in the size assumed — and using only what was knowable at that moment?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Positions opened and closed at prices that existed, in sizes that did not. Or open positions quietly dropped at the end instead of valued, which turns a loss into a profit.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
+        <p class="t-ask">Is the headline a single number or a range? We put an error bar around it and ask whether that range is wide enough to include zero.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a distribution — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>What we need from you</h2>
+      <p class="lede">
+        Three things. If you don't have all three, say so on the call — it usually changes what is
+        worth doing, and occasionally it means there is no job, which we will tell you.
+      </p>
+    </div>
+    <div class="panel">
+      <ol class="send">
+        <li><b>The code that produced the number.</b> Ideally the repository, and which commit it was.</li>
+        <li><b>The data it ran on</b>, or credentials for us to fetch it.</li>
+        <li><b>The claim itself, written down</b> — the number, the period it covers, the assets, and where it appears: a tearsheet, a deck, a spreadsheet, a notebook.</li>
+      </ol>
+    </div>
+
+    <h3>What suits us best</h3>
+    <p class="lede">
+      None of this is a rule. It is what makes an audit quick and cheap rather than slow and
+      expensive, and anything in the middle column simply means we say so in the quote.
+    </p>
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th></th><th>Ideal</th><th>Workable</th><th>Ask us first</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="k">Format</td><td><b>Parquet</b></td><td>CSV, a database dump</td><td>a live API we must poll; a platform you can't export from</td></tr>
+          <tr><td class="k">Size</td><td><b>Up to ~2&nbsp;GB</b></td><td>2–20&nbsp;GB, adds a day or two</td><td>larger than ~20&nbsp;GB</td></tr>
+          <tr><td class="k">Frequency</td><td><b>Daily or hourly bars</b></td><td>minute bars</td><td>every trade, or full order book</td></tr>
+          <tr><td class="k">Code</td><td><b>Python, in version control</b></td><td>R, MATLAB, C++</td><td>a sealed binary; a signal you can't show us</td></tr>
+          <tr><td class="k">Run time</td><td><b>Under 2 hours a run</b></td><td>2–6 hours, adds days</td><td>longer than that</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <strong>Run time matters more than people expect.</strong> FC-1 alone means running your
+      backtest at least twice, and every variant we test in FC-6 is another run. A six-hour backtest
+      is not a six-hour job.
+    </p>
+    <p>
+      <strong>On confidentiality:</strong> tell us if any part of the strategy can't be shown to us —
+      we can usually work around a sealed component, and it is far better known before we start than
+      halfway through. <strong>Your code and data are deleted when we deliver</strong>, unless you ask
+      us to keep them.
+    </p>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>What we can and can't audit</h2>
+      <p class="lede">
+        The eight checks are not specific to any market — survivorship, look-ahead, cost realism and
+        selection are older and better documented in equities than anywhere. But knowing a market's
+        <em>mechanics</em> is a different thing from knowing method, and we would rather be straight
+        about where ours stop.
+      </p>
+      <ul class="plain">
+        <li class="yes"><span class="k">Strongest</span><span><b>Crypto perpetual futures.</b> Funding, mark versus last price, margin tiers, delistings, fee tiers, liquidation cascades. All five published case studies come from here.</span></li>
+        <li class="yes"><span class="k">Yes</span><span><b>Crypto spot, equities, futures.</b> The method transfers directly, and most audit findings live in the method rather than the instrument.</span></li>
+        <li class="no"><span class="k">Tell you</span><span><b>Where a claim rests on mechanics we haven't exercised</b> — dividend and corporate-action adjustment, point-in-time fundamentals, exchange calendars and halts, borrow cost and short availability, options exercise and surface construction. If your result hinges on one of these, we will say so in writing before quoting, and you can decide.</span></li>
+        <li class="no"><span class="k">No</span><span><b>Where there is nothing to reproduce</b> — no code, no data, or a strategy nobody has run in months and nobody knows the expected output of. That is code recovery, not an audit, and we don't sell it.</span></li>
+      </ul>
+      <p style="margin-top:22px">
+        We don't claim to cover every market. Outside crypto we hold no market data of our own, so
+        you would either send us yours or we buy it in — and we tell you which, and what it costs,
+        before any work starts.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>How an audit actually runs</h2>
+      <p class="lede">Start to finish, for a full audit. A Triage is steps 1 to 3 and stops there.</p>
+    </div>
+    <ol class="steps">
+      <li><b>We take delivery and freeze it.</b> Your code and data go into a working copy with a recorded fingerprint. We never work in your live repository.</li>
+      <li><b>FC-1 first, before anything else.</b> Run it clean, end to end, twice. If the number won't come out, we stop here and tell you — everything downstream would be worthless.</li>
+      <li><b>We reconcile against your claim.</b> Our number against the number in your document. Any gap is itself a finding, and often it is <em>the</em> finding.</li>
+      <li><b>We work FC-2 through FC-8 in order.</b> Structural and cheap first, subtle last. Each check is a script we run, not a read-through of your code.</li>
+      <li><b>Every finding gets a number.</b> Not "costs look understated" but "costs are understated by this much, which moves the headline from here to here". A finding without a number is an opinion.</li>
+      <li><b>You get the report</b>, each finding with the script that demonstrates it, ranked by what it does to your claim rather than by the order we found things.</li>
+      <li><b>One call to walk through it.</b> No ongoing obligation, in either direction.</li>
+    </ol>
+    <h3>Two things worth saying up front</h3>
+    <p>
+      <strong>The fee is for the work, not for finding something.</strong> An audit that finds nothing
+      wrong is a real and useful outcome — it is what you are buying the right to conclude. We would
+      rather agree that now than argue about it later.
+    </p>
+    <p>
+      <strong>If a Triage uncovers something bigger, we stop and re-quote.</strong> We don't silently
+      absorb it, and we don't silently bill for it.
+    </p>
+  </section>
+
+  <div class="close">
+    <div class="col">
+      <h2>Still not sure whether it fits?</h2>
+      <p>
+        That is what the first call is for, and it is free. Tell us what the strategy is and what you
+        have. <strong>If there isn't enough there to reproduce anything, we'll tell you on that call
+        and turn the work down</strong> — before any money changes hands.
+      </p>
+      <div class="contact-block">
+        <div class="contact-who">
+          <b>Arcobaleno Research</b>
+          Backtest forensics &amp; research due diligence<br>
+          We split the number into what actually produced it
+        </div>
+        <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
+      </div>
+      <p class="contact-note">
+        Prices, and the five findings we published against our own research, are on the
+        <a href="/">front page</a>.
+      </p>
+      <p class="disclaimer">
+        Research due-diligence and code-audit services only. This is not investment advice, not a
+        recommendation to buy or sell anything, and not an offer to manage money. Our findings say
+        whether a stated result can be reproduced from the material supplied — they are not an opinion
+        on how any strategy will perform in future. The case studies referred to describe defects found
+        in Arcobaleno's own internal research; no client work is described.
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

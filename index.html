@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
 <meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Five findings published against our own work — reproducibility, data integrity, cost models, staleness.">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><text y='46' x='32' text-anchor='middle' font-size='40' font-family='Georgia,serif' fill='%236FC3AC'>&#8594;</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><path d='M32 18.25A17 17 0 0 1 32 45.75A17 17 0 0 1 32 18.25Z' fill='%2396D5F2'/><g fill='none' stroke-width='5'><circle cx='22' cy='32' r='17' stroke='%233B7EB4'/><circle cx='42' cy='32' r='17' stroke='%236CBAE6'/></g></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +145,35 @@
       padding:7px 0;transform:rotate(90deg) scale(.9);
     }
   }
+
+
+
+  /* ---------- wordmark: the overlap ---------- */
+  /* Two runs of the same backtest as two circles; the filled lens is where they agree.
+     Palette is "blue, five steps" — one hue, five values. Only 2, 4 and 5 are used by the
+     drawing; all five are declared so the scale is documented and swappable in one place. */
+  :root{
+    --mark1:#0E2C4A; --mark2:#15477B; --mark3:#1C639E; --mark4:#3C88C2; --mark5:#6FB2E0;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+    }
+  }
+  :root[data-theme="dark"]{
+    --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+  }
+  .brand{display:flex;align-items:center;gap:13px;margin-bottom:20px;text-decoration:none}
+  .brand .mark{display:block;height:30px;width:auto;flex:none}
+  .brand-name{
+    font-family:var(--display);font-weight:800;font-size:1.06rem;
+    letter-spacing:-.012em;color:var(--ink);white-space:nowrap;
+  }
+  a.brand:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  .mark .lens{fill:var(--mark5)}
+  .mark .run{fill:none;stroke-width:3}
+  .mark .run-a{stroke:var(--mark2)}
+  .mark .run-b{stroke:var(--mark4)}
 
   /* ---------- sections ---------- */
   section{padding:52px 0}
@@ -289,8 +318,16 @@
 <div class="wrap">
 
   <header class="mast">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 46 32" role="img" aria-labelledby="markTitle">
+        <title id="markTitle">Arcobaleno — we split the number into what actually produced it</title>
+        <path class="lens" d="M23 5.05A13 13 0 0 1 23 26.95A13 13 0 0 1 23 5.05Z"></path>
+        <circle class="run run-a" cx="16" cy="16" r="13"></circle>
+        <circle class="run run-b" cx="30" cy="16" r="13"></circle>
+      </svg>
+      <span class="brand-name">Arcobaleno Research</span>
+    </div>
     <div class="eyebrow">
-      <span>Arcobaleno Research</span><span class="dot">/</span>
       <span>Backtest Forensics</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
@@ -585,6 +622,9 @@
       <li><b>Could you have traded it?</b> Could every position in the result actually have been bought and sold, at the price used?</li>
       <li><b>What is really being claimed?</b> A single number, or a range? Is the margin of error wide enough to include zero — meaning it might be nothing?</li>
     </ol>
+    <p class="lede" style="margin-top:22px">
+      <a href="/method/">Each check in detail, what we need from you, and the markets we cover →</a>
+    </p>
   </section>
 
   <section class="section-rule">
@@ -624,6 +664,10 @@
       and the result you're claiming. We quote one of the three prices above. You get the report, plus
       a follow-up call to walk you through it.
     </p>
+    <p>
+      <a href="/method/">What we need from you, and what suits us best</a> — formats, sizes and the
+      markets we do and don't cover — so you can tell whether it fits before you write to us.
+    </p>
   </section>
 
   <div class="close">
@@ -637,7 +681,8 @@
       <div class="contact-block">
         <div class="contact-who">
           <b>Arcobaleno Research</b>
-          Backtest forensics &amp; research due diligence
+          Backtest forensics &amp; research due diligence<br>
+          We split the number into what actually produced it
         </div>
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
