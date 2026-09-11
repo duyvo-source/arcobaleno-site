@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backtest Forensics — Arcobaleno Research</title>
-<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <link rel="canonical" href="https://arcobaleno.cloud/">
 <meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
@@ -13,10 +13,10 @@
 <meta property="og:site_name" content="Arcobaleno Research">
 <meta property="og:url" content="https://arcobaleno.cloud/">
 <meta property="og:title" content="Backtest Forensics — Arcobaleno Research">
-<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
-<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><path d='M32 18.25A17 17 0 0 1 32 45.75A17 17 0 0 1 32 18.25Z' fill='%2396D5F2'/><g fill='none' stroke-width='5'><circle cx='22' cy='32' r='17' stroke='%233B7EB4'/><circle cx='42' cy='32' r='17' stroke='%236CBAE6'/></g></svg>">
 
@@ -361,7 +361,7 @@
   </section>
 
   <section class="section-rule">
-    <h2>Eight findings, from our own research</h2>
+    <h2>Nine findings, from our own research</h2>
     <p class="lede">Each one names the dated internal document it came from, and a script that reproduces it.</p>
 
     <article class="case">
@@ -591,7 +591,7 @@
 
     <article class="case">
       <div class="case-head">
-        <span class="class-tag">A number or a range</span>
+        <span class="class-tag">Repeatable, not reproducible</span>
         <h2>The result that reproduced perfectly, and was still a lucky draw</h2>
       </div>
       <div class="correction">
@@ -608,10 +608,10 @@
         </div>
       </div>
       <p>
-        The strategy holds 25 positions at most. On the worst days far more than 25 signals arrive at
-        once &mdash; the busiest single hour had <strong>194</strong>. Something has to choose which 25
-        get in, and that choice was being made by the arbitrary order the sorting step happened to leave
-        the data in. <strong>72% of all events shared their hour with at least one other.</strong>
+        The strategy is event-driven and holds a fixed maximum number of positions. On the worst days
+        far more signals arrive at once than there are slots &mdash; the busiest single hour had
+        <strong>194</strong>. Something has to choose which ones get in, and that choice was being made
+        by the arbitrary order the sorting step happened to leave the data in. <strong>72% of all events shared their hour with at least one other.</strong>
       </p>
       <p>
         Two of our own programs, same data, same settings, produced <strong>21.41%</strong> and
@@ -701,15 +701,15 @@
         </div>
       </div>
       <p>
-        The strategy only fires when the whole market sells off at once, so its trades arrive in a small
-        number of clusters &mdash; and every trade inside a cluster is <strong>the same event happening to
-        different assets</strong>. Counting distinct weeks instead of trades, the strongest cell in the
-        study &mdash; a 12.65% average gain at an 84% hit rate &mdash; rests on
-        <strong>six weeks in six and a half years</strong>. About one independent observation a year.
+        The strategy only fires during rare market-wide episodes, so its trades arrive in a small number
+        of clusters &mdash; and every trade inside a cluster is <strong>the same event happening to
+        different assets</strong>. Counting distinct weeks instead of trades, the strongest result in the
+        study rests on <strong>six weeks in six and a half years</strong>. About one independent
+        observation a year.
       </p>
       <p>
         The trap that sets is not theoretical. The obvious improvement &mdash; sit out the small isolated
-        shocks, save room for the market-wide ones &mdash; tested <em>better</em> on data held back for the
+        events, save room for the broad ones &mdash; tested <em>better</em> on data held back for the
         purpose (0.88 → 1.46) and <em>worse</em> on the data it was built with (1.16 → 0.70). A rule that
         improves on unseen data is the opposite of the usual warning sign and reads like a discovery.
         <strong>Its entire advantage rested on two crash weeks.</strong> We did not adopt it.
@@ -722,11 +722,60 @@
       </div>
       <div class="src">Internal: research/runs/cascade-selection-v1/VERDICT.md · per-trade means net of 2 × 4.5bp</div>
     </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">Positions left open</span>
+        <h2>The strategy that only made money if you ignored what it was still holding</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Counting completed trades only</div>
+          <div class="corr-val">8 of 8 profitable</div>
+          <div class="corr-note">Every configuration tested made money.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">Also valuing what it still held</div>
+          <div class="corr-val">0 of 8 profitable</div>
+          <div class="corr-note">The same eight. The sign flips in all of them.</div>
+        </div>
+      </div>
+      <p>
+        The strategy places a ladder of buy orders below the price and sells above. Each completed round
+        trip books a small gain &mdash; but when the price falls and keeps falling, the buys fill and the
+        matching sells never do, so the position sits there losing. <strong>At the end of a test period,
+        what do you do with the lots still open?</strong> Value them at the current price, or leave them
+        out because they never closed?
+      </p>
+      <p>
+        We ran all eight configurations both ways across <strong>20,032 test windows</strong>. The
+        accounting choice flips the sign in <em>every</em> configuration. The gap tracks exactly what you
+        would expect: the configurations holding the most unsold lots show the widest gap, one going from
+        <strong>+2.4%</strong> counting only closed trades to <strong>&minus;5.1%</strong> counting
+        everything.
+      </p>
+      <p>
+        One note on how we treated our own claim. The original study made this point in a single line and
+        asserted the counterfactual without ever computing it &mdash; the code tracked both figures and
+        saved only their sum. <strong>We measured it before publishing this</strong>, and the assertion
+        turned out to be conservative: it said &ldquo;most configurations&rdquo;, the answer is all of
+        them. Being right by luck is not the same as having checked.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        The mechanism books small wins and holds its losses, so discarding what is still open deletes the
+        losses and keeps the wins. The result is not wrong by a little &mdash; it is the opposite sign. And
+        nothing looks broken in the output, because nothing went wrong computationally. Someone simply
+        chose, probably without noticing it was a choice.
+      </div>
+      <div class="src">Internal: research/runs/grid-trading-v1/fc7-realized-2026-09-11/ · 20,032 windows, each verified against the original engine</div>
+    </article>
   </section>
 
   <section class="section-rule">
     <div class="thread">
-      <h2>What these five have in common</h2>
+      <h2>What these nine have in common</h2>
       <p class="lede" style="margin-bottom:0">
         Not one was found by out-thinking the author. Each came from checking something nobody thought
         needed checking.
@@ -737,6 +786,10 @@
         <li><span class="k">03</span><span>Testing whether the arithmetic actually added up.</span></li>
         <li><span class="k">04</span><span>Asking whether a filter does what its name says.</span></li>
         <li><span class="k">05</span><span>Measuring a cost instead of assuming one.</span></li>
+        <li><span class="k">06</span><span>Running the same thing 300 times to see whether the answer was a number or a range.</span></li>
+        <li><span class="k">07</span><span>Using a measure of confidence that matched how the strategy actually traded.</span></li>
+        <li><span class="k">08</span><span>Counting the events instead of the trades.</span></li>
+        <li><span class="k">09</span><span>Asking what happens to the positions that never closed.</span></li>
       </ul>
     </div>
   </section>
