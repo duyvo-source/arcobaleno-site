@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backtest Forensics — Arcobaleno Research</title>
-<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Five findings published against our own work — reproducibility, data integrity, cost models, staleness.">
+<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <link rel="canonical" href="https://arcobaleno.cloud/">
 <meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
@@ -13,10 +13,10 @@
 <meta property="og:site_name" content="Arcobaleno Research">
 <meta property="og:url" content="https://arcobaleno.cloud/">
 <meta property="og:title" content="Backtest Forensics — Arcobaleno Research">
-<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Five findings published against our own work — reproducibility, data integrity, cost models, staleness.">
+<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
-<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Five findings published against our own work — reproducibility, data integrity, cost models, staleness.">
+<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Eight findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><path d='M32 18.25A17 17 0 0 1 32 45.75A17 17 0 0 1 32 18.25Z' fill='%2396D5F2'/><g fill='none' stroke-width='5'><circle cx='22' cy='32' r='17' stroke='%233B7EB4'/><circle cx='42' cy='32' r='17' stroke='%236CBAE6'/></g></svg>">
 
@@ -361,7 +361,7 @@
   </section>
 
   <section class="section-rule">
-    <h2>Five findings, from our own research</h2>
+    <h2>Eight findings, from our own research</h2>
     <p class="lede">Each one names the dated internal document it came from, and a script that reproduces it.</p>
 
     <article class="case">
@@ -587,6 +587,140 @@
         something can be bought and sold.
       </div>
       <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">A number or a range</span>
+        <h2>The result that reproduced perfectly, and was still a lucky draw</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">Published, and repeatable</div>
+          <div class="corr-val">22.8% a year</div>
+          <div class="corr-note">Same answer on every run. Quoted to one decimal place.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">What it actually was</div>
+          <div class="corr-val">21.4%&thinsp;–&thinsp;23.6%</div>
+          <div class="corr-note">A range. The published figure sat at its 96th percentile.</div>
+        </div>
+      </div>
+      <p>
+        The strategy holds 25 positions at most. On the worst days far more than 25 signals arrive at
+        once &mdash; the busiest single hour had <strong>194</strong>. Something has to choose which 25
+        get in, and that choice was being made by the arbitrary order the sorting step happened to leave
+        the data in. <strong>72% of all events shared their hour with at least one other.</strong>
+      </p>
+      <p>
+        Two of our own programs, same data, same settings, produced <strong>21.41%</strong> and
+        <strong>22.84%</strong>. Both were running correctly. So we re-ran it 300 times, shuffling only
+        within each tied hour: the answer averaged <strong>21.39%</strong>, and ranged from 19.41% to
+        23.57%.
+      </p>
+      <p>
+        Worse than the number itself: a cross-check had already been run and had <em>passed</em>. One
+        study cited the other's agreement as proof its simulator reproduced the original. The two
+        figures were 21.41% and 22.84% &mdash; <strong>a 1.4-point gap hidden inside a rounding to
+        &ldquo;~22%&rdquo;</strong>. A verification step read as independent confirmation when it was
+        two programs sharing one defect.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        A figure that comes back identical every time still is not necessarily reproducible &mdash; it can
+        be one fixed draw from a range nobody has measured. And what survived matters as much: the
+        risk-adjusted return, the worst drawdown and the position limit were all unchanged. The headline
+        was wrong by 1.2 points. The strategy was not wrong.
+      </div>
+      <div class="src">Internal: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/ · 300 draws per arm persisted</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">A number or a range</span>
+        <h2>The edge that disappeared when we measured our confidence properly</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">The rule, as first measured</div>
+          <div class="corr-val">42.8% a year</div>
+          <div class="corr-note">A convincing-looking edge across nine configurations.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">Its honest range</div>
+          <div class="corr-val">&minus;9.0% to +126.4%</div>
+          <div class="corr-note">Includes zero. As did all nine.</div>
+        </div>
+      </div>
+      <p>
+        Measuring how confident you are entitled to be usually means reshuffling the daily results
+        thousands of times and seeing how wide the outcomes spread. <strong>That assumes each day is
+        independent of the last.</strong> This rule held the same position for days at a time, so
+        consecutive days moved together &mdash; and treating them as independent counts the same evidence
+        over and over, making the range far too narrow.
+      </p>
+      <p>
+        Reshuffling in blocks of ten days instead, which keeps that clumping intact,
+        <strong>every one of the nine configurations had a range that included zero</strong>. Splitting
+        the history in half pointed the same way: performance fell in every version, one from a
+        risk-adjusted score of 0.88 to <strong>0.09</strong>.
+      </p>
+      <p>
+        It is worth saying what the problem was <em>not</em>. Trading costs barely mattered: the score
+        went 0.98 before fees, 0.95 at normal fees, 0.85 at four times normal fees.
+        <strong>This failed on uncertainty, not on costs</strong> &mdash; which is exactly the wrong place
+        to have been looking.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        Nothing was wrong with the returns. What was wrong was the confidence attached to them &mdash; and
+        confidence is what someone actually acts on. We stopped pursuing it, which is a result, and
+        getting it in an afternoon is cheaper than getting it from the market.
+      </div>
+      <div class="src">Internal: research/runs/deribit-iv-screen-v1/VERDICT.md Part A2 · moving-block bootstrap, block 10 days, n 2000</div>
+    </article>
+
+    <article class="case">
+      <div class="case-head">
+        <span class="class-tag">How much evidence there really is</span>
+        <h2>Two thousand trades, six weeks of evidence</h2>
+      </div>
+      <div class="correction">
+        <div class="corr-published">
+          <div class="corr-label">The track record, as described</div>
+          <div class="corr-val">2,050 trades</div>
+          <div class="corr-note">238 assets, six and a half years.</div>
+        </div>
+        <div class="corr-arrow">→</div>
+        <div class="corr-actual">
+          <div class="corr-label">Independent observations</div>
+          <div class="corr-val">6 weeks</div>
+          <div class="corr-note">Behind the best-looking result in the study.</div>
+        </div>
+      </div>
+      <p>
+        The strategy only fires when the whole market sells off at once, so its trades arrive in a small
+        number of clusters &mdash; and every trade inside a cluster is <strong>the same event happening to
+        different assets</strong>. Counting distinct weeks instead of trades, the strongest cell in the
+        study &mdash; a 12.65% average gain at an 84% hit rate &mdash; rests on
+        <strong>six weeks in six and a half years</strong>. About one independent observation a year.
+      </p>
+      <p>
+        The trap that sets is not theoretical. The obvious improvement &mdash; sit out the small isolated
+        shocks, save room for the market-wide ones &mdash; tested <em>better</em> on data held back for the
+        purpose (0.88 → 1.46) and <em>worse</em> on the data it was built with (1.16 → 0.70). A rule that
+        improves on unseen data is the opposite of the usual warning sign and reads like a discovery.
+        <strong>Its entire advantage rested on two crash weeks.</strong> We did not adopt it.
+      </p>
+      <div class="why">
+        <span class="tag">Why it matters</span>
+        Trade count is not evidence count, and the gap between them is where false confidence lives. A
+        strategy can be genuinely profitable and still have almost no evidence behind it &mdash; those are
+        different questions, and a big number of trades only answers one of them.
+      </div>
+      <div class="src">Internal: research/runs/cascade-selection-v1/VERDICT.md · per-trade means net of 2 × 4.5bp</div>
     </article>
   </section>
 
