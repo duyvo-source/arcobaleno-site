@@ -597,14 +597,14 @@
       <div class="correction">
         <div class="corr-published">
           <div class="corr-label">Published, and repeatable</div>
-          <div class="corr-val">22.8% a year</div>
-          <div class="corr-note">Same answer on every run. Quoted to one decimal place.</div>
+          <div class="corr-val">One number</div>
+          <div class="corr-note">Same answer on every run. Quoted to two decimal places.</div>
         </div>
         <div class="corr-arrow">→</div>
         <div class="corr-actual">
           <div class="corr-label">What it actually was</div>
-          <div class="corr-val">21.4%&thinsp;–&thinsp;23.6%</div>
-          <div class="corr-note">A range. The published figure sat at its 96th percentile.</div>
+          <div class="corr-val">A 4.2-point range</div>
+          <div class="corr-note">The published figure sat at its 96th percentile.</div>
         </div>
       </div>
       <p>
@@ -614,24 +614,25 @@
         by the arbitrary order the sorting step happened to leave the data in. <strong>72% of all events shared their hour with at least one other.</strong>
       </p>
       <p>
-        Two of our own programs, same data, same settings, produced <strong>21.41%</strong> and
-        <strong>22.84%</strong>. Both were running correctly. So we re-ran it 300 times, shuffling only
-        within each tied hour: the answer averaged <strong>21.39%</strong>, and ranged from 19.41% to
-        23.57%.
+        Two of our own programs, same data, same settings, produced annual returns
+        <strong>1.4 percentage points apart</strong>. Both were running correctly. So we re-ran it 300
+        times, shuffling only within each tied hour: the standard deviation of the answer was
+        <strong>0.76 points</strong>, and the best ordering beat the worst by <strong>4.2</strong>.
       </p>
       <p>
         Worse than the number itself: a cross-check had already been run and had <em>passed</em>. One
         study cited the other's agreement as proof its simulator reproduced the original. The two
-        figures were 21.41% and 22.84% &mdash; <strong>a 1.4-point gap hidden inside a rounding to
-        &ldquo;~22%&rdquo;</strong>. A verification step read as independent confirmation when it was
-        two programs sharing one defect.
+        figures were <strong>1.4 points apart, and the gap was hidden inside a rounding in the
+        summary</strong>. A verification step read as independent confirmation when it was two programs
+        sharing one defect.
       </p>
       <div class="why">
         <span class="tag">Why it matters</span>
         A figure that comes back identical every time still is not necessarily reproducible &mdash; it can
         be one fixed draw from a range nobody has measured. And what survived matters as much: the
-        risk-adjusted return, the worst drawdown and the position limit were all unchanged. The headline
-        was wrong by 1.2 points. The strategy was not wrong.
+        risk-adjusted return, the drawdown and the sizing conclusion were all unchanged. The headline was
+        overstated by 1.2 points; the reasoning underneath it was sound. An audit that only reports
+        damage is not worth buying.
       </div>
       <div class="src">Internal: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/ · 300 draws per arm persisted</div>
     </article>
