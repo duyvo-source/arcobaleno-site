@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="What we check — Arcobaleno Research">
 <meta name="twitter:description" content="What a backtest audit from Arcobaleno Research actually checks: the eight standing tests, what we need from you, and the asset classes we do and do not cover.">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><path d='M32 18.25A17 17 0 0 1 32 45.75A17 17 0 0 1 32 18.25Z' fill='%2396D5F2'/><g fill='none' stroke-width='5'><circle cx='22' cy='32' r='17' stroke='%233B7EB4'/><circle cx='42' cy='32' r='17' stroke='%236CBAE6'/></g></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><g fill='none' stroke='%234C9DD0' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'><path d='M51.8 22.2A22 22 0 1 1 45.2 14.4'/><path d='M17.2 31.2 27 41 56 12'/></g></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,10 +109,11 @@
 
 
 
-  /* ---------- wordmark: the overlap ---------- */
-  /* Two runs of the same backtest as two circles; the filled lens is where they agree.
-     Palette is "blue, five steps" — one hue, five values. Only 2, 4 and 5 are used by the
-     drawing; all five are declared so the scale is documented and swappable in one place. */
+  /* ---------- wordmark: the check and the ring ---------- */
+  /* A check whose vertex is held inside the ring and whose long arm carries on past it: the
+     claim is not just stamped, it is followed past the edge of what was presented.
+     Palette is "blue, five steps" — one hue, five values. The mark draws in step 3 only;
+     all five are declared so the scale is documented and swappable in one place. */
   :root{
     --mark1:#0E2C4A; --mark2:#15477B; --mark3:#1C639E; --mark4:#3C88C2; --mark5:#6FB2E0;
   }
@@ -131,10 +132,12 @@
     letter-spacing:-.012em;color:var(--ink);white-space:nowrap;
   }
   a.brand:focus-visible{outline:2px solid var(--right);outline-offset:4px}
-  .mark .lens{fill:var(--mark5)}
-  .mark .run{fill:none;stroke-width:3}
-  .mark .run-a{stroke:var(--mark2)}
-  .mark .run-b{stroke:var(--mark4)}
+  /* The ring is deliberately broken where the check crosses it, so the stroke reads as passing
+     THROUGH rather than over. The gap stops being visible below about 24px, where the mark
+     degrades to a check simply crossing a ring — which is the intended fallback, not a defect. */
+  .mark .ring,
+  .mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.6}
+  .mark .chk{stroke-linecap:round;stroke-linejoin:round}
 
   /* ---------- sections ---------- */
   section{padding:52px 0}
@@ -265,11 +268,10 @@
 
   <header class="mast">
     <a class="brand" href="/">
-      <svg class="mark" viewBox="0 0 46 32" role="img" aria-labelledby="markTitle">
-        <title id="markTitle">Arcobaleno — we split the number into what actually produced it</title>
-        <path class="lens" d="M23 5.05A13 13 0 0 1 23 26.95A13 13 0 0 1 23 5.05Z"></path>
-        <circle class="run run-a" cx="16" cy="16" r="13"></circle>
-        <circle class="run run-b" cx="30" cy="16" r="13"></circle>
+      <svg class="mark" viewBox="0 0 32 32" role="img" aria-labelledby="markTitle">
+        <title id="markTitle">Arcobaleno — a check that carries on past the ring</title>
+        <path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path>
+        <path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path>
       </svg>
       <span class="brand-name">Arcobaleno Research</span>
     </a>
