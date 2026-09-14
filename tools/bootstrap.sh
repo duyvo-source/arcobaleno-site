@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Arcobaleno Research — prepare a fresh, single-engagement audit box.
-# fctools v1 · sha256 c7c97a6ba3d1a90170e39b0018e60dc805d99173c6577deaec1981bbfbdbc770 · generated 2026-09-14
+# fctools v2 · sha256 769bf074e06d51436382ba14b94335b0ea16a955884ee724b4e3fc64e75040f8 · generated 2026-09-14
 #
 # READ THIS BEFORE RUNNING IT. Do not pipe it into a shell. Download it, read it, then run it.
 # A forensics practice that tells clients to check their inputs does not curl|bash its own.
@@ -30,8 +30,8 @@ set -euo pipefail
 # web host does not reach. That is a written step you perform, not something a script can do
 # for itself.
 # ---------------------------------------------------------------------------------------------
-URL="https://arcobaleno.cloud/tools/fctools-v1.tar.gz"
-WANT="c7c97a6ba3d1a90170e39b0018e60dc805d99173c6577deaec1981bbfbdbc770"
+URL="https://arcobaleno.cloud/tools/fctools-v2.tar.gz"
+WANT="769bf074e06d51436382ba14b94335b0ea16a955884ee724b4e3fc64e75040f8"
 
 echo "==> python3 and the two libraries the instruments need"
 if command -v apt-get >/dev/null 2>&1; then
@@ -41,7 +41,7 @@ else
   echo "    not a Debian/Ubuntu box — install python3, numpy and pandas yourself, then re-run."
 fi
 
-echo "==> fetching fctools v1"
+echo "==> fetching fctools v2"
 curl -fsSL "$URL" -o fctools.tar.gz
 
 echo "==> verifying against the published hash"
