@@ -197,11 +197,35 @@
   a:focus-visible{outline:2px solid var(--right);outline-offset:3px;border-radius:2px}
 
   /* ---------- case entries ---------- */
-  .case{padding:38px 0;border-top:1px solid var(--rule)}
+  .case{border-top:1px solid var(--rule)}
   .case:first-of-type{border-top:2px solid var(--ink)}
+  .case > details > summary{
+    cursor:pointer;list-style:none;padding:20px 30px 20px 0;position:relative;
+  }
+  .case > details > summary::-webkit-details-marker{display:none}
+  .case > details > summary:hover .case-h2,
+  .case > details > summary:focus-visible .case-h2{text-decoration:underline}
+  .case > details > summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .case > details[open] > summary{padding-bottom:8px}
+  .case-body{padding:0 0 34px}
   .case-head{
     display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;
-    margin-bottom:12px;
+  }
+  .case-no{
+    font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;
+    color:var(--faint);flex:0 0 auto;
+  }
+  /* pinned top-right rather than flexed to the end of the line: at phone width the headline
+     wraps and a margin-left:auto chevron drops onto a line of its own. */
+  .case-chev{
+    position:absolute;right:0;top:22px;
+    font-family:var(--mono);font-size:16px;
+    color:var(--muted);transition:transform .15s ease;line-height:1;
+  }
+  .case > details[open] .case-chev{transform:rotate(45deg)}
+  .case-hint{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 4px;
   }
   .class-tag{
     font-family:var(--mono);font-size:10.5px;font-weight:600;
@@ -354,8 +378,9 @@
         program runs.
       </p>
       <p class="lede">
-        None of the problems below needed new data or a cleverer model. Every one of them was within
-        reach of the person who wrote the code, on any day they thought to look.
+        Not one of the problems below needed new data or a cleverer model. Every one was sitting in
+        our own code, and we could have found any of them on a day we thought to look. That is rather
+        the point: this is what checking finds.
       </p>
     </div>
   </section>
@@ -363,414 +388,487 @@
   <section class="section-rule">
     <h2>Nine findings, from our own research</h2>
     <p class="lede">Each one names the dated internal document it came from, and a script that reproduces it.</p>
+    <p class="case-hint">Click any finding to open it</p>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Repeatability</span>
-        <h2>The result changed every time it ran</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">The reported result</div>
-          <div class="corr-val">−1.3191%</div>
-          <div class="corr-note">Average return per period, published as the strategy's performance.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">01</span>
+          <span class="class-tag">Repeatability</span>
+          <h2 class="case-h2">The result changed every time it ran</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">The reported result</div>
+            <div class="corr-val">−1.3191%</div>
+            <div class="corr-note">Average return per period, published as the strategy's performance.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">What it really was</div>
+            <div class="corr-val">A different number every run</div>
+            <div class="corr-note">Same code, same data, no answer that came back twice.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">What it really was</div>
-          <div class="corr-val">A different number every run</div>
-          <div class="corr-note">Same code, same data, no answer that came back twice.</div>
+        <p>
+          The code ranked assets and bought the best ones. When two assets tied, something had to break
+          the tie — and the program broke ties <strong>differently each time it was started</strong>.
+          Different assets went into the portfolio on different runs.
+        </p>
+        <p>
+          Ties weren't some rare edge case. About <strong>55% of this exchange's funding payments sit at
+          exactly the same floor value</strong>, so any two assets resting on that floor looked
+          identical to the ranking code.
+        </p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Same code, same data</th><th>Result it produced</th></tr></thead>
+            <tbody>
+              <tr><td>Run 1</td><td>−1.3679%</td></tr>
+              <tr><td>Run 2</td><td>−1.2256%</td></tr>
+              <tr><td>Run 3</td><td>−1.2569%</td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <p>
-        The code ranked assets and bought the best ones. When two assets tied, something had to break
-        the tie — and the program broke ties <strong>differently each time it was started</strong>.
-        Different assets went into the portfolio on different runs.
-      </p>
-      <p>
-        Ties weren't some rare edge case. About <strong>55% of this exchange's funding payments sit at
-        exactly the same floor value</strong>, so any two assets resting on that floor looked
-        identical to the ranking code.
-      </p>
-      <div class="tbl-scroll">
-        <table>
-          <thead><tr><th>Same code, same data</th><th>Result it produced</th></tr></thead>
-          <tbody>
-            <tr><td>Run 1</td><td>−1.3679%</td></tr>
-            <tr><td>Run 2</td><td>−1.2256%</td></tr>
-            <tr><td>Run 3</td><td>−1.2569%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>
-        In the periods where the runs disagreed, the typical gap was <strong>1.57 percentage
-        points</strong>. That isn't rounding. That's a different portfolio.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        Nobody could have reproduced this number — including the person who wrote it, running their own
-        code on their own machine. Every decision that followed rested on a figure that would not come
-        back. The fix was one line.
-      </div>
-      <div class="src">Internal: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
+        <p>
+          In the periods where the runs disagreed, the typical gap was <strong>1.57 percentage
+          points</strong>. That isn't rounding. That's a different portfolio.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          Nobody could have reproduced this number — including us, running our own code on our own
+          machine. Every decision that followed rested on a figure that would not come
+          back. The fix was one line.
+        </div>
+        <div class="src">Internal: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Bad data</span>
-        <h2>One bad price produced a 192% annual return</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">What the data provider sent</div>
-          <div class="corr-val">172,635%</div>
-          <div class="corr-note">One day's annual return, for one investment pool.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">02</span>
+          <span class="class-tag">Bad data</span>
+          <h2 class="case-h2">One bad price produced a 192% annual return</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">What the data provider sent</div>
+            <div class="corr-val">172,635%</div>
+            <div class="corr-note">One day's annual return, for one investment pool.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">What that pool normally earned</div>
+            <div class="corr-val">0.91%</div>
+            <div class="corr-note">The figure the same provider sent on every other day.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">What that pool normally earned</div>
-          <div class="corr-val">0.91%</div>
-          <div class="corr-note">The figure the same provider sent on every other day.</div>
+        <p>
+          That single day fed into <strong>thirty separate monthly averages</strong>, and produced a
+          result of <strong>+192.66% a year</strong>. The pool held two of the largest and most closely
+          linked crypto assets, where a return like that isn't merely unlikely — it can't happen.
+        </p>
+        <p>
+          Every safety check passed. The checks all looked at the <em>averages</em>, and the bad number
+          got in <em>before</em> the averages were built. On screen it looked like an exciting outlier,
+          not like broken data.
+        </p>
+        <p>
+          The research already contained the right test. It had been run — on two pools, on one day.
+          That's a spot check. Run across everything, it catches the bad day immediately.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          A spot check and a real safeguard look the same when you read the code. The difference is
+          whether it runs on <em>every</em> row. A number any human would catch in a second can be
+          completely invisible to software that was never asked to look.
         </div>
-      </div>
-      <p>
-        That single day fed into <strong>thirty separate monthly averages</strong>, and produced a
-        result of <strong>+192.66% a year</strong>. The pool held two of the largest and most closely
-        linked crypto assets, where a return like that isn't merely unlikely — it can't happen.
-      </p>
-      <p>
-        Every safety check passed. The checks all looked at the <em>averages</em>, and the bad number
-        got in <em>before</em> the averages were built. On screen it looked like an exciting outlier,
-        not like broken data.
-      </p>
-      <p>
-        The research already contained the right test. It had been run — on two pools, on one day.
-        That's a spot check. Run across everything, it catches the bad day immediately.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        A spot check and a real safeguard look the same when you read the code. The difference is
-        whether it runs on <em>every</em> row. A number any human would catch in a second can be
-        completely invisible to software that was never asked to look.
-      </div>
-      <div class="src">Internal: research/runs/amm-lp-v1/ · standing lesson 23</div>
+        <div class="src">Internal: research/runs/amm-lp-v1/ · standing lesson 23</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Cost arithmetic</span>
-        <h2>Three strategies closed over a cost that was 20x too high</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">Costs the code charged</div>
-          <div class="corr-val">≈2.0%</div>
-          <div class="corr-note">Per period. Added up across positions, while profit was averaged across them.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">03</span>
+          <span class="class-tag">Cost arithmetic</span>
+          <h2 class="case-h2">Three strategies closed over a cost that was 20x too high</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">Costs the code charged</div>
+            <div class="corr-val">≈2.0%</div>
+            <div class="corr-note">Per period. Added up across positions, while profit was averaged across them.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">Costs actually incurred</div>
+            <div class="corr-val">0.10%</div>
+            <div class="corr-note">Per period. Overcharged by roughly twenty times.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">Costs actually incurred</div>
-          <div class="corr-val">0.10%</div>
-          <div class="corr-note">Per period. Overcharged by roughly twenty times.</div>
+        <p>
+          The effect was backwards on its face: spreading the <em>same</em> pot of money across more
+          assets made it look <em>more</em> expensive to trade. It can't. Splitting a fixed amount
+          across more positions makes each position smaller. We checked the arithmetic across all
+          <strong>590 periods</strong> of three sets of records.
+        </p>
+        <p>
+          Corrected, the strategies looked transformed. On the standard risk-adjusted score — where
+          below zero means it lost money — one went from <strong>−8.73 to +0.34</strong>, another from
+          <strong>−2.83 to +1.39</strong>.
+        </p>
+        <p>
+          <strong>All three stayed shut.</strong> Those flattering new numbers came from the very data
+          the strategies were built on, and the margin of error was wide enough to include zero — so the
+          improvement might be nothing at all. The only honest test was data the strategy had never seen.
+          Against that, the best of the three <strong>failed outright</strong>, losing money both before
+          and after the stretch it was built on. It was over-fitted, not worn out.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          A wrong cost assumption is dangerous in both directions — it buries strategies that work and
+          flatters ones that don't. Finding the bug is half the job. Refusing to let it raise the dead is
+          the other half, and it's the half someone with a stake in the answer will skip.
         </div>
-      </div>
-      <p>
-        The effect was backwards on its face: spreading the <em>same</em> pot of money across more
-        assets made it look <em>more</em> expensive to trade. It can't. Splitting a fixed amount
-        across more positions makes each position smaller. We checked the arithmetic across all
-        <strong>590 periods</strong> of three sets of records.
-      </p>
-      <p>
-        Corrected, the strategies looked transformed. On the standard risk-adjusted score — where
-        below zero means it lost money — one went from <strong>−8.73 to +0.34</strong>, another from
-        <strong>−2.83 to +1.39</strong>.
-      </p>
-      <p>
-        <strong>All three stayed shut.</strong> Those flattering new numbers came from the very data
-        the strategies were built on, and the margin of error was wide enough to include zero — so the
-        improvement might be nothing at all. The only honest test was data the strategy had never seen.
-        Against that, the best of the three <strong>failed outright</strong>, losing money both before
-        and after the stretch it was built on. It was over-fitted, not worn out.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        A wrong cost assumption is dangerous in both directions — it buries strategies that work and
-        flatters ones that don't. Finding the bug is half the job. Refusing to let it raise the dead is
-        the other half, and it's the half someone with a stake in the answer will skip.
-      </div>
-      <div class="src">Internal: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
+        <div class="src">Internal: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Stale data</span>
-        <h2>A filter for recent data that never read a date</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">The safeguard, as written</div>
-          <div class="corr-val">Count the rows</div>
-          <div class="corr-note">Named and trusted as the check that kept out stale data.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">04</span>
+          <span class="class-tag">Stale data</span>
+          <h2 class="case-h2">A filter for recent data that never read a date</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">The safeguard, as written</div>
+            <div class="corr-val">Count the rows</div>
+            <div class="corr-note">Named and trusted as the check that kept out stale data.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">What it actually checked</div>
+            <div class="corr-val">Nothing about time</div>
+            <div class="corr-note">It never read a date. Frozen data stayed eligible indefinitely.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">What it actually checked</div>
-          <div class="corr-val">Nothing about time</div>
-          <div class="corr-note">It never read a date. Frozen data stayed eligible indefinitely.</div>
+        <p>
+          A data migration quietly froze 65 files — they simply stopped updating. Because the filter
+          counted rows instead of reading dates, those frozen assets stayed eligible for about
+          <strong>26 days</strong>. The strategy's holdings changed completely from one week to the next,
+          which read like the strategy responding to the market. It was the data breaking underneath it.
+        </p>
+        <p>
+          Then a <strong>second freeze was found inside the restarted clock</strong>: three more assets
+          stopped updating on the same day, and one was bought into a portfolio a full week after it had
+          already gone dead.
+        </p>
+        <p>
+          Underneath that sat the worst of it. One position the strategy held had not traded at all —
+          <strong>zero out of 1,441 minutes with a single trade in them</strong>. A full-size position,
+          booked at a profit, describing a trade nobody on earth could have made.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          A filter named after a job does not necessarily do that job. And when a strategy suddenly starts
+          behaving differently, the first thing to suspect is the data — not the market.
         </div>
-      </div>
-      <p>
-        A data migration quietly froze 65 files — they simply stopped updating. Because the filter
-        counted rows instead of reading dates, those frozen assets stayed eligible for about
-        <strong>26 days</strong>. The strategy's holdings changed completely from one week to the next,
-        which read like the strategy responding to the market. It was the data breaking underneath it.
-      </p>
-      <p>
-        Then a <strong>second freeze was found inside the restarted clock</strong>: three more assets
-        stopped updating on the same day, and one was bought into a portfolio a full week after it had
-        already gone dead.
-      </p>
-      <p>
-        Underneath that sat the worst of it. One position the strategy held had not traded at all —
-        <strong>zero out of 1,441 minutes with a single trade in them</strong>. A full-size position,
-        booked at a profit, describing a trade nobody on earth could have made.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        A filter named after a job does not necessarily do that job. And when a strategy suddenly starts
-        behaving differently, the first thing to suspect is the data — not the market.
-      </div>
-      <div class="src">Internal: research/runs/weekend-drift-selection-audit/ · standing lessons 50, 74</div>
+        <div class="src">Internal: research/runs/weekend-drift-selection-audit/ · standing lessons 50, 74</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">What trading really costs</span>
-        <h2>One cost, three documents, three different numbers</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">Measured at the screen price</div>
-          <div class="corr-val">0.26%</div>
-          <div class="corr-note">Cheaper than the strategy assumed. Looks reassuring.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">05</span>
+          <span class="class-tag">What trading really costs</span>
+          <h2 class="case-h2">One cost, three documents, three different numbers</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">Measured at the screen price</div>
+            <div class="corr-val">0.26%</div>
+            <div class="corr-note">Cheaper than the strategy assumed. Looks reassuring.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">Measured by filling a real order</div>
+            <div class="corr-val">0.48%</div>
+            <div class="corr-note">Dearer than it assumed. The two don't just differ in size — they differ in <em>direction</em>.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">Measured by filling a real order</div>
-          <div class="corr-val">0.48%</div>
-          <div class="corr-note">Dearer than it assumed. The two don't just differ in size — they differ in <em>direction</em>.</div>
+        <p>
+          The price on your screen is the price for a tiny trade. Put a real order through and you eat
+          into worse and worse prices as you go. On this basket the screen price suggested a cost of
+          <strong>0.004%–0.033%</strong>, while getting in and back out actually cost
+          <strong>0.28%–0.78%</strong>. A measurement taken at the screen price cannot see that, at all.
+        </p>
+        <p>So we went back and audited every cost assumption in the research. It found this:</p>
+        <p>
+          A standing study had assumed the worst possible round trip on that exchange was
+          <strong>0.31%</strong>. Filling real orders, <strong>40 of 122 assets cost more than that</strong>
+          at $10,000 apiece — the worst of them <strong>0.92%</strong>. And those were the
+          <em>easiest-to-trade</em> assets available.
+        </p>
+        <p>
+          That study's own follow-up note had already tried to fix it with a textbook formula — and
+          overshot by about <strong>1.8×</strong> the other way, exactly as the note itself suspected it
+          might. Measured properly, the truth sat between the two. The original conclusion survived at
+          the size it was written for, and failed at ten times that size.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          Trading cost is something to measure, not something to inherit. And it is worst precisely where
+          a ranking rule tends to pick, because ranking rules choose for returns — not for how easily
+          something can be bought and sold.
         </div>
-      </div>
-      <p>
-        The price on your screen is the price for a tiny trade. Put a real order through and you eat
-        into worse and worse prices as you go. On this basket the screen price suggested a cost of
-        <strong>0.004%–0.033%</strong>, while getting in and back out actually cost
-        <strong>0.28%–0.78%</strong>. A measurement taken at the screen price cannot see that, at all.
-      </p>
-      <p>So we went back and audited every cost assumption in the research. It found this:</p>
-      <p>
-        A standing study had assumed the worst possible round trip on that exchange was
-        <strong>0.31%</strong>. Filling real orders, <strong>40 of 122 assets cost more than that</strong>
-        at $10,000 apiece — the worst of them <strong>0.92%</strong>. And those were the
-        <em>easiest-to-trade</em> assets available.
-      </p>
-      <p>
-        That study's own follow-up note had already tried to fix it with a textbook formula — and
-        overshot by about <strong>1.8×</strong> the other way, exactly as the note itself suspected it
-        might. Measured properly, the truth sat between the two. The original conclusion survived at
-        the size it was written for, and failed at ten times that size.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        Trading cost is something to measure, not something to inherit. And it is worst precisely where
-        a ranking rule tends to pick, because ranking rules choose for returns — not for how easily
-        something can be bought and sold.
-      </div>
-      <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
+        <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Repeatable, not reproducible</span>
-        <h2>A headline that was really a range</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">Published, and repeatable</div>
-          <div class="corr-val">One number</div>
-          <div class="corr-note">Same answer on every run. Quoted to two decimal places.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">06</span>
+          <span class="class-tag">Repeatable, not reproducible</span>
+          <h2 class="case-h2">A headline that was really a range</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">Published, and repeatable</div>
+            <div class="corr-val">One number</div>
+            <div class="corr-note">Same answer on every run. Quoted to two decimal places.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">What it actually was</div>
+            <div class="corr-val">A 4.2-point range</div>
+            <div class="corr-note">The published figure sat at its 96th percentile.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">What it actually was</div>
-          <div class="corr-val">A 4.2-point range</div>
-          <div class="corr-note">The published figure sat at its 96th percentile.</div>
+        <p>
+          The strategy is event-driven and holds a fixed maximum number of positions. On the worst days
+          far more signals arrive at once than there are slots &mdash; the busiest single hour had
+          <strong>194</strong>. Something has to choose which ones get in, and that choice was being made
+          by the arbitrary order the sorting step happened to leave the data in. <strong>72% of all events shared their hour with at least one other.</strong>
+        </p>
+        <p>
+          Two of our own programs, same data, same settings, produced annual returns
+          <strong>1.4 percentage points apart</strong>. Both were running correctly. So we re-ran it 300
+          times, shuffling only within each tied hour: the standard deviation of the answer was
+          <strong>0.76 points</strong>, and the best ordering beat the worst by <strong>4.2</strong>.
+        </p>
+        <p>
+          Worse than the number itself: a cross-check had already been run and had <em>passed</em>. One
+          study cited the other's agreement as proof its simulator reproduced the original. The two
+          figures were <strong>1.4 points apart, and the gap was hidden inside a rounding in the
+          summary</strong>. A verification step read as independent confirmation when it was two programs
+          sharing one defect.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          A figure that comes back identical every time still is not necessarily reproducible &mdash; it can
+          be one fixed draw from a range nobody has measured. And what survived matters as much: the
+          risk-adjusted return, the drawdown and the sizing conclusion were all unchanged. The headline was
+          overstated by 1.2 points; the reasoning underneath it was sound. An audit that only reports
+          damage is not worth buying.
         </div>
-      </div>
-      <p>
-        The strategy is event-driven and holds a fixed maximum number of positions. On the worst days
-        far more signals arrive at once than there are slots &mdash; the busiest single hour had
-        <strong>194</strong>. Something has to choose which ones get in, and that choice was being made
-        by the arbitrary order the sorting step happened to leave the data in. <strong>72% of all events shared their hour with at least one other.</strong>
-      </p>
-      <p>
-        Two of our own programs, same data, same settings, produced annual returns
-        <strong>1.4 percentage points apart</strong>. Both were running correctly. So we re-ran it 300
-        times, shuffling only within each tied hour: the standard deviation of the answer was
-        <strong>0.76 points</strong>, and the best ordering beat the worst by <strong>4.2</strong>.
-      </p>
-      <p>
-        Worse than the number itself: a cross-check had already been run and had <em>passed</em>. One
-        study cited the other's agreement as proof its simulator reproduced the original. The two
-        figures were <strong>1.4 points apart, and the gap was hidden inside a rounding in the
-        summary</strong>. A verification step read as independent confirmation when it was two programs
-        sharing one defect.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        A figure that comes back identical every time still is not necessarily reproducible &mdash; it can
-        be one fixed draw from a range nobody has measured. And what survived matters as much: the
-        risk-adjusted return, the drawdown and the sizing conclusion were all unchanged. The headline was
-        overstated by 1.2 points; the reasoning underneath it was sound. An audit that only reports
-        damage is not worth buying.
-      </div>
-      <div class="src">Internal: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/ · 300 draws per arm persisted</div>
+        <div class="src">Internal: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/ · 300 draws per arm persisted</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">A number or a range</span>
-        <h2>Nine versions, and none could be told apart from zero</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">The rule, as first measured</div>
-          <div class="corr-val">42.8% a year</div>
-          <div class="corr-note">A convincing-looking edge across nine configurations.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">07</span>
+          <span class="class-tag">A number or a range</span>
+          <h2 class="case-h2">Nine versions, and none could be told apart from zero</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">The rule, as first measured</div>
+            <div class="corr-val">42.8% a year</div>
+            <div class="corr-note">A convincing-looking edge across nine configurations.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">Its honest range</div>
+            <div class="corr-val">&minus;9.0% to +126.4%</div>
+            <div class="corr-note">Includes zero. As did all nine.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">Its honest range</div>
-          <div class="corr-val">&minus;9.0% to +126.4%</div>
-          <div class="corr-note">Includes zero. As did all nine.</div>
+        <p>
+          Measuring how confident you are entitled to be usually means reshuffling the daily results
+          thousands of times and seeing how wide the outcomes spread. <strong>That assumes each day is
+          independent of the last.</strong> This rule held the same position for days at a time, so
+          consecutive days moved together &mdash; and treating them as independent counts the same evidence
+          over and over, making the range far too narrow.
+        </p>
+        <p>
+          Reshuffling in blocks of ten days instead, which keeps that clumping intact,
+          <strong>every one of the nine configurations had a range that included zero</strong>. Splitting
+          the history in half pointed the same way: performance fell in every version, one from a
+          risk-adjusted score of 0.88 to <strong>0.09</strong>.
+        </p>
+        <p>
+          It is worth saying what the problem was <em>not</em>. Trading costs barely mattered: the score
+          went 0.98 before fees, 0.95 at normal fees, 0.85 at four times normal fees.
+          <strong>This failed on uncertainty, not on costs</strong> &mdash; which is exactly the wrong place
+          to have been looking.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          Nothing was wrong with the returns. What was wrong was the confidence attached to them &mdash; and
+          confidence is what someone actually acts on. We stopped pursuing it, which is a result, and
+          getting it in an afternoon is cheaper than getting it from the market.
         </div>
-      </div>
-      <p>
-        Measuring how confident you are entitled to be usually means reshuffling the daily results
-        thousands of times and seeing how wide the outcomes spread. <strong>That assumes each day is
-        independent of the last.</strong> This rule held the same position for days at a time, so
-        consecutive days moved together &mdash; and treating them as independent counts the same evidence
-        over and over, making the range far too narrow.
-      </p>
-      <p>
-        Reshuffling in blocks of ten days instead, which keeps that clumping intact,
-        <strong>every one of the nine configurations had a range that included zero</strong>. Splitting
-        the history in half pointed the same way: performance fell in every version, one from a
-        risk-adjusted score of 0.88 to <strong>0.09</strong>.
-      </p>
-      <p>
-        It is worth saying what the problem was <em>not</em>. Trading costs barely mattered: the score
-        went 0.98 before fees, 0.95 at normal fees, 0.85 at four times normal fees.
-        <strong>This failed on uncertainty, not on costs</strong> &mdash; which is exactly the wrong place
-        to have been looking.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        Nothing was wrong with the returns. What was wrong was the confidence attached to them &mdash; and
-        confidence is what someone actually acts on. We stopped pursuing it, which is a result, and
-        getting it in an afternoon is cheaper than getting it from the market.
-      </div>
-      <div class="src">Internal: research/runs/deribit-iv-screen-v1/VERDICT.md Part A2 · moving-block bootstrap, block 10 days, n 2000</div>
+        <div class="src">Internal: research/runs/deribit-iv-screen-v1/VERDICT.md Part A2 · moving-block bootstrap, block 10 days, n 2000</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">How much evidence there really is</span>
-        <h2>Two thousand trades, six weeks of evidence</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">The track record, as described</div>
-          <div class="corr-val">2,050 trades</div>
-          <div class="corr-note">238 assets, six and a half years.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">08</span>
+          <span class="class-tag">How much evidence there really is</span>
+          <h2 class="case-h2">Two thousand trades, six weeks of evidence</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">The track record, as described</div>
+            <div class="corr-val">2,050 trades</div>
+            <div class="corr-note">238 assets, six and a half years.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">Independent observations</div>
+            <div class="corr-val">6 weeks</div>
+            <div class="corr-note">Behind the best-looking result in the study.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">Independent observations</div>
-          <div class="corr-val">6 weeks</div>
-          <div class="corr-note">Behind the best-looking result in the study.</div>
+        <p>
+          The strategy only fires during rare market-wide episodes, so its trades arrive in a small number
+          of clusters &mdash; and every trade inside a cluster is <strong>the same event happening to
+          different assets</strong>. Counting distinct weeks instead of trades, the strongest result in the
+          study rests on <strong>six weeks in six and a half years</strong>. About one independent
+          observation a year.
+        </p>
+        <p>
+          The trap that sets is not theoretical. The obvious improvement &mdash; sit out the small isolated
+          events, save room for the broad ones &mdash; tested <em>better</em> on data held back for the
+          purpose (0.88 → 1.46) and <em>worse</em> on the data it was built with (1.16 → 0.70). A rule that
+          improves on unseen data is the opposite of the usual warning sign and reads like a discovery.
+          <strong>Its entire advantage rested on two crash weeks.</strong> We did not adopt it.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          Trade count is not evidence count, and the gap between them is where false confidence lives. A
+          strategy can be genuinely profitable and still have almost no evidence behind it &mdash; those are
+          different questions, and a big number of trades only answers one of them.
         </div>
-      </div>
-      <p>
-        The strategy only fires during rare market-wide episodes, so its trades arrive in a small number
-        of clusters &mdash; and every trade inside a cluster is <strong>the same event happening to
-        different assets</strong>. Counting distinct weeks instead of trades, the strongest result in the
-        study rests on <strong>six weeks in six and a half years</strong>. About one independent
-        observation a year.
-      </p>
-      <p>
-        The trap that sets is not theoretical. The obvious improvement &mdash; sit out the small isolated
-        events, save room for the broad ones &mdash; tested <em>better</em> on data held back for the
-        purpose (0.88 → 1.46) and <em>worse</em> on the data it was built with (1.16 → 0.70). A rule that
-        improves on unseen data is the opposite of the usual warning sign and reads like a discovery.
-        <strong>Its entire advantage rested on two crash weeks.</strong> We did not adopt it.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        Trade count is not evidence count, and the gap between them is where false confidence lives. A
-        strategy can be genuinely profitable and still have almost no evidence behind it &mdash; those are
-        different questions, and a big number of trades only answers one of them.
-      </div>
-      <div class="src">Internal: research/runs/cascade-selection-v1/VERDICT.md · per-trade means net of 2 × 4.5bp</div>
+        <div class="src">Internal: research/runs/cascade-selection-v1/VERDICT.md · per-trade means net of 2 × 4.5bp</div>
+        </div>
+      </details>
     </article>
 
     <article class="case">
-      <div class="case-head">
-        <span class="class-tag">Positions left open</span>
-        <h2>Profitable only if you ignore what it still holds</h2>
-      </div>
-      <div class="correction">
-        <div class="corr-published">
-          <div class="corr-label">Counting completed trades only</div>
-          <div class="corr-val">8 of 8 profitable</div>
-          <div class="corr-note">Every configuration tested made money.</div>
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">09</span>
+          <span class="class-tag">Positions left open</span>
+          <h2 class="case-h2">Profitable only if you ignore what it still holds</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">Counting completed trades only</div>
+            <div class="corr-val">8 of 8 profitable</div>
+            <div class="corr-note">Every configuration tested made money.</div>
+          </div>
+          <div class="corr-arrow">→</div>
+          <div class="corr-actual">
+            <div class="corr-label">Also valuing what it still held</div>
+            <div class="corr-val">0 of 8 profitable</div>
+            <div class="corr-note">The same eight. The sign flips in all of them.</div>
+          </div>
         </div>
-        <div class="corr-arrow">→</div>
-        <div class="corr-actual">
-          <div class="corr-label">Also valuing what it still held</div>
-          <div class="corr-val">0 of 8 profitable</div>
-          <div class="corr-note">The same eight. The sign flips in all of them.</div>
+        <p>
+          The strategy places a ladder of buy orders below the price and sells above. Each completed round
+          trip books a small gain &mdash; but when the price falls and keeps falling, the buys fill and the
+          matching sells never do, so the position sits there losing. <strong>At the end of a test period,
+          what do you do with the lots still open?</strong> Value them at the current price, or leave them
+          out because they never closed?
+        </p>
+        <p>
+          We ran all eight configurations both ways across <strong>20,032 test windows</strong>. The
+          accounting choice flips the sign in <em>every</em> configuration. The gap tracks exactly what you
+          would expect: the configurations holding the most unsold lots show the widest gap, one going from
+          <strong>+2.4%</strong> counting only closed trades to <strong>&minus;5.1%</strong> counting
+          everything.
+        </p>
+        <p>
+          One note on how we treated our own claim. The original study made this point in a single line and
+          asserted the counterfactual without ever computing it &mdash; the code tracked both figures and
+          saved only their sum. <strong>We measured it before publishing this</strong>, and the assertion
+          turned out to be conservative: it said &ldquo;most configurations&rdquo;, the answer is all of
+          them. Being right by luck is not the same as having checked.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          The mechanism books small wins and holds its losses, so discarding what is still open deletes the
+          losses and keeps the wins. The result is not wrong by a little &mdash; it is the opposite sign. And
+          nothing looks broken in the output, because nothing went wrong computationally. We simply
+          chose, probably without noticing it was a choice.
         </div>
-      </div>
-      <p>
-        The strategy places a ladder of buy orders below the price and sells above. Each completed round
-        trip books a small gain &mdash; but when the price falls and keeps falling, the buys fill and the
-        matching sells never do, so the position sits there losing. <strong>At the end of a test period,
-        what do you do with the lots still open?</strong> Value them at the current price, or leave them
-        out because they never closed?
-      </p>
-      <p>
-        We ran all eight configurations both ways across <strong>20,032 test windows</strong>. The
-        accounting choice flips the sign in <em>every</em> configuration. The gap tracks exactly what you
-        would expect: the configurations holding the most unsold lots show the widest gap, one going from
-        <strong>+2.4%</strong> counting only closed trades to <strong>&minus;5.1%</strong> counting
-        everything.
-      </p>
-      <p>
-        One note on how we treated our own claim. The original study made this point in a single line and
-        asserted the counterfactual without ever computing it &mdash; the code tracked both figures and
-        saved only their sum. <strong>We measured it before publishing this</strong>, and the assertion
-        turned out to be conservative: it said &ldquo;most configurations&rdquo;, the answer is all of
-        them. Being right by luck is not the same as having checked.
-      </p>
-      <div class="why">
-        <span class="tag">Why it matters</span>
-        The mechanism books small wins and holds its losses, so discarding what is still open deletes the
-        losses and keeps the wins. The result is not wrong by a little &mdash; it is the opposite sign. And
-        nothing looks broken in the output, because nothing went wrong computationally. Someone simply
-        chose, probably without noticing it was a choice.
-      </div>
-      <div class="src">Internal: research/runs/grid-trading-v1/fc7-realized-2026-09-11/ · 20,032 windows, each verified against the original engine</div>
+        <div class="src">Internal: research/runs/grid-trading-v1/fc7-realized-2026-09-11/ · 20,032 windows, each verified against the original engine</div>
+        </div>
+      </details>
     </article>
   </section>
 
@@ -778,8 +876,8 @@
     <div class="thread">
       <h2>What these nine have in common</h2>
       <p class="lede" style="margin-bottom:0">
-        Not one was found by out-thinking the author. Each came from checking something nobody thought
-        needed checking.
+        Not one was found by out-thinking whoever wrote the code — and in all nine, that was us. Each
+        came from checking something nobody thought needed checking.
       </p>
       <ul class="thread-list">
         <li><span class="k">01</span><span>Running the same code twice.</span></li>
@@ -884,7 +982,7 @@
         recommendation to buy or sell anything, and not an offer to manage money. Our findings say
         whether a stated result can be reproduced from the material supplied — they are not an opinion
         on how any strategy will perform in future. Every case study on this page describes a defect
-        found in Arcobaleno's own internal research; no client work is described. Figures are quoted as
+        found in our own internal research; no client work is described. Figures are quoted as
         they appear in the dated internal documents named beneath each case.
       </p>
     </div>
