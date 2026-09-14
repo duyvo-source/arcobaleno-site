@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Arcobaleno Research — prepare a fresh, single-engagement audit box.
-# fctools v2 · sha256 769bf074e06d51436382ba14b94335b0ea16a955884ee724b4e3fc64e75040f8 · generated 2026-09-14
+# fctools v3 · sha256 4ff9b71f0dab59872169cac18b70dc11c02d62cd2b772c137f82371ac8aad533 · generated 2026-09-14
 #
 # READ THIS BEFORE RUNNING IT. Do not pipe it into a shell. Download it, read it, then run it.
 # A forensics practice that tells clients to check their inputs does not curl|bash its own.
@@ -30,18 +30,27 @@ set -euo pipefail
 # web host does not reach. That is a written step you perform, not something a script can do
 # for itself.
 # ---------------------------------------------------------------------------------------------
-URL="https://arcobaleno.cloud/tools/fctools-v2.tar.gz"
-WANT="769bf074e06d51436382ba14b94335b0ea16a955884ee724b4e3fc64e75040f8"
+URL="https://arcobaleno.cloud/tools/fctools-v3.tar.gz"
+WANT="4ff9b71f0dab59872169cac18b70dc11c02d62cd2b772c137f82371ac8aad533"
 
-echo "==> python3 and the two libraries the instruments need"
-if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get update -qq
-  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-pip python3-numpy python3-pandas
-else
-  echo "    not a Debian/Ubuntu box — install python3, numpy and pandas yourself, then re-run."
+# Fresh cloud images usually log you in as root and often do NOT ship sudo. Calling sudo
+# unconditionally aborts this script on its very first command under `set -e`.
+SUDO=""
+if [ "$(id -u)" -ne 0 ]; then
+  if command -v sudo >/dev/null 2>&1; then SUDO="sudo"; else
+    echo "Not root, and sudo is not installed. Re-run as root."; exit 1
+  fi
 fi
 
-echo "==> fetching fctools v2"
+echo "==> python3 and venv"
+if command -v apt-get >/dev/null 2>&1; then
+  $SUDO apt-get update -qq
+  $SUDO DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv
+else
+  echo "    not a Debian/Ubuntu box — ensure python3 and the venv module are present, then re-run."
+fi
+
+echo "==> fetching fctools v3"
 curl -fsSL "$URL" -o fctools.tar.gz
 
 echo "==> verifying against the published hash"
@@ -57,10 +66,20 @@ echo "    ok  $GOT"
 
 tar xzf fctools.tar.gz && rm -f fctools.tar.gz
 
+# A VIRTUALENV WITH PINNED VERSIONS, not the distro's packages. apt on Ubuntu 24.04 ships
+# pandas 2.x; these instruments are written and self-tested against the versions pinned in
+# fctools/requirements.txt, which is inside the verified tarball and therefore covered by the
+# hash checked above. Running a reproducibility toolkit on an unpinned stack is the same defect
+# it exists to find, one layer up.
+echo "==> virtualenv with the pinned stack (fctools/requirements.txt, hash-covered)"
+python3 -m venv .venv
+./.venv/bin/pip install --quiet --disable-pip-version-check --upgrade pip
+./.venv/bin/pip install --quiet --disable-pip-version-check -r fctools/requirements.txt
+
 echo "==> running the toolkit's own self-test"
 echo "    If an instrument cannot find its own planted bug, nothing it says about client code is"
 echo "    safe to send. This is the gate, not a formality."
-python3 fctools/selftest_all.py
+./.venv/bin/python fctools/selftest_all.py
 
 cat <<'EOF'
 
@@ -72,7 +91,9 @@ cat <<'EOF'
        box. Either give them an SFTP account on this machine, or curl their link from here.
     2. Record a sha256 of every file on arrival, before opening any of it. That hash is what the
        report's reproducibility claim is anchored to.
-    3. FC-1 first — python3 fctools/fc1_reproduce.py --cmd "<their command>".
+    3. FC-1 first — ./.venv/bin/python fctools/fc1_reproduce.py --cmd "<their command>".
+       Use ./.venv/bin/python for EVERY instrument: the pinned stack is the one the findings
+       were validated on, and the self-test prints it so the report can cite it.
        If the headline number will not come out twice, stop and report that. Everything
        downstream is worthless until it does, and this is the natural stop-and-report point.
     4. Work the rest of the checks in ../PLAYBOOK.md order.
