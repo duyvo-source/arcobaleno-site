@@ -32,6 +32,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------------------------
 URL="https://arcobaleno.cloud/tools/fctools-v4.tar.gz"
 WANT="4adc2698b3c2c2d4036a9e81453e7bcea2a3f1ec6ca06701f809b7585b264e99"
+FPR="49B5D5935AECA188C6638A08B544B55244F50864"   # signing key fingerprint -- ALSO check this against DEPLOY.md, same reason as WANT
 
 # Fresh cloud images usually log you in as root and often do NOT ship sudo. Calling sudo
 # unconditionally aborts this script on its very first command under `set -e`.
@@ -45,7 +46,7 @@ fi
 echo "==> python3 and venv"
 if command -v apt-get >/dev/null 2>&1; then
   $SUDO apt-get update -qq
-  $SUDO DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv
+  $SUDO DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv gnupg
 else
   echo "    not a Debian/Ubuntu box — ensure python3 and the venv module are present, then re-run."
 fi
@@ -64,7 +65,28 @@ if [ "$GOT" != "$WANT" ]; then
 fi
 echo "    ok  $GOT"
 
-tar xzf fctools.tar.gz && rm -f fctools.tar.gz
+echo "==> verifying the signature"
+# The hash proves the bytes match a number. The SIGNATURE proves they were produced by whoever
+# holds the release key -- which an attacker who controls the web host still does not have.
+if command -v gpg >/dev/null 2>&1; then
+  curl -fsSL "${URL%/*}/arcobaleno-release-pubkey.asc" -o pubkey.asc
+  curl -fsSL "$URL.asc" -o fctools.tar.gz.asc
+  gpg --quiet --import pubkey.asc 2>/dev/null || true
+  if gpg --status-fd 1 --verify fctools.tar.gz.asc fctools.tar.gz 2>/dev/null | grep -q "VALIDSIG $FPR"; then
+    echo "    ok  good signature from $FPR"
+  else
+    echo "    SIGNATURE DID NOT VERIFY AGAINST $FPR — STOPPING."
+    echo "    Do not use this copy. Report it before going further."
+    exit 1
+  fi
+  echo "    NOTE: the key was fetched from the same host as the bundle, so this proves the two"
+  echo "    match each other. Confirm the fingerprint above against DEPLOY.md to make it mean more."
+else
+  echo "    gpg not installed — hash checked, signature NOT checked. Acceptable only if you"
+  echo "    compared the hash above against your own off-box record."
+fi
+
+tar xzf fctools.tar.gz && rm -f fctools.tar.gz fctools.tar.gz.asc pubkey.asc
 
 # A VIRTUALENV WITH PINNED VERSIONS, not the distro's packages. apt on Ubuntu 24.04 ships
 # pandas 2.x; these instruments are written and self-tested against the versions pinned in
