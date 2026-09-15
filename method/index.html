@@ -279,7 +279,7 @@
       <span>Backtest Forensics</span><span class="dot">/</span>
       <span>What we check</span>
     </div>
-    <h1>The eight checks, and what we need from you</h1>
+    <h1>What we need from you, and the eight checks we run</h1>
     <p class="standfirst">
       So you can tell before you email us whether there is a job here, what it would involve, and
       whether we are the right people for it. <strong>If we aren't, we would rather you knew now.</strong>
@@ -288,69 +288,11 @@
 
   <section>
     <div class="col">
-      <h2>Every audit runs the same eight checks</h2>
-      <p class="lede">
-        They come from mistakes we have actually hit in our own research — not from a textbook. All eight
-        are <a href="/">published on our front page</a> as case studies against
-        ourselves, with the dated internal document each one came from.
-      </p>
-      <p class="lede">
-        We number them <span class="m">FC-1</span> to <span class="m">FC-8</span> so that findings in
-        your report point at something specific. A finding reads <span class="m">FC-3</span>, not
-        "we had concerns about costs".
-      </p>
-    </div>
-
-    <ol class="tests">
-      <li>
-        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
-        <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually something unfixed in how the program orders or seeds its work.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
-        <p class="t-ask">Was the list of assets built as it looked <em>back then</em>, or from the ones still trading today? And if something was already patched to fix this, does the patch actually test the thing it claims to?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>The names that disappeared are absent from the test — and the ones that disappear are usually the losers, so the record flatters itself.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
-        <p class="t-ask">Where did the fee figure come from? Is it charged the right way round — per book, or per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
-        <p class="t-ask">Was every row checked, or a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A single bad print carries thirty months of apparent return, and removing it removes the strategy.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
-        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what the variable is called.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A filter named for recency that never reads a timestamp — it counts rows and wears the name.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
-        <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of variants tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
-        <p class="t-ask">Could every position in the result actually have been bought and sold, at the price used, in the size assumed — and using only what was knowable at that moment?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>Positions opened and closed at prices that existed, in sizes that did not. Or open positions quietly dropped at the end instead of valued, which turns a loss into a profit.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
-        <p class="t-ask">Is the headline a single number or a range? We put an error bar around it and ask whether that range is wide enough to include zero.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a distribution — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
-      </li>
-    </ol>
-  </section>
-
-  <section class="section-rule">
-    <div class="col">
       <h2>What we need from you</h2>
       <p class="lede">
-        Three things. If you don't have all three, say so on the call — it usually changes what is
-        worth doing, and occasionally it means there is no job, which we will tell you.
+        <strong>Three things.</strong> If you don't have all three, say so on the call — it usually
+        changes what is worth doing, and occasionally it means there is no job, which we will tell
+        you. This is the first thing to check, which is why it is the first thing on this page.
       </p>
     </div>
     <div class="panel">
@@ -414,6 +356,65 @@
         before any work starts.
       </p>
     </div>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>Every audit runs the same eight checks</h2>
+      <p class="lede">
+        They come from mistakes we have actually hit in our own research — not from a textbook. All eight
+        are <a href="/">published on our front page</a> as case studies against
+        ourselves, with the dated internal document each one came from.
+      </p>
+      <p class="lede">
+        We number them <span class="m">FC-1</span> to <span class="m">FC-8</span> so that findings in
+        your report point at something specific. A finding reads <span class="m">FC-3</span>, not
+        "we had concerns about costs".
+      </p>
+    </div>
+
+    <ol class="tests">
+      <li>
+        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
+        <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually something unfixed in how the program orders or seeds its work.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
+        <p class="t-ask">Was the list of assets built as it looked <em>back then</em>, or from the ones still trading today? And if something was already patched to fix this, does the patch actually test the thing it claims to?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The names that disappeared are absent from the test — and the ones that disappear are usually the losers, so the record flatters itself.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
+        <p class="t-ask">Where did the fee figure come from? Is it charged the right way round — per book, or per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
+        <p class="t-ask">Was every row checked, or a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A single bad print carries thirty months of apparent return, and removing it removes the strategy.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
+        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what the variable is called.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A filter named for recency that never reads a timestamp — it counts rows and wears the name.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
+        <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of variants tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
+        <p class="t-ask">Could every position in the result actually have been bought and sold, at the price used, in the size assumed — and using only what was knowable at that moment?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Positions opened and closed at prices that existed, in sizes that did not. Or open positions quietly dropped at the end instead of valued, which turns a loss into a profit.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
+        <p class="t-ask">Is the headline a single number or a range? We put an error bar around it and ask whether that range is wide enough to include zero.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a distribution — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
+      </li>
+    </ol>
   </section>
 
   <section class="section-rule">
