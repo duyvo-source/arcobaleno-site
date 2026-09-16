@@ -189,6 +189,12 @@
   }
 
   /* ---------- tables ---------- */
+  .plain{display:grid;gap:22px;margin-top:28px}
+  @media(min-width:760px){.plain{grid-template-columns:1fr 1fr;gap:26px 34px}}
+  .plain-item{background:var(--raised);border:1px solid var(--rule);padding:22px 22px 20px}
+  .plain-item p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
+  .plain-item p:last-child{margin-bottom:0}
+  .plain-item .punch{color:var(--ink);font-weight:600}
   .tbl-scroll{overflow-x:auto;margin:22px 0}
   table{border-collapse:collapse;font-size:14.5px;min-width:340px}
   th,td{
@@ -365,6 +371,77 @@
         you would either send us yours or we buy it in — and we tell you which, and what it costs,
         before any work starts.
       </p>
+    </div>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>Four questions, in plain words</h2>
+      <p class="lede">
+        The eight checks below are the formal version. These four are what they are really asking &mdash;
+        and they are the ones that catch people who are certain their numbers are fine.
+      </p>
+    </div>
+
+    <div class="plain">
+      <div class="plain-item">
+        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Can anyone else get the same answer?</span></div>
+        <p>
+          Think of a recipe. You bake a cake and it is brilliant. You give the recipe to a friend, they
+          follow it exactly, and something different comes out. Then the recipe was never the whole
+          story &mdash; something in your kitchen was doing work nobody wrote down.
+        </p>
+        <p>
+          The strategy is the recipe. The number is the cake. So we take the recipe to a different
+          kitchen and bake it. <span class="punch">More often than anyone expects, a different cake
+          comes out</span> &mdash; and then the number was never really about the strategy.
+        </p>
+      </div>
+
+      <div class="plain-item">
+        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">How sure are you, really?</span></div>
+        <p>
+          Imagine someone takes 41 photos of themselves and shows you the best one. The photo is real.
+          Nobody faked it. But it is not how they normally look &mdash; it is their luckiest try out of 41.
+        </p>
+        <p>
+          And a player who scores 8 shots out of 10 is not an 80% shooter. That was one afternoon.
+          So when a result says 61.4%, the question is simply:
+          <span class="punch">if you ran it all again, what would you get?</span> If the honest answer
+          is anywhere between 45 and 75, that is not a number. It is a direction &mdash; which is still
+          worth something, but it is a different thing to tell an investor.
+        </p>
+      </div>
+
+      <div class="plain-item">
+        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you actually have bought it?</span></div>
+        <p>
+          Imagine telling a playground: <em>&ldquo;I will swap my sandwich for anyone&rsquo;s cookie.&rdquo;</em>
+          Who says yes? The ones with the bad cookies. Whoever has the good cookie keeps it.
+        </p>
+        <p>
+          A strategy that waits for a good price has the same problem: the moments it gets that price
+          are often the moments everyone else is leaving &mdash; which is <em>why</em> the price came to it.
+          Add two more: the shelf said $10, but there was one left and you wanted fifty; and by the
+          time you reached the till it was gone. <span class="punch">A backtest usually writes down the
+          shelf price, because on paper nothing runs out and nobody else is in the shop.</span>
+        </p>
+      </div>
+
+      <div class="plain-item">
+        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Was it looking at an old photo?</span></div>
+        <p>
+          A strategy decides from a picture of the market &mdash; who wants to buy, who wants to sell. That
+          picture is always slightly old. A second or two.
+        </p>
+        <p>
+          Most days that changes nothing. On the day everybody runs for the door, it is the whole story.
+          The strategy sees a large crowd of buyers, which looks like safety &mdash; but that crowd left a
+          few seconds ago. <span class="punch">The signal was not broken. It was reading a photo of a
+          room that was already empty.</span> And that is not bad luck: it is what the strategy does
+          every time the market moves faster than its picture updates.
+        </p>
+      </div>
     </div>
   </section>
 
