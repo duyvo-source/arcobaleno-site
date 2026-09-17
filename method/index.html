@@ -603,20 +603,31 @@
       <p>
         Usually true, and not the reassurance it sounds like. A charting platform is not a source. It
         is a window onto somebody else&rsquo;s feed, and the same asset on two venues is two different
-        series. Bad prints survive on charts; when an exchange cancels and repairs those trades
-        afterwards, the repaired history and the history you looked at last year are not the same
-        file, and nothing tells you a bar has changed since you saw it. In stocks, whether prices are
-        adjusted for splits and dividends changes every return in the series. In futures, so does the
-        way the continuous contract was stitched together. And a symbol that gets delisted stops
-        appearing in the search box &mdash; which is FC-2, built into the interface.
+        series.
+      </p>
+      <p>
+        Bad prints survive on charts; when an exchange cancels and repairs those trades afterwards,
+        the repaired history and the history you looked at last year are not the same file, and
+        nothing tells you a bar has changed since you saw it.
+      </p>
+      <p>
+        In stocks, whether prices are adjusted for splits and dividends changes every return in the
+        series. In futures, so does the way the continuous contract was stitched together. And a
+        symbol that gets delisted stops appearing in the search box &mdash; which is FC-2, built into
+        the interface.
       </p>
       <p>
         Costs are worse, because the platform never had that data to hand you. A chart is open, high,
-        low, close and volume. It is not the order book. So the fee in the backtest did not come from
-        the exchange at all &mdash; it came from a document. Fee schedules are tiered by volume and
-        account level, and they change across the years a test covers. A test that quietly assumes it
-        was the passive side of every trade, when the strategy would in practice have crossed the
-        spread and paid the taker fee, is wrong in the flattering direction every single time.
+        low, close and volume. It is not the order book.
+      </p>
+      <p>
+        So the fee in the backtest did not come from the exchange at all &mdash; it came from a
+        document. Fee schedules are tiered by volume and account level, and they change across the
+        years a test covers. A test that quietly assumes it was the passive side of every trade, when
+        the strategy would in practice have crossed the spread and paid the taker fee, is wrong in the
+        flattering direction every single time.
+      </p>
+      <p>
         Perpetuals pay funding, which is a real recurring cost and is regularly left out altogether.
         And a built-in strategy tester takes commission as one number you type into a box: it knows
         nothing about your tier, your funding, or how far down the book your order would have gone.
