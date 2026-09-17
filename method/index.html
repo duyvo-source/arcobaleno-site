@@ -248,14 +248,25 @@
   .panel{background:var(--raised);border:1px solid var(--rule-strong);padding:26px 26px 22px;margin-top:24px}
   ol.send{margin:16px 0 0;padding-left:22px}
   ol.send li{margin-bottom:9px;font-size:15.5px;line-height:1.5}
-  ul.plain{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
-  ul.plain li{display:flex;gap:12px;align-items:baseline;font-size:15.5px;line-height:1.5}
-  ul.plain .k{
-    font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);
-    letter-spacing:.08em;white-space:nowrap;padding-top:2px;min-width:5.5em;
+  ul.cover{list-style:none;padding:0;margin:20px 0 0}
+  ul.cover li{
+    display:grid;grid-template-columns:8.5em 1fr;gap:18px;align-items:start;
+    padding:15px 0;border-top:1px solid var(--rule);
+    font-size:15.5px;line-height:1.55;max-width:56em;
   }
-  .yes .k{color:var(--right)}
-  .no .k{color:var(--wrong)}
+  ul.cover li:last-child{border-bottom:1px solid var(--rule)}
+  ul.cover .k{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;white-space:nowrap;justify-self:start;
+    padding:3px 9px;border:1px solid var(--rule-strong);color:var(--muted);
+  }
+  ul.cover .k-strong{color:var(--right);border-color:var(--right);background:var(--right-bg)}
+  ul.cover .k-yes{color:var(--right);border-color:var(--right)}
+  ul.cover .k-flag{color:var(--muted)}
+  ul.cover .k-no{color:var(--wrong);border-color:var(--wrong);background:var(--wrong-bg)}
+  @media(max-width:640px){
+    ul.cover li{grid-template-columns:1fr;gap:9px}
+  }
 
   /* ---------- steps ---------- */
   ol.steps{list-style:none;padding:0;margin:22px 0 0;counter-reset:s;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
@@ -392,15 +403,38 @@
       <h2>What we can and can't audit</h2>
       <p class="lede">
         The eight checks are not specific to any market — survivorship, look-ahead, cost realism and
-        selection are older and better documented in equities than anywhere. But knowing a market's
+        selection are older and better documented in equities than they are in crypto. But knowing a market's
         <em>mechanics</em> is a different thing from knowing method, and we would rather be straight
         about where ours stop.
       </p>
-      <ul class="plain">
-        <li class="yes"><span class="k">Strongest</span><span><b>Crypto perpetual futures.</b> Funding, mark versus last price, margin tiers, delistings, fee tiers, liquidation cascades. All five published case studies come from here.</span></li>
-        <li class="yes"><span class="k">Yes</span><span><b>Crypto spot, equities, futures.</b> The method transfers directly, and most audit findings live in the method rather than the instrument.</span></li>
-        <li class="no"><span class="k">Tell you</span><span><b>Where a claim rests on mechanics we haven't exercised</b> — dividend and corporate-action adjustment, point-in-time fundamentals, exchange calendars and halts, borrow cost and short availability, options exercise and surface construction. If your result hinges on one of these, we will say so in writing before quoting, and you can decide.</span></li>
-        <li class="no"><span class="k">No</span><span><b>Where there is nothing to reproduce</b> — no code, no data, or a strategy nobody has run in months and nobody knows the expected output of. That is code recovery, not an audit, and we don't sell it.</span></li>
+      <ul class="cover">
+        <li>
+          <span class="k k-strong">Strongest</span>
+          <span><b>Crypto perpetual futures.</b> Funding, mark versus last price, margin tiers,
+          delistings, fee tiers, liquidation cascades. Seven of the nine case studies we have
+          published against ourselves come from here; the other two are a DeFi liquidity pool and a
+          volatility-index screen.</span>
+        </li>
+        <li>
+          <span class="k k-yes">Covered</span>
+          <span><b>Crypto spot, equities, futures.</b> The method transfers directly, and most audit
+          findings live in the method rather than the instrument.</span>
+        </li>
+        <li>
+          <span class="k k-flag">Flagged</span>
+          <span><b>Mechanics we have not exercised</b> &mdash; dividend and corporate-action
+          adjustment, point-in-time fundamentals, exchange calendars and halts, borrow cost and short
+          availability, options exercise and surface construction. If your result hinges on one of
+          these, we say so in writing before quoting, and you decide.</span>
+        </li>
+        <li>
+          <span class="k k-no">Declined</span>
+          <span><b>Where there is nothing to reproduce</b> &mdash; no code, no data, or a strategy
+          nobody has run in months and nobody knows the expected output of. That is code recovery,
+          not an audit, and we don&rsquo;t sell it. We also decline when the core signal is sealed
+          <em>and</em> that is where the return comes from, and when the person commissioning the
+          audit is not the person who carries the loss.</span>
+        </li>
       </ul>
       <p style="margin-top:22px">
         We don't claim to cover every market. Outside crypto we hold no market data of our own, so
