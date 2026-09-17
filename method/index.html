@@ -190,7 +190,6 @@
 
   /* ---------- tables ---------- */
   .plain{display:grid;gap:14px;margin-top:28px;align-items:start}
-  @media(min-width:760px){.plain{grid-template-columns:1fr 1fr;gap:16px 24px}}
   .plain-item{background:var(--raised);border:1px solid var(--rule)}
   .plain-item > details > summary{
     cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
@@ -213,24 +212,25 @@
   .plain-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
   .plain-body p:last-child{margin-bottom:0}
   .plain-body .punch{color:var(--ink);font-weight:600}
-  .objection b{color:var(--ink);font-weight:600}
-  .objection + .objection{margin-top:18px}
-  .objection{
-    margin-top:34px;background:var(--raised);
-    border:1px solid var(--rule);border-left:3px solid var(--rule-strong);
-    padding:22px 24px 20px;
+
+  .objections{display:grid;gap:14px;margin-top:28px;align-items:start}
+  .objection{background:var(--raised);border:1px solid var(--rule);border-left:3px solid var(--rule-strong)}
+  .objection > details > summary{
+    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
   }
-  .objection .obj-kicker{
-    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--faint);display:block;margin-bottom:9px;
-  }
+  .objection > details > summary::-webkit-details-marker{display:none}
+  .objection > details > summary:hover h3,
+  .objection > details > summary:focus-visible h3{text-decoration:underline}
+  .objection > details > summary:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
   .objection h3{
-    font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;
-    margin:0 0 11px;
+    font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;margin:0;
   }
-  .objection p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:44em}
-  .objection p:last-child{margin-bottom:0}
-  .objection .punch{color:var(--ink);font-weight:600}
+  .objection > details[open] .plain-chev{transform:rotate(45deg)}
+  .obj-body{padding:4px 22px 20px}
+  .obj-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:44em}
+  .obj-body p:last-child{margin-bottom:0}
+  .obj-body .punch{color:var(--ink);font-weight:600}
+  .obj-body b{color:var(--ink);font-weight:600}
   .tbl-scroll{overflow-x:auto;margin:22px 0}
   table{border-collapse:collapse;font-size:14.5px;min-width:340px}
   th,td{
@@ -412,11 +412,11 @@
 
   <section class="section-rule">
     <div class="col">
-      <h2>Eight questions, in plain words</h2>
+      <h2>FC-1 to FC-8, broken down</h2>
       <p class="lede">
-        The formal version is further down this page. This is the same eight in plain words &mdash;
-        what each check is really asking, and why they catch people who are certain their numbers
-        are fine. Open any one to read it.
+        Every audit asks the same eight questions. Each one below is explained with an everyday
+        example, with the jargon taken out. Open any card to read it. The formal wording is further
+        down this page.
       </p>
     </div>
 
@@ -657,9 +657,24 @@
       </div>
     </div>
 
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>The two objections we hear most</h2>
+      <p class="lede">
+        Both are reasonable, and both are usually true. Neither one closes the question.
+      </p>
+    </div>
+
+    <div class="objections">
     <div class="objection">
-      <span class="obj-kicker">The objection we hear most</span>
-      <h3>&ldquo;But our data comes straight from the exchange&rdquo;</h3>
+      <details>
+        <summary>
+          <h3>&ldquo;But our data comes straight from the exchange&rdquo;</h3>
+          <span class="plain-chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="obj-body">
       <p>
         Usually true. It is also not the reassurance it sounds like, because a charting platform is
         not where the data lives. It is a window onto somebody else&rsquo;s feed.
@@ -690,11 +705,16 @@
         <span class="punch">Official is not the same as checked, and a display is not the same as the
         record.</span>
       </p>
+        </div>
+      </details>
     </div>
-
     <div class="objection">
-      <span class="obj-kicker">And the one that follows it</span>
-      <h3>&ldquo;But we have the order book&rdquo;</h3>
+      <details>
+        <summary>
+          <h3>&ldquo;But we have the order book&rdquo;</h3>
+          <span class="plain-chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="obj-body">
       <p>
         Better than most people arrive with, and it genuinely helps. With a book, what a trade would
         have cost stops being a guess and becomes something you can measure.
@@ -719,6 +739,9 @@
         <span class="punch">Better data does not audit itself. It moves the place where the mistake
         can hide.</span>
       </p>
+        </div>
+      </details>
+    </div>
     </div>
   </section>
 
