@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backtest Forensics — Arcobaleno Research</title>
-<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta name="description" content="Fixed-scope backtest audits from Arcobaleno Research. Ten findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <link rel="canonical" href="https://arcobaleno.cloud/">
 <meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
@@ -13,10 +13,10 @@
 <meta property="og:site_name" content="Arcobaleno Research">
 <meta property="og:url" content="https://arcobaleno.cloud/">
 <meta property="og:title" content="Backtest Forensics — Arcobaleno Research">
-<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta property="og:description" content="Fixed-scope backtest audits from Arcobaleno Research. Ten findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
-<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Nine findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
+<meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Ten findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><g fill='none' stroke='%234C9DD0' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'><path d='M51.8 22.2A22 22 0 1 1 45.2 14.4'/><path d='M17.2 31.2 27 41 56 12'/></g></svg>">
 
@@ -165,11 +165,14 @@
   }
   @media (max-width:640px){
     .correction{grid-template-columns:1fr}
+    /* rotating this box rotated its background and borders too, laying a tall white bar
+       across both panels and hiding the numbers. Swap the glyph instead of turning the box. */
     .corr-arrow{
       border-left:none;border-right:none;
       border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
-      padding:7px 0;transform:rotate(90deg) scale(.9);
+      padding:7px 0;transform:none;font-size:0;
     }
+    .corr-arrow::before{content:"\2193";font-size:16px}
   }
 
 
@@ -976,14 +979,75 @@
         </div>
       </details>
     </article>
+    <article class="case">
+      <details>
+        <summary>
+          <div class="case-head">
+            <span class="case-no">10</span>
+          <span class="class-tag">Survivorship</span>
+          <h2 class="case-h2">The survivorship fix that recovered no dead coins</h2>
+            <span class="case-chev" aria-hidden="true">+</span>
+          </div>
+        </summary>
+        <div class="case-body">
+        <div class="correction">
+          <div class="corr-published">
+            <div class="corr-label">What the repair was called</div>
+            <div class="corr-val">the as-of union</div>
+            <div class="corr-note">The population as it looked at the time, not as it looks now.</div>
+          </div>
+          <div class="corr-arrow">&rarr;</div>
+          <div class="corr-actual">
+            <div class="corr-label">Fully removed coins it recovered</div>
+            <div class="corr-val">0 of 31</div>
+            <div class="corr-note">All 63 symbols it did bring back were still on the venue, winding down.</div>
+          </div>
+        </div>
+        <p>
+          Our own price archive had a known defect, written down as a standing lesson: it held only the
+          symbols listed on the day it was downloaded, so anything already delisted was missing. A backfill
+          was built to repair it, 63 symbols came back, and from then on the combined set was referred to by
+          a name that said the problem was solved.
+        </p>
+        <p>
+          It was not. The backfill had asked the venue&rsquo;s instrument list for symbols in a
+          <em>winding-down</em> state &mdash; and a coin that is fully gone has left that list altogether, so
+          no query built that way could ever have returned one. <strong>The remedy inherited the boundary of
+          the query that built it, and nothing in the artifact said so.</strong> A survivorship-free source
+          had been available the whole time for one HTTP call: the venue&rsquo;s public archive keeps a
+          delisted symbol&rsquo;s files, and its listing enumerates every symbol that ever filed one.
+        </p>
+        <p>
+          <strong>Then we measured whether it changed the answer, and it did not.</strong> Delisted coins
+          turned out not to be short-lived oddities &mdash; median lifespan <strong>22 months</strong>
+          against <strong>21</strong> for the coins still trading, deaths spread across 2020&ndash;2026. The
+          omitted share is U-shaped over time rather than one-directional. And on the series the objection
+          had been raised against, the entire composition effect was <strong>&minus;0.06bp of a
+          &minus;6.05bp move &mdash; 1.0% of it</strong>. The prediction of what we would find was
+          hash-stamped before the measurement, and withdrew its own sign once the listing spans showed its
+          premise was wrong.
+        </p>
+        <div class="why">
+          <span class="tag">Why it matters</span>
+          An unfixed bias is a problem you still have. A fix that is believed is a problem you have stopped
+          looking for &mdash; it ends the conversation, and the artifact carries a name that answers the
+          question for anyone who asks later. That is why the check has two halves: was the universe built
+          as it looked then, <em>and</em> was any existing fix tested against the property it claims to
+          test. Here the honest answer was null &mdash; the bias was real, and on this claim it moved
+          nothing. An audit that only reports damage is not worth buying.
+        </div>
+        <div class="src">Internal: research/runs/premium-panel-hist-v1/VERDICT.md · NOTE_2026-09-03_SESSION.md · standing lessons 40 and 73</div>
+        </div>
+      </details>
+    </article>
     </details>
   </section>
 
   <section class="section-rule">
     <div class="thread">
-      <h2>What these nine have in common</h2>
+      <h2>What these ten have in common</h2>
       <p class="lede" style="margin-bottom:0">
-        Not one was found by out-thinking whoever wrote the code — and in all nine, that was us. Each
+        Not one was found by out-thinking whoever wrote the code — and in all ten, that was us. Each
         came from checking something nobody thought needed checking.
       </p>
       <ul class="thread-list">
@@ -996,6 +1060,7 @@
         <li><span class="k">07</span><span>Using a measure of confidence that matched how the strategy actually traded.</span></li>
         <li><span class="k">08</span><span>Counting the events instead of the trades.</span></li>
         <li><span class="k">09</span><span>Asking what happens to the positions that never closed.</span></li>
+        <li><span class="k">10</span><span>Checking a fix against the property it was named for.</span></li>
       </ul>
     </div>
   </section>
