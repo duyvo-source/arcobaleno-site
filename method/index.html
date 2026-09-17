@@ -189,12 +189,32 @@
   }
 
   /* ---------- tables ---------- */
-  .plain{display:grid;gap:22px;margin-top:28px}
-  @media(min-width:760px){.plain{grid-template-columns:1fr 1fr;gap:26px 34px}}
-  .plain-item{background:var(--raised);border:1px solid var(--rule);padding:22px 22px 20px}
-  .plain-item p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
-  .plain-item p:last-child{margin-bottom:0}
-  .plain-item .punch{color:var(--ink);font-weight:600}
+  .plain{display:grid;gap:14px;margin-top:28px;align-items:start}
+  @media(min-width:760px){.plain{grid-template-columns:1fr 1fr;gap:16px 24px}}
+  .plain-item{background:var(--raised);border:1px solid var(--rule)}
+  .plain-item > details > summary{
+    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
+  }
+  .plain-item > details > summary::-webkit-details-marker{display:none}
+  .plain-item > details > summary:hover .t-name,
+  .plain-item > details > summary:focus-visible .t-name{text-decoration:underline}
+  .plain-item > details > summary:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
+  .plain-item > details > summary .t-head{margin-bottom:5px}
+  .t-sub{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);display:block;
+  }
+  .plain-chev{
+    position:absolute;right:18px;top:19px;font-family:var(--mono);font-size:16px;
+    color:var(--muted);transition:transform .15s ease;line-height:1;
+  }
+  .plain-item > details[open] .plain-chev{transform:rotate(45deg)}
+  .plain-body{padding:4px 22px 20px}
+  .plain-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
+  .plain-body p:last-child{margin-bottom:0}
+  .plain-body .punch{color:var(--ink);font-weight:600}
+  .objection b{color:var(--ink);font-weight:600}
+  .objection + .objection{margin-top:18px}
   .objection{
     margin-top:34px;background:var(--raised);
     border:1px solid var(--rule);border-left:3px solid var(--rule-strong);
@@ -396,204 +416,244 @@
       <p class="lede">
         The formal version is further down this page. This is the same eight in plain words &mdash;
         what each check is really asking, and why they catch people who are certain their numbers
-        are fine.
+        are fine. Open any one to read it.
       </p>
     </div>
 
     <div class="plain">
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Can anyone else get the same answer?</span></div>
-        <p>
-          Think of a recipe. You bake a cake and it comes out perfect. You give the recipe to a friend, they
-          follow it exactly, and something different comes out. Then the recipe was never the whole
-          story &mdash; something in your kitchen was doing work nobody wrote down.
-        </p>
-        <p>
-          The strategy is the recipe. The number is the cake. So we take the recipe to a different
-          kitchen and bake it. More often than anyone expects, a different cake comes out &mdash; and
-          then the number was never really about the strategy. It was about that one computer, on
-          that one day.
-        </p>
-        <p>
-          <span class="punch">And if nobody else can get your number, every change you make
-          afterwards &mdash; bigger size, new settings &mdash; is being judged against something that
-          wobbles.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Can anyone else get the same answer?</span></div>
+            <span class="t-sub">The recipe</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            Think of a recipe. You bake a cake and it comes out perfect. You give the recipe to a friend, they
+            follow it exactly, and something different comes out. Then the recipe was never the whole
+            story &mdash; something in your kitchen was doing work nobody wrote down.
+          </p>
+          <p>
+            The strategy is the recipe. The number is the cake. So we take the recipe to a different
+            kitchen and bake it. More often than anyone expects, a different cake comes out &mdash; and
+            then the number was never really about the strategy. It was about that one computer, on
+            that one day.
+          </p>
+          <p>
+            <span class="punch">And if nobody else can get your number, every change you make
+            afterwards &mdash; bigger size, new settings &mdash; is being judged against something that
+            wobbles.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">How sure are you, really?</span></div>
-        <p>
-          Imagine someone takes 41 photos of themselves and shows you the best one. The photo is real.
-          Nobody faked it. But it is not how they normally look &mdash; it is their luckiest try out of 41.
-        </p>
-        <p>
-          And a player who scores 8 shots out of 10 is not an 80% shooter. That was one afternoon.
-          So when a result says 61.4%, the question is simply: if you ran it all again, what would you
-          get? If the honest answer is anywhere between 45 and 75, that is not a number. It is a
-          direction &mdash; which is still worth something, but it is a different thing to tell an
-          investor.
-        </p>
-        <p>
-          <span class="punch">A number with no wiggle room written next to it is a promise nobody has
-          tested.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Who did not make it this far?</span></div>
+            <span class="t-sub">The fishing net</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            You go fishing with a net. The holes are big, so the little fish swim straight through. You
+            pull it up, look in, and every fish is a big one. You could easily decide that all fish are
+            big. The net told you that, and the net was wrong.
+          </p>
+          <p>
+            A plan needs a list of things it was allowed to buy, and nearly everyone builds that list
+            the same way: ask the computer, <em>today</em>, what is available &mdash; then run the test
+            back across the last five years. That list is a net with big holes. Anything that died along
+            the way slipped through and is not in it, so the test only ever buys things it already knows
+            survived. Nothing warns you. An absence does not announce itself.
+          </p>
+          <p>
+            <span class="punch">The ones that slip through the net are the ones that failed. So the one
+            thing their test can never show you is what failure costs.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you actually have bought it?</span></div>
-        <p>
-          Imagine telling a playground: <em>&ldquo;I will swap my sandwich for anyone&rsquo;s cookie.&rdquo;</em>
-          Who says yes? The ones with the bad cookies. Whoever has the good cookie keeps it.
-        </p>
-        <p>
-          A strategy that waits for a good price has the same problem: the moments it gets that price
-          are often the moments everyone else is leaving &mdash; which is <em>why</em> the price came to it.
-          Add two more: the shelf said $10, but there was one left and you wanted fifty; and by the
-          time you got to the register it was gone. A backtest usually writes down the shelf price,
-          because on paper nothing runs out and nobody else is in the store.
-        </p>
-        <p>
-          <span class="punch">And the days that made most of the money are usually the fastest,
-          wildest ones &mdash; which are exactly the days when the price on paper is least likely to
-          have been real.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Did anyone check what it costs?</span></div>
+            <span class="t-sub">The ATM charge</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            You take money out of the ATM and it charges you $2. Once? You would shrug. But this plan
+            goes to the ATM five times a day, every day, for six years. Now the $2 is not a detail on
+            the receipt. It is the single biggest thing in the plan, and it can turn a winner into a
+            loser on its own.
+          </p>
+          <p>
+            So how does anyone know it is $2? Somebody said so. They looked at a different machine, a
+            while ago, and wrote it down, and it has been copied from document to document ever since.
+            Nobody has looked at a receipt. And it was never one number anyway &mdash; taking out $20
+            and taking out $2,000 are not charged the same way, and the figure people quote is nearly
+            always the $20 one.
+          </p>
+          <p>
+            In our own work we found one counted about twenty times too big. Three strategies had
+            already been switched off because of it.
+          </p>
+          <p>
+            <span class="punch">A cost that was copied instead of measured goes wrong in both
+            directions. It flatters plans that do not work, and it quietly kills plans that do &mdash;
+            and the ones it kills do not complain. They just go quiet.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Was it looking at an old photo?</span></div>
-        <p>
-          A strategy decides from a picture of the market &mdash; who wants to buy, who wants to sell. That
-          picture is always slightly old. A second or two.
-        </p>
-        <p>
-          Most days that changes nothing. On the day everybody runs for the door, it is the whole story.
-          The strategy sees a large crowd of buyers, which looks like safety &mdash; but that crowd left a
-          few seconds ago. The signal was not broken. It was reading a photo of a room that was
-          already empty. And that is not bad luck: it is what the strategy does every time the market
-          moves faster than its picture updates.
-        </p>
-        <p>
-          <span class="punch">Which means it will happen again &mdash; and your own backtest cannot tell
-          you how often, because it is the thing that recorded those days as wins.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is one bad day in the wash?</span></div>
+            <span class="t-sub">The red sock</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            A full load of whites, and one red sock goes in with them. Everything comes out pink. And
+            here is the real problem: the damage is not in the sock any more. It is spread thinly across
+            everything, and there is nothing left to pull out and throw away. Every item is a bit pink,
+            and a bit pink is easy to live with.
+          </p>
+          <p>
+            Market data arrives from outside, and now and then a row is broken. Not slightly.
+            Ridiculously. One day&rsquo;s figure came in thousands of times bigger than that market had
+            ever moved in a day, went into the wash with thirty months of ordinary days, and came out as
+            a result of nearly 200% a year.
+          </p>
+          <p>
+            Every safety check passed, because they all checked what came out of the machine rather than
+            what went into it. By then there is no bright red sock, just a faintly rosy month &mdash; and
+            a rosy month is not suspicious, it is what everybody was hoping for. Worse, checking two rows
+            and checking every row look identical when you read the code. The only difference is how many
+            it ran on.
+          </p>
+          <p>
+            <span class="punch">Anything checked by sampling is unchecked. The row that breaks
+            everything is the strange one, and the strange row is exactly what a sample is least likely
+            to hold.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Who did not make it this far?</span></div>
-        <p>
-          You go fishing with a net. The holes are big, so the little fish swim straight through. You
-          pull it up, look in, and every fish is a big one. You could easily decide that all fish are
-          big. The net told you that, and the net was wrong.
-        </p>
-        <p>
-          A plan needs a list of things it was allowed to buy, and nearly everyone builds that list
-          the same way: ask the computer, <em>today</em>, what is available &mdash; then run the test
-          back across the last five years. That list is a net with big holes. Anything that died along
-          the way, delisted or wound up or quietly gone to zero, slipped through and is not in it. So
-          the test walks back through history only ever buying things it already knows survived.
-        </p>
-        <p>
-          Nothing warns you. An absence does not announce itself, and the result simply comes out
-          smoother than it should. So we go and find a name that really did die, and check their test
-          could have bought it on the days it was alive &mdash; and took the loss on the day it was not.
-        </p>
-        <p>
-          <span class="punch">The ones that slip through the net are the ones that failed. So the one
-          thing their test can never show you is what failure costs.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Was it looking at an old photo?</span></div>
+            <span class="t-sub">The photo of an empty room</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            A strategy decides from a picture of the market &mdash; who wants to buy, who wants to sell. That
+            picture is always slightly old. A second or two.
+          </p>
+          <p>
+            Most days that changes nothing. On the day everybody runs for the door, it is the whole story.
+            The strategy sees a large crowd of buyers, which looks like safety &mdash; but that crowd left a
+            few seconds ago. The signal was not broken. It was reading a photo of a room that was
+            already empty. And that is not bad luck: it is what the strategy does every time the market
+            moves faster than its picture updates.
+          </p>
+          <p>
+            <span class="punch">Which means it will happen again &mdash; and your own backtest cannot tell
+            you how often, because it is the thing that recorded those days as wins.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Did anyone check what it costs?</span></div>
-        <p>
-          You take money out of the ATM and it charges you $2. Once? You would shrug. Two dollars is
-          nothing. But this plan goes to the ATM five times a day, every day, for six years. Now the
-          $2 is not a detail on the receipt. It is the single biggest thing in the plan, and it can
-          turn a winner into a loser on its own.
-        </p>
-        <p>
-          So how does anyone know it is $2? Somebody said so. They looked at a different machine, a
-          while ago, and wrote it down; it went into a document, and the next document copied it from
-          there. Nobody has ever looked at a receipt. By the time we see it, it is sitting in the
-          settings looking like a fact, because it has a decimal point in it. And it was never one
-          number anyway &mdash; taking out $20 and taking out $2,000 are not charged the same way, and
-          the figure people quote is nearly always the $20 one.
-        </p>
-        <p>
-          Sometimes it is simply counted the wrong way round. Charge the $2 to every bill instead of
-          every trip, and twenty bills make the machine look like a robbery. It was not. The trip cost
-          $2 the whole time. We found that exact shape in our own work: the cost counted about twenty
-          times too big, and three strategies already switched off because &ldquo;trading costs ate the
-          profit&rdquo;. That reason was void &mdash; and when we re-ran them on data they had never
-          seen, all three stayed shut anyway.
-        </p>
-        <p>
-          <span class="punch">A cost that was copied instead of measured goes wrong in both
-          directions. It flatters plans that do not work, and it quietly kills plans that do &mdash;
-          and the ones it kills do not complain. They just go quiet.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-6</span><span class="t-name">How many times did you guess?</span></div>
+            <span class="t-sub">Guess which hand</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            I hide a candy in one hand and you guess. Wrong. Guess again. Wrong. Keep going. On the
+            ninth try you get it, and I write down: <em>guessed right</em>. I do not write down the
+            eight misses. Read my notes and you are a mind reader.
+          </p>
+          <p>
+            Someone builds the plan, then tries it forty different ways and writes up the one that came
+            out best. The other thirty-nine leave no trace. So the number you are shown is doing two
+            jobs at once: it is the score, and it is also the reason this version is the one in front of
+            you. Pick the highest of forty and of course it is high.
+          </p>
+          <p>
+            Trade count hides the same trick. Two thousand trades that all landed in the same six panic
+            weeks are six answers, said loudly. So we set days aside before the searching starts and let
+            the plan try them &mdash; once. Peek, adjust, peek again, and those days are part of the
+            search too.
+          </p>
+          <p>
+            <span class="punch">Trying lots of things is not cheating &mdash; everybody does it. That is
+            exactly why the only real test is data set aside before the searching started, and why you
+            only get one shot at it.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is one bad day in the wash?</span></div>
-        <p>
-          A full load of whites, and one red sock goes in with them. Everything comes out pink. And
-          here is the real problem: the damage is not in the sock any more. It is spread thinly across
-          everything, and there is nothing left to pull out and throw away. Every item is a bit pink,
-          and a bit pink is easy to live with.
-        </p>
-        <p>
-          Market data arrives from outside, and now and then a row is broken. Not slightly.
-          Ridiculously. One day&rsquo;s figure came in thousands of times bigger than that market had
-          ever moved in a day &mdash; look in the basket and you would laugh at it. Nobody looks in the
-          basket. That one day went into the wash with thirty months of ordinary days and came out as
-          a result of nearly 200% a year.
-        </p>
-        <p>
-          Every safety check passed, because they all checked what came out of the machine rather than
-          what went into it. By then there is no bright red sock, just a faintly rosy month, and a
-          rosy month is not suspicious. It is what everybody was hoping for. There was a second check
-          too, and it was the right one &mdash; it had only ever been run on two things pulled off the
-          top of the basket. That is a glance at the pile, not a look through it. And checking two
-          rows and checking every row look identical when you read the code; the only difference is
-          how many it ran on.
-        </p>
-        <p>
-          <span class="punch">Anything checked by sampling is unchecked. The row that breaks
-          everything is the strange one, and the strange row is exactly what a sample is least likely
-          to hold.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you actually have bought it?</span></div>
+            <span class="t-sub">The cookie swap</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            Imagine telling a playground: <em>&ldquo;I will swap my sandwich for anyone&rsquo;s cookie.&rdquo;</em>
+            Who says yes? The ones with the bad cookies. Whoever has the good cookie keeps it.
+          </p>
+          <p>
+            A strategy that waits for a good price has the same problem: the moments it gets that price
+            are often the moments everyone else is leaving &mdash; which is <em>why</em> the price came to it.
+            Add two more: the shelf said $10, but there was one left and you wanted fifty; and by the
+            time you got to the register it was gone. A backtest usually writes down the shelf price,
+            because on paper nothing runs out and nobody else is in the store.
+          </p>
+          <p>
+            <span class="punch">And the days that made most of the money are usually the fastest,
+            wildest ones &mdash; which are exactly the days when the price on paper is least likely to
+            have been real.</span>
+          </p>
+          </div>
+        </details>
       </div>
-
       <div class="plain-item">
-        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">How many times did you guess?</span></div>
-        <p>
-          I hide a candy in one hand and you guess. Wrong. Guess again. Wrong. Keep going. On the
-          ninth try you get it, and I write down: <em>guessed right</em>. I do not write down the
-          eight misses. Read my notes and you are a mind reader.
-        </p>
-        <p>
-          Someone builds the plan, then tries it forty different ways &mdash; other settings, other
-          filters, other windows &mdash; and writes up the one that came out best. The other
-          thirty-nine leave no trace. So the number you are shown is doing two jobs at once: it is the
-          score, and it is also the reason this version is the one in front of you. Pick the highest
-          of forty and of course it is high. That says almost nothing about next year.
-        </p>
-        <p>
-          There is a second trap hiding inside &ldquo;we have plenty of data&rdquo;. A plan reports two
-          thousand trades, which sounds like mountains of proof &mdash; but it only fires when the
-          market panics, and all two thousand happened inside the same six weeks. That is not two
-          thousand answers. It is six answers, said very loudly. So we take days nobody has touched,
-          set them aside before the searching starts, and let the plan try. It works once: peek,
-          adjust, peek again, and those days are not untouched any more. They just became part of the
-          guessing.
-        </p>
-        <p>
-          <span class="punch">Trying lots of things is not cheating &mdash; everybody does it. That is
-          exactly why the only real test is data set aside before the searching started, and why you
-          only get one shot at it.</span>
-        </p>
+        <details>
+          <summary>
+            <div class="t-head"><span class="fc">FC-8</span><span class="t-name">How sure are you, really?</span></div>
+            <span class="t-sub">The best of forty-one</span>
+            <span class="plain-chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="plain-body">
+          <p>
+            Imagine someone takes 41 photos of themselves and shows you the best one. The photo is real.
+            Nobody faked it. But it is not how they normally look &mdash; it is their luckiest try out of 41.
+          </p>
+          <p>
+            And a player who scores 8 shots out of 10 is not an 80% shooter. That was one afternoon.
+            So when a result says 61.4%, the question is simply: if you ran it all again, what would you
+            get? If the honest answer is anywhere between 45 and 75, that is not a number. It is a
+            direction &mdash; which is still worth something, but it is a different thing to tell an
+            investor.
+          </p>
+          <p>
+            <span class="punch">A number with no wiggle room written next to it is a promise nobody has
+            tested.</span>
+          </p>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -601,40 +661,63 @@
       <span class="obj-kicker">The objection we hear most</span>
       <h3>&ldquo;But our data comes straight from the exchange&rdquo;</h3>
       <p>
-        Usually true, and not the reassurance it sounds like. A charting platform is not a source. It
-        is a window onto somebody else&rsquo;s feed, and the same asset on two venues is two different
-        series.
+        Usually true. It is also not the reassurance it sounds like, because a charting platform is
+        not where the data lives. It is a window onto somebody else&rsquo;s feed.
       </p>
       <p>
-        Bad prints survive on charts; when an exchange cancels and repairs those trades afterwards,
-        the repaired history and the history you looked at last year are not the same file, and
-        nothing tells you a bar has changed since you saw it.
+        <b>The history can change after you have looked at it.</b> Exchanges cancel bad trades and
+        repair them days later. Vendors backfill gaps. The chart you built the plan on is not always
+        the chart you would draw today, and nothing tells you when a bar has changed.
       </p>
       <p>
-        In stocks, whether prices are adjusted for splits and dividends changes every return in the
-        series. In futures, so does the way the continuous contract was stitched together. And a
-        symbol that gets delisted stops appearing in the search box &mdash; which is FC-2, built into
-        the interface.
+        <b>The same asset is not the same series.</b> One venue&rsquo;s price is not another&rsquo;s.
+        And a symbol that gets delisted simply stops appearing in the search box &mdash; which is
+        FC-2, built into the interface.
       </p>
       <p>
-        Costs are worse, because the platform never had that data to hand you. A chart is open, high,
-        low, close and volume. It is not the order book.
+        <b>A chart cannot tell you what trading costs.</b> A chart is open, high, low, close and
+        volume. That is a record of what the market did, not of what you would have paid. So the fee
+        in the test did not come from the exchange at all. It came from a document.
       </p>
       <p>
-        So the fee in the backtest did not come from the exchange at all &mdash; it came from a
-        document. Fee schedules are tiered by volume and account level, and they change across the
-        years a test covers. A test that quietly assumes it was the passive side of every trade, when
-        the strategy would in practice have crossed the spread and paid the taker fee, is wrong in the
-        flattering direction every single time.
-      </p>
-      <p>
-        Perpetuals pay funding, which is a real recurring cost and is regularly left out altogether.
-        And a built-in strategy tester takes commission as one number you type into a box: it knows
-        nothing about your tier, your funding, or how far down the book your order would have gone.
+        <b>And fees were never one number.</b> They are tiered by volume and account level, and they
+        change across the years a test covers. A test that quietly assumes it was the patient side of
+        every trade, when the strategy would in fact have crossed the spread and paid more, is wrong
+        in the flattering direction every single time. Perpetuals pay funding on top, which is a real
+        recurring cost and is regularly left out altogether.
       </p>
       <p>
         <span class="punch">Official is not the same as checked, and a display is not the same as the
         record.</span>
+      </p>
+    </div>
+
+    <div class="objection">
+      <span class="obj-kicker">And the one that follows it</span>
+      <h3>&ldquo;But we have the order book&rdquo;</h3>
+      <p>
+        Better than most people arrive with, and it genuinely helps. With a book, what a trade would
+        have cost stops being a guess and becomes something you can measure.
+      </p>
+      <p>
+        <b>Having it and using it are different things.</b> The question is what the code did with it.
+        Did it fill the order against the book, level by level, until the order was full? Or did it
+        read the price at the top and assume the whole thing went through there? The second is the
+        common case, and in the output the two look identical.
+      </p>
+      <p>
+        <b>A book shows what was on offer, not what you would have got.</b> Your own order moves it.
+        Somebody else was reaching for the same lot. And the days that make most of the money are the
+        fast ones, when the book is thinnest and least like the snapshot you are reading.
+      </p>
+      <p>
+        <b>And it leaves the other seven checks exactly where they were.</b> A perfect order book says
+        nothing about which assets were on the list, how many versions were tried before this one, or
+        whether a single broken row is carrying the result.
+      </p>
+      <p>
+        <span class="punch">Better data does not audit itself. It moves the place where the mistake
+        can hide.</span>
       </p>
     </div>
   </section>
