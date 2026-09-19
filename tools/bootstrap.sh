@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Arcobaleno Research — prepare a fresh, single-engagement audit box.
-# fctools v4 · sha256 4adc2698b3c2c2d4036a9e81453e7bcea2a3f1ec6ca06701f809b7585b264e99 · generated 2026-09-14
+# fctools v5 · sha256 33b0533b1adc9b46fabf90d3c3d54c8caf917b97857f809639b96ac73eac1e62 · generated 2026-09-16
 #
 # READ THIS BEFORE RUNNING IT. Do not pipe it into a shell. Download it, read it, then run it.
 # A forensics practice that tells clients to check their inputs does not curl|bash its own.
@@ -30,8 +30,8 @@ set -euo pipefail
 # web host does not reach. That is a written step you perform, not something a script can do
 # for itself.
 # ---------------------------------------------------------------------------------------------
-URL="https://arcobaleno.cloud/tools/fctools-v4.tar.gz"
-WANT="4adc2698b3c2c2d4036a9e81453e7bcea2a3f1ec6ca06701f809b7585b264e99"
+URL="https://arcobaleno.cloud/tools/fctools-v5.tar.gz"
+WANT="33b0533b1adc9b46fabf90d3c3d54c8caf917b97857f809639b96ac73eac1e62"
 FPR="49B5D5935AECA188C6638A08B544B55244F50864"   # signing key fingerprint -- ALSO check this against DEPLOY.md, same reason as WANT
 
 # Fresh cloud images usually log you in as root and often do NOT ship sudo. Calling sudo
@@ -51,7 +51,7 @@ else
   echo "    not a Debian/Ubuntu box — ensure python3 and the venv module are present, then re-run."
 fi
 
-echo "==> fetching fctools v4"
+echo "==> fetching fctools v5"
 curl -fsSL "$URL" -o fctools.tar.gz
 
 echo "==> verifying against the published hash"
