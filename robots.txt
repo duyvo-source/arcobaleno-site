@@ -1,0 +1,5 @@
+# arcobaleno.cloud — everything here is public and meant to be found.
+User-agent: *
+Allow: /
+
+Sitemap: https://arcobaleno.cloud/sitemap.xml
