@@ -262,6 +262,14 @@
     display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
   }
   .eyebrow .dot{color:var(--rule-strong)}
+  /* The separator is a flex item in its own right, so when the eyebrow wraps it can be left
+     stranded at the end of line one -- "BACKTEST FORENSICS /" with the rest underneath. Below
+     this width the two phrases stack, at which point the separator has nothing to separate, so
+     it is removed rather than left dangling. */
+  @media (max-width:34rem){
+    .eyebrow{flex-direction:column;gap:4px;align-items:flex-start}
+    .eyebrow .dot{display:none}
+  }
   h1{
     font-family:var(--display);font-weight:800;
     font-size:clamp(2.6rem,7vw,4.6rem);
@@ -434,7 +442,16 @@
     color:var(--ink);border:1px solid var(--rule-strong);
     padding:3px 9px;white-space:nowrap;
   }
-  .case h2{margin:0;flex:1 1 22ch}
+  /* The case title is an h3 (it belongs to the "Ten findings" section) but is SIZED as the
+     section headings are -- the visual weight is right, only the outline level was wrong.
+     These properties are the h2 rule's, restated here so the class carries the look and the
+     tag is free to describe the structure. */
+  .case-h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.02em;
+    line-height:1.14;text-wrap:balance;
+    margin:0;flex:1 1 22ch;
+  }
   .verdict{
     font-family:var(--mono);font-size:12px;letter-spacing:.06em;
     color:var(--muted);
@@ -672,7 +689,7 @@
           <div class="case-head">
             <span class="case-no">01</span>
           <span class="class-tag">Repeatability</span>
-          <h2 class="case-h2">The result changed every time it ran</h2>
+          <h3 class="case-h2">The result changed every time it ran</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -731,7 +748,7 @@
           <div class="case-head">
             <span class="case-no">02</span>
           <span class="class-tag">Bad data</span>
-          <h2 class="case-h2">One bad price produced a 192% annual return</h2>
+          <h3 class="case-h2">One bad price produced a 192% annual return</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -780,7 +797,7 @@
           <div class="case-head">
             <span class="case-no">03</span>
           <span class="class-tag">Cost arithmetic</span>
-          <h2 class="case-h2">Three strategies closed over a cost that was 20x too high</h2>
+          <h3 class="case-h2">Three strategies closed over a cost that was 20x too high</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -835,7 +852,7 @@
           <div class="case-head">
             <span class="case-no">04</span>
           <span class="class-tag">Stale data</span>
-          <h2 class="case-h2">A filter for recent data that never read a date</h2>
+          <h3 class="case-h2">A filter for recent data that never read a date</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -885,7 +902,7 @@
           <div class="case-head">
             <span class="case-no">05</span>
           <span class="class-tag">What trading really costs</span>
-          <h2 class="case-h2">One cost, three documents, three different numbers</h2>
+          <h3 class="case-h2">One cost, three documents, three different numbers</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -939,7 +956,7 @@
           <div class="case-head">
             <span class="case-no">06</span>
           <span class="class-tag">Repeatable, not reproducible</span>
-          <h2 class="case-h2">A headline that was really a range</h2>
+          <h3 class="case-h2">A headline that was really a range</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -995,7 +1012,7 @@
           <div class="case-head">
             <span class="case-no">07</span>
           <span class="class-tag">A number or a range</span>
-          <h2 class="case-h2">Nine versions, and none could be told apart from zero</h2>
+          <h3 class="case-h2">Nine versions, and none could be told apart from zero</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -1049,7 +1066,7 @@
           <div class="case-head">
             <span class="case-no">08</span>
           <span class="class-tag">How much evidence there really is</span>
-          <h2 class="case-h2">Two thousand trades, six weeks of evidence</h2>
+          <h3 class="case-h2">Two thousand trades, six weeks of evidence</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -1098,7 +1115,7 @@
           <div class="case-head">
             <span class="case-no">09</span>
           <span class="class-tag">Positions left open</span>
-          <h2 class="case-h2">Profitable only if you ignore what it still holds</h2>
+          <h3 class="case-h2">Profitable only if you ignore what it still holds</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -1154,7 +1171,7 @@
           <div class="case-head">
             <span class="case-no">10</span>
           <span class="class-tag">Survivorship</span>
-          <h2 class="case-h2">The survivorship fix that recovered no dead coins</h2>
+          <h3 class="case-h2">The survivorship fix that recovered no dead coins</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -1306,8 +1323,17 @@
     if (!CASE.test(hash)) return;              // validated before it reaches querySelector
     var el = document.querySelector(hash);
     if (!el) return;
+
+    // Open EVERY <details> that hides this case, not just its own. Cases 04-10 sit inside a
+    // second wrapper ("Seven more findings"), so opening the inner one alone leaves the case
+    // open inside a container that is still collapsed -- visibly nothing happens. Ancestors
+    // first, so the layout is final before we scroll.
+    for (var p = el.parentNode; p && p.nodeType === 1; p = p.parentNode) {
+      if (p.tagName === 'DETAILS') p.open = true;
+    }
     var d = el.querySelector('details');
     if (d) d.open = true;
+
     el.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
   }
 

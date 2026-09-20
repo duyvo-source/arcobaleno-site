@@ -261,6 +261,14 @@
     display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
   }
   .eyebrow .dot{color:var(--rule-strong)}
+  /* The separator is a flex item in its own right, so when the eyebrow wraps it can be left
+     stranded at the end of line one -- "BACKTEST FORENSICS /" with the rest underneath. Below
+     this width the two phrases stack, at which point the separator has nothing to separate, so
+     it is removed rather than left dangling. */
+  @media (max-width:34rem){
+    .eyebrow{flex-direction:column;gap:4px;align-items:flex-start}
+    .eyebrow .dot{display:none}
+  }
   .eyebrow a{color:var(--muted);text-decoration-thickness:1px;text-underline-offset:2px}
   .eyebrow a:hover{color:var(--right)}
   h1{
