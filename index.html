@@ -546,6 +546,15 @@
     line-height:1.7;margin-top:30px;padding-top:16px;
     border-top:1px solid var(--rule);max-width:60em;
   }
+  /* The entity line. Added 2026-09-22, the day the Bronnoysund name change landed -- until then
+     this page named no legal person at all, which is the one thing a prospect's finance team
+     looks for before they can raise a PO. Deliberately NOT bordered: it reads as the last line
+     of the disclaimer block, not as a second footer. */
+  .entity{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    line-height:1.7;margin-top:14px;max-width:60em;
+  }
+  .entity b{color:var(--muted);font-weight:600}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <style>
@@ -1300,6 +1309,11 @@
         on how any strategy will perform in future. Every case study on this page describes a defect
         found in our own internal research; no client work is described. Figures are quoted as
         they appear in the dated internal documents named beneath each case.
+      </p>
+      <p class="entity">
+        <b>Arcobaleno Research</b> is a trading name of <b>ARCOBALENO RESEARCH VO</b>, a Norwegian
+        sole proprietorship (<i>enkeltpersonforetak</i>), org. nr. <b>918&nbsp;838&nbsp;120</b>,
+        registered in Oslo, Norway.
       </p>
     </div>
   </div>
