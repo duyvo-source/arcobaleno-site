@@ -46,7 +46,7 @@ fi
 echo "==> python3 and venv"
 if command -v apt-get >/dev/null 2>&1; then
   $SUDO apt-get update -qq
-  $SUDO DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv gnupg
+  $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3 python3-venv gnupg
 else
   echo "    not a Debian/Ubuntu box — ensure python3 and the venv module are present, then re-run."
 fi
