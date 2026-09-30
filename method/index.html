@@ -551,8 +551,8 @@
         </thead>
         <tbody>
           <tr><td class="k">Format</td><td><b>Parquet</b></td><td>CSV, a database dump</td><td>a live API we must poll; a platform you can't export from</td></tr>
-          <tr><td class="k">Size</td><td><b>Up to ~2&nbsp;GB</b></td><td>2–20&nbsp;GB, adds a day or two</td><td>larger than ~20&nbsp;GB</td></tr>
-          <tr><td class="k">Frequency</td><td><b>Daily or hourly bars</b></td><td>minute bars</td><td>every trade, or full order book</td></tr>
+          <tr><td class="k">Size, loaded (rows × columns × 8&nbsp;bytes)</td><td><b>Up to ~1&nbsp;GB</b></td><td>1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td>larger than ~25&nbsp;GB</td></tr>
+          <tr><td class="k">Frequency</td><td><b>Daily or hourly bars</b></td><td>minute bars; every trade or full order book up to ~25&nbsp;GB, requoted</td><td>every trade or full order book over ~25&nbsp;GB</td></tr>
           <tr><td class="k">Code</td><td><b>Python, in version control</b></td><td>R, MATLAB, C++</td><td>a sealed binary; a signal you can't show us</td></tr>
           <tr><td class="k">Run time</td><td><b>Under 2 hours a run</b></td><td>2–6 hours, adds days</td><td>longer than that</td></tr>
         </tbody>
