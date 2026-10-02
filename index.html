@@ -569,6 +569,14 @@
   .brand:has(.mark-after){gap:18px}
   .brand svg.mark.mark-after{display:block;align-self:center;height:calc(1.75rem * 1.372);width:auto;flex:none}
   .brand svg.mark-after .ring,.brand svg.mark-after .chk{stroke-width:2.0}
+
+  /* Closing contact box (2026-10-02): the header wordmark again, smaller, with one label line. */
+  .contact-who .cb-row{display:flex;align-items:center;gap:14px}
+  .contact-who .cb-wm{font-size:1.35rem}
+  .contact-who svg.cb-mark{display:block;height:calc(1.35rem * 1.372);width:auto;flex:none}
+  .contact-who svg.cb-mark .ring,.contact-who svg.cb-mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.0}
+  .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
+  .contact-who .cb-sub{display:block;margin-top:10px;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -1298,11 +1306,7 @@
         product. A founder raising money on a performance claim, before someone else checks it for them.
       </p>
       <div class="contact-block">
-        <div class="contact-who">
-          <b>Arcobaleno Research</b>
-          Backtest forensics &amp; research due diligence<br>
-          We split the number into what actually produced it
-        </div>
+        <div class="contact-who"><span class="cb-row"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark cb-mark" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
