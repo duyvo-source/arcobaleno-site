@@ -556,6 +556,19 @@
   }
   .entity b{color:var(--muted);font-weight:600}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- wordmark (2026-10-02): ARCOBALENO over RESEARCH, check on the right ----------
+     Source Serif 600 capitals at equal ink width. Ratios measured on the H2 lockup
+     (funding/forensics/linkedin/wordmark/): top = .4348 x the bottom size, top tracking .5913em,
+     bottom .06em. The check's 1.372em height was measured so its ink spans both lines exactly. */
+  .wordmark{display:inline-flex;flex-direction:column;align-items:flex-start;font-family:var(--body);
+    font-weight:600;text-transform:uppercase;color:var(--ink);font-size:1.75rem;line-height:1}
+  .wordmark .wm-a{font-size:.4348em;letter-spacing:.5913em;margin-left:.075em;margin-right:-.5913em;
+    margin-bottom:.35em;color:var(--muted)}
+  .wordmark .wm-r{letter-spacing:.06em;margin-right:-.06em;line-height:.86}
+  .brand:has(.mark-after){gap:18px}
+  .brand svg.mark.mark-after{display:block;align-self:center;height:calc(1.75rem * 1.372);width:auto;flex:none}
+  .brand svg.mark-after .ring,.brand svg.mark-after .chk{stroke-width:2.0}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -570,12 +583,7 @@
 
   <header class="mast">
     <div class="brand">
-      <svg class="mark" viewBox="0 0 32 32" role="img" aria-labelledby="markTitle">
-        <title id="markTitle">Arcobaleno — a check that carries on past the ring</title>
-        <path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path>
-        <path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path>
-      </svg>
-      <span class="brand-name">Arcobaleno Research</span>
+      <span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark mark-after" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg>
     </div>
     <div class="eyebrow">
       <span>Backtest Forensics</span><span class="dot">/</span>
