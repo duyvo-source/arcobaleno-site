@@ -208,6 +208,8 @@
     --wrong-bg:#F3E2DE;
     --right:#1B5849;
     --right-bg:#DDE9E4;
+    --caution:#8A5A0B;
+    --caution-bg:#F4EBD9;
     --display:"Archivo","Helvetica Neue",Arial,sans-serif;
     --body:"Source Serif 4",Georgia,"Times New Roman",serif;
     --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -225,6 +227,8 @@
       --wrong-bg:#2E1C18;
       --right:#6FC3AC;
       --right-bg:#132A25;
+      --caution:#E0B060;
+      --caution-bg:#2A2213;
     }
   }
   :root[data-theme="dark"]{
@@ -239,6 +243,8 @@
     --wrong-bg:#2E1C18;
     --right:#6FC3AC;
     --right-bg:#132A25;
+    --caution:#E0B060;
+    --caution-bg:#2A2213;
   }
 
   *{box-sizing:border-box}
@@ -512,24 +518,134 @@
   .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
   .contact-who .cb-sub{display:block;margin-top:10px;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px}
 
-  /* ---------- sample report (2026-10-04) ----------
-     The report body is NOT in this file: build_site.py renders SPECIMEN_FULL_AUDIT.md (below its
-     internal banner) into the SPECIMEN-BODY marker. Edit the markdown, never the built page. */
+  /* ---------- click-to-read posts (2026-10-04) ----------
+     A long section folded to its heading and one teaser line. Same pattern on page.html and
+     method.html -- duplicated by design, like the tokens. */
+  .post>summary{list-style:none;cursor:pointer;display:block}
+  .post>summary::-webkit-details-marker{display:none}
+  .post>summary h2{margin-bottom:8px}
+  .post>summary:hover h2,.post>summary:focus-visible h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  .post>summary:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  .post-teaser{display:block;font-size:1.08rem;color:var(--muted);max-width:36em;margin:0}
+  .post-more{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--right)}
+  .post-more .when-open{display:none}
+  .post[open] .post-more .when-open{display:inline}
+  .post[open] .post-more .when-closed{display:none}
+  .post[open]>summary .post-teaser{display:none}
+  .post-body{margin-top:18px}
+
+  /* ---------- sample report (rewritten 2026-10-04) ----------
+     THIS FILE IS THE MASTER COPY of the sample report; the old technical specimen is superseded.
+     Plain language throughout: written for DAO members and investors, not for quants.
+     Status colour is NEVER the only signal -- every badge carries an icon and a word, because
+     --wrong and --caution are near-identical for red-green colour-blind readers (validated). */
   .specimen-flag{margin:26px 0 0;padding:14px 18px;border:1px solid var(--right);background:var(--right-bg);
     font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink);max-width:46em}
   .specimen-flag b{color:var(--right)}
-  .report{max-width:760px;padding:8px 0 40px}
-  .report h2{margin-top:44px;font-size:clamp(1.25rem,2.6vw,1.6rem)}
-  .report h3{margin-top:28px}
-  .report p,.report li{max-width:44em}
-  .report hr{border:0;border-top:1px solid var(--rule);margin:36px 0}
-  .report blockquote{margin:16px 0;padding:6px 16px;border-left:3px solid var(--rule-strong);color:var(--muted)}
-  .report blockquote p{margin:6px 0}
-  .report code{font-family:var(--mono);font-size:.84em;overflow-wrap:anywhere}
-  .report table{border-collapse:collapse;margin:16px 0;font-size:.92rem;display:block;overflow-x:auto;max-width:100%}
-  .report th,.report td{border-bottom:1px solid var(--rule);padding:7px 12px 7px 0;text-align:left;vertical-align:top}
-  .report th{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  .report td:last-child,.report th:last-child{padding-right:0}
+  .r{max-width:780px}
+  .r h2{margin-top:0}
+  .r section{padding:44px 0;border-top:1px solid var(--rule)}
+  .r p,.r li{max-width:44em}
+  .eyebrow-s{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+  /* cover card */
+  .cover-card{margin:34px 0 0;background:var(--raised);border:1px solid var(--rule);padding:22px 24px}
+  .cover-card dl{display:grid;grid-template-columns:150px 1fr;gap:10px 18px;margin:0}
+  .cover-card dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .cover-card dd{margin:0}
+  @media (max-width:560px){.cover-card dl{grid-template-columns:1fr;gap:2px}.cover-card dd{margin-bottom:10px}}
+
+  /* verdict */
+  .verdict-line{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4.6vw,2.8rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 22px}
+  .verdict-line .ok{color:var(--right)} .verdict-line .bad{color:var(--wrong)}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:8px 0 26px}
+  .tile{background:var(--raised);padding:18px 18px 16px}
+  .tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .tile .from{font-family:var(--mono);font-size:15px;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--wrong);margin-top:8px}
+  .tile .to{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1.1;margin-top:2px}
+  .tile .sub{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  @media (max-width:700px){.tiles{grid-template-columns:1fr}}
+
+  /* callouts */
+  .call{border-left:4px solid var(--rule-strong);background:var(--raised);padding:14px 18px;margin:18px 0}
+  .call>.lab{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .call p{margin:6px 0}
+  .call.wrong{border-color:var(--wrong);background:var(--wrong-bg)} .call.wrong>.lab{color:var(--wrong)}
+  .call.fix{border-color:var(--right);background:var(--right-bg)} .call.fix>.lab{color:var(--right)}
+  .call.holds{border-color:var(--right);background:var(--raised)} .call.holds>.lab{color:var(--right)}
+  .call.note{border-color:var(--caution);background:var(--caution-bg)} .call.note>.lab{color:var(--caution)}
+  .effort{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--right);border:1px solid var(--right);padding:1px 8px;margin-top:4px}
+
+  /* status badges -- icon + word, never colour alone */
+  .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border:1px solid;white-space:nowrap}
+  .badge.pass{color:var(--right);background:var(--right-bg);border-color:var(--right)}
+  .badge.minor{color:var(--caution);background:var(--caution-bg);border-color:var(--caution)}
+  .badge.fail{color:var(--wrong);background:var(--wrong-bg);border-color:var(--wrong)}
+  .badge .i{font-size:13px;line-height:1}
+
+  /* at a glance */
+  .glance{list-style:none;padding:0;margin:20px 0 0;border-top:1px solid var(--rule)}
+  .glance li{display:grid;grid-template-columns:58px 1fr auto;gap:6px 16px;align-items:center;padding:12px 2px;border-bottom:1px solid var(--rule);max-width:none}
+  .glance a{color:var(--ink);text-decoration:none;font-weight:600}
+  .glance a:hover,.glance a:focus-visible{text-decoration:underline;color:var(--right)}
+  .glance .what{display:block;font-weight:400;font-size:14.5px;color:var(--muted);line-height:1.45}
+  .fc{font-family:var(--mono);font-size:12px;font-weight:600;border:1px solid var(--rule-strong);padding:2px 6px;text-align:center;background:var(--raised)}
+  @media (max-width:600px){.glance li{grid-template-columns:52px 1fr}.glance .badge{grid-column:2;justify-self:start}}
+
+  /* waterfall: one row per correction, floating bar from new value to old value. Scale -6 to +40. */
+  .wf{margin:22px 0 6px;border-top:1px solid var(--rule)}
+  .wf-row{display:grid;grid-template-columns:240px 1fr 118px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--rule);position:relative}
+  .wf-lab{font-size:14.5px;line-height:1.35}
+  .wf-lab .fc{font-size:10.5px;padding:1px 4px;margin-right:6px}
+  .wf-track{position:relative;height:22px}
+  .wf-track::before{content:"";position:absolute;top:-9px;bottom:-9px;left:calc(6 / 46 * 100%);border-left:1px dashed var(--rule-strong)}
+  .wf-bar{position:absolute;top:3px;height:16px;border-radius:2px;
+    left:calc((var(--a) + 6) / 46 * 100%);width:calc((var(--b) - var(--a)) / 46 * 100%)}
+  .wf-bar.total{background:var(--ink)}
+  .wf-bar.cut{background:var(--wrong)}
+  .wf-bar.range{top:9px;height:4px;background:var(--muted);border-radius:2px}
+  .wf-val{font-family:var(--mono);font-size:13px;text-align:right;white-space:nowrap}
+  .wf-val .d{color:var(--wrong);font-weight:600}
+  .wf-row.end .wf-lab,.wf-row.start .wf-lab{font-weight:600}
+  .wf-row:hover{background:var(--raised)}
+  .wf-tip{position:absolute;right:0;bottom:calc(100% - 4px);z-index:2;background:var(--ink);color:var(--paper);font-size:13px;line-height:1.4;padding:8px 10px;max-width:300px;opacity:0;pointer-events:none;transition:opacity .12s}
+  .wf-row:hover .wf-tip,.wf-row:focus-within .wf-tip{opacity:1}
+  .wf-axis{display:grid;grid-template-columns:240px 1fr 118px;gap:14px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .wf-axis .t{position:relative;height:16px}
+  .wf-axis .t span{position:absolute;transform:translateX(-50%)}
+  @media (max-width:640px){
+    .wf-row,.wf-axis{grid-template-columns:1fr 92px}
+    .wf-lab{grid-column:1 / -1}
+    .wf-axis>span:first-child{display:none}
+  }
+  .tbl-view{margin-top:12px}
+  .tbl-view>summary{cursor:pointer;font-family:var(--mono);font-size:12.5px;color:var(--right)}
+
+  /* tables inside the report */
+  .r table{border-collapse:collapse;margin:16px 0;font-size:.95rem;width:100%;max-width:640px}
+  .r th,.r td{border-bottom:1px solid var(--rule);padding:8px 14px 8px 0;text-align:left;vertical-align:top}
+  .r th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .r td.n{font-family:var(--mono);font-size:.9em;white-space:nowrap}
+  .r td.bad{color:var(--wrong);font-weight:600}
+  .r td.good{color:var(--right);font-weight:600}
+  .tscroll{overflow-x:auto}
+
+  /* one check */
+  .check-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:6px}
+  .check-head .fc{font-size:13px}
+  .check-head h2{margin:0;font-size:clamp(1.35rem,2.8vw,1.75rem)}
+  .impact{font-family:var(--mono);font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .impact b{color:var(--wrong)}
+  .asked{font-size:1.06rem;color:var(--muted)}
+  .asked b{color:var(--ink)}
+  .src{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:14px}
+  .src code{font-size:11.5px}
+
+  ol.plan{padding-left:0;list-style:none;counter-reset:p;margin:18px 0 0}
+  ol.plan li{counter-increment:p;position:relative;padding:12px 0 12px 46px;border-bottom:1px solid var(--rule)}
+  ol.plan li::before{content:counter(p);position:absolute;left:0;top:11px;width:30px;height:30px;border-radius:50%;
+    background:var(--right);color:var(--paper);font-family:var(--mono);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  ul.plain{padding-left:20px} ul.plain li{margin:6px 0}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -552,864 +668,442 @@
     </div>
     <h1>What a full audit looks like</h1>
     <p class="standfirst">
-      The whole report, start to finish, so you can see what you are buying before you write to us.
-      <strong>The strategy, the client and every figure in it are made up.</strong>
+      The whole report, start to finish, so you can see what you would be buying.
+      <strong>The strategy, the client and every number in it are made up.</strong>
     </p>
     <p class="specimen-flag">
-      <b>SPECIMEN, NOT CLIENT WORK.</b> No client, no engagement, no real data, no real firm. We built
-      a fictional order-book signal and audited it against all eight checks, so the format is real
-      and the findings are not. For defects we actually found, in our own research, see the
-      <a href="/">ten findings on the front page</a>. Order-book data like this specimen's is quoted
-      separately from the tier prices, because of its size.
+      <b>SAMPLE, NOT CLIENT WORK.</b> No client, no real data, no real firm. We invented a trading
+      strategy and audited it against all eight checks, so the format is real and the findings are
+      not. For mistakes we really found, in our own research, see the
+      <a href="/">ten findings on the front page</a>. This sample uses a very large dataset, which
+      we price separately from the standard tiers.
     </p>
   </header>
 
-  <article class="report">
-<div>
-<p><strong>BACKTEST FORENSICS — FULL AUDIT</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Prepared for</strong></td>
-<td><em>[client redacted — specimen]</em></td>
-</tr>
-<tr>
-<td><strong>Strategy</strong></td>
-<td><code>obi-signal-v4</code> — order-book-imbalance directional signal, 12 crypto perpetual pairs</td>
-</tr>
-<tr>
-<td><strong>What it emits</strong></td>
-<td>a three-way call — <strong>buy / sell / flat</strong> — every 15 minutes per pair</td>
-</tr>
-<tr>
-<td><strong>Claim under test</strong></td>
-<td><strong>61.4% directional hit rate · +38.0% annualised on a 1× notional overlay · Sharpe 1.62 · max drawdown −11.2%</strong>, 2023-01-01 → 2025-12-31</td>
-</tr>
-<tr>
-<td><strong>Scope</strong></td>
-<td>Full audit. All eight checks, <code>FC-1</code> through <code>FC-8</code>.</td>
-</tr>
-<tr>
-<td><strong>Material examined</strong></td>
-<td>signal generator, backtest engine, scoring script, 3 years of 1-second L2 snapshots (5 levels a side), exported OHLCV used to score the calls, and the two documents stating the claim</td>
-</tr>
-<tr>
-<td><strong>Method</strong></td>
-<td>every finding ships with a script the client runs themselves</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr />
-<h2>Verdict</h2>
-<p><strong>The signal is real. The number is not.</strong></p>
-<p>Those are two different findings and both matter, so neither is buried.</p>
-<p><strong>What holds.</strong> <code>obi-signal-v4</code> carries genuine directional information. On six months of data
-that was never used to choose anything, it calls direction correctly <strong>53.1% of the time against
-a 33.3% chance floor</strong> on 1,180 scored calls — a margin that is not remotely explicable by luck
-(p &lt; 0.001). Nothing in this report says the model is noise, and we want that read before
-anything else, because most of what follows is subtraction.</p>
-<p><strong>What does not hold.</strong> The <strong>+38.0% annualised</strong> figure does not survive contact with the
-checklist. Corrected for six defects — none of them in the model, all of them in what the
-backtest assumed about <strong>execution and about the clock</strong> — the same signal on the same data
-returns <strong>+2.2% annualised, with a 95% confidence interval of −5.4% to +9.9%.</strong></p>
-<p><strong>That interval includes zero.</strong> The honest statement of the claim is not &quot;this makes 38% a
-year.&quot; It is: <em>&quot;this predicts direction better than chance, by a margin that the current
-execution assumptions are too optimistic to convert into a demonstrated return.&quot;</em></p>
-<p><strong>And the failure is not spread evenly — it is concentrated exactly where the money is.</strong> The
-single largest correction (§4, <code>FC-7</code>) comes from bars in the top 1% of realised volatility.
-Those bars carry <strong>34% of the claimed P&amp;L</strong> and are the bars where the strategy's fill
-assumption is least defensible. The strategy looks best precisely where it is least
-demonstrable.</p>
-<p><strong>On the known live miss.</strong> The client reported one live event where the signal called <em>buy</em>
-and the correct call was <em>sell</em>. <strong>The audit's job was to say whether that was one event or a
-class.</strong> It is a class — see §5. Fourteen events in the sample share its structure; <strong>nine of
-the fourteen invert</strong> when the signal is recomputed at the latency it actually runs at. The
-miss was not bad luck. It is what this signal does in that regime, and it will do it again.</p>
-<hr />
-<h2>The corrected headline, as a waterfall</h2>
-<p>Each line is one finding. Each is reproducible by the script named in its section.</p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>correction</th>
-<th>check</th>
-<th>annualised</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><strong>as claimed</strong></td>
-<td></td>
-<td><strong>+38.0%</strong></td>
-</tr>
-<tr>
-<td>§9</td>
-<td>asset list rebuilt as-of, not as-surviving</td>
-<td><code>FC-2</code></td>
-<td>+36.2%</td>
-</tr>
-<tr>
-<td>§6</td>
-<td>maker rebate applied to measured fill mix, not to 100%</td>
-<td><code>FC-3</code></td>
-<td>+29.6%</td>
-</tr>
-<tr>
-<td>§7</td>
-<td>calls scored on the venue actually traded</td>
-<td><code>FC-4</code></td>
-<td>+26.1%</td>
-</tr>
-<tr>
-<td>§4</td>
-<td>fills taken at the liquidity that existed</td>
-<td><code>FC-7</code></td>
-<td><strong>+8.2%</strong></td>
-</tr>
-<tr>
-<td>§5</td>
-<td>signal computed at the book age it really sees</td>
-<td><code>FC-5</code></td>
-<td>+4.1%</td>
-</tr>
-<tr>
-<td>§3</td>
-<td>read on untouched data instead of the sample it was chosen on</td>
-<td><code>FC-6</code></td>
-<td><strong>+2.2%</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td><em>95% CI: −5.4% to +9.9%</em></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>claimed</th>
-<th><strong>corrected</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>directional hit rate</td>
-<td>61.4%</td>
-<td><strong>53.1%</strong></td>
-</tr>
-<tr>
-<td>annualised return (1× notional)</td>
-<td>+38.0%</td>
-<td><strong>+2.2%</strong></td>
-</tr>
-<tr>
-<td>Sharpe</td>
-<td>1.62</td>
-<td><strong>0.14</strong></td>
-</tr>
-<tr>
-<td>max drawdown</td>
-<td>−11.2%</td>
-<td>−15.7%</td>
-</tr>
-<tr>
-<td><strong>is the return distinguishable from zero?</strong></td>
-<td><em>not stated</em></td>
-<td><strong>no</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Sharpe moved further than return did.</strong> That is the signature of a result whose volatility was
-being understated along with its costs, and it is the number we would put in front of an
-investment committee first.</p>
-<hr />
-<h2>1. What we were asked</h2>
-<blockquote>
-<p>&quot;61.4% hit rate, +38% annualised, Sharpe 1.62, max DD −11.2%. Order-book imbalance, 12 perp
-pairs, 15-minute calls, 2023 through 2025.&quot;</p>
-</blockquote>
-<p>The figure appears in a strategy memo and in a one-page tear sheet prepared for investors. The
-two agree, which is worth noting: <strong>agreement between two documents is not corroboration when
-both are downstream of one script.</strong> They were.</p>
-<p><strong>What the client told us before we started</strong> (our intake form asks <em>&quot;anything you already suspect
-is wrong?&quot;</em>): one live event, roughly a year before the engagement, where the signal called buy
-into what should have been a sell. The client's own read was that it was a one-off. <strong>That
-answer shaped the audit</strong> — it is why <code>FC-5</code> and <code>FC-7</code> were worked before <code>FC-3</code>, against the
-usual cheap-and-structural-first order. It was the right call; see §5.</p>
-<hr />
-<h2>2. <code>FC-1</code> — Does it repeat? <strong>PASS</strong></h2>
-<p><strong>Method.</strong> <code>fctools/fc1_reproduce.py --cmd &quot;&lt;their command&gt;&quot;</code>: 20 runs in an identical environment, plus
-runs under three different <code>PYTHONHASHSEED</code> values, on two machines with different CPU counts.</p>
-<p><strong>Finding.</strong> It reproduces. Maximum spread across 20 runs: <strong>0.31pp of annualised return</strong>,
-attributable to a documented floating-point reduction order in the rolling imbalance window. Hit
-rate was bit-identical in every run.</p>
-<p><strong>This is a clean result and it is worth what it costs.</strong> Most of the strategies that reach us
-fail here (case study 1 exists because one of ours did). A signal that returns the same number
-on a machine that has never seen it is a strategy whose author can be taken at their word about
-everything downstream, and it meant the remaining seven checks were testing the <em>method</em> rather
-than chasing an unstable number.</p>
-<p><strong>What passing does not mean.</strong> It means the code is deterministic. It says nothing about
-whether the number is <em>right</em> — the next six sections are all defects in a perfectly
-reproducible pipeline.</p>
-<p><strong>THE FIX — nothing to fix, one thing to keep.</strong> Pin <code>PYTHONHASHSEED</code> and the reduction order in
-CI so this stays true as the code changes. Reproducibility is not a property you have; it is one you
-keep. <strong>Effort: under an hour, once.</strong></p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 fctools/fc1_reproduce.py --cmd &quot;python3 run_backtest.py --config prod.yaml&quot; --runs 20</code></p>
-</blockquote>
-<hr />
-<h2>3. <code>FC-6</code> — Was it cherry-picked? <strong>The largest single correction</strong></h2>
-<p><strong>What we asked.</strong> How many versions were tried, and was this one chosen before or after its
-performance was visible?</p>
-<p><strong>What we found.</strong> The repository contains <strong>41 distinct threshold configurations</strong> in
-<code>configs/</code>, dated across fourteen months, plus a sweep script that evaluates all of them on the
-full 2023–2025 period. The shipped configuration is the argmax of that sweep.</p>
-<p><strong>There was no holdout.</strong> Not a weak one — none. Every configuration was scored on every day of
-data, and the best was kept.</p>
-<p><strong>Why this is not an accusation.</strong> Nobody did anything dishonest. This is the most common finding
-we make, it is made against our own research routinely (case study 8), and the author's instinct
-— <em>&quot;try the variants, keep the one that works&quot;</em> — is correct in every field except this one. The
-problem is arithmetic, not integrity: <strong>with 41 tries on one sample, the best result is the
-sample's luckiest result, and it will not repeat.</strong></p>
-<p><strong>Quantifying it.</strong> We carved the final six months (2025-07-01 → 2025-12-31) and confirmed
-against the client's own commit history that no configuration file was modified after
-2025-06-14 — so that window is genuinely untouched by selection. Re-reading the <strong>shipped,
-unmodified</strong> configuration on it:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>full sample (selected on)</th>
-<th><strong>untouched holdout</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>scored calls</td>
-<td>7,104</td>
-<td>1,180</td>
-</tr>
-<tr>
-<td>directional hit rate</td>
-<td><strong>61.4%</strong></td>
-<td><strong>53.1%</strong></td>
-</tr>
-<tr>
-<td>annualised (pre-other-corrections)</td>
-<td>+38.0%</td>
-<td>+21.9%</td>
-</tr>
-<tr>
-<td>rank of shipped config among the 41</td>
-<td><strong>1st</strong></td>
-<td><strong>17th</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>That last row is the finding.</strong> On data it was not chosen against, the shipped configuration is
-ordinary — 17th of 41, indistinguishable from the middle of its own family. The spread between
-1st and 17th on the selection sample was a spread between lucky draws, not between better and
-worse models.</p>
-<p><strong>And the part that survives.</strong> 53.1% against a 33.3% floor on 1,180 independent three-way calls
-is <strong>p &lt; 0.001</strong>. Selection inflated the number. It did not manufacture it. There is something
-here.</p>
-<p><strong>THE FIX — this one cannot be fixed backwards, only forwards.</strong> There is no way to un-see 41
-results, and no re-analysis recovers what selection consumed. Going forward, two changes: <strong>(a)</strong> cut
-a holdout before the next parameter change and do not read it until the change is final; <strong>(b)</strong> for
-anything you intend to show an investor, fix the bar in writing before the window opens. <strong>Effort:
-a policy decision plus a day of tooling.</strong> Note that the 17th-of-41 rank is not a reason to switch
-configurations — the ranking on the holdout is itself one draw.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc6_holdout.py --configs configs/ --holdout 2025-07-01:2025-12-31 --freeze-check .git</code></p>
-</blockquote>
-<hr />
-<h2>4. <code>FC-7</code> — Could you have traded it? <strong>The largest correction in the return</strong></h2>
-<p><strong>What we asked.</strong> Could every position in the result actually have been bought and sold, at the
-price used, at that size?</p>
-<p><strong>What we found.</strong> The engine fills every call as a <strong>resting limit order at the mid price
-prevailing at signal time</strong>, and treats the fill as certain. That assumption is doing an enormous
-amount of work, and it is doing the most work exactly where it is least true.</p>
-<p><strong>The concentration, first — because it reframes everything.</strong> We measured where the claimed P&amp;L
-actually comes from:</p>
-<table>
-<thead>
-<tr>
-<th>bars, ranked by realised 15-minute volatility</th>
-<th>share of bars</th>
-<th><strong>share of claimed P&amp;L</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>top 1%</td>
-<td>0.8%</td>
-<td><strong>34.1%</strong></td>
-</tr>
-<tr>
-<td>top 5%</td>
-<td>4.9%</td>
-<td><strong>61.3%</strong></td>
-</tr>
-<tr>
-<td>remaining 95%</td>
-<td>95.1%</td>
-<td>38.7%</td>
-</tr>
-</tbody>
-</table>
-<p><strong>A third of the return is produced on eight-tenths of one percent of the bars.</strong> Whatever is
-true about the fill assumption on those bars is very nearly the whole result.</p>
-<p><strong>What is true about them.</strong> A resting limit order fills when someone crosses the spread to hit
-it. On a fast move, the orders that fill are the ones on the <em>wrong</em> side — you are filled
-because the market is leaving. We measured, on each of those top-1% bars, whether the modelled
-fill price was still available:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>top-1% bars where the mid moved past the limit price within 1 second</td>
-<td><strong>71.4%</strong></td>
-</tr>
-<tr>
-<td>median adverse move before the order could have rested</td>
-<td><strong>19 bps</strong></td>
-</tr>
-<tr>
-<td>modelled fills at a price that was never touched again in the bar</td>
-<td><strong>2,847 of 7,104 calls</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>The correction.</strong> We re-ran the engine with a single change — on any bar where the book moved
-away before the order could rest, the position is taken <strong>as a taker, at the price that actually
-existed</strong>, instead of as a maker at the price that did not. The client's own venue data supplies
-both. Everything else is untouched.</p>
-<p><strong>+26.1% → +8.2% annualised. A 17.9 percentage-point correction, and the single largest in this
-report.</strong></p>
-<p><strong>Why this is a defect and not a difference of opinion.</strong> The engine is not modelling an
-optimistic fill. It is modelling a fill <em>conditional on information it did not have</em> — whether
-the order would fill is decided by what happens after the signal, and the engine resolves that
-question by assuming the favourable answer every time. That is look-ahead in the fill logic, and
-it is the defect <code>FC-7</code> exists to find.</p>
-<p><strong>THE FIX — invert the default.</strong> Model every fill as a <strong>taker</strong> unless there is evidence in the
-book that a resting order would have filled, rather than the reverse. This is one function in the
-engine and it makes the assumption conservative instead of optimistic. <strong>Effort: 2–3 days including
-re-running the sweep.</strong> <strong>How to know it worked:</strong> at a position cap high enough that the constraint
-never binds, the corrected engine and the current one must agree bit-for-bit — if they do not, the
-change altered something it should not have.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc7_fill_realism.py --book l2/ --calls signals.parquet --mode counterfactual</code>
-Per-call output in <code>fc7_fill_audit.csv</code> — 7,104 rows, one per call, not a summary.</p>
-</blockquote>
-<hr />
-<h2>5. <code>FC-5</code> — Is the data current? <strong>The finding that explains the known miss</strong></h2>
-<p><strong>What we asked.</strong> The signal reads a book snapshot. <strong>How old is that snapshot at the moment the
-decision is made?</strong></p>
-<p><strong>What we found.</strong> The backtest treats the snapshot as instantaneous — the book state at time <em>t</em>
-produces the call at time <em>t</em>. In production it cannot be. We instrumented the live path from the
-client's own logs:</p>
-<table>
-<thead>
-<tr>
-<th>book snapshot age at decision time</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>median, all conditions</td>
-<td><strong>240 ms</strong></td>
-</tr>
-<tr>
-<td>p99, all conditions</td>
-<td><strong>1.9 s</strong></td>
-</tr>
-<tr>
-<td><strong>p99, during top-1% volatility bars</strong></td>
-<td><strong>6.2 s</strong></td>
-</tr>
-<tr>
-<td>maximum observed</td>
-<td>11.4 s</td>
-</tr>
-</tbody>
-</table>
-<p><strong>The age is not constant — it is worst exactly when the market is fastest.</strong> Snapshot latency
-rises with message rate, and message rate rises with volatility. The backtest models a book that
-is zero seconds old; the live system, on the bars that carry a third of the P&amp;L, is reading a
-book that is a median of <strong>4.4 seconds</strong> stale.</p>
-<p><strong>Four seconds is a long time in a book that is being lifted.</strong> The resting bid depth the signal
-reads as support has, by the time the call is emitted, frequently already been taken or pulled.
-<strong>The signal sees a wall that is no longer there and reads it as strength.</strong></p>
-<p><strong>This is the mechanism behind the event the client already knew about.</strong> We did not go looking
-for it to explain the miss — it came out of the latency instrumentation — but it fits exactly:
-a buy call, into a move that had already happened, because the book that justified it was
-seconds old.</p>
-<p><strong>Is it one event or a class?</strong> This was the question the client asked us to answer. We
-identified every event in the three-year sample sharing its structure — a top-1% volatility bar
-preceded by a ≥40% reduction in same-side resting depth within the snapshot latency window:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>events of this structure, 2023–2025</td>
-<td><strong>14</strong></td>
-</tr>
-<tr>
-<td>calls that <strong>invert</strong> when recomputed at measured latency</td>
-<td><strong>9 of 14</strong></td>
-</tr>
-<tr>
-<td>of those 9, calls that were scored as hits in the backtest</td>
-<td><strong>9 of 9</strong></td>
-</tr>
-<tr>
-<td>combined contribution of those 9 to claimed P&amp;L</td>
-<td><strong>11.4pp of the 38.0%</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>A class, not an accident.</strong> Nine of the fourteen largest events in the sample are scored as
-wins by a backtest reading a book the live system does not have. <strong>The reported live miss is the
-fourteen-event population behaving normally</strong>, and it will recur on the next event of that
-structure.</p>
-<p><strong>The correction.</strong> Recomputing every call on a book aged to the measured latency distribution
-for its volatility regime: <strong>+8.2% → +4.1% annualised.</strong></p>
-<p><strong>THE FIX — three things, and the cheap one matters most.</strong>
-<strong>(a) A live staleness guard: suppress any call computed on a book older than a stated threshold.</strong>
-This is roughly a day of work and it is the change that stops the next event of this class reaching
-the market. It costs you some calls; on this sample it would have suppressed 9 of the 14 and none of
-them were calls you wanted. <strong>(b)</strong> Feed the measured age distribution into the backtest, so
-research and production agree about what the signal can see. <strong>(c)</strong> Reduce the latency itself —
-the largest project, and the only one that recovers the suppressed calls rather than discarding
-them. <strong>Effort: (a) ~1 day · (b) ~2 days · (c) an infrastructure project.</strong></p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc5_snapshot_age.py --logs prod_logs/ --replay --age-model measured</code>
-The 14 events are enumerated with timestamps in <code>fc5_regime_events.csv</code>.</p>
-</blockquote>
-<hr />
-<h2>6. <code>FC-3</code> — Are the costs real?</h2>
-<p><strong>What we asked.</strong> Where did the fee figure come from, and is it charged correctly?</p>
-<p><strong>What we found.</strong> The engine applies a <strong>maker rebate to 100% of fills.</strong> The client's own
-venue statements, for the live period, show a realised maker ratio of <strong>61%.</strong></p>
-<p>Two errors compound here:</p>
-<ol>
-<li><strong>The mix is wrong.</strong> 39% of fills are takers paying a fee, modelled as makers receiving a
-rebate. The per-fill error is the full rebate-to-fee spread, not the difference between two
-fees.</li>
-<li><strong>It is wrong in a correlated way, not a random way.</strong> The taker fills are not scattered
-uniformly — they concentrate on exactly the fast bars from §4 and §5, because that is when a
-resting order does not fill and the system crosses the spread. <strong>The cost error is largest on
-the bars carrying the most P&amp;L.</strong> Correcting the mix to a flat 61/39 average would understate
-the damage; we corrected it bar by bar.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>modelled</th>
-<th>measured</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>maker share of fills</td>
-<td>100%</td>
-<td><strong>61%</strong></td>
-</tr>
-<tr>
-<td>maker share <strong>on top-1% volatility bars</strong></td>
-<td>100%</td>
-<td><strong>23%</strong></td>
-</tr>
-<tr>
-<td>effective round-trip cost, all bars</td>
-<td>−1.0 bp (rebate)</td>
-<td><strong>+4.4 bp</strong></td>
-</tr>
-<tr>
-<td>effective round-trip cost, top-1% bars</td>
-<td>−1.0 bp (rebate)</td>
-<td><strong>+9.1 bp</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>The correction: +36.2% → +29.6% annualised, a 6.6pp reduction.</strong></p>
-<p><strong>Note the ordering effect.</strong> Because this correction and §4's are both concentrated on the same
-bars, applying them in a different order moves the intermediate figures. The final corrected
-number is order-independent; the waterfall's middle rows are not, and we state the order used at
-the top of it rather than presenting the intermediates as standalone facts.</p>
-<p><strong>THE FIX — read the ratio, don't assume it.</strong> Apply the realised maker/taker split from the venue
-statements per bar, not a constant. The statements already exist and are already reconciled; this is
-a lookup, not a model. <strong>Effort: half a day.</strong> Expect the corrected cost line to keep moving as the
-fill model in <code>FC-7</code> changes — these two are coupled, so measure them together and re-read the cost
-number after the fill change lands, not before.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc3_cost_reconcile.py --statements venue_statements/ --fills fills.parquet</code></p>
-</blockquote>
-<hr />
-<h2>7. <code>FC-4</code> — Is the data clean? <strong>Two correct datasets, one wrong join</strong></h2>
-<p><strong>This is the finding that most surprised the client, so it is written out at length.</strong></p>
-<p><strong>What we asked.</strong> Was every row checked? Can one source poison the result?</p>
-<p><strong>What we found.</strong> Nothing is wrong with either dataset. The defect is that there are <strong>two of
-them, and they are not the same market.</strong></p>
-<ul>
-<li>The <strong>signal</strong> is computed from L2 order-book snapshots taken from the <strong>execution venue</strong> —
-the perpetual contract actually traded.</li>
-<li>The <strong>calls are scored</strong> against an OHLCV series <strong>exported from a charting platform</strong>, which
-for these symbols serves an <strong>aggregated cross-venue index</strong>, not the traded contract.</li>
-</ul>
-<p>Both series are accurate. The charting export is not corrupted, the prints are real, the
-timestamps are honest. <strong>It is simply a different price series than the one a fill would have
-occurred at</strong>, and it is being used to decide whether each call was right.</p>
-<p><strong>Why &quot;the data is correct&quot; does not settle this.</strong> Correctness of a price series is a statement
-about its <em>values</em>. Using it to score a trade makes two further claims that correctness does not
-support: that it is the price you could have transacted at, and that its timestamp means the same
-thing as your decision timestamp. Neither holds here.</p>
-<table>
-<thead>
-<tr>
-<th>index vs traded-venue basis</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>median absolute basis</td>
-<td><strong>0.8 bp</strong></td>
-</tr>
-<tr>
-<td>p99 absolute basis</td>
-<td><strong>11 bps</strong></td>
-</tr>
-<tr>
-<td><strong>p99 during top-1% volatility bars</strong></td>
-<td><strong>41 bps</strong></td>
-</tr>
-<tr>
-<td>bar-close timestamp convention</td>
-<td>index bars stamped at <strong>open</strong>, engine reads them as <strong>close</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>The timestamp convention is the more serious half.</strong> A 15-minute bar stamped at its open, read
-as though stamped at its close, hands the scorer a <strong>15-minute look-ahead</strong> on every call. The
-basis costs accuracy; the convention costs the integrity of the scoring.</p>
-<p><strong>The correction.</strong> Rescoring every call against the traded venue's own trades, with the
-timestamp convention corrected:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>scored hits that flip to misses</td>
-<td><strong>7.1%</strong></td>
-</tr>
-<tr>
-<td>scored misses that flip to hits</td>
-<td>1.4%</td>
-</tr>
-<tr>
-<td>net effect on hit rate</td>
-<td>−5.7pp</td>
-</tr>
-</tbody>
-</table>
-<p><strong>+29.6% → +26.1% annualised.</strong></p>
-<p><strong>A single bad day, checked separately.</strong> Per <code>FC-4</code>'s second question, we checked whether any one
-window carries disproportionate weight. One venue outage (2024-03-11, 71 minutes) left the book
-frozen; the imbalance ratio on a frozen book is constant, which the signal read as a sustained
-extreme and converted into <strong>14 calls</strong>, 12 of them scored as hits. Removing the outage window
-costs <strong>0.4pp</strong> of annualised return — small, and reported for completeness rather than
-materiality, but it is the same shape as case study 2 and worth the client's attention as a
-pattern.</p>
-<p><strong>THE FIX — the highest value per hour of work in this report.</strong> Point the scorer at the traded
-venue's own trades, and correct the bar-stamp convention from open to close. <strong>Effort: roughly an
-hour.</strong> <strong>Do this before the other four fixes</strong>, because until it lands, every number you produce to
-measure those fixes is being scored against the wrong market. Separately, add a frozen-book check to
-the ingest — identical consecutive snapshots for longer than N seconds should raise, not flow through
-as a sustained extreme.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc4_venue_reconcile.py --scored scored_calls.parquet --venue-trades trades/ --check-timestamp-convention</code></p>
-</blockquote>
-<hr />
-<h2>8. <code>FC-8</code> — What is really being claimed?</h2>
-<p><strong>What we asked.</strong> Is this a single number or a range? Is the error bar wide enough to include
-zero?</p>
-<p><strong>The claim as given contains no error bar at all.</strong> &quot;+38.0% annualised, Sharpe 1.62&quot; is quoted
-to one and two decimal places respectively, with no interval, no standard error and no sample
-size beside it. §3 has already shown what the number was doing — it was the maximum of 41 draws.
-This section asks what the <em>corrected</em> number can support.</p>
-<p><strong>Block bootstrap</strong>, 10,000 resamples, 7-day blocks to preserve autocorrelation, on the corrected
-series:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>point estimate</th>
-<th>95% CI</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>annualised return</td>
-<td><strong>+2.2%</strong></td>
-<td><strong>−5.4% to +9.9%</strong></td>
-</tr>
-<tr>
-<td>Sharpe</td>
-<td>0.14</td>
-<td>−0.35 to 0.63</td>
-</tr>
-<tr>
-<td>directional hit rate (holdout)</td>
-<td>53.1%</td>
-<td><strong>50.2% to 56.0%</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Read those three rows carefully, because they do not all say the same thing.</strong></p>
-<ul>
-<li><strong>The return interval includes zero.</strong> On the evidence supplied, the corrected strategy cannot
-be distinguished from a strategy that makes nothing.</li>
-<li><strong>The Sharpe interval includes zero.</strong> Same statement, restated in risk-adjusted terms.</li>
-<li><strong>The hit-rate interval does not include chance, and is not close to it.</strong> 50.2% at the lower
-bound against a 33.3% floor. <strong>The directional information is established. The profitability
-is not.</strong></li>
-</ul>
-<p><strong>That gap between the two is the actual state of this strategy</strong>, and it is a coherent, common
-position to be in: a signal that knows something, whose edge is smaller than the cost of acting
-on it under realistic execution.</p>
-<p><strong>The benchmark question, which the claim never asks.</strong> A three-way directional call has two
-lines to clear, not one. Chance is the floor. <strong>The naive alternative is the real bar</strong> — over
-2023-01-01 to 2025-12-31 an always-long 1× position in the same 12 pairs, equally weighted,
-returned materially more than +2.2% annualised. The overlay is constructed to be broadly
-market-neutral, so it is not strictly the same trade, but <strong>no document in the material supplied
-states any benchmark</strong>, and a return claim with no comparison in it is not yet a claim about
-value. We flag this rather than resolving it: choosing the benchmark is the client's decision and
-it should be made in writing, in advance.</p>
-<p><strong>THE FIX — change what you publish, not what you compute.</strong> Quote a range with its sample size
-beside it, and state the benchmark. <strong>Effort: a decision, and an afternoon to restate the tear
-sheet.</strong> This is the cheapest credibility you will ever buy: an allocator who can check a number
-trusts it more than a larger one they cannot.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 fctools/fc8_bootstrap.py corrected_returns.parquet --block 672 --n 10000 --periods-per-year 35040</code>  <em>(672 fifteen-minute periods = 7-day blocks)</em></p>
-</blockquote>
-<hr />
-<h2>9. <code>FC-2</code> — Are the dead ones missing?</h2>
-<p><strong>What we asked.</strong> Was the asset list built as it looked <em>then</em>, or from what is still around
-today?</p>
-<p><strong>What we found.</strong> The 12 pairs are the top 12 by 30-day volume <strong>as measured in early 2026</strong> —
-after the period under test. Two contracts that were in the top 12 for parts of 2023 have since
-been delisted and are absent from the backtest entirely. A third was listed mid-2024 and is
-included for the whole window, including nine months in which it did not exist to trade.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pairs in the backtest</td>
-<td>12</td>
-</tr>
-<tr>
-<td>pairs absent because they were later delisted</td>
-<td><strong>2</strong></td>
-</tr>
-<tr>
-<td>pair-months included in which the contract was not listed</td>
-<td><strong>9</strong></td>
-</tr>
-<tr>
-<td>effect of rebuilding the list as-of each date</td>
-<td><strong>−1.8pp annualised</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Small, and stated as small.</strong> This is the check that most often produces the largest finding —
-it does not here, because the universe is twelve liquid majors rather than a broad screen. <strong>We
-report the magnitude either way</strong>, because &quot;we checked and it was minor&quot; is a result the client
-paid for, and because it is the only way the reader can tell that the large findings elsewhere
-were sized rather than asserted.</p>
-<p><strong>One methodological note.</strong> We verified the as-of list against listing and delisting dates, not
-against the presence of price data — a contract can have rows in a panel long after it stops
-trading. That distinction is <code>FC-2</code>'s second clause (<em>&quot;was any fix checked against the property
-it claims to test?&quot;</em>) and it is where case study 3 came from.</p>
-<p><strong>THE FIX — build the list from listing events, not from what is trading today.</strong> <strong>Effort: about
-a day</strong>, and it is reusable across every strategy you run. <strong>Test it against the property it claims
-to hold</strong>, not against row counts: assert that no pair appears in the panel before its listing date
-or after its delisting date. A universe fix that is only checked by &quot;the numbers changed&quot; is how
-this defect survives a fix.</p>
-<blockquote>
-<p><strong>Reproduce:</strong> <code>python3 audit/fc2_asof_universe.py --listings listing_events.csv --panel panel.parquet</code></p>
-</blockquote>
-<hr />
-<h2>10. What this report does <strong>not</strong> say</h2>
-<p>An audit that only reports damage is not worth paying for. Explicitly:</p>
-<ul>
-<li><strong>The model is not refuted.</strong> 53.1% directional accuracy against a 33.3% floor on untouched
-data, lower bound 50.2%, p &lt; 0.001. <strong>There is information in this signal</strong> and none of the six
-corrections touches the model itself.</li>
-<li><strong>Nothing here is a coding error in the signal generator.</strong> Every finding is in the
-<em>surrounding</em> apparatus — the fill model, the clock, the cost model, the scoring series, the
-universe, the selection procedure. The signal code was the one part we found nothing in.</li>
-<li><strong><code>FC-1</code> passed cleanly</strong>, and that is a genuine credential. Most do not.</li>
-<li><strong>No dishonesty is alleged or implied anywhere in this report.</strong> Every defect found is one we
-have made ourselves; six of the ten case studies at arcobaleno.cloud are the same classes of
-error found in our own research and published against ourselves.</li>
-<li><strong>This is not an opinion on whether the strategy will make money in future.</strong> It is a statement
-about what the supplied material can and cannot support today. Several of the corrections are
-<strong>fixable</strong> — see §11 — and a fixed version is a different strategy that would need its own
-evidence.</li>
-</ul>
-<hr />
-<h2>11. Your remediation plan, in order</h2>
-<p><strong>Every fix above, sequenced. Ranked by effect on the claim per unit of work, not by severity.</strong></p>
-<p><strong>Read this as your plan, not our proposal.</strong> Each fix is specified precisely enough for your own
-engineers to implement without us — that is deliberate, and it is the shape the deliverable should
-take. <strong>We do not implement fixes on a strategy we have audited.</strong> The reason is not modesty: an
-auditor who also builds the correction has an interest in the size of the finding, and the only
-thing this report is worth anything for is that we do not. If you want the work done rather than
-specified, it is a separate engagement, taken by someone else, or taken by us only on the
-understanding that <strong>we can no longer be the ones who audit it.</strong></p>
-<p><strong>And a boundary worth stating plainly: none of this tells you how to make the signal better.</strong> We
-have not suggested an indicator, a parameter or a feature, and we will not. Finding why a backtest
-lies is a different skill from knowing what to trade, and a firm that sells you both has an
-incentive to find problems it can also sell you the cure for. Everything above makes your measurement
-honest. Making the strategy <em>better</em> is your edge, and it should stay yours.</p>
-<ol>
-<li><strong>Fix the scoring series before anything else</strong> (§7). It is a one-line source change plus a
-timestamp convention correction, it costs nothing, and <strong>until it is fixed every number the
-team produces — including the ones measuring the other fixes — is scored against the wrong
-market.</strong> Everything downstream depends on this being right first.</li>
-<li><strong>Re-model fills as taker-by-default</strong> (§4), and treat maker fills as the exception requiring
-evidence. This inverts the current assumption. It is the honest default for a signal that
-trades on fast bars, and it converts the largest source of overstatement into a conservative
-one.</li>
-<li><strong>Instrument snapshot age in production and feed the measured distribution back into the
-backtest</strong> (§5). This is the finding with the longest tail: it is the one that predicts the
-next live miss, and it cannot be fixed by changing the backtest alone — either the latency
-comes down or the signal must be told how stale its input is.</li>
-<li><strong>Pre-register the next threshold change</strong> (§3). The selection problem cannot be fixed
-retrospectively — there is no way to un-see 41 results. It can only be prevented going
-forward, by fixing the bar before the window opens. This is a different engagement and we
-name it because it is the correct next step, not to sell it.</li>
-<li><strong>Restate the tear sheet.</strong> The current investor-facing one-pager carries +38.0% with no
-interval. Whatever the corrected figure turns out to be after 1–3, it should be published as a
-range with a sample size beside it. <strong>A number an allocator can check is worth more than a
-larger number they cannot.</strong></li>
-</ol>
-<hr />
-<h2>12. What we did not check</h2>
-<p>Stated so the boundary is legible, and not claimed on in either direction:</p>
-<ul>
-<li><strong>Anything after 2025-12-31.</strong> The material supplied ends there.</li>
-<li><strong>The live trading system's own code.</strong> We audited the research pipeline and instrumented the
-production <em>logs</em> for latency (§5). The order router, risk layer and reconciliation were out of
-scope.</li>
-<li><strong>Counterparty, custody, margin and liquidation mechanics.</strong></li>
-<li><strong>Whether the venue data supplied is complete.</strong> We reconciled it against the client's own
-statements, which is a consistency check, not an independent verification.</li>
-<li><strong>Any pair outside the 12 supplied</strong>, and any horizon other than the 15-minute call.</li>
-</ul>
-<hr />
-<h2>13. Reproducing all of this yourself</h2>
-<p>Every figure in this report comes out of a script delivered with it. Nothing is asserted that
-cannot be shown.</p>
-<table>
-<thead>
-<tr>
-<th>to reproduce</th>
-<th>run</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reproduction across machines and seeds</td>
-<td><code>fctools/fc1_reproduce.py</code></td>
-</tr>
-<tr>
-<td>the as-of universe delta</td>
-<td><code>audit/fc2_asof_universe.py</code></td>
-</tr>
-<tr>
-<td>the cost reconciliation</td>
-<td><code>audit/fc3_cost_reconcile.py</code></td>
-</tr>
-<tr>
-<td>the venue and timestamp mismatch</td>
-<td><code>audit/fc4_venue_reconcile.py</code></td>
-</tr>
-<tr>
-<td>snapshot age and the 14 events</td>
-<td><code>audit/fc5_snapshot_age.py</code></td>
-</tr>
-<tr>
-<td>the holdout re-read and the 41-config rank</td>
-<td><code>audit/fc6_holdout.py</code></td>
-</tr>
-<tr>
-<td>fill realism, per call</td>
-<td><code>audit/fc7_fill_realism.py</code></td>
-</tr>
-<tr>
-<td>the bootstrap intervals</td>
-<td><code>fctools/fc8_bootstrap.py</code></td>
-</tr>
-<tr>
-<td>the full waterfall, end to end</td>
-<td><code>audit/run_all.py --report</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Raw per-call and per-event output is delivered, not just summaries</strong> — <code>fc7_fill_audit.csv</code>
-(7,104 rows), <code>fc5_regime_events.csv</code> (14 rows), <code>fc6_config_ranks.csv</code> (41 rows),
-<code>fc8_bootstrap_draws.csv</code> (10,000 rows).</p>
-<hr />
-<p><em>Research due-diligence and code-audit services only. Not investment advice, not a
-recommendation, not an offer to manage money. This report says whether a stated result can be
-reproduced from the material supplied and what it can support; it is not an opinion on future
-performance.</em></p>
-<p><strong>— and, once more, because this document is the kind that gets forwarded: this is a SPECIMEN.
-No client, no engagement, no real data, no real firm. Constructed 2026-09-16 to show the shape
-of the deliverable.</strong></p>
+  <div class="r">
 
-  </article>
+    <div class="cover-card">
+      <p class="eyebrow-s">Backtest forensics &middot; Full audit</p>
+      <dl>
+        <dt>Prepared for</dt><dd><i>A client (made up for this sample)</i></dd>
+        <dt>The strategy</dt><dd>&ldquo;Signal v4&rdquo;: it reads the buy and sell orders waiting on a crypto exchange and, every 15 minutes, calls each of 12 crypto futures markets <b>up</b>, <b>down</b> or <b>stay out</b>.</dd>
+        <dt>The claim</dt><dd><b>Right 61.4% of the time &middot; +38.0% a year &middot; worst fall from a peak &minus;11.2%</b>, tested over 2023 to 2025, with no borrowed money.</dd>
+        <dt>What we looked at</dt><dd>The code that makes the calls, the code that tests them, three years of second-by-second exchange data, the price charts used to mark each call right or wrong, and the two documents making the claim.</dd>
+        <dt>Scope</dt><dd>Full audit: all eight checks, FC-1 to FC-8.</dd>
+      </dl>
+    </div>
+
+    <section style="border-top:0">
+      <p class="eyebrow-s">The short version</p>
+      <p class="verdict-line"><span class="ok">The signal is real.</span><br><span class="bad">The number is not.</span></p>
+
+      <div class="tiles">
+        <div class="tile">
+          <div class="k">Return per year</div>
+          <div class="from">+38.0% claimed</div>
+          <div class="to">+2.2%</div>
+          <div class="sub">Likely range &minus;5.4% to +9.9%. That range includes zero: it could be making nothing.</div>
+        </div>
+        <div class="tile">
+          <div class="k">How often it's right</div>
+          <div class="from">61.4% claimed</div>
+          <div class="to">53.1%</div>
+          <div class="sub">Guessing would score 33.3%. This part is real, with less than a 1-in-1,000 chance of being luck.</div>
+        </div>
+        <div class="tile">
+          <div class="k">Worst fall from a peak</div>
+          <div class="from">&minus;11.2% claimed</div>
+          <div class="to">&minus;15.7%</div>
+          <div class="sub">The bad stretches were deeper than the claim showed.</div>
+        </div>
+      </div>
+
+      <div class="call holds">
+        <div class="lab"><span aria-hidden="true">&#10003;</span> What holds up</div>
+        <p>Signal v4 really does know something about where prices go next. On six months of data it had never been tuned on, it called direction correctly <b>53.1%</b> of the time, against <b>33.3%</b> for guessing. Nothing in this report says the idea is worthless. We want that read first, because most of what follows takes things away.</p>
+      </div>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What doesn't</div>
+        <p>The <b>+38% a year</b> doesn't survive the checks. We found six problems, none of them in the idea itself. They are all in what the test assumed about <b>trading costs, prices and timing</b>. Fix them and the same signal on the same data makes <b>+2.2% a year</b>, too close to zero to call a profit.</p>
+        <p>The problems are worst exactly where the money was. A third of the claimed profit came from the fastest, most chaotic <b>1% of moments</b>, which is where the test's assumptions were least realistic.</p>
+      </div>
+      <div class="call note">
+        <div class="lab"><span aria-hidden="true">!</span> The loss the client already knew about</div>
+        <p>The client told us about one live trade where the signal said <i>buy</i> and should have said <i>sell</i>. They thought it was bad luck. Our job was to find out whether it was one event or a pattern. <b>It is a pattern</b>: 14 moments in the test period share its shape, and in 9 of them the signal flips the wrong way once it's tested at its real speed. It will happen again. See <a href="#fc-5">FC-5</a>.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>All eight checks at a glance</h2>
+      <p class="asked">Every audit runs the same eight checks, in the same order. Click one to jump to it.</p>
+      <ul class="glance">
+        <li><span class="fc">FC-1</span><a href="#fc-1">Does it repeat?<span class="what">Same answer on every run and every machine.</span></a><span class="badge pass"><span class="i" aria-hidden="true">&#10003;</span>Passed</span></li>
+        <li><span class="fc">FC-2</span><a href="#fc-2">Are the dead ones missing?<span class="what">Two markets that later closed were left out.</span></a><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor &minus;1.8 points</span></li>
+        <li><span class="fc">FC-3</span><a href="#fc-3">Are the costs real?<span class="what">The test paid itself a fee discount on every trade. Real trading got it on 61%.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;6.6 points</span></li>
+        <li><span class="fc">FC-4</span><a href="#fc-4">Is the data clean?<span class="what">Calls were marked right or wrong against the wrong price, and 15 minutes early.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;3.5 points</span></li>
+        <li><span class="fc">FC-5</span><a href="#fc-5">Is the data current?<span class="what">The live system sees the market seconds late. This explains the known loss.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;4.1 points</span></li>
+        <li><span class="fc">FC-6</span><a href="#fc-6">Was it cherry-picked?<span class="what">41 versions were tried and the luckiest one was kept.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;1.9 points</span></li>
+        <li><span class="fc">FC-7</span><a href="#fc-7">Could you have traded it?<span class="what">Trades filled at prices that had already gone. The biggest problem.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;17.9 points</span></li>
+        <li><span class="fc">FC-8</span><a href="#fc-8">What is really being claimed?<span class="what">The corrected return's likely range includes zero.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Can't rule out zero</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How +38% becomes +2.2%</h2>
+      <p class="asked">Each red bar is one problem, and how much it took off the yearly return. Hover or tap a row for what it was.</p>
+
+      <div class="wf" role="img" aria-label="Chart: the claimed +38.0% a year falls to +2.2% after six corrections. The largest, trades filled at prices that had already gone, removes 17.9 points.">
+        <div class="wf-row start" tabindex="0">
+          <div class="wf-lab">As claimed</div>
+          <div class="wf-track"><div class="wf-bar total" style="--a:0;--b:38"></div></div>
+          <div class="wf-val"><b>+38.0%</b></div>
+          <div class="wf-tip">The figure in the strategy memo and the investor one-pager.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-2</span>Closed markets put back</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:36.2;--b:38"></div></div>
+          <div class="wf-val"><span class="d">&minus;1.8</span> &rarr; 36.2%</div>
+          <div class="wf-tip">The market list was picked in 2026, after the test. Markets that closed in the meantime were missing.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-3</span>Real trading fees</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:29.6;--b:36.2"></div></div>
+          <div class="wf-val"><span class="d">&minus;6.6</span> &rarr; 29.6%</div>
+          <div class="wf-tip">The test assumed every trade earned a fee discount. In real trading only 61% did.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-4</span>Marked against the right price</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:26.1;--b:29.6"></div></div>
+          <div class="wf-val"><span class="d">&minus;3.5</span> &rarr; 26.1%</div>
+          <div class="wf-tip">Calls were scored against a blended price from many exchanges, read 15 minutes early.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-7</span>Prices that really existed</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:8.2;--b:26.1"></div></div>
+          <div class="wf-val"><span class="d">&minus;17.9</span> &rarr; 8.2%</div>
+          <div class="wf-tip">The biggest problem. On fast moves, the test bought at prices the market had already left.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-5</span>The market seen at real speed</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:4.1;--b:8.2"></div></div>
+          <div class="wf-val"><span class="d">&minus;4.1</span> &rarr; 4.1%</div>
+          <div class="wf-tip">Live, the signal sees the market up to several seconds late. The test assumed it saw it instantly.</div>
+        </div>
+        <div class="wf-row" tabindex="0">
+          <div class="wf-lab"><span class="fc">FC-6</span>Tested on untouched data</div>
+          <div class="wf-track"><div class="wf-bar cut" style="--a:2.2;--b:4.1"></div></div>
+          <div class="wf-val"><span class="d">&minus;1.9</span> &rarr; 2.2%</div>
+          <div class="wf-tip">The best of 41 versions was kept. On data none of them had seen, it was ordinary.</div>
+        </div>
+        <div class="wf-row end" tabindex="0">
+          <div class="wf-lab">After corrections</div>
+          <div class="wf-track"><div class="wf-bar range" style="--a:-5.4;--b:9.9"></div><div class="wf-bar total" style="--a:0;--b:2.2"></div></div>
+          <div class="wf-val"><b>+2.2%</b></div>
+          <div class="wf-tip">The thin grey line is the likely range, &minus;5.4% to +9.9%. It crosses zero.</div>
+        </div>
+      </div>
+      <div class="wf-axis" aria-hidden="true"><span></span><div class="t"><span style="left:calc(6/46*100%)">0%</span><span style="left:calc(16/46*100%)">10%</span><span style="left:calc(26/46*100%)">20%</span><span style="left:calc(36/46*100%)">30%</span><span style="left:calc(46/46*100%)">40%</span></div><span></span></div>
+
+      <div class="call note">
+        <div class="lab"><span aria-hidden="true">!</span> Why the order matters</div>
+        <p>Several of these problems hit the same trades, so how much each one takes away depends on the order we apply them. <b>The final figure doesn't.</b> We applied them in the order shown. On its own, for example, the cherry-picking problem (FC-6) cuts the claim from +38.0% to +21.9%. Applied last, after the others, it takes off a further 1.9 points.</p>
+      </div>
+
+      <details class="tbl-view">
+        <summary>Show as a table</summary>
+        <div class="tscroll"><table>
+          <thead><tr><th>Step</th><th>Correction</th><th>Change</th><th>Return per year</th></tr></thead>
+          <tbody>
+            <tr><td></td><td>As claimed</td><td></td><td class="n">+38.0%</td></tr>
+            <tr><td class="n">FC-2</td><td>Closed markets put back</td><td class="n bad">&minus;1.8</td><td class="n">+36.2%</td></tr>
+            <tr><td class="n">FC-3</td><td>Real trading fees</td><td class="n bad">&minus;6.6</td><td class="n">+29.6%</td></tr>
+            <tr><td class="n">FC-4</td><td>Marked against the right price</td><td class="n bad">&minus;3.5</td><td class="n">+26.1%</td></tr>
+            <tr><td class="n">FC-7</td><td>Prices that really existed</td><td class="n bad">&minus;17.9</td><td class="n">+8.2%</td></tr>
+            <tr><td class="n">FC-5</td><td>The market seen at real speed</td><td class="n bad">&minus;4.1</td><td class="n">+4.1%</td></tr>
+            <tr><td class="n">FC-6</td><td>Tested on untouched data</td><td class="n bad">&minus;1.9</td><td class="n">+2.2%</td></tr>
+            <tr><td></td><td><b>After corrections</b> (likely range &minus;5.4% to +9.9%)</td><td></td><td class="n"><b>+2.2%</b></td></tr>
+          </tbody>
+        </table></div>
+      </details>
+    </section>
+
+    <!-- ===================== THE EIGHT CHECKS, IN ORDER ===================== -->
+
+    <section id="fc-1">
+      <div class="check-head"><span class="fc">FC-1</span><h2>Does it repeat?</h2><span class="badge pass"><span class="i" aria-hidden="true">&#10003;</span>Passed</span></div>
+      <p class="asked"><b>What we asked:</b> if we run your code again, on a different computer, do we get the same number?</p>
+      <p>We ran it 20 times on two different machines, and again with a hidden setting changed that often reshuffles how programs order their work. The yearly return never moved by more than <b>0.31 points</b>, and the hit rate was identical every time.</p>
+      <div class="call holds">
+        <div class="lab"><span aria-hidden="true">&#10003;</span> Why this matters</div>
+        <p>This is a real credential. Most strategies that reach us fail here; <a href="/#case-01">our own first finding</a> is one that did. Because the number came back the same, the other seven checks could test the method instead of chasing a moving target. Passing doesn't mean the number is <i>right</i>, only that it's stable. The next six sections are all mistakes in a perfectly repeatable test.</p>
+      </div>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: nothing to fix, one thing to keep</div>
+        <p>Lock those settings in your automated tests, so the result stays repeatable as the code changes.</p>
+        <span class="effort">Effort: under an hour, once</span>
+      </div>
+    </section>
+
+    <section id="fc-2">
+      <div class="check-head"><span class="fc">FC-2</span><h2>Are the dead ones missing?</h2><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;1.8 points</b></p>
+      <p class="asked"><b>What we asked:</b> was the list of markets built as it looked <i>at the time</i>, or from the ones still around today?</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The 12 markets are the 12 busiest <b>as measured in early 2026</b>, after the test period ended. Two markets that were in the top 12 during 2023 have since closed, and are missing from the test. A third only opened in mid-2024, yet the test traded it for nine months before it existed.</p>
+      </div>
+      <div class="tscroll"><table>
+        <tr><td>Markets in the test</td><td class="n">12</td></tr>
+        <tr><td>Markets missing because they later closed</td><td class="n bad">2</td></tr>
+        <tr><td>Months traded in a market that didn't exist yet</td><td class="n bad">9</td></tr>
+        <tr><td>Effect of rebuilding the list as it was on each date</td><td class="n bad">&minus;1.8 points a year</td></tr>
+      </table></div>
+      <p><b>Small, and we say so.</b> This check often produces the biggest finding. It doesn't here, because these are 12 large, busy markets rather than hundreds of small ones. We report the size either way: &ldquo;we checked, and it was minor&rdquo; is a result too, and it shows the large findings elsewhere were measured rather than guessed. (We have made this mistake ourselves: <a href="/#case-10">finding 10 on our front page</a>.)</p>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix</div>
+        <p>Build the market list from the dates each market opened and closed, not from what is trading today. Then test the property itself: no market should appear before it opened or after it closed. Checking only that &ldquo;the numbers changed&rdquo; is how this mistake survives a fix. Reusable across every strategy you run.</p>
+        <span class="effort">Effort: about a day</span>
+      </div>
+    </section>
+
+    <section id="fc-3">
+      <div class="check-head"><span class="fc">FC-3</span><h2>Are the costs real?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;6.6 points</b></p>
+      <p class="asked"><b>What we asked:</b> where did the trading-fee figure come from, and is it charged correctly?</p>
+      <p>Exchanges charge less, and sometimes even pay a small rebate, when your order waits in line to be filled. They charge more when you trade immediately at the current price.</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The test gave <b>every single trade</b> the waiting-order rebate. The client's own exchange statements show only <b>61%</b> of real trades got it. And the other 39% weren't spread evenly: they bunched up on the fast, chaotic moments, because that's when a waiting order doesn't get filled and the system has to trade immediately. <b>The cost mistake is biggest exactly where most of the profit came from.</b></p>
+      </div>
+      <div class="tscroll"><table>
+        <thead><tr><th></th><th>Test assumed</th><th>Real trading</th></tr></thead>
+        <tr><td>Trades that got the cheaper rate</td><td class="n">100%</td><td class="n bad">61%</td></tr>
+        <tr><td>&hellip; on the fastest 1% of moments</td><td class="n">100%</td><td class="n bad">23%</td></tr>
+        <tr><td>Cost of a round trip, all trades</td><td class="n">paid 0.01%</td><td class="n bad">cost 0.044%</td></tr>
+        <tr><td>Cost of a round trip, fastest 1% of moments</td><td class="n">paid 0.01%</td><td class="n bad">cost 0.091%</td></tr>
+      </table></div>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix</div>
+        <p>Use the real share of cheaper-rate trades from your exchange statements, moment by moment, instead of assuming all of them. The statements already exist, so this is a lookup, not new modelling. Re-check it after the FC-7 fix, because the two are linked.</p>
+        <span class="effort">Effort: half a day</span>
+      </div>
+    </section>
+
+    <section id="fc-4">
+      <div class="check-head"><span class="fc">FC-4</span><h2>Is the data clean?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;3.5 points</b> &middot; the finding that surprised the client most</p>
+      <p class="asked"><b>What we asked:</b> was every piece of data checked, and could one source quietly spoil the result?</p>
+      <p>Nothing was wrong with either of the two data sources. The problem is that there were two, and <b>they weren't the same market</b>.</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The signal read data from the exchange it actually trades on. But each call was <b>marked right or wrong against a price chart from a charting website</b>, which shows a blend of prices from many exchanges, not the one traded. Both are accurate. They are just different prices.</p>
+        <p>Worse: the chart stamps each 15-minute bar with its <b>start</b> time, and the test read it as the <b>end</b> time. So every call was marked against a price <b>15 minutes in the future</b>.</p>
+      </div>
+      <div class="tscroll"><table>
+        <thead><tr><th>Gap between the chart's price and the traded price</th><th></th></tr></thead>
+        <tr><td>Typical</td><td class="n">0.008%</td></tr>
+        <tr><td>Worst 1% of the time</td><td class="n">0.11%</td></tr>
+        <tr><td>Worst 1% of the time, during the fastest moments</td><td class="n bad">0.41%</td></tr>
+      </table></div>
+      <p>Re-marking every call against the real traded price, at the right time: <b>7.1%</b> of &ldquo;right&rdquo; calls became wrong and <b>1.4%</b> of &ldquo;wrong&rdquo; calls became right. Net, the hit rate fell by <b>5.7 points</b>.</p>
+      <div class="call note">
+        <div class="lab"><span aria-hidden="true">!</span> Also found: one bad day</div>
+        <p>On 11 March 2024 the exchange's data froze for 71 minutes. The signal read the frozen picture as a strong, steady signal and made <b>14 calls</b>, 12 marked as wins. Removing that window costs only 0.4 points, but it is the same kind of mistake as <a href="/#case-02">finding 2 on our front page</a>, and worth guarding against.</p>
+      </div>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: best value per hour in this report</div>
+        <p>Mark calls against the traded exchange's own prices, and correct the start-versus-end time. <b>Do this before any other fix</b>: until it's done, every number you use to measure the other fixes is measured against the wrong market. Separately, make the data feed raise an alarm when the picture stops changing, instead of passing it on as a strong signal.</p>
+        <span class="effort">Effort: about an hour</span>
+      </div>
+    </section>
+
+    <section id="fc-5">
+      <div class="check-head"><span class="fc">FC-5</span><h2>Is the data current?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;4.1 points</b> &middot; the finding that explains the known loss</p>
+      <p class="asked"><b>What we asked:</b> how old is the market picture at the moment the signal makes its call?</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The test assumed the signal sees the market <b>instantly</b>. Live, it can't. From the client's own system logs, we measured how old its picture of the market really is:</p>
+      </div>
+      <div class="tscroll"><table>
+        <thead><tr><th>Age of the market picture when the call is made</th><th></th></tr></thead>
+        <tr><td>Usually</td><td class="n">0.24 seconds</td></tr>
+        <tr><td>Worst 1% of the time</td><td class="n">1.9 seconds</td></tr>
+        <tr><td>Worst 1% of the time, during the fastest moments</td><td class="n bad">6.2 seconds</td></tr>
+        <tr><td>Longest seen</td><td class="n bad">11.4 seconds</td></tr>
+      </table></div>
+      <p><b>The delay is worst exactly when the market moves fastest.</b> On the moments that carried a third of the profit, the live system was typically looking at a picture <b>4.4 seconds old</b>. In a fast market, the buyers the signal &ldquo;sees&rdquo; have often already left. It reads a wall that is no longer there as strength.</p>
+      <p><b>This is what happened in the client's known loss.</b> We didn't go looking for it; it came out of the measurements. A <i>buy</i> call into a move that had already happened, because the picture behind it was seconds old.</p>
+      <p><b>One event or a pattern?</b> We found every moment in the three years that looked like it: a very fast move, just after the waiting orders on one side thinned out sharply.</p>
+      <div class="tscroll"><table>
+        <tr><td>Moments with the same shape, 2023&ndash;2025</td><td class="n">14</td></tr>
+        <tr><td>Calls that flip the wrong way at the real delay</td><td class="n bad">9 of 14</td></tr>
+        <tr><td>&hellip; of which the test had marked as wins</td><td class="n bad">9 of 9</td></tr>
+        <tr><td>Share of the claimed +38.0% coming from those 9 calls</td><td class="n bad">11.4 points</td></tr>
+      </table></div>
+      <p><b>A pattern, not an accident.</b> The known loss is these 14 moments behaving normally, and it will happen again on the next one.</p>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: three steps, and the cheap one matters most</div>
+        <p><b>(a)</b> A live safety switch: skip any call made on a market picture older than a set limit. This stops the next one of these reaching the market. On this data it would have skipped 9 of the 14, and none of them were calls you wanted. <b>(b)</b> Give the test the real delays, so research and live trading agree on what the signal can see. <b>(c)</b> Reduce the delay itself, the biggest job and the only one that wins those calls back.</p>
+        <span class="effort">Effort: (a) ~1 day &middot; (b) ~2 days &middot; (c) an infrastructure project</span>
+      </div>
+    </section>
+
+    <section id="fc-6">
+      <div class="check-head"><span class="fc">FC-6</span><h2>Was it cherry-picked?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;1.9 points</b> in the chain (<b>&minus;16.1</b> on its own) &middot; the largest effect on the hit rate</p>
+      <p class="asked"><b>What we asked:</b> how many versions were tried, and was this one chosen before or after seeing how it did?</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The code contains <b>41 different versions</b> of the strategy's settings, made over fourteen months, and a script that tests all of them on the full three years. The version that was shipped is simply the one that scored best. <b>No data was held back</b> to check it on.</p>
+      </div>
+      <p><b>This is not an accusation.</b> Nobody did anything dishonest. It's the most common thing we find, and we find it in our own work (<a href="/#case-07">finding 7 on our front page</a>). &ldquo;Try the variations, keep the one that works&rdquo; is good instinct everywhere except here. The problem is arithmetic: <b>with 41 tries on the same data, the best one is mostly the luckiest one, and luck doesn't repeat.</b></p>
+      <p><b>How we measured it.</b> The client's own history shows no settings were changed after 14 June 2025. So the last six months of 2025 are data no version was ever chosen on. We tested the shipped version, unchanged, on those months:</p>
+      <div class="tscroll"><table>
+        <thead><tr><th></th><th>Data it was chosen on</th><th>Untouched data</th></tr></thead>
+        <tr><td>Calls made</td><td class="n">7,104</td><td class="n">1,180</td></tr>
+        <tr><td>How often it's right</td><td class="n">61.4%</td><td class="n bad">53.1%</td></tr>
+        <tr><td>Return per year (before the other fixes)</td><td class="n">+38.0%</td><td class="n bad">+21.9%</td></tr>
+        <tr><td>Rank among the 41 versions</td><td class="n">1st</td><td class="n bad">17th</td></tr>
+      </table></div>
+      <p><b>That last row is the finding.</b> On data it wasn't chosen on, the shipped version is ordinary: 17th of 41, in the middle of its own family.</p>
+      <div class="call holds">
+        <div class="lab"><span aria-hidden="true">&#10003;</span> What survives</div>
+        <p>53.1% right against 33.3% for guessing, on 1,180 fresh calls, has less than a 1-in-1,000 chance of being luck. Cherry-picking inflated the number. It didn't invent it.</p>
+      </div>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: only forwards, never backwards</div>
+        <p>You can't un-see 41 results. From now on: <b>(a)</b> set aside a stretch of data before the next settings change, and don't look at it until the change is final. <b>(b)</b> For anything you show investors, write down the pass mark before the test period starts. And don't switch to a different version because of the 17th-place ranking: that ranking is one roll of the dice too.</p>
+        <span class="effort">Effort: a policy decision, plus a day of tooling</span>
+      </div>
+    </section>
+
+    <section id="fc-7">
+      <div class="check-head"><span class="fc">FC-7</span><h2>Could you have traded it?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Biggest problem</span></div>
+      <p class="impact">Effect on the yearly return: <b>&minus;17.9 points</b>, the largest correction in this report</p>
+      <p class="asked"><b>What we asked:</b> could every trade really have happened, at the price used, at that size?</p>
+      <p><b>First, where the profit came from.</b> We sorted every 15-minute window by how wild the price moves were:</p>
+      <div class="tscroll"><table>
+        <thead><tr><th>Windows, by how fast the market moved</th><th>Share of time</th><th>Share of claimed profit</th></tr></thead>
+        <tr><td>Fastest 1%</td><td class="n">0.8%</td><td class="n bad">34.1%</td></tr>
+        <tr><td>Fastest 5%</td><td class="n">4.9%</td><td class="n bad">61.3%</td></tr>
+        <tr><td>The other 95%</td><td class="n">95.1%</td><td class="n">38.7%</td></tr>
+      </table></div>
+      <p><b>A third of the profit came from less than 1% of the time.</b> Whatever the test assumed about those moments is very nearly the whole result.</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>The test assumed every trade was filled, as a waiting order, at the mid-price at the moment of the call, <b>with certainty</b>. On a fast move that's backwards: the waiting orders that get filled are the ones the market is running away from. On the fastest 1% of moments we checked whether the assumed price was still there:</p>
+      </div>
+      <div class="tscroll"><table>
+        <tr><td>Fast moments where the price moved past the order within 1 second</td><td class="n bad">71.4%</td></tr>
+        <tr><td>Typical distance the price had moved before the order could even wait in line</td><td class="n bad">0.19%</td></tr>
+        <tr><td>Trades filled at a price never seen again in that window</td><td class="n bad">2,847 of 7,104</td></tr>
+      </table></div>
+      <p>We re-ran the test with one change: when the price had already moved away, the trade happens immediately <b>at the price that actually existed</b>. The client's own exchange data has both. Everything else was left alone. <b>+26.1% became +8.2%.</b></p>
+      <p><b>Why this is a mistake, not a matter of opinion.</b> Whether a waiting order gets filled depends on what happens <i>after</i> the call. The test answered that question with information it couldn't have had yet, and picked the favourable answer every time.</p>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: flip the default</div>
+        <p>Assume every trade happens immediately at the real price, unless the exchange data shows a waiting order really would have been filled. That makes the test cautious instead of optimistic. To prove the change worked: with position limits set so high they never bite, old and new tests must agree exactly.</p>
+        <span class="effort">Effort: 2&ndash;3 days, including re-running the tests</span>
+      </div>
+    </section>
+
+    <section id="fc-8">
+      <div class="check-head"><span class="fc">FC-8</span><h2>What is really being claimed?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Can't rule out zero</span></div>
+      <p class="asked"><b>What we asked:</b> is the headline one exact number, or a range? And is the range wide enough to include zero?</p>
+      <div class="call wrong">
+        <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
+        <p>&ldquo;+38.0% a year&rdquo; was stated to one decimal place, with <b>no range, no margin of error and no number of trades</b> beside it. FC-6 already showed what it really was: the best of 41 tries.</p>
+      </div>
+      <p>So we asked what the <i>corrected</i> number can support. We re-sampled the corrected results 10,000 times, a week at a time, to see how far the figure could move:</p>
+      <div class="tscroll"><table>
+        <thead><tr><th></th><th>Best estimate</th><th>Likely range (95%)</th></tr></thead>
+        <tr><td>Return per year</td><td class="n">+2.2%</td><td class="n bad">&minus;5.4% to +9.9%</td></tr>
+        <tr><td>Return for the risk taken (Sharpe ratio)</td><td class="n">0.14</td><td class="n bad">&minus;0.35 to 0.63</td></tr>
+        <tr><td>How often it's right (untouched data)</td><td class="n">53.1%</td><td class="n good">50.2% to 56.0%</td></tr>
+      </table></div>
+      <p><b>These three rows don't say the same thing:</b></p>
+      <ul class="plain">
+        <li>The <b>return</b> range includes zero. On this evidence, the strategy can't be told apart from one that makes nothing.</li>
+        <li>The <b>risk-adjusted</b> range includes zero too. Same message.</li>
+        <li>The <b>hit rate</b> range is nowhere near guessing (33.3%). <b>The signal's knowledge is proven. Its profit is not.</b></li>
+      </ul>
+      <p>That gap is the real state of this strategy, and a common one: a signal that knows something, but whose edge is smaller than the cost of acting on it in real trading.</p>
+      <div class="call note">
+        <div class="lab"><span aria-hidden="true">!</span> The comparison nobody made</div>
+        <p>Beating guesswork isn't the real test. The simple alternative is: just holding the same 12 markets, equally weighted, over 2023&ndash;2025 made <b>clearly more than +2.2% a year</b>. It isn't exactly the same kind of trade, but <b>none of the documents names any comparison at all</b>, and a return with nothing to compare it to doesn't yet say anything about value. Choosing the benchmark is the client's call, and it should be written down in advance.</p>
+      </div>
+      <div class="call fix">
+        <div class="lab"><span aria-hidden="true">&#10148;</span> The fix: change what you publish, not what you calculate</div>
+        <p>Quote a range, with the number of trades beside it, and name what you're comparing against. A number an investor can check is worth more than a bigger one they can't.</p>
+        <span class="effort">Effort: a decision, and an afternoon to redo the one-pager</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>What this report does not say</h2>
+      <p class="asked">An audit that only lists damage isn't worth paying for. So, plainly:</p>
+      <div class="call holds">
+        <div class="lab"><span aria-hidden="true">&#10003;</span> Still true after the audit</div>
+        <ul class="plain">
+          <li><b>The idea is not disproved.</b> 53.1% right against 33.3% for guessing, on untouched data. There is real knowledge in this signal, and none of the six corrections touched the signal itself.</li>
+          <li><b>The signal's own code had no mistakes.</b> Every finding is in the testing around it: fills, timing, costs, the prices used for marking, the market list, and how the version was chosen.</li>
+          <li><b>FC-1 passed cleanly.</b> That's a genuine credential; most don't.</li>
+          <li><b>No dishonesty is suggested anywhere.</b> We have made every one of these mistakes ourselves.</li>
+          <li><b>This is not a forecast.</b> It says what the material supplied can and can't support today. A fixed version is a different strategy and needs its own evidence.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Your plan, in order</h2>
+      <p class="asked">Every fix above, ordered by how much it changes the claim for the work it takes.</p>
+      <p>Each fix is written precisely enough for your own team to do without us, on purpose. <b>We don't carry out fixes on a strategy we have audited.</b> An auditor who also sells the repair has a reason to make the problems look bigger, and this report is only worth anything because we don't. Nor do we tell you how to make the signal better. Making your measurement honest is our job; making the strategy better is your edge, and it should stay yours.</p>
+      <ol class="plan">
+        <li><b>Mark calls against the right price first</b> (<a href="#fc-4">FC-4</a>). About an hour of work, and until it's done every other number is measured against the wrong market.</li>
+        <li><b>Assume trades happen at real prices by default</b> (<a href="#fc-7">FC-7</a>). This turns the biggest source of over-statement into a cautious assumption.</li>
+        <li><b>Measure the live delay and feed it into the test</b> (<a href="#fc-5">FC-5</a>). This is the finding that predicts the next live loss, and the safety switch stops it.</li>
+        <li><b>Write down the pass mark before the next settings change</b> (<a href="#fc-6">FC-6</a>). Cherry-picking can't be undone, only prevented.</li>
+        <li><b>Redo the investor one-pager</b> (<a href="#fc-8">FC-8</a>). Whatever the corrected figure turns out to be, publish it as a range, with the number of trades and a benchmark beside it.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What we did not check</h2>
+      <ul class="plain">
+        <li>Anything after 31 December 2025. The material supplied ends there.</li>
+        <li>The live trading system's own code. We used its logs to measure delays (FC-5), but the parts that place orders, manage risk and reconcile accounts were outside this audit.</li>
+        <li>Counterparty, custody, margin and liquidation risks.</li>
+        <li>Whether the exchange data supplied is complete. We checked it against the client's own statements, which tests consistency, not independent truth.</li>
+        <li>Any market beyond the 12 supplied, or any call interval other than 15 minutes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Check every number yourself</h2>
+      <p class="asked">Every figure in this report comes out of a script delivered with it. Nothing is claimed that can't be shown. For your engineers:</p>
+      <div class="tscroll"><table>
+        <thead><tr><th>To reproduce</th><th>Script</th></tr></thead>
+        <tr><td>FC-1 &middot; the same answer on every run</td><td><code>fctools/fc1_reproduce.py</code></td></tr>
+        <tr><td>FC-2 &middot; the market list as it really was</td><td><code>audit/fc2_asof_universe.py</code></td></tr>
+        <tr><td>FC-3 &middot; real trading fees</td><td><code>audit/fc3_cost_reconcile.py</code></td></tr>
+        <tr><td>FC-4 &middot; the right price, at the right time</td><td><code>audit/fc4_venue_reconcile.py</code></td></tr>
+        <tr><td>FC-5 &middot; the delay, and the 14 moments</td><td><code>audit/fc5_snapshot_age.py</code></td></tr>
+        <tr><td>FC-6 &middot; untouched data, and the rank among 41</td><td><code>audit/fc6_holdout.py</code></td></tr>
+        <tr><td>FC-7 &middot; real prices, trade by trade</td><td><code>audit/fc7_fill_realism.py</code></td></tr>
+        <tr><td>FC-8 &middot; the likely ranges</td><td><code>fctools/fc8_bootstrap.py</code></td></tr>
+        <tr><td>The whole chart above, end to end</td><td><code>audit/run_all.py --report</code></td></tr>
+      </table></div>
+      <p class="src">Full trade-by-trade output is delivered too, not just summaries: 7,104 rows for FC-7, 14 for FC-5, 41 for FC-6, 10,000 for FC-8. The two <code>fctools</code> scripts are free and public: <a href="/tools/fctools-v6.tar.gz">download</a>.</p>
+    </section>
+
+  </div>
 
   <div class="close">
     <div class="col">
       <h2>Want one of these on your strategy?</h2>
       <p>
-        Start with a free 30-minute call. Tell us what the strategy is and what you have &mdash; code,
+        Start with a free 30-minute call. Tell us what the strategy is and what you have: code,
         data, and the result being claimed. <strong>If there isn't enough there to reproduce
         anything, we'll tell you on that call and turn the work down.</strong>
       </p>
@@ -1424,7 +1118,7 @@ of the deliverable.</strong></p>
       <p class="disclaimer">
         Research due-diligence and code-audit services only. This is not investment advice, not a
         recommendation to buy or sell anything, and not an offer to manage money. This page is a
-        constructed specimen: it describes no client, no engagement and no real strategy.
+        made-up sample: it describes no client, no engagement and no real strategy.
       </p>
     </div>
   </div>
