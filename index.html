@@ -291,6 +291,7 @@
   .offer-steps span{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
   .offer-meta{margin:0;border-top:1px solid var(--rule-strong);background:var(--paper);font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--muted);padding:12px 20px}
   .offer-meta strong{color:var(--ink);font-weight:600}
+  .hero-meta{margin:22px 0 0;padding:0;border:0;background:none}
   .hero-aud{margin:26px 0 0;max-width:34em;font-size:1.04rem;line-height:1.55;color:var(--muted)}
   .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:26px 0 0}
   .hero-cta-note{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--faint);flex:1 1 19em;max-width:30em}
@@ -495,6 +496,12 @@
   ol.needs-list{margin:0;padding-left:22px;display:grid;gap:6px}
   ol.needs-list li{font-size:15.5px;line-height:1.5}
   .needs-more{margin:12px 0 0;font-size:14.5px;color:var(--muted)}
+  a.needs-link{display:flex;align-items:center;gap:18px;margin-top:10px;padding:14px 22px;border:1px solid var(--rule-strong);text-decoration:none;color:var(--ink)}
+  a.needs-link:hover,a.needs-link:focus-visible{background:var(--raised);border-color:var(--right)}
+  a.needs-link .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+  a.needs-link .sc-t{flex:1;font-size:15px;color:var(--muted)}
+  a.needs-link .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
+  @media (max-width:600px){a.needs-link{flex-wrap:wrap;gap:4px 12px}}
   a.sample-cta{display:flex;align-items:center;gap:18px;margin-top:22px;padding:18px 22px;border:1px solid var(--right);background:var(--raised);text-decoration:none;color:var(--ink)}
   a.sample-cta:hover,a.sample-cta:focus-visible{background:var(--right-bg)}
   a.sample-cta .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--right);white-space:nowrap}
@@ -648,20 +655,8 @@
       is one that holds up. <strong>That is the whole job.</strong>
     </p>
 
-    <div class="offer">
-      <ol class="offer-steps">
-        <li><span>You send</span> a strategy — the code, the data, and the result being claimed.</li>
-        <li><span>We reproduce it</span> — or find out exactly what stops it reproducing.</li>
-        <li><span>You get</span> a written report, with a script you can run yourself for every finding.</li>
-      </ol>
-      <p class="offer-meta">
-        Fixed scope, fixed price &middot; <strong>$2,500 – $25,000</strong> &middot; report in 1–6 weeks &middot; no retainer, no lock-in
-      </p>
-    </div>
-
-    <p class="hero-aud">
-      For whoever loses money if the number is wrong — a DAO deciding where its treasury goes, an
-      investor checking a fund manager's record, a partner funding a strategy built in-house.
+    <p class="offer-meta hero-meta">
+      Fixed scope, fixed price &middot; <strong>$2,500 – $25,000</strong> &middot; report in 1–6 weeks &middot; no retainer, no lock-in
     </p>
 
     <div class="hero-cta">
@@ -674,8 +669,7 @@
   <section class="section-rule" id="costs">
     <h2>What it costs</h2>
     <p class="lede">
-      Every finding comes with a script you can run yourself — we don't claim anything we can't
-      show you. The Triage tier exists so you can start small.
+      Three fixed prices. Start small with a Triage; every finding comes with a script you can run yourself.
     </p>
     <div class="tiers">
       <div class="tier">
@@ -706,19 +700,15 @@
 
     <a class="sample-cta" href="/sample/">
       <span class="sc-k">Sample report</span>
-      <span class="sc-t"><b>See exactly what you would get:</b> a complete full audit of a made-up strategy, all eight checks, every finding explained.</span>
+      <span class="sc-t"><b>See exactly what you would get:</b> a complete full audit of a made-up strategy, all eight checks, every finding explained, and a script that reproduces each one.</span>
       <span class="arrow" aria-hidden="true">&rarr;</span>
     </a>
 
-    <div class="needs">
-      <h3>What we need from you</h3>
-      <ol class="needs-list">
-        <li><b>The code</b> that produced the number, and which version.</li>
-        <li><b>The data</b> it ran on, or access to download it.</li>
-        <li><b>The claim, written down</b>: the number, the period, and where it appears (a one-pager, a deck, a governance proposal).</li>
-      </ol>
-      <p class="needs-more">Missing one? Say so on the free call, and we'll tell you whether there's still a job. <a href="/method/">Formats, data sizes and the markets we cover &rarr;</a></p>
-    </div>
+    <a class="needs-link" href="/method/#needs">
+      <span class="sc-k">What we need from you</span>
+      <span class="sc-t">The code, the data, and the claim written down. Formats, sizes and the markets we cover.</span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
 
     <h3>What you walk away with</h3>
     <p>
@@ -774,48 +764,11 @@
     </div>
   </section>
 
-  <section>
-    <details class="post col">
-      <summary>
-        <h2>Most backtests aren't wrong. They're just unchecked.</h2>
-        <span class="post-teaser">Why mistakes survive in code that has already been tested, and the one losing trade worth asking about.</span>
-        <span class="post-more"><span class="when-closed">Read &rsaquo;</span><span class="when-open">Close &times;</span></span>
-      </summary>
-      <div class="post-body">
-      <p class="lede">
-        A backtest is a trading strategy run against past market data to see what it would have made.
-        That one number decides everything that follows — whether to fund it, how much to risk on it,
-        whether to walk away.
-      </p>
-      <p class="lede">
-        The trouble is that people check the things they thought to check. Mistakes survive in the
-        places nobody thought to look: a filter that doesn't do what its name says, a fee copied from
-        somewhere else instead of measured, a list that sorts itself differently every time the
-        program runs.
-      </p>
-      <p class="lede">
-        Not one of the problems below needed new data or a cleverer model. Every one was sitting in
-        our own code, and we could have found any of them on a day we thought to look. That is rather
-        the point: this is what checking finds.
-      </p>
-      <p class="lede">
-        <b>And if you already know your strategy works, you probably also know the one time it
-        didn't.</b> Most people can name that trade. It is usually explained as bad luck, and
-        sometimes that is exactly what it was. But the question worth answering is not whether the
-        strategy works &mdash; it is whether that miss was one event or a class of them, and how much
-        of the rest of the record rests on the same assumption that failed. The backtest cannot tell
-        you: it is the thing that scored the event as a win.
-      </p>
-      </div>
-    </details>
-  </section>
-
   <section class="section-rule">
     <h2>Ten findings, from our own research</h2>
     <p class="lede">
-      This is what the checking finds. Every example below is a defect we found in <em>our own</em>
-      research and published against ourselves — <strong>because we can't show you a client's.</strong>
-      Each one names the dated internal document it came from.
+      Every one is a mistake we found in <em>our own</em> research and published against ourselves,
+      <strong>because we can't show you a client's.</strong>
     </p>
     <p class="case-hint">Click any finding to open it</p>
 
@@ -1361,17 +1314,41 @@
       </details>
     </article>
     </details>
-  </section>
 
-  <section class="section-rule">
-    <div class="thread">
-      <details class="post">
-        <summary>
-          <h2>What these ten have in common</h2>
-          <span class="post-teaser">None was found by being cleverer than whoever wrote the code (and in all ten, that was us). <b>Each came from checking something nobody thought needed checking.</b></span>
-          <span class="post-more"><span class="when-closed">See what each finding came from &rsaquo;</span><span class="when-open">Close &times;</span></span>
-        </summary>
-        <div class="post-body">
+    <div class="folds">
+      <details class="fold">
+        <summary>Most backtests aren't wrong. They're just unchecked.</summary>
+        <div class="fold-body">
+      <p>
+        A backtest is a trading strategy run against past market data to see what it would have made.
+        That one number decides everything that follows — whether to fund it, how much to risk on it,
+        whether to walk away.
+      </p>
+      <p>
+        The trouble is that people check the things they thought to check. Mistakes survive in the
+        places nobody thought to look: a filter that doesn't do what its name says, a fee copied from
+        somewhere else instead of measured, a list that sorts itself differently every time the
+        program runs.
+      </p>
+      <p>
+        Not one of the problems below needed new data or a cleverer model. Every one was sitting in
+        our own code, and we could have found any of them on a day we thought to look. That is rather
+        the point: this is what checking finds.
+      </p>
+      <p>
+        <b>And if you already know your strategy works, you probably also know the one time it
+        didn't.</b> Most people can name that trade. It is usually explained as bad luck, and
+        sometimes that is exactly what it was. But the question worth answering is not whether the
+        strategy works &mdash; it is whether that miss was one event or a class of them, and how much
+        of the rest of the record rests on the same assumption that failed. The backtest cannot tell
+        you: it is the thing that scored the event as a win.
+      </p>
+        </div>
+      </details>
+      <details class="fold">
+        <summary>What these ten have in common</summary>
+        <div class="fold-body">
+          <p>None was found by being cleverer than whoever wrote the code (and in all ten, that was us). <strong>Each came from checking something nobody thought needed checking.</strong></p>
         <ul class="thread-list">
           <li><span class="k">01</span><a href="#case-01">Running the same code twice.</a></li>
           <li><span class="k">02</span><a href="#case-02">Running a check that already existed on all the data, not just a sample.</a></li>
@@ -1386,17 +1363,9 @@
         </ul>
         </div>
       </details>
-    </div>
-  </section>
-
-  <section class="section-rule">
-    <details class="post">
-    <summary>
-      <h2>What we check</h2>
-      <span class="post-teaser">Eight questions every audit answers, from &ldquo;does it repeat?&rdquo; to &ldquo;what is really being claimed?&rdquo; They come from mistakes we have actually hit, not from a textbook.</span>
-      <span class="post-more"><span class="when-closed">See the eight checks &rsaquo;</span><span class="when-open">Close &times;</span></span>
-    </summary>
-    <div class="post-body">
+      <details class="fold">
+        <summary>The eight checks every audit runs</summary>
+        <div class="fold-body">
     <ol class="checks">
       <li><b>Does it repeat?</b> Run the code twice, on two different machines. Does the same number come back?</li>
       <li><b>Are the dead ones missing?</b> Was the list of assets built as it looked <em>back then</em>, or from the ones still around today? The ones that disappeared are usually the losers.</li>
@@ -1407,13 +1376,13 @@
       <li><b>Could you have traded it?</b> Could every position in the result actually have been bought and sold, at the price used?</li>
       <li><b>What is really being claimed?</b> A single number, or a range? Is the margin of error wide enough to include zero — meaning it might be nothing?</li>
     </ol>
-    <p class="lede" style="margin-top:22px">
+    <p style="margin-top:16px">
       <a href="/method/">Each check in detail, what we need from you, and the markets we cover →</a>
     </p>
+        </div>
+      </details>
     </div>
-    </details>
   </section>
-
 
   <div class="close">
     <div class="col">
