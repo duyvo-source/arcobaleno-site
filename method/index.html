@@ -561,8 +561,8 @@
     </div>
     <h1>What we need from you, and the eight checks we run</h1>
     <p class="standfirst">
-      So you can tell before you email us whether there is a job here, what it would involve, and
-      whether we are the right people for it. <strong>If we aren't, we would rather you knew now.</strong>
+      So you can tell before you write whether there is a job here. <strong>If we aren't the right
+      people for it, we would rather you knew now.</strong>
     </p>
   </header>
 
@@ -570,9 +570,8 @@
     <div class="col">
       <h2>What we need from you</h2>
       <p class="lede">
-        <strong>Three things.</strong> If you don't have all three, say so on the call — it usually
-        changes what is worth doing, and occasionally it means there is no job, which we will tell
-        you. This is the first thing to check, which is why it is the first thing on this page.
+        <strong>Three things.</strong> If one is missing, say so on the call: it changes what is worth
+        doing, and sometimes it means there is no job, which we will tell you.
       </p>
     </div>
     <div class="panel">
@@ -630,10 +629,8 @@
     <div class="col">
       <h2>What we can and can't audit</h2>
       <p class="lede">
-        The eight checks work in any market: missing losers, using information too early, made-up costs
-        and cherry-picking were studied in stock markets long before crypto existed. But knowing how a
-        particular market <em>works</em> is a different thing from knowing the method, and we would
-        rather be straight about where our knowledge stops.
+        The eight checks work in any market. Knowing how a particular market <em>works</em> is a
+        different thing, so here is where our knowledge stops.
       </p>
       <ul class="cover">
         <li>
@@ -664,21 +661,19 @@
           audit is not the person who carries the loss.</span>
         </li>
       </ul>
-      <p style="margin-top:22px">
-        We don't claim to cover every market. Outside crypto we hold no market data of our own, so
-        you would either send us yours or we buy it in — and we tell you which, and what it costs,
-        before any work starts.
+      <p style="margin-top:18px;font-size:15px;color:var(--muted)">
+        Outside crypto we hold no market data of our own: you send yours or we buy it in, and we tell
+        you which, and what it costs, before any work starts.
       </p>
     </div>
   </section>
 
   <section class="section-rule">
     <div class="col">
-      <h2>FC-1 to FC-8, broken down</h2>
+      <h2>The eight checks, in plain English</h2>
       <p class="lede">
-        Every audit asks the same eight questions. Each one below is explained with an everyday
-        example, with the jargon taken out. Open any card to read it. The formal wording is further
-        down this page.
+        Every audit asks the same eight questions, numbered FC-1 to FC-8 so each finding in your
+        report points at one of them. Open any card for an everyday example.
       </p>
     </div>
 
@@ -919,13 +914,107 @@
       </div>
     </div>
 
+
+    <div class="folds">
+      <details class="fold">
+        <summary>The formal checklist, and the free tools behind four of the checks</summary>
+        <div class="fold-body">
+    <div class="col">
+      <p class="lede">
+        They come from mistakes we have actually hit in our own research — not from a textbook. All eight
+        are <a href="/">published on our front page</a> as case studies against
+        ourselves, with the dated internal document each one came from.
+      </p>
+      <p class="lede">
+        The tools behind four of them (<span class="m">FC-1</span>, <span class="m">FC-4</span>,
+        <span class="m">FC-6</span>, <span class="m">FC-8</span>) are public:
+        <a href="/tools/fctools-v6.tar.gz">fctools</a>, free for anyone to use
+        (<a href="/tools/LICENSE.txt">MIT licence</a>), with a
+        <a href="/tools/fctools-v6.tar.gz.sha256">checksum</a> and a
+        <a href="/tools/fctools-v6.tar.gz.asc">signature</a> so your team can confirm the download is ours. Run them on your own work before you
+        send it &mdash; anything they catch is cheaper found by you.
+      </p>
+    </div>
+
+    <ol class="tests">
+      <li>
+        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
+        <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually a hidden setting that changes how the program orders its work from run to run.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
+        <p class="t-ask">Was the list of assets built as it looked <em>back then</em>, or from the ones still trading today? And if something was already patched to fix this, does the patch actually test the thing it claims to?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>The names that disappeared are absent from the test — and the ones that disappear are usually the losers, so the record flatters itself.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
+        <p class="t-ask">Where did the fee figure come from? Is it charged correctly — once for the whole portfolio, or once per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
+        <p class="t-ask">Was every line of data checked, or just a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A single bad price carries thirty months of apparent return, and removing it removes the strategy.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
+        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what it is called.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A filter named for keeping data recent that never reads a date. It counts lines and wears the name.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
+        <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of versions tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
+        <p class="t-ask">Could every position in the result actually have been bought and sold, at the price used, in the size assumed — and using only what was knowable at that moment?</p>
+        <span class="t-fail"><b>What going wrong looks like</b>Positions opened and closed at prices that existed, in sizes that did not. Or open positions quietly dropped at the end instead of valued, which turns a loss into a profit.</span>
+      </li>
+      <li>
+        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
+        <p class="t-ask">Is the headline a single number or a range? We work out its likely range and ask whether that range is wide enough to include zero.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a range — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
+      </li>
+    </ol>
+        </div>
+      </details>
+    </div>
   </section>
 
   <section class="section-rule">
     <div class="col">
-      <h2>The two objections we hear most</h2>
+      <h2>How an audit actually runs</h2>
+      <p class="lede">Start to finish, for a full audit. A Triage is steps 1 to 3 and stops there.
+        <a href="/sample/">Here is what the finished report looks like.</a></p>
+    </div>
+    <ol class="steps">
+      <li><b>We take delivery and freeze it.</b> Your code and data go into a separate copy, sealed with a digital fingerprint so any later change would show. We never work in your live code.</li>
+      <li><b>FC-1 first, before anything else.</b> Run it clean, end to end, twice. If the number won't come out, we stop here and tell you — everything downstream would be worthless.</li>
+      <li><b>We compare against your claim.</b> Our number against the number in your document. Any gap is itself a finding, and often it is <em>the</em> finding.</li>
+      <li><b>We work FC-2 through FC-8 in order.</b> Simple and quick first, subtle last. Each check is a script we run, not a read-through of your code.</li>
+      <li><b>Every finding gets a number.</b> Not "costs look understated" but "costs are understated by this much, which moves the headline from here to here". A finding without a number is an opinion.</li>
+      <li><b>You get the report</b>, each finding with the script that demonstrates it. It opens with a one-page summary that shows how much each problem changes your claim, then takes the eight checks in order, FC-1 to FC-8. <a href="/sample/">See a sample.</a></li>
+      <li><b>One call to walk through it.</b> No ongoing obligation, in either direction.</li>
+    </ol>
+    <h3>Two things worth saying up front</h3>
+    <p>
+      <strong>The fee is for the work, not for finding something.</strong> An audit that finds nothing
+      wrong is a real and useful outcome — it is what you are buying the right to conclude. We would
+      rather agree that now than argue about it later.
+    </p>
+    <p>
+      <strong>If a Triage uncovers something bigger, we stop and re-quote.</strong> We don't silently
+      absorb it, and we don't silently bill for it.
+    </p>
+  </section>
+
+  <section class="section-rule">
+    <div class="col">
+      <h2>Two things people often tell us</h2>
       <p class="lede">
-        Both are reasonable, and both are usually true. Neither one closes the question.
+        Both are usually true. Neither one settles the question.
       </p>
     </div>
 
@@ -1007,109 +1096,6 @@
       </details>
     </div>
     </div>
-  </section>
-
-  <section class="section-rule">
-    <details class="post">
-    <summary class="col">
-      <h2>Every audit runs the same eight checks</h2>
-      <span class="post-teaser">Where they come from, why they're numbered FC-1 to FC-8, and the free tools behind four of them.</span>
-      <span class="post-more"><span class="when-closed">Read &rsaquo;</span><span class="when-open">Close &times;</span></span>
-    </summary>
-    <div class="post-body">
-    <div class="col">
-      <p class="lede">
-        They come from mistakes we have actually hit in our own research — not from a textbook. All eight
-        are <a href="/">published on our front page</a> as case studies against
-        ourselves, with the dated internal document each one came from.
-      </p>
-      <p class="lede">
-        We number them <span class="m">FC-1</span> to <span class="m">FC-8</span> so that findings in
-        your report point at something specific. A finding reads <span class="m">FC-3</span>, not
-        "we had concerns about costs".
-      </p>
-      <p class="lede">
-        The tools behind four of them (<span class="m">FC-1</span>, <span class="m">FC-4</span>,
-        <span class="m">FC-6</span>, <span class="m">FC-8</span>) are public:
-        <a href="/tools/fctools-v6.tar.gz">fctools</a>, free for anyone to use
-        (<a href="/tools/LICENSE.txt">MIT licence</a>), with a
-        <a href="/tools/fctools-v6.tar.gz.sha256">checksum</a> and a
-        <a href="/tools/fctools-v6.tar.gz.asc">signature</a> so your team can confirm the download is ours. Run them on your own work before you
-        send it &mdash; anything they catch is cheaper found by you.
-      </p>
-    </div>
-
-    <ol class="tests">
-      <li>
-        <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
-        <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually a hidden setting that changes how the program orders its work from run to run.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
-        <p class="t-ask">Was the list of assets built as it looked <em>back then</em>, or from the ones still trading today? And if something was already patched to fix this, does the patch actually test the thing it claims to?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>The names that disappeared are absent from the test — and the ones that disappear are usually the losers, so the record flatters itself.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
-        <p class="t-ask">Where did the fee figure come from? Is it charged correctly — once for the whole portfolio, or once per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
-        <p class="t-ask">Was every line of data checked, or just a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A single bad price carries thirty months of apparent return, and removing it removes the strategy.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
-        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what it is called.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A filter named for keeping data recent that never reads a date. It counts lines and wears the name.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
-        <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of versions tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
-        <p class="t-ask">Could every position in the result actually have been bought and sold, at the price used, in the size assumed — and using only what was knowable at that moment?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>Positions opened and closed at prices that existed, in sizes that did not. Or open positions quietly dropped at the end instead of valued, which turns a loss into a profit.</span>
-      </li>
-      <li>
-        <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
-        <p class="t-ask">Is the headline a single number or a range? We work out its likely range and ask whether that range is wide enough to include zero.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a range — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
-      </li>
-    </ol>
-    </div>
-    </details>
-  </section>
-
-  <section class="section-rule">
-    <div class="col">
-      <h2>How an audit actually runs</h2>
-      <p class="lede">Start to finish, for a full audit. A Triage is steps 1 to 3 and stops there.
-        <a href="/sample/">Here is what the finished report looks like.</a></p>
-    </div>
-    <ol class="steps">
-      <li><b>We take delivery and freeze it.</b> Your code and data go into a separate copy, sealed with a digital fingerprint so any later change would show. We never work in your live code.</li>
-      <li><b>FC-1 first, before anything else.</b> Run it clean, end to end, twice. If the number won't come out, we stop here and tell you — everything downstream would be worthless.</li>
-      <li><b>We compare against your claim.</b> Our number against the number in your document. Any gap is itself a finding, and often it is <em>the</em> finding.</li>
-      <li><b>We work FC-2 through FC-8 in order.</b> Simple and quick first, subtle last. Each check is a script we run, not a read-through of your code.</li>
-      <li><b>Every finding gets a number.</b> Not "costs look understated" but "costs are understated by this much, which moves the headline from here to here". A finding without a number is an opinion.</li>
-      <li><b>You get the report</b>, each finding with the script that demonstrates it. It opens with a one-page summary that shows how much each problem changes your claim, then takes the eight checks in order, FC-1 to FC-8. <a href="/sample/">See a sample.</a></li>
-      <li><b>One call to walk through it.</b> No ongoing obligation, in either direction.</li>
-    </ol>
-    <h3>Two things worth saying up front</h3>
-    <p>
-      <strong>The fee is for the work, not for finding something.</strong> An audit that finds nothing
-      wrong is a real and useful outcome — it is what you are buying the right to conclude. We would
-      rather agree that now than argue about it later.
-    </p>
-    <p>
-      <strong>If a Triage uncovers something bigger, we stop and re-quote.</strong> We don't silently
-      absorb it, and we don't silently bill for it.
-    </p>
   </section>
 
   <div class="close">
