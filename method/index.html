@@ -366,10 +366,10 @@
   }
 
   /* ---------- tables ---------- */
-  .plain{display:grid;gap:14px;margin-top:28px;align-items:start}
-  .plain-item{background:var(--raised);border:1px solid var(--rule)}
+  .plain{display:grid;gap:0;margin-top:22px;align-items:start;border-top:2px solid var(--ink)}
+  .plain-item{border-bottom:1px solid var(--rule)}
   .plain-item > details > summary{
-    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
+    cursor:pointer;list-style:none;position:relative;padding:18px 40px 18px 0;
   }
   .plain-item > details > summary::-webkit-details-marker{display:none}
   .plain-item > details > summary:hover .t-name,
@@ -381,11 +381,11 @@
     color:var(--faint);display:block;
   }
   .plain-chev{
-    position:absolute;right:18px;top:19px;font-family:var(--mono);font-size:16px;
+    position:absolute;right:4px;top:19px;font-family:var(--mono);font-size:16px;
     color:var(--muted);transition:transform .15s ease;line-height:1;
   }
   .plain-item > details[open] .plain-chev{transform:rotate(45deg)}
-  .plain-body{padding:4px 22px 20px}
+  .plain-body{padding:4px 0 22px}
   .plain-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
   .plain-body p:last-child{margin-bottom:0}
   .plain-body .punch{color:var(--ink);font-weight:600}
@@ -393,7 +393,7 @@
   .objections{display:grid;gap:14px;margin-top:28px;align-items:start}
   .objection{background:var(--raised);border:1px solid var(--rule);border-left:3px solid var(--rule-strong)}
   .objection > details > summary{
-    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
+    cursor:pointer;list-style:none;position:relative;padding:18px 40px 18px 0;
   }
   .objection > details > summary::-webkit-details-marker{display:none}
   .objection > details > summary:hover h3,
@@ -539,6 +539,26 @@
   details.fold>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
   details.fold>.fold-body{padding:0 2px 16px}
   details.fold>.fold-body>p:first-child{margin-top:0}
+  .offer-meta{font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--muted)}
+  .offer-meta strong{color:var(--ink);font-weight:600}
+  .hero-meta{margin:22px 0 0}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:22px 0 0}
+  .hero-cta-note{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--faint);flex:1 1 19em;max-width:30em}
+  a.needs-link{display:flex;align-items:center;gap:18px;margin-top:10px;padding:14px 22px;border:1px solid var(--rule-strong);text-decoration:none;color:var(--ink)}
+  a.needs-link:hover,a.needs-link:focus-visible{background:var(--raised);border-color:var(--right)}
+  a.needs-link .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+  a.needs-link .sc-t{flex:1;font-size:15px;color:var(--muted)}
+  a.needs-link .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
+  @media (max-width:600px){a.needs-link{flex-wrap:wrap;gap:4px 12px}}
+  a.sample-cta{display:flex;align-items:center;gap:18px;margin-top:22px;padding:18px 22px;border:1px solid var(--right);background:var(--raised);text-decoration:none;color:var(--ink)}
+  a.sample-cta:hover,a.sample-cta:focus-visible{background:var(--right-bg)}
+  a.sample-cta .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--right);white-space:nowrap}
+  a.sample-cta .sc-t{flex:1;font-size:15.5px;line-height:1.45}
+  a.sample-cta .sc-t b{font-weight:600}
+  a.sample-cta .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
+  @media (max-width:600px){a.sample-cta{flex-wrap:wrap;gap:6px 12px}}
+  .fold-body.obj-body{padding:0 2px 16px}
+  .linkrows{margin-top:26px}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -564,6 +584,14 @@
       So you can tell before you write whether there is a job here. <strong>If we aren't the right
       people for it, we would rather you knew now.</strong>
     </p>
+    <p class="offer-meta hero-meta">
+      Fixed scope, fixed price &middot; <strong>$2,500 – $25,000</strong> &middot; report in 1–6 weeks &middot; no retainer, no lock-in
+    </p>
+    <div class="hero-cta">
+      <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">&rarr;</span></a>
+      <span class="hero-cta-note">Start with a free 30-minute call. If what you have isn't enough to
+        reproduce anything, we'll say so on that call and turn the work down.</span>
+    </div>
   </header>
 
   <section id="needs">
@@ -619,10 +647,18 @@
       halfway through. <strong>Your code and data are deleted when we deliver</strong>, unless you ask
       us to keep them.
     </p>
-    <p class="next-step">
-      <b>Have all three?</b> <a href="/#costs">What this costs</a> — three fixed-price tiers, from a
-      $2,500 Triage to a $25,000 portfolio review.
-    </p>
+    <div class="linkrows">
+      <a class="sample-cta" href="/#costs">
+        <span class="sc-k">What it costs</span>
+        <span class="sc-t"><b>Have all three?</b> Three fixed prices, from a $2,500 Triage to a $25,000 portfolio review.</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="needs-link" href="/sample/">
+        <span class="sc-k">Sample report</span>
+        <span class="sc-t">See exactly what you would get, with a script that reproduces each finding.</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
   </section>
 
   <section class="section-rule">
@@ -673,7 +709,7 @@
       <h2>The eight checks, in plain English</h2>
       <p class="lede">
         Every audit asks the same eight questions, numbered FC-1 to FC-8 so each finding in your
-        report points at one of them. Open any card for an everyday example.
+        report points at one of them. Open any check for an everyday example.
       </p>
     </div>
 
@@ -998,16 +1034,18 @@
       <li><b>You get the report</b>, each finding with the script that demonstrates it. It opens with a one-page summary that shows how much each problem changes your claim, then takes the eight checks in order, FC-1 to FC-8. <a href="/sample/">See a sample.</a></li>
       <li><b>One call to walk through it.</b> No ongoing obligation, in either direction.</li>
     </ol>
-    <h3>Two things worth saying up front</h3>
-    <p>
-      <strong>The fee is for the work, not for finding something.</strong> An audit that finds nothing
-      wrong is a real and useful outcome — it is what you are buying the right to conclude. We would
-      rather agree that now than argue about it later.
-    </p>
-    <p>
-      <strong>If a Triage uncovers something bigger, we stop and re-quote.</strong> We don't silently
-      absorb it, and we don't silently bill for it.
-    </p>
+    <div class="folds">
+      <details class="fold">
+        <summary>The fee is for the work, not for finding something</summary>
+        <div class="fold-body"><p>An audit that finds nothing wrong is a real and useful outcome: it is
+          what you are buying the right to conclude. We would rather agree that now than argue about it
+          later.</p></div>
+      </details>
+      <details class="fold">
+        <summary>If a Triage uncovers something bigger, we stop and re-quote</summary>
+        <div class="fold-body"><p>We don't silently absorb it, and we don't silently bill for it.</p></div>
+      </details>
+    </div>
   </section>
 
   <section class="section-rule">
@@ -1018,14 +1056,10 @@
       </p>
     </div>
 
-    <div class="objections">
-    <div class="objection">
-      <details>
-        <summary>
-          <h3>&ldquo;But our data comes straight from the exchange&rdquo;</h3>
-          <span class="plain-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="obj-body">
+    <div class="folds">
+      <details class="fold">
+        <summary>&ldquo;But our data comes straight from the exchange&rdquo;</summary>
+        <div class="fold-body obj-body">
       <p>
         Usually true. It is also not the reassurance it sounds like, because a charting website is
         not where the data lives. It is a window onto somebody else&rsquo;s copy.
@@ -1058,14 +1092,9 @@
       </p>
         </div>
       </details>
-    </div>
-    <div class="objection">
-      <details>
-        <summary>
-          <h3>&ldquo;But we have the order book&rdquo;</h3>
-          <span class="plain-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="obj-body">
+      <details class="fold">
+        <summary>&ldquo;But we have the order book&rdquo;</summary>
+        <div class="fold-body obj-body">
       <p>
         That is, every buy and sell order waiting at each price, often as L2 snapshots. It is better
         than most people arrive with, and it genuinely helps. With it, what a trade would have cost
@@ -1094,7 +1123,6 @@
       </p>
         </div>
       </details>
-    </div>
     </div>
   </section>
 
