@@ -692,6 +692,7 @@
   .hero-cta-note{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--faint);flex:1 1 19em;max-width:30em}
   .linkrows{margin-top:6px}
   .r section.tail{border-top:0;padding-top:4px}
+  .r ol.steps li,.r ul.cover li{max-width:none}
   .r section.chk-intro+section.chk{border-top:2px solid var(--ink)}
   a.needs-link{display:flex;align-items:center;gap:18px;margin-top:10px;padding:14px 22px;border:1px solid var(--rule-strong);text-decoration:none;color:var(--ink)}
   a.needs-link:hover,a.needs-link:focus-visible{background:var(--raised);border-color:var(--right)}
@@ -1167,23 +1168,35 @@
     <section>
       <h2>What this report does not say</h2>
       <p class="asked">An audit that only lists damage isn't worth paying for. So, plainly:</p>
-      <div class="call holds">
-        <div class="lab"><span aria-hidden="true">&#10003;</span> Still true after the audit</div>
-        <ul class="plain">
-          <li><b>The idea is not disproved.</b> 53.1% right against 33.3% for guessing, on untouched data. There is real knowledge in this signal, and none of the six corrections touched the signal itself.</li>
-          <li><b>The signal's own code had no mistakes.</b> Every finding is in the testing around it: fills, timing, costs, the prices used for marking, the market list, and how the version was chosen.</li>
-          <li><b>FC-1 passed cleanly.</b> That's a genuine credential; most don't.</li>
-          <li><b>No dishonesty is suggested anywhere.</b> We have made every one of these mistakes ourselves.</li>
-          <li><b>This is not a forecast.</b> It says what the material supplied can and can't support today. A fixed version is a different strategy and needs its own evidence.</li>
-        </ul>
-      </div>
+      <ul class="cover">
+        <li>
+          <span class="k k-yes">The idea</span>
+          <span><b>The idea is not disproved.</b> 53.1% right against 33.3% for guessing, on untouched data. There is real knowledge in this signal, and none of the six corrections touched the signal itself.</span>
+        </li>
+        <li>
+          <span class="k k-yes">The code</span>
+          <span><b>The signal's own code had no mistakes.</b> Every finding is in the testing around it: fills, timing, costs, the prices used for marking, the market list, and how the version was chosen.</span>
+        </li>
+        <li>
+          <span class="k k-yes">FC-1</span>
+          <span><b>FC-1 passed cleanly.</b> That's a genuine credential; most don't.</span>
+        </li>
+        <li>
+          <span class="k k-yes">Honesty</span>
+          <span><b>No dishonesty is suggested anywhere.</b> We have made every one of these mistakes ourselves.</span>
+        </li>
+        <li>
+          <span class="k k-yes">Not a forecast</span>
+          <span><b>This is not a forecast.</b> It says what the material supplied can and can't support today. A fixed version is a different strategy and needs its own evidence.</span>
+        </li>
+      </ul>
     </section>
 
     <section>
       <h2>Your plan, in order</h2>
       <p class="asked">Every fix above, ordered by how much it changes the claim for the work it takes.</p>
       <p>Each fix is written precisely enough for your own team to do without us, on purpose. <b>We don't carry out fixes on a strategy we have audited.</b> An auditor who also sells the repair has a reason to make the problems look bigger, and this report is only worth anything because we don't. Nor do we tell you how to make the signal better. Making your measurement honest is our job; making the strategy better is your edge, and it should stay yours.</p>
-      <ol class="plan">
+      <ol class="steps">
         <li><b>Mark calls against the right price first</b> (<a href="#fc-4">FC-4</a>). About an hour of work, and until it's done every other number is measured against the wrong market.</li>
         <li><b>Assume trades happen at real prices by default</b> (<a href="#fc-7">FC-7</a>). This turns the biggest source of over-statement into a cautious assumption.</li>
         <li><b>Measure the live delay and feed it into the test</b> (<a href="#fc-5">FC-5</a>). This is the finding that predicts the next live loss, and the safety switch stops it.</li>
