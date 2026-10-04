@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample report — Arcobaleno Research</title>
+<meta name="description" content="A complete sample full-audit report from Arcobaleno Research: a fictional strategy run through all eight checks, every finding sized and reproducible.">
+<link rel="canonical" href="https://arcobaleno.cloud/sample/">
+<meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arcobaleno Research">
+<meta property="og:url" content="https://arcobaleno.cloud/sample/">
+<meta property="og:title" content="Sample report — Arcobaleno Research">
+<meta property="og:description" content="A complete sample full-audit report from Arcobaleno Research: a fictional strategy run through all eight checks, every finding sized and reproducible.">
+<meta property="og:image" content="https://arcobaleno.cloud/card.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sample report — Arcobaleno Research">
+<meta name="twitter:description" content="A complete sample full-audit report from Arcobaleno Research: a fictional strategy run through all eight checks, every finding sized and reproducible.">
+<meta name="twitter:image" content="https://arcobaleno.cloud/card.png">
+<meta name="twitter:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+
+<link rel="preload" href="/fonts/Archivo-latin-8f704806.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/SourceSerif4-latin-f2ea9c12.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/IBMPlexMono-latin-01d28544.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Self-hosted webfonts — vendored by fetch_fonts.py, inlined by build_site.py. Do not edit here. */
+/* Vendored from Google Fonts by fetch_fonts.py. Do not hand-edit.
+   Families: Archivo, Source Serif 4, IBM Plex Mono — all SIL OFL 1.1.
+   Subsets kept: latin, latin-ext.
+   url() is a BARE FILENAME, because CSS resolves url() against the
+   STYLESHEET, not the document. That makes this file work unchanged whether it is
+   linked as fonts/fonts.css (card.html, over file://) or inlined into a page head
+   with the paths rewritten to /fonts/... (build_site.py). */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-ext-ff4f17d2.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-8f704806.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-ext-ff4f17d2.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-8f704806.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-ext-ff4f17d2.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/Archivo-latin-8f704806.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-ext-6bc0f226.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-08949f72.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-ext-6bb06407.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-01d28544.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-ext-32057cf5.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/IBMPlexMono-latin-0d1f0b8d.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-italic-latin-ext-8b8269fb.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-italic-latin-09147e39.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-latin-ext-155f6e70.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-latin-f2ea9c12.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-latin-ext-155f6e70.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/SourceSerif4-latin-f2ea9c12.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><g fill='none' stroke='%234C9DD0' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'><path d='M51.8 22.2A22 22 0 1 1 45.2 14.4'/><path d='M17.2 31.2 27 41 56 12'/></g></svg>">
+
+<!-- Webfonts are self-hosted; build_site.py inlines fonts/fonts.css here. -->
+
+<style>
+  /* Design tokens are DUPLICATED from page.html — each page is built standalone, so there is no
+     shared stylesheet to import. If a colour changes there it must change here too. */
+  :root{
+    --paper:#EFF1EE;
+    --raised:#F7F8F6;
+    --ink:#16191A;
+    --muted:#5E6663;
+    --faint:#858C88;
+    --rule:#D2D8D1;
+    --rule-strong:#B4BDB3;
+    --wrong:#A6321E;
+    --wrong-bg:#F3E2DE;
+    --right:#1B5849;
+    --right-bg:#DDE9E4;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101413;
+      --raised:#171C1A;
+      --ink:#E6EAE7;
+      --muted:#9BA5A0;
+      --faint:#78837E;
+      --rule:#28302D;
+      --rule-strong:#3A443F;
+      --wrong:#E8836C;
+      --wrong-bg:#2E1C18;
+      --right:#6FC3AC;
+      --right-bg:#132A25;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101413;
+    --raised:#171C1A;
+    --ink:#E6EAE7;
+    --muted:#9BA5A0;
+    --faint:#78837E;
+    --rule:#28302D;
+    --rule-strong:#3A443F;
+    --wrong:#E8836C;
+    --wrong-bg:#2E1C18;
+    --right:#6FC3AC;
+    --right-bg:#132A25;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .col{max-width:660px}
+
+  /* ---------- masthead ---------- */
+  header.mast{border-bottom:2px solid var(--ink);padding:56px 0 22px}
+  .eyebrow{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:baseline;
+  }
+  .eyebrow .dot{color:var(--rule-strong)}
+  /* The separator is a flex item in its own right, so when the eyebrow wraps it can be left
+     stranded at the end of line one -- "BACKTEST FORENSICS /" with the rest underneath. Below
+     this width the two phrases stack, at which point the separator has nothing to separate, so
+     it is removed rather than left dangling. */
+  @media (max-width:34rem){
+    .eyebrow{flex-direction:column;gap:4px;align-items:flex-start}
+    .eyebrow .dot{display:none}
+  }
+  .eyebrow a{color:var(--muted);text-decoration-thickness:1px;text-underline-offset:2px}
+  .eyebrow a:hover{color:var(--right)}
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.4rem,6.4vw,4.2rem);
+    line-height:1;letter-spacing:-.028em;
+    margin:20px 0 0;text-wrap:balance;
+  }
+  .standfirst{
+    font-size:clamp(1.12rem,2.1vw,1.32rem);
+    line-height:1.5;color:var(--muted);
+    margin:20px 0 0;max-width:34em;text-wrap:pretty;
+  }
+  .standfirst strong{color:var(--ink);font-weight:600}
+
+
+
+  /* ---------- wordmark: the check and the ring ---------- */
+  /* A check whose vertex is held inside the ring and whose long arm carries on past it: the
+     claim is not just stamped, it is followed past the edge of what was presented.
+     Palette is "blue, five steps" — one hue, five values. The mark draws in step 3 only;
+     all five are declared so the scale is documented and swappable in one place. */
+  :root{
+    --mark1:#0E2C4A; --mark2:#15477B; --mark3:#1C639E; --mark4:#3C88C2; --mark5:#6FB2E0;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+    }
+  }
+  :root[data-theme="dark"]{
+    --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
+  }
+  .brand{display:flex;align-items:center;gap:13px;margin-bottom:20px;text-decoration:none}
+  .brand .mark{display:block;height:30px;width:auto;flex:none}
+  .brand-name{
+    font-family:var(--display);font-weight:800;font-size:1.06rem;
+    letter-spacing:-.012em;color:var(--ink);white-space:nowrap;
+  }
+  a.brand:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  /* The ring is deliberately broken where the check crosses it, so the stroke reads as passing
+     THROUGH rather than over. The gap stops being visible below about 24px, where the mark
+     degrades to a check simply crossing a ring — which is the intended fallback, not a defect. */
+  .mark .ring,
+  .mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.6}
+  .mark .chk{stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0}
+  .next-step{
+    border:1px solid var(--right);background:var(--right-bg);color:var(--right);
+    padding:14px 18px;margin-top:22px;font-size:16px;line-height:1.55;
+  }
+  .next-step b{font-family:var(--display);font-weight:700;color:var(--right)}
+  .next-step a{color:var(--right);font-weight:600;text-underline-offset:3px}
+  .section-rule{border-top:1px solid var(--rule)}
+  h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.5rem,3.2vw,2rem);letter-spacing:-.02em;
+    line-height:1.14;margin:0 0 14px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;
+    font-size:1.16rem;letter-spacing:-.01em;
+    margin:30px 0 8px;text-wrap:balance;
+  }
+  p{margin:0 0 15px}
+  .lede{font-size:1.08rem;color:var(--muted);max-width:36em}
+  strong{font-weight:600}
+  em{font-style:italic}
+  code,.m{font-family:var(--mono);font-size:.87em;font-variant-numeric:tabular-nums}
+  a{color:var(--right);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--right);outline-offset:3px;border-radius:2px}
+
+  /* ---------- the eight tests ---------- */
+  ol.tests{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
+  ol.tests li{background:var(--paper);padding:20px 0}
+  .t-head{display:flex;flex-wrap:wrap;gap:7px 13px;align-items:baseline;margin-bottom:7px}
+  .fc{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink);border:1px solid var(--rule-strong);
+    padding:3px 9px;white-space:nowrap;
+  }
+  .t-name{font-family:var(--display);font-weight:700;font-size:1.06rem;letter-spacing:-.01em}
+  .t-ask{font-size:15.5px;line-height:1.55;margin:0;max-width:44em}
+  .t-fail{
+    display:block;margin-top:9px;padding-left:14px;
+    border-left:3px solid var(--wrong);
+    font-size:14.5px;line-height:1.5;color:var(--muted);max-width:44em;
+  }
+  .t-fail b{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--wrong);display:block;margin-bottom:3px;
+  }
+
+  /* ---------- tables ---------- */
+  .plain{display:grid;gap:14px;margin-top:28px;align-items:start}
+  .plain-item{background:var(--raised);border:1px solid var(--rule)}
+  .plain-item > details > summary{
+    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
+  }
+  .plain-item > details > summary::-webkit-details-marker{display:none}
+  .plain-item > details > summary:hover .t-name,
+  .plain-item > details > summary:focus-visible .t-name{text-decoration:underline}
+  .plain-item > details > summary:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
+  .plain-item > details > summary .t-head{margin-bottom:5px}
+  .t-sub{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);display:block;
+  }
+  .plain-chev{
+    position:absolute;right:18px;top:19px;font-family:var(--mono);font-size:16px;
+    color:var(--muted);transition:transform .15s ease;line-height:1;
+  }
+  .plain-item > details[open] .plain-chev{transform:rotate(45deg)}
+  .plain-body{padding:4px 22px 20px}
+  .plain-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:40em}
+  .plain-body p:last-child{margin-bottom:0}
+  .plain-body .punch{color:var(--ink);font-weight:600}
+
+  .objections{display:grid;gap:14px;margin-top:28px;align-items:start}
+  .objection{background:var(--raised);border:1px solid var(--rule);border-left:3px solid var(--rule-strong)}
+  .objection > details > summary{
+    cursor:pointer;list-style:none;position:relative;padding:18px 44px 18px 22px;
+  }
+  .objection > details > summary::-webkit-details-marker{display:none}
+  .objection > details > summary:hover h3,
+  .objection > details > summary:focus-visible h3{text-decoration:underline}
+  .objection > details > summary:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
+  .objection h3{
+    font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;margin:0;
+  }
+  .objection > details[open] .plain-chev{transform:rotate(45deg)}
+  .obj-body{padding:4px 22px 20px}
+  .obj-body p{font-size:15.5px;line-height:1.6;margin:0 0 11px;max-width:44em}
+  .obj-body p:last-child{margin-bottom:0}
+  .obj-body .punch{color:var(--ink);font-weight:600}
+  .obj-body b{color:var(--ink);font-weight:600}
+  .tbl-scroll{overflow-x:auto;margin:22px 0}
+  table{border-collapse:collapse;font-size:14.5px;min-width:340px}
+  th,td{
+    text-align:left;padding:9px 24px 9px 0;
+    border-bottom:1px solid var(--rule);vertical-align:top;
+  }
+  th{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);white-space:nowrap;
+  }
+  td.k{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted)}
+  td b{font-weight:600}
+
+  /* ---------- send / scope blocks ---------- */
+  .panel{background:var(--raised);border:1px solid var(--rule-strong);padding:26px 26px 22px;margin-top:24px}
+  ol.send{margin:16px 0 0;padding-left:22px}
+  ol.send li{margin-bottom:9px;font-size:15.5px;line-height:1.5}
+  ul.cover{list-style:none;padding:0;margin:20px 0 0}
+  ul.cover li{
+    display:grid;grid-template-columns:8.5em 1fr;gap:18px;align-items:start;
+    padding:15px 0;border-top:1px solid var(--rule);
+    font-size:15.5px;line-height:1.55;max-width:56em;
+  }
+  ul.cover li:last-child{border-bottom:1px solid var(--rule)}
+  ul.cover .k{
+    font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;white-space:nowrap;justify-self:start;
+    padding:3px 9px;border:1px solid var(--rule-strong);color:var(--muted);
+  }
+  ul.cover .k-strong{color:var(--right);border-color:var(--right);background:var(--right-bg)}
+  ul.cover .k-yes{color:var(--right);border-color:var(--right)}
+  ul.cover .k-flag{color:var(--muted)}
+  ul.cover .k-no{color:var(--wrong);border-color:var(--wrong);background:var(--wrong-bg)}
+  @media(max-width:640px){
+    ul.cover li{grid-template-columns:1fr;gap:9px}
+  }
+
+  /* ---------- steps ---------- */
+  ol.steps{list-style:none;padding:0;margin:22px 0 0;counter-reset:s;display:grid;gap:1px;background:var(--rule);border-block:1px solid var(--rule)}
+  ol.steps li{
+    counter-increment:s;background:var(--paper);
+    padding:13px 0 13px 44px;position:relative;font-size:15.5px;line-height:1.5;
+  }
+  ol.steps li::before{
+    content:counter(s,decimal-leading-zero);
+    position:absolute;left:0;top:13px;
+    font-family:var(--mono);font-size:11.5px;font-weight:600;
+    color:var(--faint);letter-spacing:.06em;
+  }
+  ol.steps b{font-weight:600}
+
+  /* ---------- close ---------- */
+  .close{border-top:2px solid var(--ink);padding:46px 0 68px}
+  .close h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+  .contact-block{
+    display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;
+    border:1px solid var(--rule-strong);background:var(--raised);
+    padding:22px 24px;margin-top:28px;
+  }
+  .contact-who{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.75;flex:1 1 15em}
+  .contact-who b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+  a.mailto{
+    display:inline-flex;align-items:baseline;gap:10px;
+    font-family:var(--mono);font-size:clamp(.95rem,2.2vw,1.12rem);font-weight:600;
+    color:var(--paper);background:var(--right);
+    padding:13px 20px;text-decoration:none;
+    border:1px solid var(--right);white-space:nowrap;
+    transition:background .12s ease,color .12s ease;
+  }
+  a.mailto .arrow{font-weight:400;opacity:.75}
+  a.mailto:hover,a.mailto:focus-visible{background:var(--paper);color:var(--right)}
+  a.mailto:focus-visible{outline:2px solid var(--right);outline-offset:3px}
+  .contact-note{
+    font-family:var(--mono);font-size:12px;color:var(--faint);
+    margin-top:14px;line-height:1.7;
+  }
+  .disclaimer{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    line-height:1.7;margin-top:30px;padding-top:16px;
+    border-top:1px solid var(--rule);max-width:60em;
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- wordmark (2026-10-02): ARCOBALENO over RESEARCH, check on the right ----------
+     Source Serif 600 capitals at equal ink width. Ratios measured on the H2 lockup
+     (funding/forensics/linkedin/wordmark/): top = .4348 x the bottom size, top tracking .5913em,
+     bottom .06em. The check's 1.372em height was measured so its ink spans both lines exactly. */
+  .wordmark{display:inline-flex;flex-direction:column;align-items:flex-start;font-family:var(--body);
+    font-weight:600;text-transform:uppercase;color:var(--ink);font-size:1.75rem;line-height:1}
+  .wordmark .wm-a{font-size:.4348em;letter-spacing:.5913em;margin-left:.075em;margin-right:-.5913em;
+    margin-bottom:.35em;color:var(--muted)}
+  .wordmark .wm-r{letter-spacing:.06em;margin-right:-.06em;line-height:.86}
+  .brand:has(.mark-after){gap:18px}
+  .brand svg.mark.mark-after{display:block;align-self:center;height:calc(1.75rem * 1.372);width:auto;flex:none}
+  .brand svg.mark-after .ring,.brand svg.mark-after .chk{stroke-width:2.0}
+
+  /* Closing contact box (2026-10-02): the header wordmark again, smaller, with one label line. */
+  .contact-who .cb-row{display:flex;align-items:center;gap:14px}
+  .contact-who .cb-wm{font-size:1.35rem}
+  .contact-who svg.cb-mark{display:block;height:calc(1.35rem * 1.372);width:auto;flex:none}
+  .contact-who svg.cb-mark .ring,.contact-who svg.cb-mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.0}
+  .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
+  .contact-who .cb-sub{display:block;margin-top:10px;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px}
+
+  /* ---------- sample report (2026-10-04) ----------
+     The report body is NOT in this file: build_site.py renders SPECIMEN_FULL_AUDIT.md (below its
+     internal banner) into the SPECIMEN-BODY marker. Edit the markdown, never the built page. */
+  .specimen-flag{margin:26px 0 0;padding:14px 18px;border:1px solid var(--right);background:var(--right-bg);
+    font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink);max-width:46em}
+  .specimen-flag b{color:var(--right)}
+  .report{max-width:760px;padding:8px 0 40px}
+  .report h2{margin-top:44px;font-size:clamp(1.25rem,2.6vw,1.6rem)}
+  .report h3{margin-top:28px}
+  .report p,.report li{max-width:44em}
+  .report hr{border:0;border-top:1px solid var(--rule);margin:36px 0}
+  .report blockquote{margin:16px 0;padding:6px 16px;border-left:3px solid var(--rule-strong);color:var(--muted)}
+  .report blockquote p{margin:6px 0}
+  .report code{font-family:var(--mono);font-size:.84em;overflow-wrap:anywhere}
+  .report table{border-collapse:collapse;margin:16px 0;font-size:.92rem;display:block;overflow-x:auto;max-width:100%}
+  .report th,.report td{border-bottom:1px solid var(--rule);padding:7px 12px 7px 0;text-align:left;vertical-align:top}
+  .report th{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .report td:last-child,.report th:last-child{padding-right:0}
+</style>
+<style>
+  /* standalone reset — the Artifact host supplied these; a plain webserver does not */
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <a class="brand" href="/">
+      <span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark mark-after" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg>
+    </a>
+    <div class="eyebrow">
+      <span>Backtest Forensics</span><span class="dot">/</span>
+      <span>Sample report</span>
+    </div>
+    <h1>What a full audit looks like</h1>
+    <p class="standfirst">
+      The whole report, start to finish, so you can see what you are buying before you write to us.
+      <strong>The strategy, the client and every figure in it are made up.</strong>
+    </p>
+    <p class="specimen-flag">
+      <b>SPECIMEN, NOT CLIENT WORK.</b> No client, no engagement, no real data, no real firm. We built
+      a fictional order-book signal and audited it against all eight checks, so the format is real
+      and the findings are not. For defects we actually found, in our own research, see the
+      <a href="/">ten findings on the front page</a>. Order-book data like this specimen's is quoted
+      separately from the tier prices, because of its size.
+    </p>
+  </header>
+
+  <article class="report">
+<div>
+<p><strong>BACKTEST FORENSICS — FULL AUDIT</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prepared for</strong></td>
+<td><em>[client redacted — specimen]</em></td>
+</tr>
+<tr>
+<td><strong>Strategy</strong></td>
+<td><code>obi-signal-v4</code> — order-book-imbalance directional signal, 12 crypto perpetual pairs</td>
+</tr>
+<tr>
+<td><strong>What it emits</strong></td>
+<td>a three-way call — <strong>buy / sell / flat</strong> — every 15 minutes per pair</td>
+</tr>
+<tr>
+<td><strong>Claim under test</strong></td>
+<td><strong>61.4% directional hit rate · +38.0% annualised on a 1× notional overlay · Sharpe 1.62 · max drawdown −11.2%</strong>, 2023-01-01 → 2025-12-31</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Full audit. All eight checks, <code>FC-1</code> through <code>FC-8</code>.</td>
+</tr>
+<tr>
+<td><strong>Material examined</strong></td>
+<td>signal generator, backtest engine, scoring script, 3 years of 1-second L2 snapshots (5 levels a side), exported OHLCV used to score the calls, and the two documents stating the claim</td>
+</tr>
+<tr>
+<td><strong>Method</strong></td>
+<td>every finding ships with a script the client runs themselves</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<h2>Verdict</h2>
+<p><strong>The signal is real. The number is not.</strong></p>
+<p>Those are two different findings and both matter, so neither is buried.</p>
+<p><strong>What holds.</strong> <code>obi-signal-v4</code> carries genuine directional information. On six months of data
+that was never used to choose anything, it calls direction correctly <strong>53.1% of the time against
+a 33.3% chance floor</strong> on 1,180 scored calls — a margin that is not remotely explicable by luck
+(p &lt; 0.001). Nothing in this report says the model is noise, and we want that read before
+anything else, because most of what follows is subtraction.</p>
+<p><strong>What does not hold.</strong> The <strong>+38.0% annualised</strong> figure does not survive contact with the
+checklist. Corrected for six defects — none of them in the model, all of them in what the
+backtest assumed about <strong>execution and about the clock</strong> — the same signal on the same data
+returns <strong>+2.2% annualised, with a 95% confidence interval of −5.4% to +9.9%.</strong></p>
+<p><strong>That interval includes zero.</strong> The honest statement of the claim is not &quot;this makes 38% a
+year.&quot; It is: <em>&quot;this predicts direction better than chance, by a margin that the current
+execution assumptions are too optimistic to convert into a demonstrated return.&quot;</em></p>
+<p><strong>And the failure is not spread evenly — it is concentrated exactly where the money is.</strong> The
+single largest correction (§4, <code>FC-7</code>) comes from bars in the top 1% of realised volatility.
+Those bars carry <strong>34% of the claimed P&amp;L</strong> and are the bars where the strategy's fill
+assumption is least defensible. The strategy looks best precisely where it is least
+demonstrable.</p>
+<p><strong>On the known live miss.</strong> The client reported one live event where the signal called <em>buy</em>
+and the correct call was <em>sell</em>. <strong>The audit's job was to say whether that was one event or a
+class.</strong> It is a class — see §5. Fourteen events in the sample share its structure; <strong>nine of
+the fourteen invert</strong> when the signal is recomputed at the latency it actually runs at. The
+miss was not bad luck. It is what this signal does in that regime, and it will do it again.</p>
+<hr />
+<h2>The corrected headline, as a waterfall</h2>
+<p>Each line is one finding. Each is reproducible by the script named in its section.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>correction</th>
+<th>check</th>
+<th>annualised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>as claimed</strong></td>
+<td></td>
+<td><strong>+38.0%</strong></td>
+</tr>
+<tr>
+<td>§9</td>
+<td>asset list rebuilt as-of, not as-surviving</td>
+<td><code>FC-2</code></td>
+<td>+36.2%</td>
+</tr>
+<tr>
+<td>§6</td>
+<td>maker rebate applied to measured fill mix, not to 100%</td>
+<td><code>FC-3</code></td>
+<td>+29.6%</td>
+</tr>
+<tr>
+<td>§7</td>
+<td>calls scored on the venue actually traded</td>
+<td><code>FC-4</code></td>
+<td>+26.1%</td>
+</tr>
+<tr>
+<td>§4</td>
+<td>fills taken at the liquidity that existed</td>
+<td><code>FC-7</code></td>
+<td><strong>+8.2%</strong></td>
+</tr>
+<tr>
+<td>§5</td>
+<td>signal computed at the book age it really sees</td>
+<td><code>FC-5</code></td>
+<td>+4.1%</td>
+</tr>
+<tr>
+<td>§3</td>
+<td>read on untouched data instead of the sample it was chosen on</td>
+<td><code>FC-6</code></td>
+<td><strong>+2.2%</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><em>95% CI: −5.4% to +9.9%</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>claimed</th>
+<th><strong>corrected</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>directional hit rate</td>
+<td>61.4%</td>
+<td><strong>53.1%</strong></td>
+</tr>
+<tr>
+<td>annualised return (1× notional)</td>
+<td>+38.0%</td>
+<td><strong>+2.2%</strong></td>
+</tr>
+<tr>
+<td>Sharpe</td>
+<td>1.62</td>
+<td><strong>0.14</strong></td>
+</tr>
+<tr>
+<td>max drawdown</td>
+<td>−11.2%</td>
+<td>−15.7%</td>
+</tr>
+<tr>
+<td><strong>is the return distinguishable from zero?</strong></td>
+<td><em>not stated</em></td>
+<td><strong>no</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sharpe moved further than return did.</strong> That is the signature of a result whose volatility was
+being understated along with its costs, and it is the number we would put in front of an
+investment committee first.</p>
+<hr />
+<h2>1. What we were asked</h2>
+<blockquote>
+<p>&quot;61.4% hit rate, +38% annualised, Sharpe 1.62, max DD −11.2%. Order-book imbalance, 12 perp
+pairs, 15-minute calls, 2023 through 2025.&quot;</p>
+</blockquote>
+<p>The figure appears in a strategy memo and in a one-page tear sheet prepared for investors. The
+two agree, which is worth noting: <strong>agreement between two documents is not corroboration when
+both are downstream of one script.</strong> They were.</p>
+<p><strong>What the client told us before we started</strong> (our intake form asks <em>&quot;anything you already suspect
+is wrong?&quot;</em>): one live event, roughly a year before the engagement, where the signal called buy
+into what should have been a sell. The client's own read was that it was a one-off. <strong>That
+answer shaped the audit</strong> — it is why <code>FC-5</code> and <code>FC-7</code> were worked before <code>FC-3</code>, against the
+usual cheap-and-structural-first order. It was the right call; see §5.</p>
+<hr />
+<h2>2. <code>FC-1</code> — Does it repeat? <strong>PASS</strong></h2>
+<p><strong>Method.</strong> <code>fctools/fc1_reproduce.py --cmd &quot;&lt;their command&gt;&quot;</code>: 20 runs in an identical environment, plus
+runs under three different <code>PYTHONHASHSEED</code> values, on two machines with different CPU counts.</p>
+<p><strong>Finding.</strong> It reproduces. Maximum spread across 20 runs: <strong>0.31pp of annualised return</strong>,
+attributable to a documented floating-point reduction order in the rolling imbalance window. Hit
+rate was bit-identical in every run.</p>
+<p><strong>This is a clean result and it is worth what it costs.</strong> Most of the strategies that reach us
+fail here (case study 1 exists because one of ours did). A signal that returns the same number
+on a machine that has never seen it is a strategy whose author can be taken at their word about
+everything downstream, and it meant the remaining seven checks were testing the <em>method</em> rather
+than chasing an unstable number.</p>
+<p><strong>What passing does not mean.</strong> It means the code is deterministic. It says nothing about
+whether the number is <em>right</em> — the next six sections are all defects in a perfectly
+reproducible pipeline.</p>
+<p><strong>THE FIX — nothing to fix, one thing to keep.</strong> Pin <code>PYTHONHASHSEED</code> and the reduction order in
+CI so this stays true as the code changes. Reproducibility is not a property you have; it is one you
+keep. <strong>Effort: under an hour, once.</strong></p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 fctools/fc1_reproduce.py --cmd &quot;python3 run_backtest.py --config prod.yaml&quot; --runs 20</code></p>
+</blockquote>
+<hr />
+<h2>3. <code>FC-6</code> — Was it cherry-picked? <strong>The largest single correction</strong></h2>
+<p><strong>What we asked.</strong> How many versions were tried, and was this one chosen before or after its
+performance was visible?</p>
+<p><strong>What we found.</strong> The repository contains <strong>41 distinct threshold configurations</strong> in
+<code>configs/</code>, dated across fourteen months, plus a sweep script that evaluates all of them on the
+full 2023–2025 period. The shipped configuration is the argmax of that sweep.</p>
+<p><strong>There was no holdout.</strong> Not a weak one — none. Every configuration was scored on every day of
+data, and the best was kept.</p>
+<p><strong>Why this is not an accusation.</strong> Nobody did anything dishonest. This is the most common finding
+we make, it is made against our own research routinely (case study 8), and the author's instinct
+— <em>&quot;try the variants, keep the one that works&quot;</em> — is correct in every field except this one. The
+problem is arithmetic, not integrity: <strong>with 41 tries on one sample, the best result is the
+sample's luckiest result, and it will not repeat.</strong></p>
+<p><strong>Quantifying it.</strong> We carved the final six months (2025-07-01 → 2025-12-31) and confirmed
+against the client's own commit history that no configuration file was modified after
+2025-06-14 — so that window is genuinely untouched by selection. Re-reading the <strong>shipped,
+unmodified</strong> configuration on it:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>full sample (selected on)</th>
+<th><strong>untouched holdout</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scored calls</td>
+<td>7,104</td>
+<td>1,180</td>
+</tr>
+<tr>
+<td>directional hit rate</td>
+<td><strong>61.4%</strong></td>
+<td><strong>53.1%</strong></td>
+</tr>
+<tr>
+<td>annualised (pre-other-corrections)</td>
+<td>+38.0%</td>
+<td>+21.9%</td>
+</tr>
+<tr>
+<td>rank of shipped config among the 41</td>
+<td><strong>1st</strong></td>
+<td><strong>17th</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>That last row is the finding.</strong> On data it was not chosen against, the shipped configuration is
+ordinary — 17th of 41, indistinguishable from the middle of its own family. The spread between
+1st and 17th on the selection sample was a spread between lucky draws, not between better and
+worse models.</p>
+<p><strong>And the part that survives.</strong> 53.1% against a 33.3% floor on 1,180 independent three-way calls
+is <strong>p &lt; 0.001</strong>. Selection inflated the number. It did not manufacture it. There is something
+here.</p>
+<p><strong>THE FIX — this one cannot be fixed backwards, only forwards.</strong> There is no way to un-see 41
+results, and no re-analysis recovers what selection consumed. Going forward, two changes: <strong>(a)</strong> cut
+a holdout before the next parameter change and do not read it until the change is final; <strong>(b)</strong> for
+anything you intend to show an investor, fix the bar in writing before the window opens. <strong>Effort:
+a policy decision plus a day of tooling.</strong> Note that the 17th-of-41 rank is not a reason to switch
+configurations — the ranking on the holdout is itself one draw.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc6_holdout.py --configs configs/ --holdout 2025-07-01:2025-12-31 --freeze-check .git</code></p>
+</blockquote>
+<hr />
+<h2>4. <code>FC-7</code> — Could you have traded it? <strong>The largest correction in the return</strong></h2>
+<p><strong>What we asked.</strong> Could every position in the result actually have been bought and sold, at the
+price used, at that size?</p>
+<p><strong>What we found.</strong> The engine fills every call as a <strong>resting limit order at the mid price
+prevailing at signal time</strong>, and treats the fill as certain. That assumption is doing an enormous
+amount of work, and it is doing the most work exactly where it is least true.</p>
+<p><strong>The concentration, first — because it reframes everything.</strong> We measured where the claimed P&amp;L
+actually comes from:</p>
+<table>
+<thead>
+<tr>
+<th>bars, ranked by realised 15-minute volatility</th>
+<th>share of bars</th>
+<th><strong>share of claimed P&amp;L</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>top 1%</td>
+<td>0.8%</td>
+<td><strong>34.1%</strong></td>
+</tr>
+<tr>
+<td>top 5%</td>
+<td>4.9%</td>
+<td><strong>61.3%</strong></td>
+</tr>
+<tr>
+<td>remaining 95%</td>
+<td>95.1%</td>
+<td>38.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A third of the return is produced on eight-tenths of one percent of the bars.</strong> Whatever is
+true about the fill assumption on those bars is very nearly the whole result.</p>
+<p><strong>What is true about them.</strong> A resting limit order fills when someone crosses the spread to hit
+it. On a fast move, the orders that fill are the ones on the <em>wrong</em> side — you are filled
+because the market is leaving. We measured, on each of those top-1% bars, whether the modelled
+fill price was still available:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>top-1% bars where the mid moved past the limit price within 1 second</td>
+<td><strong>71.4%</strong></td>
+</tr>
+<tr>
+<td>median adverse move before the order could have rested</td>
+<td><strong>19 bps</strong></td>
+</tr>
+<tr>
+<td>modelled fills at a price that was never touched again in the bar</td>
+<td><strong>2,847 of 7,104 calls</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The correction.</strong> We re-ran the engine with a single change — on any bar where the book moved
+away before the order could rest, the position is taken <strong>as a taker, at the price that actually
+existed</strong>, instead of as a maker at the price that did not. The client's own venue data supplies
+both. Everything else is untouched.</p>
+<p><strong>+26.1% → +8.2% annualised. A 17.9 percentage-point correction, and the single largest in this
+report.</strong></p>
+<p><strong>Why this is a defect and not a difference of opinion.</strong> The engine is not modelling an
+optimistic fill. It is modelling a fill <em>conditional on information it did not have</em> — whether
+the order would fill is decided by what happens after the signal, and the engine resolves that
+question by assuming the favourable answer every time. That is look-ahead in the fill logic, and
+it is the defect <code>FC-7</code> exists to find.</p>
+<p><strong>THE FIX — invert the default.</strong> Model every fill as a <strong>taker</strong> unless there is evidence in the
+book that a resting order would have filled, rather than the reverse. This is one function in the
+engine and it makes the assumption conservative instead of optimistic. <strong>Effort: 2–3 days including
+re-running the sweep.</strong> <strong>How to know it worked:</strong> at a position cap high enough that the constraint
+never binds, the corrected engine and the current one must agree bit-for-bit — if they do not, the
+change altered something it should not have.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc7_fill_realism.py --book l2/ --calls signals.parquet --mode counterfactual</code>
+Per-call output in <code>fc7_fill_audit.csv</code> — 7,104 rows, one per call, not a summary.</p>
+</blockquote>
+<hr />
+<h2>5. <code>FC-5</code> — Is the data current? <strong>The finding that explains the known miss</strong></h2>
+<p><strong>What we asked.</strong> The signal reads a book snapshot. <strong>How old is that snapshot at the moment the
+decision is made?</strong></p>
+<p><strong>What we found.</strong> The backtest treats the snapshot as instantaneous — the book state at time <em>t</em>
+produces the call at time <em>t</em>. In production it cannot be. We instrumented the live path from the
+client's own logs:</p>
+<table>
+<thead>
+<tr>
+<th>book snapshot age at decision time</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>median, all conditions</td>
+<td><strong>240 ms</strong></td>
+</tr>
+<tr>
+<td>p99, all conditions</td>
+<td><strong>1.9 s</strong></td>
+</tr>
+<tr>
+<td><strong>p99, during top-1% volatility bars</strong></td>
+<td><strong>6.2 s</strong></td>
+</tr>
+<tr>
+<td>maximum observed</td>
+<td>11.4 s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The age is not constant — it is worst exactly when the market is fastest.</strong> Snapshot latency
+rises with message rate, and message rate rises with volatility. The backtest models a book that
+is zero seconds old; the live system, on the bars that carry a third of the P&amp;L, is reading a
+book that is a median of <strong>4.4 seconds</strong> stale.</p>
+<p><strong>Four seconds is a long time in a book that is being lifted.</strong> The resting bid depth the signal
+reads as support has, by the time the call is emitted, frequently already been taken or pulled.
+<strong>The signal sees a wall that is no longer there and reads it as strength.</strong></p>
+<p><strong>This is the mechanism behind the event the client already knew about.</strong> We did not go looking
+for it to explain the miss — it came out of the latency instrumentation — but it fits exactly:
+a buy call, into a move that had already happened, because the book that justified it was
+seconds old.</p>
+<p><strong>Is it one event or a class?</strong> This was the question the client asked us to answer. We
+identified every event in the three-year sample sharing its structure — a top-1% volatility bar
+preceded by a ≥40% reduction in same-side resting depth within the snapshot latency window:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>events of this structure, 2023–2025</td>
+<td><strong>14</strong></td>
+</tr>
+<tr>
+<td>calls that <strong>invert</strong> when recomputed at measured latency</td>
+<td><strong>9 of 14</strong></td>
+</tr>
+<tr>
+<td>of those 9, calls that were scored as hits in the backtest</td>
+<td><strong>9 of 9</strong></td>
+</tr>
+<tr>
+<td>combined contribution of those 9 to claimed P&amp;L</td>
+<td><strong>11.4pp of the 38.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A class, not an accident.</strong> Nine of the fourteen largest events in the sample are scored as
+wins by a backtest reading a book the live system does not have. <strong>The reported live miss is the
+fourteen-event population behaving normally</strong>, and it will recur on the next event of that
+structure.</p>
+<p><strong>The correction.</strong> Recomputing every call on a book aged to the measured latency distribution
+for its volatility regime: <strong>+8.2% → +4.1% annualised.</strong></p>
+<p><strong>THE FIX — three things, and the cheap one matters most.</strong>
+<strong>(a) A live staleness guard: suppress any call computed on a book older than a stated threshold.</strong>
+This is roughly a day of work and it is the change that stops the next event of this class reaching
+the market. It costs you some calls; on this sample it would have suppressed 9 of the 14 and none of
+them were calls you wanted. <strong>(b)</strong> Feed the measured age distribution into the backtest, so
+research and production agree about what the signal can see. <strong>(c)</strong> Reduce the latency itself —
+the largest project, and the only one that recovers the suppressed calls rather than discarding
+them. <strong>Effort: (a) ~1 day · (b) ~2 days · (c) an infrastructure project.</strong></p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc5_snapshot_age.py --logs prod_logs/ --replay --age-model measured</code>
+The 14 events are enumerated with timestamps in <code>fc5_regime_events.csv</code>.</p>
+</blockquote>
+<hr />
+<h2>6. <code>FC-3</code> — Are the costs real?</h2>
+<p><strong>What we asked.</strong> Where did the fee figure come from, and is it charged correctly?</p>
+<p><strong>What we found.</strong> The engine applies a <strong>maker rebate to 100% of fills.</strong> The client's own
+venue statements, for the live period, show a realised maker ratio of <strong>61%.</strong></p>
+<p>Two errors compound here:</p>
+<ol>
+<li><strong>The mix is wrong.</strong> 39% of fills are takers paying a fee, modelled as makers receiving a
+rebate. The per-fill error is the full rebate-to-fee spread, not the difference between two
+fees.</li>
+<li><strong>It is wrong in a correlated way, not a random way.</strong> The taker fills are not scattered
+uniformly — they concentrate on exactly the fast bars from §4 and §5, because that is when a
+resting order does not fill and the system crosses the spread. <strong>The cost error is largest on
+the bars carrying the most P&amp;L.</strong> Correcting the mix to a flat 61/39 average would understate
+the damage; we corrected it bar by bar.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>modelled</th>
+<th>measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maker share of fills</td>
+<td>100%</td>
+<td><strong>61%</strong></td>
+</tr>
+<tr>
+<td>maker share <strong>on top-1% volatility bars</strong></td>
+<td>100%</td>
+<td><strong>23%</strong></td>
+</tr>
+<tr>
+<td>effective round-trip cost, all bars</td>
+<td>−1.0 bp (rebate)</td>
+<td><strong>+4.4 bp</strong></td>
+</tr>
+<tr>
+<td>effective round-trip cost, top-1% bars</td>
+<td>−1.0 bp (rebate)</td>
+<td><strong>+9.1 bp</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The correction: +36.2% → +29.6% annualised, a 6.6pp reduction.</strong></p>
+<p><strong>Note the ordering effect.</strong> Because this correction and §4's are both concentrated on the same
+bars, applying them in a different order moves the intermediate figures. The final corrected
+number is order-independent; the waterfall's middle rows are not, and we state the order used at
+the top of it rather than presenting the intermediates as standalone facts.</p>
+<p><strong>THE FIX — read the ratio, don't assume it.</strong> Apply the realised maker/taker split from the venue
+statements per bar, not a constant. The statements already exist and are already reconciled; this is
+a lookup, not a model. <strong>Effort: half a day.</strong> Expect the corrected cost line to keep moving as the
+fill model in <code>FC-7</code> changes — these two are coupled, so measure them together and re-read the cost
+number after the fill change lands, not before.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc3_cost_reconcile.py --statements venue_statements/ --fills fills.parquet</code></p>
+</blockquote>
+<hr />
+<h2>7. <code>FC-4</code> — Is the data clean? <strong>Two correct datasets, one wrong join</strong></h2>
+<p><strong>This is the finding that most surprised the client, so it is written out at length.</strong></p>
+<p><strong>What we asked.</strong> Was every row checked? Can one source poison the result?</p>
+<p><strong>What we found.</strong> Nothing is wrong with either dataset. The defect is that there are <strong>two of
+them, and they are not the same market.</strong></p>
+<ul>
+<li>The <strong>signal</strong> is computed from L2 order-book snapshots taken from the <strong>execution venue</strong> —
+the perpetual contract actually traded.</li>
+<li>The <strong>calls are scored</strong> against an OHLCV series <strong>exported from a charting platform</strong>, which
+for these symbols serves an <strong>aggregated cross-venue index</strong>, not the traded contract.</li>
+</ul>
+<p>Both series are accurate. The charting export is not corrupted, the prints are real, the
+timestamps are honest. <strong>It is simply a different price series than the one a fill would have
+occurred at</strong>, and it is being used to decide whether each call was right.</p>
+<p><strong>Why &quot;the data is correct&quot; does not settle this.</strong> Correctness of a price series is a statement
+about its <em>values</em>. Using it to score a trade makes two further claims that correctness does not
+support: that it is the price you could have transacted at, and that its timestamp means the same
+thing as your decision timestamp. Neither holds here.</p>
+<table>
+<thead>
+<tr>
+<th>index vs traded-venue basis</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>median absolute basis</td>
+<td><strong>0.8 bp</strong></td>
+</tr>
+<tr>
+<td>p99 absolute basis</td>
+<td><strong>11 bps</strong></td>
+</tr>
+<tr>
+<td><strong>p99 during top-1% volatility bars</strong></td>
+<td><strong>41 bps</strong></td>
+</tr>
+<tr>
+<td>bar-close timestamp convention</td>
+<td>index bars stamped at <strong>open</strong>, engine reads them as <strong>close</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The timestamp convention is the more serious half.</strong> A 15-minute bar stamped at its open, read
+as though stamped at its close, hands the scorer a <strong>15-minute look-ahead</strong> on every call. The
+basis costs accuracy; the convention costs the integrity of the scoring.</p>
+<p><strong>The correction.</strong> Rescoring every call against the traded venue's own trades, with the
+timestamp convention corrected:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scored hits that flip to misses</td>
+<td><strong>7.1%</strong></td>
+</tr>
+<tr>
+<td>scored misses that flip to hits</td>
+<td>1.4%</td>
+</tr>
+<tr>
+<td>net effect on hit rate</td>
+<td>−5.7pp</td>
+</tr>
+</tbody>
+</table>
+<p><strong>+29.6% → +26.1% annualised.</strong></p>
+<p><strong>A single bad day, checked separately.</strong> Per <code>FC-4</code>'s second question, we checked whether any one
+window carries disproportionate weight. One venue outage (2024-03-11, 71 minutes) left the book
+frozen; the imbalance ratio on a frozen book is constant, which the signal read as a sustained
+extreme and converted into <strong>14 calls</strong>, 12 of them scored as hits. Removing the outage window
+costs <strong>0.4pp</strong> of annualised return — small, and reported for completeness rather than
+materiality, but it is the same shape as case study 2 and worth the client's attention as a
+pattern.</p>
+<p><strong>THE FIX — the highest value per hour of work in this report.</strong> Point the scorer at the traded
+venue's own trades, and correct the bar-stamp convention from open to close. <strong>Effort: roughly an
+hour.</strong> <strong>Do this before the other four fixes</strong>, because until it lands, every number you produce to
+measure those fixes is being scored against the wrong market. Separately, add a frozen-book check to
+the ingest — identical consecutive snapshots for longer than N seconds should raise, not flow through
+as a sustained extreme.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc4_venue_reconcile.py --scored scored_calls.parquet --venue-trades trades/ --check-timestamp-convention</code></p>
+</blockquote>
+<hr />
+<h2>8. <code>FC-8</code> — What is really being claimed?</h2>
+<p><strong>What we asked.</strong> Is this a single number or a range? Is the error bar wide enough to include
+zero?</p>
+<p><strong>The claim as given contains no error bar at all.</strong> &quot;+38.0% annualised, Sharpe 1.62&quot; is quoted
+to one and two decimal places respectively, with no interval, no standard error and no sample
+size beside it. §3 has already shown what the number was doing — it was the maximum of 41 draws.
+This section asks what the <em>corrected</em> number can support.</p>
+<p><strong>Block bootstrap</strong>, 10,000 resamples, 7-day blocks to preserve autocorrelation, on the corrected
+series:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>point estimate</th>
+<th>95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>annualised return</td>
+<td><strong>+2.2%</strong></td>
+<td><strong>−5.4% to +9.9%</strong></td>
+</tr>
+<tr>
+<td>Sharpe</td>
+<td>0.14</td>
+<td>−0.35 to 0.63</td>
+</tr>
+<tr>
+<td>directional hit rate (holdout)</td>
+<td>53.1%</td>
+<td><strong>50.2% to 56.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read those three rows carefully, because they do not all say the same thing.</strong></p>
+<ul>
+<li><strong>The return interval includes zero.</strong> On the evidence supplied, the corrected strategy cannot
+be distinguished from a strategy that makes nothing.</li>
+<li><strong>The Sharpe interval includes zero.</strong> Same statement, restated in risk-adjusted terms.</li>
+<li><strong>The hit-rate interval does not include chance, and is not close to it.</strong> 50.2% at the lower
+bound against a 33.3% floor. <strong>The directional information is established. The profitability
+is not.</strong></li>
+</ul>
+<p><strong>That gap between the two is the actual state of this strategy</strong>, and it is a coherent, common
+position to be in: a signal that knows something, whose edge is smaller than the cost of acting
+on it under realistic execution.</p>
+<p><strong>The benchmark question, which the claim never asks.</strong> A three-way directional call has two
+lines to clear, not one. Chance is the floor. <strong>The naive alternative is the real bar</strong> — over
+2023-01-01 to 2025-12-31 an always-long 1× position in the same 12 pairs, equally weighted,
+returned materially more than +2.2% annualised. The overlay is constructed to be broadly
+market-neutral, so it is not strictly the same trade, but <strong>no document in the material supplied
+states any benchmark</strong>, and a return claim with no comparison in it is not yet a claim about
+value. We flag this rather than resolving it: choosing the benchmark is the client's decision and
+it should be made in writing, in advance.</p>
+<p><strong>THE FIX — change what you publish, not what you compute.</strong> Quote a range with its sample size
+beside it, and state the benchmark. <strong>Effort: a decision, and an afternoon to restate the tear
+sheet.</strong> This is the cheapest credibility you will ever buy: an allocator who can check a number
+trusts it more than a larger one they cannot.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 fctools/fc8_bootstrap.py corrected_returns.parquet --block 672 --n 10000 --periods-per-year 35040</code>  <em>(672 fifteen-minute periods = 7-day blocks)</em></p>
+</blockquote>
+<hr />
+<h2>9. <code>FC-2</code> — Are the dead ones missing?</h2>
+<p><strong>What we asked.</strong> Was the asset list built as it looked <em>then</em>, or from what is still around
+today?</p>
+<p><strong>What we found.</strong> The 12 pairs are the top 12 by 30-day volume <strong>as measured in early 2026</strong> —
+after the period under test. Two contracts that were in the top 12 for parts of 2023 have since
+been delisted and are absent from the backtest entirely. A third was listed mid-2024 and is
+included for the whole window, including nine months in which it did not exist to trade.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pairs in the backtest</td>
+<td>12</td>
+</tr>
+<tr>
+<td>pairs absent because they were later delisted</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>pair-months included in which the contract was not listed</td>
+<td><strong>9</strong></td>
+</tr>
+<tr>
+<td>effect of rebuilding the list as-of each date</td>
+<td><strong>−1.8pp annualised</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Small, and stated as small.</strong> This is the check that most often produces the largest finding —
+it does not here, because the universe is twelve liquid majors rather than a broad screen. <strong>We
+report the magnitude either way</strong>, because &quot;we checked and it was minor&quot; is a result the client
+paid for, and because it is the only way the reader can tell that the large findings elsewhere
+were sized rather than asserted.</p>
+<p><strong>One methodological note.</strong> We verified the as-of list against listing and delisting dates, not
+against the presence of price data — a contract can have rows in a panel long after it stops
+trading. That distinction is <code>FC-2</code>'s second clause (<em>&quot;was any fix checked against the property
+it claims to test?&quot;</em>) and it is where case study 3 came from.</p>
+<p><strong>THE FIX — build the list from listing events, not from what is trading today.</strong> <strong>Effort: about
+a day</strong>, and it is reusable across every strategy you run. <strong>Test it against the property it claims
+to hold</strong>, not against row counts: assert that no pair appears in the panel before its listing date
+or after its delisting date. A universe fix that is only checked by &quot;the numbers changed&quot; is how
+this defect survives a fix.</p>
+<blockquote>
+<p><strong>Reproduce:</strong> <code>python3 audit/fc2_asof_universe.py --listings listing_events.csv --panel panel.parquet</code></p>
+</blockquote>
+<hr />
+<h2>10. What this report does <strong>not</strong> say</h2>
+<p>An audit that only reports damage is not worth paying for. Explicitly:</p>
+<ul>
+<li><strong>The model is not refuted.</strong> 53.1% directional accuracy against a 33.3% floor on untouched
+data, lower bound 50.2%, p &lt; 0.001. <strong>There is information in this signal</strong> and none of the six
+corrections touches the model itself.</li>
+<li><strong>Nothing here is a coding error in the signal generator.</strong> Every finding is in the
+<em>surrounding</em> apparatus — the fill model, the clock, the cost model, the scoring series, the
+universe, the selection procedure. The signal code was the one part we found nothing in.</li>
+<li><strong><code>FC-1</code> passed cleanly</strong>, and that is a genuine credential. Most do not.</li>
+<li><strong>No dishonesty is alleged or implied anywhere in this report.</strong> Every defect found is one we
+have made ourselves; six of the ten case studies at arcobaleno.cloud are the same classes of
+error found in our own research and published against ourselves.</li>
+<li><strong>This is not an opinion on whether the strategy will make money in future.</strong> It is a statement
+about what the supplied material can and cannot support today. Several of the corrections are
+<strong>fixable</strong> — see §11 — and a fixed version is a different strategy that would need its own
+evidence.</li>
+</ul>
+<hr />
+<h2>11. Your remediation plan, in order</h2>
+<p><strong>Every fix above, sequenced. Ranked by effect on the claim per unit of work, not by severity.</strong></p>
+<p><strong>Read this as your plan, not our proposal.</strong> Each fix is specified precisely enough for your own
+engineers to implement without us — that is deliberate, and it is the shape the deliverable should
+take. <strong>We do not implement fixes on a strategy we have audited.</strong> The reason is not modesty: an
+auditor who also builds the correction has an interest in the size of the finding, and the only
+thing this report is worth anything for is that we do not. If you want the work done rather than
+specified, it is a separate engagement, taken by someone else, or taken by us only on the
+understanding that <strong>we can no longer be the ones who audit it.</strong></p>
+<p><strong>And a boundary worth stating plainly: none of this tells you how to make the signal better.</strong> We
+have not suggested an indicator, a parameter or a feature, and we will not. Finding why a backtest
+lies is a different skill from knowing what to trade, and a firm that sells you both has an
+incentive to find problems it can also sell you the cure for. Everything above makes your measurement
+honest. Making the strategy <em>better</em> is your edge, and it should stay yours.</p>
+<ol>
+<li><strong>Fix the scoring series before anything else</strong> (§7). It is a one-line source change plus a
+timestamp convention correction, it costs nothing, and <strong>until it is fixed every number the
+team produces — including the ones measuring the other fixes — is scored against the wrong
+market.</strong> Everything downstream depends on this being right first.</li>
+<li><strong>Re-model fills as taker-by-default</strong> (§4), and treat maker fills as the exception requiring
+evidence. This inverts the current assumption. It is the honest default for a signal that
+trades on fast bars, and it converts the largest source of overstatement into a conservative
+one.</li>
+<li><strong>Instrument snapshot age in production and feed the measured distribution back into the
+backtest</strong> (§5). This is the finding with the longest tail: it is the one that predicts the
+next live miss, and it cannot be fixed by changing the backtest alone — either the latency
+comes down or the signal must be told how stale its input is.</li>
+<li><strong>Pre-register the next threshold change</strong> (§3). The selection problem cannot be fixed
+retrospectively — there is no way to un-see 41 results. It can only be prevented going
+forward, by fixing the bar before the window opens. This is a different engagement and we
+name it because it is the correct next step, not to sell it.</li>
+<li><strong>Restate the tear sheet.</strong> The current investor-facing one-pager carries +38.0% with no
+interval. Whatever the corrected figure turns out to be after 1–3, it should be published as a
+range with a sample size beside it. <strong>A number an allocator can check is worth more than a
+larger number they cannot.</strong></li>
+</ol>
+<hr />
+<h2>12. What we did not check</h2>
+<p>Stated so the boundary is legible, and not claimed on in either direction:</p>
+<ul>
+<li><strong>Anything after 2025-12-31.</strong> The material supplied ends there.</li>
+<li><strong>The live trading system's own code.</strong> We audited the research pipeline and instrumented the
+production <em>logs</em> for latency (§5). The order router, risk layer and reconciliation were out of
+scope.</li>
+<li><strong>Counterparty, custody, margin and liquidation mechanics.</strong></li>
+<li><strong>Whether the venue data supplied is complete.</strong> We reconciled it against the client's own
+statements, which is a consistency check, not an independent verification.</li>
+<li><strong>Any pair outside the 12 supplied</strong>, and any horizon other than the 15-minute call.</li>
+</ul>
+<hr />
+<h2>13. Reproducing all of this yourself</h2>
+<p>Every figure in this report comes out of a script delivered with it. Nothing is asserted that
+cannot be shown.</p>
+<table>
+<thead>
+<tr>
+<th>to reproduce</th>
+<th>run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reproduction across machines and seeds</td>
+<td><code>fctools/fc1_reproduce.py</code></td>
+</tr>
+<tr>
+<td>the as-of universe delta</td>
+<td><code>audit/fc2_asof_universe.py</code></td>
+</tr>
+<tr>
+<td>the cost reconciliation</td>
+<td><code>audit/fc3_cost_reconcile.py</code></td>
+</tr>
+<tr>
+<td>the venue and timestamp mismatch</td>
+<td><code>audit/fc4_venue_reconcile.py</code></td>
+</tr>
+<tr>
+<td>snapshot age and the 14 events</td>
+<td><code>audit/fc5_snapshot_age.py</code></td>
+</tr>
+<tr>
+<td>the holdout re-read and the 41-config rank</td>
+<td><code>audit/fc6_holdout.py</code></td>
+</tr>
+<tr>
+<td>fill realism, per call</td>
+<td><code>audit/fc7_fill_realism.py</code></td>
+</tr>
+<tr>
+<td>the bootstrap intervals</td>
+<td><code>fctools/fc8_bootstrap.py</code></td>
+</tr>
+<tr>
+<td>the full waterfall, end to end</td>
+<td><code>audit/run_all.py --report</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw per-call and per-event output is delivered, not just summaries</strong> — <code>fc7_fill_audit.csv</code>
+(7,104 rows), <code>fc5_regime_events.csv</code> (14 rows), <code>fc6_config_ranks.csv</code> (41 rows),
+<code>fc8_bootstrap_draws.csv</code> (10,000 rows).</p>
+<hr />
+<p><em>Research due-diligence and code-audit services only. Not investment advice, not a
+recommendation, not an offer to manage money. This report says whether a stated result can be
+reproduced from the material supplied and what it can support; it is not an opinion on future
+performance.</em></p>
+<p><strong>— and, once more, because this document is the kind that gets forwarded: this is a SPECIMEN.
+No client, no engagement, no real data, no real firm. Constructed 2026-09-16 to show the shape
+of the deliverable.</strong></p>
+
+  </article>
+
+  <div class="close">
+    <div class="col">
+      <h2>Want one of these on your strategy?</h2>
+      <p>
+        Start with a free 30-minute call. Tell us what the strategy is and what you have &mdash; code,
+        data, and the result being claimed. <strong>If there isn't enough there to reproduce
+        anything, we'll tell you on that call and turn the work down.</strong>
+      </p>
+      <div class="contact-block">
+        <div class="contact-who"><span class="cb-row"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark cb-mark" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
+        <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
+      </div>
+      <p class="contact-note">
+        Prices are on the <a href="/">front page</a>; the eight checks in detail are on
+        <a href="/method/">what we check</a>.
+      </p>
+      <p class="disclaimer">
+        Research due-diligence and code-audit services only. This is not investment advice, not a
+        recommendation to buy or sell anything, and not an offer to manage money. This page is a
+        constructed specimen: it describes no client, no engagement and no real strategy.
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

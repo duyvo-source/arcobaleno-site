@@ -577,6 +577,22 @@
   .contact-who svg.cb-mark .ring,.contact-who svg.cb-mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.0}
   .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
   .contact-who .cb-sub{display:block;margin-top:10px;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px}
+
+  /* ---------- click-to-read posts (2026-10-04) ----------
+     A long section folded to its heading and one teaser line. Same pattern on page.html and
+     method.html -- duplicated by design, like the tokens. */
+  .post>summary{list-style:none;cursor:pointer;display:block}
+  .post>summary::-webkit-details-marker{display:none}
+  .post>summary h2{margin-bottom:8px}
+  .post>summary:hover h2,.post>summary:focus-visible h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  .post>summary:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  .post-teaser{display:block;font-size:1.08rem;color:var(--muted);max-width:36em;margin:0}
+  .post-more{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--right)}
+  .post-more .when-open{display:none}
+  .post[open] .post-more .when-open{display:inline}
+  .post[open] .post-more .when-closed{display:none}
+  .post[open]>summary .post-teaser{display:none}
+  .post-body{margin-top:18px}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -610,7 +626,7 @@
         <li><span>You get</span> a written report, with a script you can run yourself for every finding.</li>
       </ol>
       <p class="offer-meta">
-        Fixed scope, fixed price &middot; <strong>$2,500 – $25,000</strong> &middot; 2–15 days &middot; no retainer, no lock-in
+        Fixed scope, fixed price &middot; <strong>$2,500 – $25,000</strong> &middot; report in 1–6 weeks &middot; no retainer, no lock-in
       </p>
     </div>
 
@@ -637,24 +653,37 @@
         <div class="tier-name">Triage</div>
         <div class="tier-price">$2,500</div>
         <div class="tier-scope">One strategy, one number. Can we get your headline result out of the code and data you send us? You get a 3–5 page memo: it reproduces, it doesn't, or it does with caveats — and exactly why.</div>
-        <div class="tier-days">2–3 days</div>
+        <div class="tier-days">2–3 days of work &middot; report in about 1 week</div>
       </div>
       <div class="tier">
         <div class="tier-name">Full audit</div>
         <div class="tier-price">$12,000</div>
         <div class="tier-scope">One strategy, start to finish: where the data came from, how the asset list was built, what trading was assumed to cost, how the version was chosen, and whether the claim holds up. A 15–25 page report, every finding with a script that reproduces it.</div>
-        <div class="tier-days">5–8 days</div>
+        <div class="tier-days">5–8 days of work &middot; report in 2–3 weeks</div>
       </div>
       <div class="tier">
         <div class="tier-name">Portfolio review</div>
         <div class="tier-price">$25,000</div>
         <div class="tier-scope">Three to six strategies, plus the shared code they all run on. A report for each, and a section on what they have in common — shared bugs are the normal case, not the exception.</div>
-        <div class="tier-days">12–15 days</div>
+        <div class="tier-days">12–15 days of work &middot; report in 4–6 weeks</div>
       </div>
     </div>
     <p class="tier-note"><strong>The Triage fee is credited in full</strong> against a Full audit of the
       same strategy booked within 30&nbsp;days. Start small to see how we work; it costs you nothing extra
       to carry on.</p>
+    <p class="tier-note">Report times run from the day we have everything we asked for, and are
+      typical rather than guaranteed. If something holds us up, we tell you and agree a new date.
+      <a href="/sample/">See a complete sample report</a> &mdash; a made-up strategy, run through
+      all eight checks.</p>
+    <h3>Why this costs more than an automated check</h3>
+    <p>
+      Automated strategy validators re-run your rules, as you describe them, on their own clean
+      data. That can tell you whether the idea holds up. <strong>It can't find a mistake in the code
+      and data you actually used</strong> &mdash; how your asset list was built, where your cost
+      figure came from, how your code fills orders, what happened to positions that never closed.
+      Most of the ten findings below sit exactly there. We work on your material, not a copy of
+      your idea.
+    </p>
     <h3>How it works</h3>
     <p>
       It starts with a free 30-minute call. <strong>If you don't have what's needed to reproduce the
@@ -670,8 +699,13 @@
   </section>
 
   <section>
-    <div class="col">
-      <h2>Most backtests aren't wrong. They're just unchecked.</h2>
+    <details class="post col">
+      <summary>
+        <h2>Most backtests aren't wrong. They're just unchecked.</h2>
+        <span class="post-teaser">Why mistakes survive in code that has already been tested, and the one losing trade worth asking about.</span>
+        <span class="post-more"><span class="when-closed">Read &rsaquo;</span><span class="when-open">Close &times;</span></span>
+      </summary>
+      <div class="post-body">
       <p class="lede">
         A backtest is a trading strategy run against past market data to see what it would have made.
         That one number decides everything that follows — whether to fund it, how much to risk on it,
@@ -696,7 +730,8 @@
         of the rest of the record rests on the same assumption that failed. The backtest cannot tell
         you: it is the thing that scored the event as a win.
       </p>
-    </div>
+      </div>
+    </details>
   </section>
 
   <section class="section-rule">

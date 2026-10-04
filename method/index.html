@@ -511,6 +511,22 @@
   .contact-who svg.cb-mark .ring,.contact-who svg.cb-mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.0}
   .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
   .contact-who .cb-sub{display:block;margin-top:10px;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px}
+
+  /* ---------- click-to-read posts (2026-10-04) ----------
+     A long section folded to its heading and one teaser line. Same pattern on page.html and
+     method.html -- duplicated by design, like the tokens. */
+  .post>summary{list-style:none;cursor:pointer;display:block}
+  .post>summary::-webkit-details-marker{display:none}
+  .post>summary h2{margin-bottom:8px}
+  .post>summary:hover h2,.post>summary:focus-visible h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  .post>summary:focus-visible{outline:2px solid var(--right);outline-offset:4px}
+  .post-teaser{display:block;font-size:1.08rem;color:var(--muted);max-width:36em;margin:0}
+  .post-more{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--right)}
+  .post-more .when-open{display:none}
+  .post[open] .post-more .when-open{display:inline}
+  .post[open] .post-more .when-closed{display:none}
+  .post[open]>summary .post-teaser{display:none}
+  .post-body{margin-top:18px}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -973,8 +989,14 @@
   </section>
 
   <section class="section-rule">
-    <div class="col">
+    <details class="post">
+    <summary class="col">
       <h2>Every audit runs the same eight checks</h2>
+      <span class="post-teaser">Where they come from, why they're numbered FC-1 to FC-8, and the free tools behind four of them.</span>
+      <span class="post-more"><span class="when-closed">Read &rsaquo;</span><span class="when-open">Close &times;</span></span>
+    </summary>
+    <div class="post-body">
+    <div class="col">
       <p class="lede">
         They come from mistakes we have actually hit in our own research — not from a textbook. All eight
         are <a href="/">published on our front page</a> as case studies against
@@ -1038,12 +1060,15 @@
         <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a distribution — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
       </li>
     </ol>
+    </div>
+    </details>
   </section>
 
   <section class="section-rule">
     <div class="col">
       <h2>How an audit actually runs</h2>
-      <p class="lede">Start to finish, for a full audit. A Triage is steps 1 to 3 and stops there.</p>
+      <p class="lede">Start to finish, for a full audit. A Triage is steps 1 to 3 and stops there.
+        <a href="/sample/">Here is what the finished report looks like.</a></p>
     </div>
     <ol class="steps">
       <li><b>We take delivery and freeze it.</b> Your code and data go into a working copy with a recorded fingerprint. We never work in your live repository.</li>
