@@ -18,12 +18,12 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta property="og:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Backtest Forensics — Arcobaleno Research">
 <meta name="twitter:description" content="Fixed-scope backtest audits from Arcobaleno Research. Ten findings published against our own work — reproducibility, data integrity, cost models, staleness, confidence intervals and evidence count.">
 <meta name="twitter:image" content="https://arcobaleno.cloud/card.png">
-<meta name="twitter:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta name="twitter:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
 
 <link rel="preload" href="/fonts/Archivo-latin-8f704806.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/SourceSerif4-latin-f2ea9c12.woff2" as="font" type="font/woff2" crossorigin>
@@ -490,6 +490,7 @@
   .tier-name{font-family:var(--display);font-weight:700;font-size:1.1rem}
   .tier-price{font-family:var(--mono);font-weight:600;font-size:1.5rem;color:var(--right);font-variant-numeric:tabular-nums}
   .tier-scope{font-size:14.5px;line-height:1.5;color:var(--muted);flex:1}
+  .tier-out{font-family:var(--body);font-weight:600;font-size:15px;line-height:1.4;color:var(--ink)}
   .tier-days{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);border-top:1px solid var(--rule);padding-top:9px}
   .tier-note{margin:0;border:1px solid var(--rule-strong);border-top:0;background:var(--right-bg);color:var(--right);padding:13px 20px;font-size:14.5px;line-height:1.5}
 
@@ -613,10 +614,10 @@
       <span>Backtest Forensics</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
-    <h1>We check trading and yield numbers before money goes in.</h1>
+    <h1>Know the number is real before the money goes in.</h1>
     <p class="standfirst">
-      Before anyone puts money behind a trading strategy, someone should check that its track record
-      is actually true. <strong>That is the whole job.</strong>
+      We check trading strategies and yield claims, so the number you vote on, invest on or raise on
+      is one that holds up. <strong>That is the whole job.</strong>
     </p>
 
     <div class="offer">
@@ -631,8 +632,8 @@
     </div>
 
     <p class="hero-aud">
-      For whoever loses money if the number is wrong — a partner funding a strategy built in-house,
-      an allocator checking a manager's track record, a founder raising on a performance claim.
+      For whoever loses money if the number is wrong — a DAO deciding where its treasury goes, an
+      investor checking a fund manager's record, a partner funding a strategy built in-house.
     </p>
 
     <div class="hero-cta">
@@ -652,18 +653,21 @@
       <div class="tier">
         <div class="tier-name">Triage</div>
         <div class="tier-price">$2,500</div>
+        <div class="tier-out">Find out in about a week whether the headline number is even real.</div>
         <div class="tier-scope">One strategy, one number. Can we get your headline result out of the code and data you send us? You get a 3–5 page memo: it reproduces, it doesn't, or it does with caveats — and exactly why.</div>
         <div class="tier-days">2–3 days of work &middot; report in about 1 week</div>
       </div>
       <div class="tier">
         <div class="tier-name">Full audit</div>
         <div class="tier-price">$12,000</div>
+        <div class="tier-out">Go into the vote or the investment committee with every number checked.</div>
         <div class="tier-scope">One strategy, start to finish: where the data came from, how the asset list was built, what trading was assumed to cost, how the version was chosen, and whether the claim holds up. A 15–25 page report, every finding with a script that reproduces it.</div>
         <div class="tier-days">5–8 days of work &middot; report in 2–3 weeks</div>
       </div>
       <div class="tier">
         <div class="tier-name">Portfolio review</div>
         <div class="tier-price">$25,000</div>
+        <div class="tier-out">Know which of your strategies hold up, and which share the same hidden mistake.</div>
         <div class="tier-scope">Three to six strategies, plus the shared code they all run on. A report for each, and a section on what they have in common — shared bugs are the normal case, not the exception.</div>
         <div class="tier-days">12–15 days of work &middot; report in 4–6 weeks</div>
       </div>
@@ -675,6 +679,21 @@
       typical rather than guaranteed. If something holds us up, we tell you and agree a new date.
       <a href="/sample/">See a complete sample report</a> &mdash; a made-up strategy, run through
       all eight checks.</p>
+    <h3>What you walk away with</h3>
+    <p>
+      <strong>A report you can put in front of your members, your investment committee or your
+      investors</strong>, with the reasons behind every number. Whichever way it comes out, you have
+      something to show: <em>&ldquo;an independent check found the advertised 38% was really 2%, and
+      here is exactly why&rdquo;</em>, or <em>&ldquo;an independent check rebuilt the number from the
+      code and found nothing wrong.&rdquo;</em> Both are worth having before a vote, not after.
+    </p>
+    <p>
+      Share it in full: it says what was checked, what was found, and what wasn't checked, so nobody
+      reads more into it than it says. It is not a rating, a seal of approval or a forecast, and the
+      strategy can't be marketed as &ldquo;verified by Arcobaleno&rdquo; without our written
+      agreement. Anyone outside your organisation who wants to rely on it, to invest for example,
+      signs a short letter with us first. <a href="/sample/">See what a report looks like.</a>
+    </p>
     <h3>Why this costs more than an automated check</h3>
     <p>
       Automated strategy validators re-run your rules, as you describe them, on their own clean
@@ -758,7 +777,7 @@
           <div class="corr-published">
             <div class="corr-label">The reported result</div>
             <div class="corr-val">−1.3191%</div>
-            <div class="corr-note">Average return per period, published as the strategy's performance.</div>
+            <div class="corr-note">Average return per trading period, published as the strategy's performance.</div>
           </div>
           <div class="corr-arrow">→</div>
           <div class="corr-actual">
@@ -773,8 +792,9 @@
           Different assets went into the portfolio on different runs.
         </p>
         <p>
-          Ties weren't some rare edge case. About <strong>55% of this exchange's funding payments sit at
-          exactly the same floor value</strong>, so any two assets resting on that floor looked
+          Ties weren't some rare edge case. On this exchange, traders pay each other a small fee every few hours, and
+          <strong>55% of those payments sit at exactly the same minimum value</strong>, so any two assets
+          resting on that minimum looked
           identical to the ranking code.
         </p>
         <div class="tbl-scroll">
@@ -797,7 +817,7 @@
           machine. Every decision that followed rested on a figure that would not come
           back. The fix was one line.
         </div>
-        <div class="src">Internal: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
+        <div class="src">From our own records: research/runs/r17-corrected-holdout/AMENDMENT_001.md</div>
         </div>
       </details>
     </article>
@@ -846,7 +866,7 @@
           whether it runs on <em>every</em> row. A number any human would catch in a second can be
           completely invisible to software that was never asked to look.
         </div>
-        <div class="src">Internal: research/runs/amm-lp-v1/ · standing lesson 23</div>
+        <div class="src">From our own records: research/runs/amm-lp-v1/</div>
         </div>
       </details>
     </article>
@@ -891,7 +911,7 @@
           the strategies were built on, and the margin of error was wide enough to include zero — so the
           improvement might be nothing at all. The only honest test was data the strategy had never seen.
           Against that, the best of the three <strong>failed outright</strong>, losing money both before
-          and after the stretch it was built on. It was over-fitted, not worn out.
+          and after the stretch it was built on. It had been tuned too closely to its own past, not worn out.
         </p>
         <div class="why">
           <span class="tag">Why it matters</span>
@@ -899,13 +919,13 @@
           flatters ones that don't. Finding the bug is half the job. Refusing to let it raise the dead is
           the other half, and it's the half someone with a stake in the answer will skip.
         </div>
-        <div class="src">Internal: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
+        <div class="src">From our own records: research/runs/cost-floor-v1/ · research/runs/r17-corrected-holdout/VERDICT.md</div>
         </div>
       </details>
     </article>
 
     <details class="more-cases">
-      <summary><span class="chev">&rsaquo;</span> Seven more findings — stale data, inconsistent costs, a range read as a headline, versions indistinguishable from zero, thin evidence, unrealised losses, and a survivorship fix that fixed nothing</summary>
+      <summary><span class="chev">&rsaquo;</span> Seven more findings — stale data, inconsistent costs, a range read as a headline, versions that might make nothing, thin evidence, losses left off the books, and a fix for missing coins that fixed nothing</summary>
     <article class="case" id="case-04">
       <details>
         <summary>
@@ -951,7 +971,7 @@
           A filter named after a job does not necessarily do that job. And when a strategy suddenly starts
           behaving differently, the first thing to suspect is the data — not the market.
         </div>
-        <div class="src">Internal: research/runs/weekend-drift-selection-audit/ · standing lessons 50, 74</div>
+        <div class="src">From our own records: research/runs/weekend-drift-selection-audit/</div>
         </div>
       </details>
     </article>
@@ -1005,7 +1025,7 @@
           a ranking rule tends to pick, because ranking rules choose for returns — not for how easily
           something can be bought and sold.
         </div>
-        <div class="src">Internal: research/runs/cost-model-audit-v1/VERDICT.md · standing lessons 75, 76</div>
+        <div class="src">From our own records: research/runs/cost-model-audit-v1/VERDICT.md</div>
         </div>
       </details>
     </article>
@@ -1015,7 +1035,7 @@
         <summary>
           <div class="case-head">
             <span class="case-no">06</span>
-          <span class="class-tag">Repeatable, not reproducible</span>
+          <span class="class-tag">A hidden range</span>
           <h3 class="case-h2">A headline that was really a range</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
@@ -1031,11 +1051,11 @@
           <div class="corr-actual">
             <div class="corr-label">What it actually was</div>
             <div class="corr-val">A 4.2-point range</div>
-            <div class="corr-note">The published figure sat at its 96th percentile.</div>
+            <div class="corr-note">The published figure sat near the top: only 4 in 100 runs came out higher.</div>
           </div>
         </div>
         <p>
-          The strategy is event-driven and holds a fixed maximum number of positions. On the worst days
+          The strategy trades when certain market events happen, and can hold only so many positions at once. On the worst days
           far more signals arrive at once than there are slots &mdash; the busiest single hour had
           <strong>194</strong>. Something has to choose which ones get in, and that choice was being made
           by the arbitrary order the sorting step happened to leave the data in. <strong>72% of all events shared their hour with at least one other.</strong>
@@ -1043,7 +1063,7 @@
         <p>
           Two of our own programs, same data, same settings, produced annual returns
           <strong>1.4 percentage points apart</strong>. Both were running correctly. So we re-ran it 300
-          times, shuffling only within each tied hour: the standard deviation of the answer was
+          times, shuffling only within each tied hour: the answer typically moved by
           <strong>0.76 points</strong>, and the best ordering beat the worst by <strong>4.2</strong>.
         </p>
         <p>
@@ -1057,11 +1077,11 @@
           <span class="tag">Why it matters</span>
           A figure that comes back identical every time still is not necessarily reproducible &mdash; it can
           be one fixed draw from a range nobody has measured. And what survived matters as much: the
-          risk-adjusted return, the drawdown and the sizing conclusion were all unchanged. The headline was
+          risk-adjusted return, the worst fall and the conclusion about position size were all unchanged. The headline was
           overstated by 1.2 points; the reasoning underneath it was sound. An audit that only reports
           damage is not worth buying.
         </div>
-        <div class="src">Internal: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/ · 300 draws per arm persisted</div>
+        <div class="src">From our own records: research/runs/cascade-selection-v1/asof-rerun-2026-08-26/</div>
         </div>
       </details>
     </article>
@@ -1071,7 +1091,7 @@
         <summary>
           <div class="case-head">
             <span class="case-no">07</span>
-          <span class="class-tag">A number or a range</span>
+          <span class="class-tag">Maybe nothing</span>
           <h3 class="case-h2">Nine versions, and none could be told apart from zero</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
@@ -1081,7 +1101,7 @@
           <div class="corr-published">
             <div class="corr-label">The rule, as first measured</div>
             <div class="corr-val">42.8% a year</div>
-            <div class="corr-note">A convincing-looking edge across nine configurations.</div>
+            <div class="corr-note">A convincing-looking edge across nine versions.</div>
           </div>
           <div class="corr-arrow">→</div>
           <div class="corr-actual">
@@ -1091,15 +1111,15 @@
           </div>
         </div>
         <p>
-          Measuring how confident you are entitled to be usually means reshuffling the daily results
-          thousands of times and seeing how wide the outcomes spread. <strong>That assumes each day is
+          The usual way to measure how sure you can be is to shuffle the daily results thousands of
+          times and see how widely the outcomes spread. <strong>That assumes each day is
           independent of the last.</strong> This rule held the same position for days at a time, so
           consecutive days moved together &mdash; and treating them as independent counts the same evidence
           over and over, making the range far too narrow.
         </p>
         <p>
           Reshuffling in blocks of ten days instead, which keeps that clumping intact,
-          <strong>every one of the nine configurations had a range that included zero</strong>. Splitting
+          <strong>every one of the nine versions had a range that included zero</strong>. Splitting
           the history in half pointed the same way: performance fell in every version, one from a
           risk-adjusted score of 0.88 to <strong>0.09</strong>.
         </p>
@@ -1115,7 +1135,7 @@
           confidence is what someone actually acts on. We stopped pursuing it, which is a result, and
           getting it in an afternoon is cheaper than getting it from the market.
         </div>
-        <div class="src">Internal: research/runs/deribit-iv-screen-v1/VERDICT.md Part A2 · moving-block bootstrap, block 10 days, n 2000</div>
+        <div class="src">From our own records: research/runs/deribit-iv-screen-v1/VERDICT.md</div>
         </div>
       </details>
     </article>
@@ -1164,7 +1184,7 @@
           strategy can be genuinely profitable and still have almost no evidence behind it &mdash; those are
           different questions, and a big number of trades only answers one of them.
         </div>
-        <div class="src">Internal: research/runs/cascade-selection-v1/VERDICT.md · per-trade means net of 2 × 4.5bp</div>
+        <div class="src">From our own records: research/runs/cascade-selection-v1/VERDICT.md</div>
         </div>
       </details>
     </article>
@@ -1197,21 +1217,21 @@
           The strategy places a ladder of buy orders below the price and sells above. Each completed round
           trip books a small gain &mdash; but when the price falls and keeps falling, the buys fill and the
           matching sells never do, so the position sits there losing. <strong>At the end of a test period,
-          what do you do with the lots still open?</strong> Value them at the current price, or leave them
+          what do you do with the purchases still open?</strong> Value them at the current price, or leave them
           out because they never closed?
         </p>
         <p>
-          We ran all eight configurations both ways across <strong>20,032 test windows</strong>. The
+          We ran all eight versions both ways across <strong>20,032 test windows</strong>. The
           accounting choice flips the sign in <em>every</em> configuration. The gap tracks exactly what you
-          would expect: the configurations holding the most unsold lots show the widest gap, one going from
+          would expect: the versions holding the most unsold purchases show the widest gap, one going from
           <strong>+2.4%</strong> counting only closed trades to <strong>&minus;5.1%</strong> counting
           everything.
         </p>
         <p>
           One note on how we treated our own claim. The original study made this point in a single line and
-          asserted the counterfactual without ever computing it &mdash; the code tracked both figures and
+          stated the other figure without ever calculating it &mdash; the code tracked both figures and
           saved only their sum. <strong>We measured it before publishing this</strong>, and the assertion
-          turned out to be conservative: it said &ldquo;most configurations&rdquo;, the answer is all of
+          turned out to be conservative: it said &ldquo;most versions&rdquo;, the answer is all of
           them. Being right by luck is not the same as having checked.
         </p>
         <div class="why">
@@ -1221,7 +1241,7 @@
           nothing looks broken in the output, because nothing went wrong computationally. We simply
           chose, probably without noticing it was a choice.
         </div>
-        <div class="src">Internal: research/runs/grid-trading-v1/fc7-realized-2026-09-11/ · 20,032 windows, each verified against the original engine</div>
+        <div class="src">From our own records: research/runs/grid-trading-v1/fc7-realized-2026-09-11/</div>
         </div>
       </details>
     </article>
@@ -1230,8 +1250,8 @@
         <summary>
           <div class="case-head">
             <span class="case-no">10</span>
-          <span class="class-tag">Survivorship</span>
-          <h3 class="case-h2">The survivorship fix that recovered no dead coins</h3>
+          <span class="class-tag">Missing losers</span>
+          <h3 class="case-h2">The fix for missing coins that brought back none of the dead ones</h3>
             <span class="case-chev" aria-hidden="true">+</span>
           </div>
         </summary>
@@ -1239,50 +1259,47 @@
         <div class="correction">
           <div class="corr-published">
             <div class="corr-label">What the repair was called</div>
-            <div class="corr-val">the as-of union</div>
-            <div class="corr-note">The population as it looked at the time, not as it looks now.</div>
+            <div class="corr-val">&ldquo;Fixed&rdquo;</div>
+            <div class="corr-note">The repaired price archive, said to include coins that had since disappeared.</div>
           </div>
           <div class="corr-arrow">&rarr;</div>
           <div class="corr-actual">
-            <div class="corr-label">Fully removed coins it recovered</div>
+            <div class="corr-label">Disappeared coins it actually brought back</div>
             <div class="corr-val">0 of 31</div>
-            <div class="corr-note">All 63 symbols it did bring back were still on the venue, winding down.</div>
+            <div class="corr-note">All 63 coins it did add back were still on the exchange, about to close.</div>
           </div>
         </div>
         <p>
-          Our own price archive had a known defect, written down as a standing lesson: it held only the
-          symbols listed on the day it was downloaded, so anything already delisted was missing. A backfill
-          was built to repair it, 63 symbols came back, and from then on the combined set was referred to by
-          a name that said the problem was solved.
+          Our own price archive had a known gap: it only held coins that were still listed on the day we
+          downloaded it, so every coin that had already closed was missing. Those are usually the losers. We
+          built a repair, 63 coins came back, and from then on the archive went by a name that said the
+          problem was solved.
         </p>
         <p>
-          It was not. The backfill had asked the venue&rsquo;s instrument list for symbols in a
-          <em>winding-down</em> state &mdash; and a coin that is fully gone has left that list altogether, so
-          no query built that way could ever have returned one. <strong>The remedy inherited the boundary of
-          the query that built it, and nothing in the artifact said so.</strong> A survivorship-free source
-          had been available the whole time for one HTTP call: the venue&rsquo;s public archive keeps a
-          delisted symbol&rsquo;s files, and its listing enumerates every symbol that ever filed one.
+          It wasn't. The repair had asked the exchange for coins that were <em>about to close</em>, and a
+          coin that has fully closed is no longer on that list at all. So the repair could never have found
+          a single one. <strong>It looked complete because of its name, not because anyone had checked
+          it.</strong> The exchange's own public archive had every closed coin all along, one download
+          away.
         </p>
         <p>
-          <strong>Then we measured whether it changed the answer, and it did not.</strong> Delisted coins
-          turned out not to be short-lived oddities &mdash; median lifespan <strong>22 months</strong>
-          against <strong>21</strong> for the coins still trading, deaths spread across 2020&ndash;2026. The
-          omitted share is U-shaped over time rather than one-directional. And on the series the objection
-          had been raised against, the entire composition effect was <strong>&minus;0.06bp of a
-          &minus;6.05bp move &mdash; 1.0% of it</strong>. The prediction of what we would find was
-          hash-stamped before the measurement, and withdrew its own sign once the listing spans showed its
-          premise was wrong.
+          <strong>Then we measured whether it changed the answer, and it didn't.</strong> Closed coins
+          turned out not to be short-lived oddities: they lived <strong>22 months</strong> on average,
+          against <strong>21</strong> for coins still trading, and closed at all points between 2020 and
+          2026. On the result in question, the missing coins accounted for <strong>about 1% of the
+          effect</strong>, a rounding error. We had written down what we expected to find before
+          measuring it, and that guess turned out to be wrong.
         </p>
         <div class="why">
           <span class="tag">Why it matters</span>
-          An unfixed bias is a problem you still have. A fix that is believed is a problem you have stopped
-          looking for &mdash; it ends the conversation, and the artifact carries a name that answers the
-          question for anyone who asks later. That is why the check has two halves: was the universe built
-          as it looked then, <em>and</em> was any existing fix tested against the property it claims to
-          test. Here the honest answer was null &mdash; the bias was real, and on this claim it moved
-          nothing. An audit that only reports damage is not worth buying.
+          A known problem is one you are still watching. A &ldquo;fixed&rdquo; problem is one you have
+          stopped looking for, and the name on the fix answers the question for anyone who asks later.
+          That is why this check has two halves: was the list of coins built as it looked at the time,
+          <em>and</em> was any earlier fix tested on what it claims to fix. Here the honest answer was
+          that the gap was real and changed nothing. An audit that only reports damage is not worth
+          buying.
         </div>
-        <div class="src">Internal: research/runs/premium-panel-hist-v1/VERDICT.md · NOTE_2026-09-03_SESSION.md · standing lessons 40 and 73</div>
+        <div class="src">From our own records: research/runs/premium-panel-hist-v1/VERDICT.md</div>
         </div>
       </details>
     </article>
@@ -1298,7 +1315,7 @@
       </p>
       <ul class="thread-list">
         <li><span class="k">01</span><span>Running the same code twice.</span></li>
-        <li><span class="k">02</span><span>Running a check that already existed on every row, instead of one.</span></li>
+        <li><span class="k">02</span><span>Running a check that already existed on all the data, not just a sample.</span></li>
         <li><span class="k">03</span><span>Testing whether the arithmetic actually added up.</span></li>
         <li><span class="k">04</span><span>Asking whether a filter does what its name says.</span></li>
         <li><span class="k">05</span><span>Measuring a cost instead of assuming one.</span></li>
@@ -1306,7 +1323,7 @@
         <li><span class="k">07</span><span>Using a measure of confidence that matched how the strategy actually traded.</span></li>
         <li><span class="k">08</span><span>Counting the events instead of the trades.</span></li>
         <li><span class="k">09</span><span>Asking what happens to the positions that never closed.</span></li>
-        <li><span class="k">10</span><span>Checking a fix against the property it was named for.</span></li>
+        <li><span class="k">10</span><span>Checking that a fix really fixes what its name says.</span></li>
       </ul>
     </div>
   </section>
@@ -1336,9 +1353,10 @@
     <div class="col">
       <h2>Who this is for</h2>
       <p>
-        Whoever loses money if the number is wrong. A partner about to fund a strategy built in-house.
-        An allocator checking a manager's track record. A treasury committee being shown a yield
-        product. A founder raising money on a performance claim, before someone else checks it for them.
+        Whoever loses money if the number is wrong. A DAO or treasury committee being shown a yield
+        product. An investor checking a fund manager's track record. A partner about to fund a strategy
+        built in-house. A founder raising money on a performance claim, before someone else checks it
+        for them.
       </p>
       <div class="contact-block">
         <div class="contact-who"><span class="cb-row"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark cb-mark" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>

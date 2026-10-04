@@ -18,12 +18,12 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta property="og:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What we check — Arcobaleno Research">
 <meta name="twitter:description" content="What a backtest audit from Arcobaleno Research actually checks: the eight standing tests, what we need from you, and the asset classes we do and do not cover.">
 <meta name="twitter:image" content="https://arcobaleno.cloud/card.png">
-<meta name="twitter:image:alt" content="Arcobaleno Research — We check trading and yield numbers before money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta name="twitter:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
 
 <link rel="preload" href="/fonts/Archivo-latin-8f704806.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/SourceSerif4-latin-f2ea9c12.woff2" as="font" type="font/woff2" crossorigin>
@@ -565,16 +565,17 @@
     </div>
     <div class="panel">
       <ol class="send">
-        <li><b>The code that produced the number.</b> Ideally the repository, and which commit it was.</li>
-        <li><b>The data it ran on</b>, or credentials for us to fetch it.</li>
-        <li><b>The claim itself, written down</b> — the number, the period it covers, the assets, and where it appears: a tearsheet, a deck, a spreadsheet, a notebook.</li>
+        <li><b>The code that produced the number.</b> Ideally where it lives (for example GitHub), and which version produced the number.</li>
+        <li><b>The data it ran on</b>, or access for us to download it.</li>
+        <li><b>The claim itself, written down</b> — the number, the period it covers, the assets, and where it appears: an investor one-pager, a slide deck, a spreadsheet, a governance proposal.</li>
       </ol>
     </div>
 
     <h3>What suits us best</h3>
     <p class="lede">
-      None of this is a rule. It is what makes an audit quick and cheap rather than slow and
-      expensive, and anything in the middle column simply means we say so in the quote.
+      This part is for whoever writes your code. None of it is a rule: it is what makes an audit
+      quick and cheap rather than slow and expensive, and anything in the middle column simply means
+      we say so in the quote.
     </p>
     <div class="tbl-scroll">
       <table>
@@ -582,22 +583,22 @@
           <tr><th></th><th>Ideal</th><th>Workable</th><th>Ask us first</th></tr>
         </thead>
         <tbody>
-          <tr><td class="k">Format</td><td><b>Parquet</b></td><td>CSV, a database dump</td><td>a live API we must poll; a platform you can't export from</td></tr>
-          <tr><td class="k">Size, loaded (rows × columns × 8&nbsp;bytes)</td><td><b>Up to ~1&nbsp;GB</b></td><td>1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td>larger than ~25&nbsp;GB</td></tr>
-          <tr><td class="k">Frequency</td><td><b>Daily or hourly bars</b></td><td>minute bars; every trade or full order book up to ~25&nbsp;GB, requoted</td><td>every trade or full order book over ~25&nbsp;GB</td></tr>
-          <tr><td class="k">Code</td><td><b>Python, in version control</b></td><td>R, MATLAB, C++</td><td>a sealed binary; a signal you can't show us</td></tr>
+          <tr><td class="k">File format</td><td><b>Parquet</b></td><td>CSV, a database export</td><td>data we have to keep downloading live; a platform you can't export from</td></tr>
+          <tr><td class="k">Data size</td><td><b>Up to ~1&nbsp;GB</b></td><td>1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td>larger than ~25&nbsp;GB</td></tr>
+          <tr><td class="k">How detailed</td><td><b>Daily or hourly prices</b></td><td>minute-by-minute prices; every single trade or the full list of waiting orders, up to ~25&nbsp;GB, requoted</td><td>every trade or every waiting order, over ~25&nbsp;GB</td></tr>
+          <tr><td class="k">Code</td><td><b>Python, with its history (e.g. Git)</b></td><td>R, MATLAB, C++</td><td>a program we can't open; a signal you can't show us</td></tr>
           <tr><td class="k">Run time</td><td><b>Under 2 hours a run</b></td><td>2–6 hours, adds days</td><td>longer than that</td></tr>
         </tbody>
       </table>
     </div>
     <p>
       <strong>Run time matters more than people expect.</strong> FC-1 alone means running your
-      backtest at least twice, and every variant we test in FC-6 is another run. A six-hour backtest
+      test at least twice, and every version we try in FC-6 is another run. A six-hour backtest
       is not a six-hour job.
     </p>
     <p>
       <strong>On confidentiality:</strong> tell us if any part of the strategy can't be shown to us —
-      we can usually work around a sealed component, and it is far better known before we start than
+      we can usually work around a part we can't open, and it is far better known before we start than
       halfway through. <strong>Your code and data are deleted when we deliver</strong>, unless you ask
       us to keep them.
     </p>
@@ -611,36 +612,36 @@
     <div class="col">
       <h2>What we can and can't audit</h2>
       <p class="lede">
-        The eight checks are not specific to any market — survivorship, look-ahead, cost realism and
-        selection are older and better documented in equities than they are in crypto. But knowing a market's
-        <em>mechanics</em> is a different thing from knowing method, and we would rather be straight
-        about where ours stop.
+        The eight checks work in any market: missing losers, using information too early, made-up costs
+        and cherry-picking were studied in stock markets long before crypto existed. But knowing how a
+        particular market <em>works</em> is a different thing from knowing the method, and we would
+        rather be straight about where our knowledge stops.
       </p>
       <ul class="cover">
         <li>
           <span class="k k-strong">Strongest</span>
-          <span><b>Crypto perpetual futures.</b> Funding, mark versus last price, margin tiers,
-          delistings, fee tiers, liquidation cascades. Eight of the ten case studies we have
-          published against ourselves come from here; the other two are a DeFi liquidity pool and a
-          volatility-index screen.</span>
+          <span><b>Crypto perpetual futures.</b> The fees traders pay each other, the different prices an
+          exchange shows, margin rules, coins being removed, fee levels, and chains of forced selling.
+          Eight of the ten findings we have published against ourselves come from here; the other two
+          are a DeFi liquidity pool and a study of an options market.</span>
         </li>
         <li>
           <span class="k k-yes">Covered</span>
-          <span><b>Crypto spot, equities, futures.</b> The method transfers directly, and most audit
-          findings live in the method rather than the instrument.</span>
+          <span><b>Crypto spot, stocks, futures.</b> The method carries over directly, and most of what an
+          audit finds is in how the test was done, not in what was traded.</span>
         </li>
         <li>
           <span class="k k-flag">Flagged</span>
-          <span><b>Mechanics we have not exercised</b> &mdash; dividend and corporate-action
-          adjustment, point-in-time fundamentals, exchange calendars and halts, borrow cost and short
-          availability, options exercise and surface construction. If your result hinges on one of
-          these, we say so in writing before quoting, and you decide.</span>
+          <span><b>Things we haven't worked with ourselves</b> &mdash; adjusting stock prices for
+          dividends and splits, company accounts as they were known at the time, exchange holidays and
+          trading halts, the cost of borrowing a stock to bet against it, and options pricing. If your
+          result depends on one of these, we say so in writing before quoting, and you decide.</span>
         </li>
         <li>
           <span class="k k-no">Declined</span>
           <span><b>Where there is nothing to reproduce</b> &mdash; no code, no data, or a strategy
           nobody has run in months and nobody knows the expected output of. That is code recovery,
-          not an audit, and we don&rsquo;t sell it. We also decline when the core signal is sealed
+          not an audit, and we don&rsquo;t sell it. We also decline when the core of the strategy is hidden from us
           <em>and</em> that is where the return comes from, and when the person commissioning the
           audit is not the person who carries the loss.</span>
         </li>
@@ -919,30 +920,30 @@
         </summary>
         <div class="obj-body">
       <p>
-        Usually true. It is also not the reassurance it sounds like, because a charting platform is
-        not where the data lives. It is a window onto somebody else&rsquo;s feed.
+        Usually true. It is also not the reassurance it sounds like, because a charting website is
+        not where the data lives. It is a window onto somebody else&rsquo;s copy.
       </p>
       <p>
         <b>The history can change after you have looked at it.</b> Exchanges cancel bad trades and
-        repair them days later. Vendors backfill gaps. The chart you built the plan on is not always
-        the chart you would draw today, and nothing tells you when a bar has changed.
+        repair them days later. Data providers fill in gaps after the fact. The chart you built the plan on is not always
+        the chart you would draw today, and nothing tells you when a past price has changed.
       </p>
       <p>
-        <b>The same asset is not the same series.</b> One venue&rsquo;s price is not another&rsquo;s.
-        And a symbol that gets delisted simply stops appearing in the search box &mdash; which is
+        <b>The same coin does not have one price.</b> One exchange&rsquo;s price is not another&rsquo;s.
+        And a coin that gets removed simply stops appearing in the search box &mdash; which is
         FC-2, built into the interface.
       </p>
       <p>
-        <b>A chart cannot tell you what trading costs.</b> A chart is open, high, low, close and
-        volume. That is a record of what the market did, not of what you would have paid. So the fee
+        <b>A chart cannot tell you what trading costs.</b> A chart shows each period's opening,
+        highest, lowest and closing price, and how much traded. That is a record of what the market did, not of what you would have paid. So the fee
         in the test did not come from the exchange at all. It came from a document.
       </p>
       <p>
         <b>And fees were never one number.</b> They are tiered by volume and account level, and they
-        change across the years a test covers. A test that quietly assumes it was the patient side of
-        every trade, when the strategy would in fact have crossed the spread and paid more, is wrong
-        in the flattering direction every single time. Perpetuals pay funding on top, which is a real
-        recurring cost and is regularly left out altogether.
+        change across the years a test covers. A test that quietly assumes every order waited
+        patiently for a good price, when the strategy would in fact have had to pay up to trade at
+        once, is wrong in the flattering direction every single time. Crypto futures also carry a
+        regular fee between traders, a real recurring cost that is often left out altogether.
       </p>
       <p>
         <span class="punch">Official is not the same as checked, and a display is not the same as the
@@ -954,29 +955,31 @@
     <div class="objection">
       <details>
         <summary>
-          <h3>&ldquo;But we have the order book&rdquo;</h3>
+          <h3>&ldquo;But we have the full list of waiting orders&rdquo;</h3>
           <span class="plain-chev" aria-hidden="true">+</span>
         </summary>
         <div class="obj-body">
       <p>
-        Better than most people arrive with, and it genuinely helps. With a book, what a trade would
-        have cost stops being a guess and becomes something you can measure.
+        That's the exchange's order book: every buy and sell order waiting at each price. It is better
+        than most people arrive with, and it genuinely helps. With it, what a trade would have cost
+        stops being a guess and becomes something you can measure.
       </p>
       <p>
         <b>Having it and using it are different things.</b> The question is what the code did with it.
-        Did it fill the order against the book, level by level, until the order was full? Or did it
-        read the price at the top and assume the whole thing went through there? The second is the
+        Did it work through the waiting orders, one price at a time, until the whole order was filled?
+        Or did it read the best price and assume the whole thing went through there? The second is the
         common case, and in the output the two look identical.
       </p>
       <p>
-        <b>A book shows what was on offer, not what you would have got.</b> Your own order moves it.
-        Somebody else was reaching for the same lot. And the days that make most of the money are the
-        fast ones, when the book is thinnest and least like the snapshot you are reading.
+        <b>It shows what was on offer, not what you would have got.</b> Your own order moves the price.
+        Somebody else was reaching for the same thing. And the days that make most of the money are the
+        fast ones, when there are fewest orders waiting and the picture you are reading is most out of
+        date.
       </p>
       <p>
-        <b>And it leaves the other seven checks exactly where they were.</b> A perfect order book says
+        <b>And it leaves the other seven checks exactly where they were.</b> Perfect order data says
         nothing about which assets were on the list, how many versions were tried before this one, or
-        whether a single broken row is carrying the result.
+        whether a single broken figure is carrying the result.
       </p>
       <p>
         <span class="punch">Better data does not audit itself. It moves the place where the mistake
@@ -1008,12 +1011,12 @@
         "we had concerns about costs".
       </p>
       <p class="lede">
-        The instruments behind four of them (<span class="m">FC-1</span>, <span class="m">FC-4</span>,
+        The tools behind four of them (<span class="m">FC-1</span>, <span class="m">FC-4</span>,
         <span class="m">FC-6</span>, <span class="m">FC-8</span>) are public:
-        <a href="/tools/fctools-v6.tar.gz">fctools</a>, under the
-        <a href="/tools/LICENSE.txt">MIT licence</a>, with a
-        <a href="/tools/fctools-v6.tar.gz.sha256">checksum</a> and
-        <a href="/tools/fctools-v6.tar.gz.asc">signature</a>. Run them on your own work before you
+        <a href="/tools/fctools-v6.tar.gz">fctools</a>, free for anyone to use
+        (<a href="/tools/LICENSE.txt">MIT licence</a>), with a
+        <a href="/tools/fctools-v6.tar.gz.sha256">checksum</a> and a
+        <a href="/tools/fctools-v6.tar.gz.asc">signature</a> so your team can confirm the download is ours. Run them on your own work before you
         send it &mdash; anything they catch is cheaper found by you.
       </p>
     </div>
@@ -1022,7 +1025,7 @@
       <li>
         <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Does it repeat?</span></div>
         <p class="t-ask">We run your code twice, on two different machines, and see whether the same number comes back. Nothing else means anything until this does.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually something unfixed in how the program orders or seeds its work.</span>
+        <span class="t-fail"><b>What going wrong looks like</b>The author cannot get their own headline number out again — far more common than anyone expects, and usually a hidden setting that changes how the program orders its work from run to run.</span>
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Are the dead ones missing?</span></div>
@@ -1031,23 +1034,23 @@
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Are the costs real?</span></div>
-        <p class="t-ask">Where did the fee figure come from? Is it charged the right way round — per book, or per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
+        <p class="t-ask">Where did the fee figure come from? Is it charged correctly — once for the whole portfolio, or once per position? Was it measured at the order sizes you would actually trade, or read off a screen?</p>
         <span class="t-fail"><b>What going wrong looks like</b>One cost assumption appears in three documents with three different numbers, and nobody has measured which is right.</span>
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is the data clean?</span></div>
-        <p class="t-ask">Was every row checked, or a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A single bad print carries thirty months of apparent return, and removing it removes the strategy.</span>
+        <p class="t-ask">Was every line of data checked, or just a sample? We run the checks that already exist across the whole set rather than the slice someone looked at.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A single bad price carries thirty months of apparent return, and removing it removes the strategy.</span>
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Is the data current?</span></div>
-        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what the variable is called.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A filter named for recency that never reads a timestamp — it counts rows and wears the name.</span>
+        <p class="t-ask">Do the filters meant to exclude stale data actually look at a date? We read what the code does, not what it is called.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A filter named for keeping data recent that never reads a date. It counts lines and wears the name.</span>
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-6</span><span class="t-name">Was it cherry-picked?</span></div>
         <p class="t-ask">How many versions were tried before this one, and was this one chosen before or after seeing how it performed? Is there any data it has genuinely never been run on?</p>
-        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of variants tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
+        <span class="t-fail"><b>What going wrong looks like</b>Hundreds of versions tested, the best one reported, and nothing held back to check it against. The result <em>is</em> the search.</span>
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you have traded it?</span></div>
@@ -1056,8 +1059,8 @@
       </li>
       <li>
         <div class="t-head"><span class="fc">FC-8</span><span class="t-name">What is really being claimed?</span></div>
-        <p class="t-ask">Is the headline a single number or a range? We put an error bar around it and ask whether that range is wide enough to include zero.</p>
-        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a distribution — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
+        <p class="t-ask">Is the headline a single number or a range? We work out its likely range and ask whether that range is wide enough to include zero.</p>
+        <span class="t-fail"><b>What going wrong looks like</b>A figure quoted to two decimal places that is really a range — and a perfectly reasonable alternative way of running the same code lands somewhere else entirely.</span>
       </li>
     </ol>
     </div>
@@ -1071,10 +1074,10 @@
         <a href="/sample/">Here is what the finished report looks like.</a></p>
     </div>
     <ol class="steps">
-      <li><b>We take delivery and freeze it.</b> Your code and data go into a working copy with a recorded fingerprint. We never work in your live repository.</li>
+      <li><b>We take delivery and freeze it.</b> Your code and data go into a separate copy, sealed with a digital fingerprint so any later change would show. We never work in your live code.</li>
       <li><b>FC-1 first, before anything else.</b> Run it clean, end to end, twice. If the number won't come out, we stop here and tell you — everything downstream would be worthless.</li>
-      <li><b>We reconcile against your claim.</b> Our number against the number in your document. Any gap is itself a finding, and often it is <em>the</em> finding.</li>
-      <li><b>We work FC-2 through FC-8 in order.</b> Structural and cheap first, subtle last. Each check is a script we run, not a read-through of your code.</li>
+      <li><b>We compare against your claim.</b> Our number against the number in your document. Any gap is itself a finding, and often it is <em>the</em> finding.</li>
+      <li><b>We work FC-2 through FC-8 in order.</b> Simple and quick first, subtle last. Each check is a script we run, not a read-through of your code.</li>
       <li><b>Every finding gets a number.</b> Not "costs look understated" but "costs are understated by this much, which moves the headline from here to here". A finding without a number is an opinion.</li>
       <li><b>You get the report</b>, each finding with the script that demonstrates it. It opens with a one-page summary that shows how much each problem changes your claim, then takes the eight checks in order, FC-1 to FC-8. <a href="/sample/">See a sample.</a></li>
       <li><b>One call to walk through it.</b> No ongoing obligation, in either direction.</li>
