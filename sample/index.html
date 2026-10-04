@@ -539,7 +539,7 @@
      Plain language throughout: written for DAO members and investors, not for quants.
      Status colour is NEVER the only signal -- every badge carries an icon and a word, because
      --wrong and --caution are near-identical for red-green colour-blind readers (validated). */
-  .specimen-flag{margin:26px 0 0;padding:14px 18px;border:1px solid var(--right);background:var(--right-bg);
+  .specimen-flag{margin:16px 0 0;padding:0;border:0;background:none;
     font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink);max-width:46em}
   .specimen-flag b{color:var(--right)}
   .r{max-width:780px}
@@ -685,6 +685,27 @@
   details.chk-d[open] .post-more .when-open{display:inline}
   details.chk-d[open] .post-more .when-closed{display:none}
   .chk-body{padding:0 2px 30px}
+  .offer-meta{font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--muted)}
+  .offer-meta strong{color:var(--ink);font-weight:600}
+  .hero-meta{margin:22px 0 0}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:22px 0 0}
+  .hero-cta-note{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--faint);flex:1 1 19em;max-width:30em}
+  .linkrows{margin-top:6px}
+  .r section.tail{border-top:0;padding-top:4px}
+  .r section.chk-intro+section.chk{border-top:2px solid var(--ink)}
+  a.needs-link{display:flex;align-items:center;gap:18px;margin-top:10px;padding:14px 22px;border:1px solid var(--rule-strong);text-decoration:none;color:var(--ink)}
+  a.needs-link:hover,a.needs-link:focus-visible{background:var(--raised);border-color:var(--right)}
+  a.needs-link .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+  a.needs-link .sc-t{flex:1;font-size:15px;color:var(--muted)}
+  a.needs-link .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
+  @media (max-width:600px){a.needs-link{flex-wrap:wrap;gap:4px 12px}}
+  a.sample-cta{display:flex;align-items:center;gap:18px;margin-top:22px;padding:18px 22px;border:1px solid var(--right);background:var(--raised);text-decoration:none;color:var(--ink)}
+  a.sample-cta:hover,a.sample-cta:focus-visible{background:var(--right-bg)}
+  a.sample-cta .sc-k{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--right);white-space:nowrap}
+  a.sample-cta .sc-t{flex:1;font-size:15.5px;line-height:1.45}
+  a.sample-cta .sc-t b{font-weight:600}
+  a.sample-cta .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
+  @media (max-width:600px){a.sample-cta{flex-wrap:wrap;gap:6px 12px}}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -715,6 +736,14 @@
       is real, the findings are not. For mistakes we really found, see our
       <a href="/">ten findings</a>.
     </p>
+
+    <p class="offer-meta hero-meta">
+      Full audit &middot; <strong>$12,000</strong> &middot; report in 2–3 weeks &middot; large order-book datasets like this one are quoted separately
+    </p>
+    <div class="hero-cta">
+      <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">&rarr;</span></a>
+      <span class="hero-cta-note">Want one of these on your strategy? Start with a free 30-minute call.</span>
+    </div>
   </header>
 
   <div class="r">
@@ -1163,14 +1192,11 @@
       </ol>
     </section>
 
-    <section>
-      <details class="post">
-      <summary>
-        <h2>What we did not check</h2>
-        <span class="post-teaser">The boundaries of this audit, so nobody reads more into it than it says.</span>
-        <span class="post-more"><span class="when-closed">See the list &rsaquo;</span><span class="when-open">Close &times;</span></span>
-      </summary>
-      <div class="post-body">
+    <section class="tail">
+      <div class="folds">
+        <details class="fold">
+          <summary>What we did not check</summary>
+          <div class="fold-body">
       <ul class="plain">
         <li>Anything after 31 December 2025. The material supplied ends there.</li>
         <li>The live trading system's own code. We used its logs to measure delays (FC-5), but the parts that place orders, manage risk and reconcile accounts were outside this audit.</li>
@@ -1178,18 +1204,12 @@
         <li>Whether the exchange data supplied is complete. We checked it against the client's own statements, which tests consistency, not independent truth.</li>
         <li>Any market beyond the 12 supplied, or any call interval other than 15 minutes.</li>
       </ul>
-      </div>
-      </details>
-    </section>
-
-    <section>
-      <details class="post">
-      <summary>
-        <h2>Check every number yourself</h2>
-        <span class="post-teaser">Every figure in this report comes out of a script delivered with it. Nothing is claimed that can't be shown.</span>
-        <span class="post-more"><span class="when-closed">For your engineers: the scripts &rsaquo;</span><span class="when-open">Close &times;</span></span>
-      </summary>
-      <div class="post-body">
+          </div>
+        </details>
+        <details class="fold">
+          <summary>Check every number yourself: the scripts, for your engineers</summary>
+          <div class="fold-body">
+            <p>Every figure in this report comes out of a script delivered with it. Nothing is claimed that can't be shown.</p>
       <div class="tscroll"><table>
         <thead><tr><th>To reproduce</th><th>Script</th></tr></thead>
         <tr><td>FC-1 &middot; the same answer on every run</td><td><code>fctools/fc1_reproduce.py</code></td></tr>
@@ -1203,8 +1223,21 @@
         <tr><td>The whole chart above, end to end</td><td><code>audit/run_all.py --report</code></td></tr>
       </table></div>
       <p class="src">Full trade-by-trade output is delivered too, not just summaries: 7,104 rows for FC-7, 14 for FC-5, 41 for FC-6, 10,000 for FC-8. The two <code>fctools</code> scripts are free and public: <a href="/tools/fctools-v6.tar.gz">download</a>.</p>
+          </div>
+        </details>
       </div>
-      </details>
+      <div class="linkrows">
+        <a class="sample-cta" href="/#costs">
+          <span class="sc-k">What it costs</span>
+          <span class="sc-t"><b>Three fixed prices,</b> from a $2,500 Triage to a $25,000 portfolio review.</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="needs-link" href="/method/#needs">
+          <span class="sc-k">What we need from you</span>
+          <span class="sc-t">The code, the data, and the claim written down.</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
     </section>
 
   </div>
