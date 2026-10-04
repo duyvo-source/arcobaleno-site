@@ -527,6 +527,18 @@
   .post[open] .post-more .when-closed{display:none}
   .post[open]>summary .post-teaser{display:none}
   .post-body{margin-top:18px}
+
+  /* ---------- small folds (2026-10-04): secondary detail tucked under a one-line summary ---------- */
+  .folds{margin:22px 0 26px;border-top:1px solid var(--rule)}
+  details.fold{border-bottom:1px solid var(--rule)}
+  details.fold>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:14px 2px;font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink)}
+  details.fold>summary::-webkit-details-marker{display:none}
+  details.fold>summary::after{content:"+";font-family:var(--mono);font-weight:400;color:var(--muted);transition:transform .15s}
+  details.fold[open]>summary::after{transform:rotate(45deg)}
+  details.fold>summary:hover,details.fold>summary:focus-visible{color:var(--right)}
+  details.fold>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
+  details.fold>.fold-body{padding:0 2px 16px}
+  details.fold>.fold-body>p:first-child{margin-top:0}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -571,7 +583,10 @@
       </ol>
     </div>
 
-    <h3>What suits us best</h3>
+    <div class="folds">
+    <details class="fold">
+      <summary>For your engineers: file formats, data sizes and run times</summary>
+      <div class="fold-body">
     <p class="lede">
       This part is for whoever writes your code. None of it is a rule: it is what makes an audit
       quick and cheap rather than slow and expensive, and anything in the middle column simply means
@@ -596,6 +611,9 @@
       test at least twice, and every version we try in FC-6 is another run. A six-hour backtest
       is not a six-hour job.
     </p>
+      </div>
+    </details>
+    </div>
     <p>
       <strong>On confidentiality:</strong> tell us if any part of the strategy can't be shown to us —
       we can usually work around a part we can't open, and it is far better known before we start than

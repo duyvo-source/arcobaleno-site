@@ -654,6 +654,18 @@
   ol.plan li::before{content:counter(p);position:absolute;left:0;top:11px;width:30px;height:30px;border-radius:50%;
     background:var(--right);color:var(--paper);font-family:var(--mono);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
   ul.plain{padding-left:20px} ul.plain li{margin:6px 0}
+
+  /* ---------- small folds (2026-10-04): secondary detail tucked under a one-line summary ---------- */
+  .folds{margin:22px 0 26px;border-top:1px solid var(--rule)}
+  details.fold{border-bottom:1px solid var(--rule)}
+  details.fold>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:14px 2px;font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink)}
+  details.fold>summary::-webkit-details-marker{display:none}
+  details.fold>summary::after{content:"+";font-family:var(--mono);font-weight:400;color:var(--muted);transition:transform .15s}
+  details.fold[open]>summary::after{transform:rotate(45deg)}
+  details.fold>summary:hover,details.fold>summary:focus-visible{color:var(--right)}
+  details.fold>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
+  details.fold>.fold-body{padding:0 2px 16px}
+  details.fold>.fold-body>p:first-child{margin-top:0}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -1091,8 +1103,13 @@
     </section>
 
     <section>
-      <h2>Check every number yourself</h2>
-      <p class="asked">Every figure in this report comes out of a script delivered with it. Nothing is claimed that can't be shown. For your engineers:</p>
+      <details class="post">
+      <summary>
+        <h2>Check every number yourself</h2>
+        <span class="post-teaser">Every figure in this report comes out of a script delivered with it. Nothing is claimed that can't be shown.</span>
+        <span class="post-more"><span class="when-closed">For your engineers: the scripts &rsaquo;</span><span class="when-open">Close &times;</span></span>
+      </summary>
+      <div class="post-body">
       <div class="tscroll"><table>
         <thead><tr><th>To reproduce</th><th>Script</th></tr></thead>
         <tr><td>FC-1 &middot; the same answer on every run</td><td><code>fctools/fc1_reproduce.py</code></td></tr>
@@ -1106,6 +1123,8 @@
         <tr><td>The whole chart above, end to end</td><td><code>audit/run_all.py --report</code></td></tr>
       </table></div>
       <p class="src">Full trade-by-trade output is delivered too, not just summaries: 7,104 rows for FC-7, 14 for FC-5, 41 for FC-6, 10,000 for FC-8. The two <code>fctools</code> scripts are free and public: <a href="/tools/fctools-v6.tar.gz">download</a>.</p>
+      </div>
+      </details>
     </section>
 
   </div>
