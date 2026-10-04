@@ -559,6 +559,14 @@
   @media (max-width:600px){a.sample-cta{flex-wrap:wrap;gap:6px 12px}}
   .fold-body.obj-body{padding:0 2px 16px}
   .linkrows{margin-top:26px}
+  /* sample-page style for the eight checks (2026-10-04) */
+  .plain-item .t-name{font-size:clamp(1.2rem,2.4vw,1.5rem);letter-spacing:-.015em}
+  .plain-item > details > summary{padding:20px 2px!important}
+  .plain-item .chk-sum{display:block;margin-top:2px;color:var(--muted);font-size:15.5px;line-height:1.5;max-width:44em}
+  .plain-item .post-more{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--right)}
+  .plain-item .post-more .when-open{display:none}
+  .plain-item > details[open] .post-more .when-open{display:inline}
+  .plain-item > details[open] .post-more .when-closed{display:none}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -718,8 +726,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-1</span><span class="t-name">Can anyone else get the same answer?</span></div>
-            <span class="t-sub">The recipe</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Does the same number come back when someone else runs your code?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the recipe &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -745,8 +753,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-2</span><span class="t-name">Who did not make it this far?</span></div>
-            <span class="t-sub">The fishing net</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Was the list of assets built as it looked back then, or from today's survivors?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the fishing net &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -772,8 +780,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-3</span><span class="t-name">Did anyone check what it costs?</span></div>
-            <span class="t-sub">The ATM charge</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Where did the trading-cost figure come from, and was it ever measured?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the ATM charge &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -805,8 +813,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-4</span><span class="t-name">Is one bad day in the wash?</span></div>
-            <span class="t-sub">The red sock</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Was every line of data checked, or could one bad day be carrying the result?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the red sock &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -840,8 +848,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-5</span><span class="t-name">Was it looking at an old photo?</span></div>
-            <span class="t-sub">The photo of an empty room</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">How old was the picture of the market when the strategy made its call?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the photo of an empty room &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -866,8 +874,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-6</span><span class="t-name">How many times did you guess?</span></div>
-            <span class="t-sub">Guess which hand</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">How many versions were tried before this one was shown to you?</span>
+            <span class="post-more"><span class="when-closed">Read the example: guess which hand &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -899,8 +907,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-7</span><span class="t-name">Could you actually have bought it?</span></div>
-            <span class="t-sub">The cookie swap</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Could every trade really have happened, at that price and that size?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the cookie swap &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
@@ -926,8 +934,8 @@
         <details>
           <summary>
             <div class="t-head"><span class="fc">FC-8</span><span class="t-name">How sure are you, really?</span></div>
-            <span class="t-sub">The best of forty-one</span>
-            <span class="plain-chev" aria-hidden="true">+</span>
+            <span class="chk-sum">Is the headline one exact number, or a range that might include zero?</span>
+            <span class="post-more"><span class="when-closed">Read the example: the best of forty-one &rsaquo;</span><span class="when-open">Close &times;</span></span>
           </summary>
           <div class="plain-body">
           <p>
