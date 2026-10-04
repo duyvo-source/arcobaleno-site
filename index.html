@@ -629,6 +629,15 @@
   details.fold>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
   details.fold>.fold-body{padding:0 2px 16px}
   details.fold>.fold-body>p:first-child{margin-top:0}
+  /* sample-page style for the findings list (2026-10-04) */
+  .case-h2{font-size:clamp(1.3rem,2.6vw,1.65rem)!important}
+  .case > details > summary{padding:20px 2px!important}
+  .case-sum{display:block;margin-top:6px;color:var(--muted);font-size:15.5px;line-height:1.5;max-width:44em}
+  .case-sum b{color:var(--ink);font-weight:600}
+  .case .post-more{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--right)}
+  .case .post-more .when-open{display:none}
+  .case > details[open] .post-more .when-open{display:inline}
+  .case > details[open] .post-more .when-closed{display:none}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -700,7 +709,7 @@
 
     <a class="sample-cta" href="/sample/">
       <span class="sc-k">Sample report</span>
-      <span class="sc-t"><b>See exactly what you would get:</b> a complete full audit of a made-up strategy, all eight checks, every finding explained, and a script that reproduces each one.</span>
+      <span class="sc-t"><b>See exactly what you would get:</b> a complete full audit of a made-up strategy, all eight checks, every finding explained, and the scripts that reproduce every one of them.</span>
       <span class="arrow" aria-hidden="true">&rarr;</span>
     </a>
 
@@ -770,7 +779,6 @@
       Every one is a mistake we found in <em>our own</em> research and published against ourselves,
       <strong>because we can't show you a client's.</strong>
     </p>
-    <p class="case-hint">Click any finding to open it</p>
 
     <article class="case" id="case-01">
       <details>
@@ -779,8 +787,10 @@
             <span class="case-no">01</span>
           <span class="class-tag">Repeatability</span>
           <h3 class="case-h2">The result changed every time it ran</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">Reported as &minus;1.3191%. Really: <b>a different number on every run</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -839,8 +849,10 @@
             <span class="case-no">02</span>
           <span class="class-tag">Bad data</span>
           <h3 class="case-h2">One bad price produced a 192% annual return</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">One day's figure: 172,635%. The pool normally earned <b>0.91%</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -888,8 +900,10 @@
             <span class="case-no">03</span>
           <span class="class-tag">Cost arithmetic</span>
           <h3 class="case-h2">Three strategies closed over a cost that was 20x too high</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">Costs charged: &asymp;2.0% a period. Actually incurred: <b>0.10%</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -943,8 +957,10 @@
             <span class="case-no">04</span>
           <span class="class-tag">Stale data</span>
           <h3 class="case-h2">A filter for recent data that never read a date</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">The &ldquo;recent data&rdquo; filter counted rows. <b>It never read a date.</b></span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -993,8 +1009,10 @@
             <span class="case-no">05</span>
           <span class="class-tag">What trading really costs</span>
           <h3 class="case-h2">One cost, three documents, three different numbers</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">The screen price said 0.26%. A real order cost <b>0.48%</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -1047,8 +1065,10 @@
             <span class="case-no">06</span>
           <span class="class-tag">A hidden range</span>
           <h3 class="case-h2">A headline that was really a range</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">Quoted as one exact number. Really <b>a 4.2-point range</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -1103,8 +1123,10 @@
             <span class="case-no">07</span>
           <span class="class-tag">Maybe nothing</span>
           <h3 class="case-h2">Nine versions, and none could be told apart from zero</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">Measured at 42.8% a year. Honest range: <b>&minus;9.0% to +126.4%</b>.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -1157,8 +1179,10 @@
             <span class="case-no">08</span>
           <span class="class-tag">How much evidence there really is</span>
           <h3 class="case-h2">Two thousand trades, six weeks of evidence</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">2,050 trades, but only <b>6 weeks</b> of independent evidence.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -1206,8 +1230,10 @@
             <span class="case-no">09</span>
           <span class="class-tag">Positions left open</span>
           <h3 class="case-h2">Profitable only if you ignore what it still holds</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">8 of 8 versions profitable on closed trades. <b>0 of 8</b> counting what was still held.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
@@ -1262,8 +1288,10 @@
             <span class="case-no">10</span>
           <span class="class-tag">Missing losers</span>
           <h3 class="case-h2">The fix for missing coins that brought back none of the dead ones</h3>
-            <span class="case-chev" aria-hidden="true">+</span>
+            
           </div>
+          <span class="case-sum">Said to be fixed. It brought back <b>0 of 31</b> disappeared coins.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
         </summary>
         <div class="case-body">
         <div class="correction">
