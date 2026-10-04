@@ -666,6 +666,25 @@
   details.fold>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
   details.fold>.fold-body{padding:0 2px 16px}
   details.fold>.fold-body>p:first-child{margin-top:0}
+
+  /* ---------- cleaner layout (2026-10-04) ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .duo .call{margin:0}
+  @media (max-width:700px){.duo{grid-template-columns:1fr}}
+  .r section.chk-intro{padding-bottom:14px}
+  .r section.chk{padding:0;border-top:1px solid var(--rule)}
+  .r section.chk:last-of-type{border-bottom:1px solid var(--rule)}
+  details.chk-d>summary{list-style:none;cursor:pointer;display:block;padding:20px 2px}
+  details.chk-d>summary::-webkit-details-marker{display:none}
+  details.chk-d>summary .check-head{margin-bottom:4px}
+  details.chk-d>summary:hover h2,details.chk-d>summary:focus-visible h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  details.chk-d>summary:focus-visible{outline:2px solid var(--right);outline-offset:2px}
+  .chk-sum{display:block;color:var(--muted);font-size:15.5px;max-width:44em}
+  details.chk-d>summary .post-more{margin-top:8px}
+  details.chk-d .post-more .when-open{display:none}
+  details.chk-d[open] .post-more .when-open{display:inline}
+  details.chk-d[open] .post-more .when-closed{display:none}
+  .chk-body{padding:0 2px 30px}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -692,11 +711,9 @@
       <strong>The strategy, the client and every number in it are made up.</strong>
     </p>
     <p class="specimen-flag">
-      <b>SAMPLE, NOT CLIENT WORK.</b> No client, no real data, no real firm. We invented a trading
-      strategy and audited it against all eight checks, so the format is real and the findings are
-      not. For mistakes we really found, in our own research, see the
-      <a href="/">ten findings on the front page</a>. This sample uses a very large dataset, which
-      we price separately from the standard tiers.
+      <b>SAMPLE, NOT CLIENT WORK.</b> A made-up strategy, audited against all eight checks: the format
+      is real, the findings are not. For mistakes we really found, see our
+      <a href="/">ten findings</a>.
     </p>
   </header>
 
@@ -743,34 +760,20 @@
         </div>
       </div>
 
+      <div class="duo">
       <div class="call holds">
         <div class="lab"><span aria-hidden="true">&#10003;</span> What holds up</div>
-        <p>Signal v4 really does know something about where prices go next. On six months of data it had never been tuned on, it called direction correctly <b>53.1%</b> of the time, against <b>33.3%</b> for guessing. Nothing in this report says the idea is worthless. We want that read first, because most of what follows takes things away.</p>
+        <p>Signal v4 really does know something about where prices go next. On six months of data it had never been tuned on, it called direction right <b>53.1%</b> of the time, against <b>33.3%</b> for guessing. The idea is not worthless.</p>
       </div>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What doesn't</div>
-        <p>The <b>+38% a year</b> doesn't survive the checks. We found six problems, none of them in the idea itself. They are all in what the test assumed about <b>trading costs, prices and timing</b>. Fix them and the same signal on the same data makes <b>+2.2% a year</b>, too close to zero to call a profit.</p>
-        <p>The problems are worst exactly where the money was. A third of the claimed profit came from the fastest, most chaotic <b>1% of moments</b>, which is where the test's assumptions were least realistic.</p>
+        <p>The <b>+38% a year</b>. Six problems, all in what the test assumed about <b>costs, prices and timing</b>, none in the idea. Fixed, the same signal makes <b>+2.2% a year</b>, too close to zero to call a profit.</p>
+      </div>
       </div>
       <div class="call note">
         <div class="lab"><span aria-hidden="true">!</span> The loss the client already knew about</div>
-        <p>The client told us about one live trade where the signal said <i>buy</i> and should have said <i>sell</i>. They thought it was bad luck. Our job was to find out whether it was one event or a pattern. <b>It is a pattern</b>: 14 moments in the test period share its shape, and in 9 of them the signal flips the wrong way once it's tested at its real speed. It will happen again. See <a href="#fc-5">FC-5</a>.</p>
+        <p>Not bad luck: <b>a pattern</b> that has happened 14 times and will happen again. <a href="#fc-5">See FC-5.</a></p>
       </div>
-    </section>
-
-    <section>
-      <h2>All eight checks at a glance</h2>
-      <p class="asked">Every audit runs the same eight checks, in the same order. Click one to jump to it.</p>
-      <ul class="glance">
-        <li><span class="fc">FC-1</span><a href="#fc-1">Does it repeat?<span class="what">Same answer on every run and every machine.</span></a><span class="badge pass"><span class="i" aria-hidden="true">&#10003;</span>Passed</span></li>
-        <li><span class="fc">FC-2</span><a href="#fc-2">Are the dead ones missing?<span class="what">Two markets that later closed were left out.</span></a><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor &minus;1.8 points</span></li>
-        <li><span class="fc">FC-3</span><a href="#fc-3">Are the costs real?<span class="what">The test paid itself a fee discount on every trade. Real trading got it on 61%.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;6.6 points</span></li>
-        <li><span class="fc">FC-4</span><a href="#fc-4">Is the data clean?<span class="what">Calls were marked right or wrong against the wrong price, and 15 minutes early.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;3.5 points</span></li>
-        <li><span class="fc">FC-5</span><a href="#fc-5">Is the data current?<span class="what">The live system sees the market seconds late. This explains the known loss.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;4.1 points</span></li>
-        <li><span class="fc">FC-6</span><a href="#fc-6">Was it cherry-picked?<span class="what">41 versions were tried and the luckiest one was kept.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;1.9 points</span></li>
-        <li><span class="fc">FC-7</span><a href="#fc-7">Could you have traded it?<span class="what">Trades filled at prices that had already gone. The biggest problem.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;17.9 points</span></li>
-        <li><span class="fc">FC-8</span><a href="#fc-8">What is really being claimed?<span class="what">The corrected return's likely range includes zero.</span></a><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Can't rule out zero</span></li>
-      </ul>
     </section>
 
     <section>
@@ -854,8 +857,19 @@
 
     <!-- ===================== THE EIGHT CHECKS, IN ORDER ===================== -->
 
-    <section id="fc-1">
-      <div class="check-head"><span class="fc">FC-1</span><h2>Does it repeat?</h2><span class="badge pass"><span class="i" aria-hidden="true">&#10003;</span>Passed</span></div>
+    <section class="chk-intro">
+      <h2>The eight checks</h2>
+      <p class="asked">In order, FC-1 to FC-8. Open any check for what we asked, what we found, and the fix.</p>
+    </section>
+
+    <section id="fc-1" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-1</span><h2>Does it repeat?</h2><span class="badge pass"><span class="i" aria-hidden="true">&#10003;</span>Passed</span></div>
+          <span class="chk-sum">Same answer on every run and every machine.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="asked"><b>What we asked:</b> if we run your code again, on a different computer, do we get the same number?</p>
       <p>We ran it 20 times on two different machines, and again with a hidden setting changed that often reshuffles how programs order their work. The yearly return never moved by more than <b>0.31 points</b>, and the hit rate was identical every time.</p>
       <div class="call holds">
@@ -867,10 +881,18 @@
         <p>Lock those settings in your automated tests, so the result stays repeatable as the code changes.</p>
         <span class="effort">Effort: under an hour, once</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-2">
-      <div class="check-head"><span class="fc">FC-2</span><h2>Are the dead ones missing?</h2><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor &middot; &minus;1.8 points</span></div>
+    <section id="fc-2" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-2</span><h2>Are the dead ones missing?</h2><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor &middot; &minus;1.8 points</span></div>
+          <span class="chk-sum">Two markets that later closed were left out.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="asked"><b>What we asked:</b> was the list of markets built as it looked <i>at the time</i>, or from the ones still around today?</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
@@ -888,10 +910,18 @@
         <p>Build the market list from the dates each market opened and closed, not from what is trading today. Then test the property itself: no market should appear before it opened or after it closed. Checking only that &ldquo;the numbers changed&rdquo; is how this mistake survives a fix. Reusable across every strategy you run.</p>
         <span class="effort">Effort: about a day</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-3">
-      <div class="check-head"><span class="fc">FC-3</span><h2>Are the costs real?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;6.6 points</span></div>
+    <section id="fc-3" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-3</span><h2>Are the costs real?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;6.6 points</span></div>
+          <span class="chk-sum">The test paid itself a fee discount on every trade. Real trading got it on 61%.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="asked"><b>What we asked:</b> where did the trading-fee figure come from, and is it charged correctly?</p>
       <p>Exchanges charge less, and sometimes even pay a small rebate (the maker rebate), when your order waits in the order book to be filled. They charge more when you trade immediately at the current price.</p>
       <div class="call wrong">
@@ -910,10 +940,18 @@
         <p>Use the real share of cheaper-rate trades from your exchange statements, moment by moment, instead of assuming all of them. The statements already exist, so this is a lookup, not new modelling. Re-check it after the FC-7 fix, because the two are linked.</p>
         <span class="effort">Effort: half a day</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-4">
-      <div class="check-head"><span class="fc">FC-4</span><h2>Is the data clean?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;3.5 points</span></div>
+    <section id="fc-4" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-4</span><h2>Is the data clean?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;3.5 points</span></div>
+          <span class="chk-sum">Calls were marked right or wrong against the wrong price, and 15 minutes early.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="impact">The finding that surprised the client most.</p>
       <p class="asked"><b>What we asked:</b> was every piece of data checked, and could one source quietly spoil the result?</p>
       <p>Nothing was wrong with either of the two data sources. The problem is that there were two, and <b>they weren't the same market</b>.</p>
@@ -938,10 +976,18 @@
         <p>Mark calls against the traded exchange's own prices, and correct the start-versus-end time. <b>Do this before any other fix</b>: until it's done, every number you use to measure the other fixes is measured against the wrong market. Separately, make the data feed raise an alarm when the picture stops changing, instead of passing it on as a strong signal.</p>
         <span class="effort">Effort: about an hour</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-5">
-      <div class="check-head"><span class="fc">FC-5</span><h2>Is the data current?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;4.1 points</span></div>
+    <section id="fc-5" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-5</span><h2>Is the data current?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;4.1 points</span></div>
+          <span class="chk-sum">The live system sees the market seconds late. This explains the known loss.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="impact">The finding that explains the loss the client already knew about.</p>
       <p class="asked"><b>What we asked:</b> how old is the market picture at the moment the signal makes its call?</p>
       <div class="call wrong">
@@ -970,10 +1016,18 @@
         <p><b>(a)</b> A live safety switch: skip any call made on a market picture older than a set limit. This stops the next one of these reaching the market. On this data it would have skipped 9 of the 14, and none of them were calls you wanted. <b>(b)</b> Give the test the real delays, so research and live trading agree on what the signal can see. <b>(c)</b> Reduce the delay itself, the biggest job and the only one that wins those calls back.</p>
         <span class="effort">Effort: (a) ~1 day &middot; (b) ~2 days &middot; (c) an infrastructure project</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-6">
-      <div class="check-head"><span class="fc">FC-6</span><h2>Was it cherry-picked?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;1.9 points</span></div>
+    <section id="fc-6" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-6</span><h2>Was it cherry-picked?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;1.9 points</span></div>
+          <span class="chk-sum">41 versions were tried and the luckiest one was kept.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="impact">&minus;16.1 points on its own (see <a href="#order">why the order matters</a>), and the biggest effect on the hit rate.</p>
       <p class="asked"><b>What we asked:</b> how many versions were tried, and was this one chosen before or after seeing how it did?</p>
       <div class="call wrong">
@@ -999,10 +1053,18 @@
         <p>You can't un-see 41 results. From now on: <b>(a)</b> set aside a stretch of data before the next settings change, and don't look at it until the change is final. <b>(b)</b> For anything you show investors, write down the pass mark before the test period starts. And don't switch to a different version because of the 17th-place ranking: that ranking is one roll of the dice too.</p>
         <span class="effort">Effort: a policy decision, plus a day of tooling</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-7">
-      <div class="check-head"><span class="fc">FC-7</span><h2>Could you have traded it?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;17.9 points</span></div>
+    <section id="fc-7" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-7</span><h2>Could you have traded it?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;17.9 points</span></div>
+          <span class="chk-sum">Trades filled at prices that had already gone. The biggest problem.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="impact">The biggest correction in this report.</p>
       <p class="asked"><b>What we asked:</b> could every trade really have happened, at the price used, at that size?</p>
       <p><b>First, where the profit came from.</b> We sorted every 15-minute window by how wild the price moves were:</p>
@@ -1029,10 +1091,18 @@
         <p>Assume every trade happens immediately at the real price, unless the exchange data shows a waiting order really would have been filled. That makes the test cautious instead of optimistic. To prove the change worked: with position limits set so high they never bite, old and new tests must agree exactly.</p>
         <span class="effort">Effort: 2&ndash;3 days, including re-running the tests</span>
       </div>
+        </div>
+      </details>
     </section>
 
-    <section id="fc-8">
-      <div class="check-head"><span class="fc">FC-8</span><h2>What is really being claimed?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Can't rule out zero</span></div>
+    <section id="fc-8" class="chk">
+      <details class="chk-d">
+        <summary>
+        <div class="check-head"><span class="fc">FC-8</span><h2>What is really being claimed?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Can't rule out zero</span></div>
+          <span class="chk-sum">The corrected return's likely range includes zero.</span>
+          <span class="post-more"><span class="when-closed">Read the finding &rsaquo;</span><span class="when-open">Close &times;</span></span>
+        </summary>
+        <div class="chk-body">
       <p class="asked"><b>What we asked:</b> is the headline one exact number, or a range? And is the range wide enough to include zero?</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
@@ -1061,6 +1131,8 @@
         <p>Quote a range, with the number of trades beside it, and name what you're comparing against. A number an investor can check is worth more than a bigger one they can't.</p>
         <span class="effort">Effort: a decision, and an afternoon to redo the one-pager</span>
       </div>
+        </div>
+      </details>
     </section>
 
     <section>
@@ -1092,7 +1164,13 @@
     </section>
 
     <section>
-      <h2>What we did not check</h2>
+      <details class="post">
+      <summary>
+        <h2>What we did not check</h2>
+        <span class="post-teaser">The boundaries of this audit, so nobody reads more into it than it says.</span>
+        <span class="post-more"><span class="when-closed">See the list &rsaquo;</span><span class="when-open">Close &times;</span></span>
+      </summary>
+      <div class="post-body">
       <ul class="plain">
         <li>Anything after 31 December 2025. The material supplied ends there.</li>
         <li>The live trading system's own code. We used its logs to measure delays (FC-5), but the parts that place orders, manage risk and reconcile accounts were outside this audit.</li>
@@ -1100,6 +1178,8 @@
         <li>Whether the exchange data supplied is complete. We checked it against the client's own statements, which tests consistency, not independent truth.</li>
         <li>Any market beyond the 12 supplied, or any call interval other than 15 minutes.</li>
       </ul>
+      </div>
+      </details>
     </section>
 
     <section>
@@ -1154,5 +1234,16 @@
   </div>
 
 </div>
+
+<script>
+(function(){
+  var RX=/^#fc-[1-8]$/;
+  function open(h,smooth){ if(!RX.test(h)) return; var el=document.querySelector(h); if(!el) return;
+    var d=el.querySelector('details'); if(d) d.open=true;
+    el.scrollIntoView({block:'start',behavior:smooth?'smooth':'auto'}); }
+  open(location.hash,false);
+  addEventListener('hashchange',function(){ open(location.hash,true); });
+})();
+</script>
 </body>
 </html>
