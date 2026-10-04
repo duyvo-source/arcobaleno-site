@@ -585,7 +585,7 @@
         <tbody>
           <tr><td class="k">File format</td><td><b>Parquet</b></td><td>CSV, a database export</td><td>data we have to keep downloading live; a platform you can't export from</td></tr>
           <tr><td class="k">Data size</td><td><b>Up to ~1&nbsp;GB</b></td><td>1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td>larger than ~25&nbsp;GB</td></tr>
-          <tr><td class="k">How detailed</td><td><b>Daily or hourly prices</b></td><td>minute-by-minute prices; every single trade or the full list of waiting orders, up to ~25&nbsp;GB, requoted</td><td>every trade or every waiting order, over ~25&nbsp;GB</td></tr>
+          <tr><td class="k">How detailed</td><td><b>Daily or hourly prices</b></td><td>minute bars; tick data or L2 order-book snapshots up to ~25&nbsp;GB, requoted</td><td>tick or L2 data over ~25&nbsp;GB</td></tr>
           <tr><td class="k">Code</td><td><b>Python, with its history (e.g. Git)</b></td><td>R, MATLAB, C++</td><td>a program we can't open; a signal you can't show us</td></tr>
           <tr><td class="k">Run time</td><td><b>Under 2 hours a run</b></td><td>2–6 hours, adds days</td><td>longer than that</td></tr>
         </tbody>
@@ -620,8 +620,8 @@
       <ul class="cover">
         <li>
           <span class="k k-strong">Strongest</span>
-          <span><b>Crypto perpetual futures.</b> The fees traders pay each other, the different prices an
-          exchange shows, margin rules, coins being removed, fee levels, and chains of forced selling.
+          <span><b>Crypto perpetual futures (perps).</b> Funding, mark versus last price, margin tiers,
+          delistings, fee tiers and liquidation cascades.
           Eight of the ten findings we have published against ourselves come from here; the other two
           are a DeFi liquidity pool and a study of an options market.</span>
         </li>
@@ -942,8 +942,8 @@
         <b>And fees were never one number.</b> They are tiered by volume and account level, and they
         change across the years a test covers. A test that quietly assumes every order waited
         patiently for a good price, when the strategy would in fact have had to pay up to trade at
-        once, is wrong in the flattering direction every single time. Crypto futures also carry a
-        regular fee between traders, a real recurring cost that is often left out altogether.
+        once, is wrong in the flattering direction every single time. Perps also pay funding, a real
+        recurring cost that is often left out altogether.
       </p>
       <p>
         <span class="punch">Official is not the same as checked, and a display is not the same as the
@@ -955,12 +955,12 @@
     <div class="objection">
       <details>
         <summary>
-          <h3>&ldquo;But we have the full list of waiting orders&rdquo;</h3>
+          <h3>&ldquo;But we have the order book&rdquo;</h3>
           <span class="plain-chev" aria-hidden="true">+</span>
         </summary>
         <div class="obj-body">
       <p>
-        That's the exchange's order book: every buy and sell order waiting at each price. It is better
+        That is, every buy and sell order waiting at each price, often as L2 snapshots. It is better
         than most people arrive with, and it genuinely helps. With it, what a trade would have cost
         stops being a guess and becomes something you can measure.
       </p>
@@ -977,7 +977,7 @@
         date.
       </p>
       <p>
-        <b>And it leaves the other seven checks exactly where they were.</b> Perfect order data says
+        <b>And it leaves the other seven checks exactly where they were.</b> A perfect order book says
         nothing about which assets were on the list, how many versions were tried before this one, or
         whether a single broken figure is carrying the result.
       </p>

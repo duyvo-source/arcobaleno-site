@@ -544,16 +544,24 @@
   .specimen-flag b{color:var(--right)}
   .r{max-width:780px}
   .r h2{margin-top:0}
-  .r section{padding:44px 0;border-top:1px solid var(--rule)}
+  .r section{padding:40px 0;border-top:1px solid var(--rule)}
   .r p,.r li{max-width:44em}
   .eyebrow-s{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
 
-  /* cover card */
-  .cover-card{margin:34px 0 0;background:var(--raised);border:1px solid var(--rule);padding:22px 24px}
-  .cover-card dl{display:grid;grid-template-columns:150px 1fr;gap:10px 18px;margin:0}
-  .cover-card dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
-  .cover-card dd{margin:0}
-  @media (max-width:560px){.cover-card dl{grid-template-columns:1fr;gap:2px}.cover-card dd{margin-bottom:10px}}
+  /* cover card (cleaned 2026-10-04) */
+  .cv{margin:34px 0 0;background:var(--raised);border:1px solid var(--rule);padding:22px 26px 0}
+  .cv-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .cv-name{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.6vw,2.1rem);line-height:1.1;margin-top:14px}
+  .cv-desc{margin:6px 0 0;color:var(--muted);max-width:40em}
+  .cv-desc b{color:var(--ink);font-weight:600}
+  .cv-lab{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .cv-claim{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .cv-claim b{display:block;font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1}
+  .cv-claim span{display:block;font-size:14px;line-height:1.35;color:var(--muted)}
+  .cv-foot{margin:22px -26px 0;padding:14px 26px;border-top:1px solid var(--rule);display:grid;gap:8px;font-size:14.5px;color:var(--muted)}
+  .cv-foot>div{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline}
+  .cv-k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+  @media (max-width:560px){.cv{padding:18px 18px 0}.cv-foot{margin:22px -18px 0;padding:14px 18px}.cv-foot>div{grid-template-columns:1fr;gap:2px}.cv-claim{gap:10px}.cv-claim b{font-size:1.3rem}.cv-claim span{font-size:13px}}
 
   /* verdict */
   .verdict-line{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4.6vw,2.8rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 22px}
@@ -571,8 +579,8 @@
   .call>.lab{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
   .call p{margin:6px 0}
   .call.wrong{border-color:var(--wrong);background:var(--wrong-bg)} .call.wrong>.lab{color:var(--wrong)}
-  .call.fix{border-color:var(--right);background:var(--right-bg)} .call.fix>.lab{color:var(--right)}
-  .call.holds{border-color:var(--right);background:var(--raised)} .call.holds>.lab{color:var(--right)}
+  .call.fix{border-color:var(--right);background:transparent} .call.fix>.lab{color:var(--right)}
+  .call.holds{border-color:var(--right);background:transparent} .call.holds>.lab{color:var(--right)}
   .call.note{border-color:var(--caution);background:var(--caution-bg)} .call.note>.lab{color:var(--caution)}
   .effort{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--right);border:1px solid var(--right);padding:1px 8px;margin-top:4px}
 
@@ -634,7 +642,7 @@
   .check-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:6px}
   .check-head .fc{font-size:13px}
   .check-head h2{margin:0;font-size:clamp(1.35rem,2.8vw,1.75rem)}
-  .impact{font-family:var(--mono);font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .impact{font-size:15px;font-style:italic;color:var(--muted);margin:4px 0 14px}
   .impact b{color:var(--wrong)}
   .asked{font-size:1.06rem;color:var(--muted)}
   .asked b{color:var(--ink)}
@@ -682,15 +690,20 @@
 
   <div class="r">
 
-    <div class="cover-card">
-      <p class="eyebrow-s">Backtest forensics &middot; Full audit</p>
-      <dl>
-        <dt>Prepared for</dt><dd><i>A client (made up for this sample)</i></dd>
-        <dt>The strategy</dt><dd>&ldquo;Signal v4&rdquo;: it reads the buy and sell orders waiting on a crypto exchange and, every 15 minutes, calls each of 12 crypto futures markets <b>up</b>, <b>down</b> or <b>stay out</b>.</dd>
-        <dt>The claim</dt><dd><b>Right 61.4% of the time &middot; +38.0% a year &middot; worst fall from a peak &minus;11.2%</b>, tested over 2023 to 2025, with no borrowed money.</dd>
-        <dt>What we looked at</dt><dd>The code that makes the calls, the code that tests them, three years of second-by-second exchange data, the price charts used to mark each call right or wrong, and the two documents making the claim.</dd>
-        <dt>Scope</dt><dd>Full audit: all eight checks, FC-1 to FC-8.</dd>
-      </dl>
+    <div class="cv">
+      <div class="cv-top"><span>Full audit &middot; sample</span><span>Prepared for a made-up client</span></div>
+      <div class="cv-name">Signal v4</div>
+      <p class="cv-desc">Reads a crypto exchange's order book and, every 15 minutes, calls 12 perpetual futures markets <b>up</b>, <b>down</b> or <b>stay out</b>.</p>
+      <div class="cv-lab">The claim we tested &middot; 2023&ndash;2025, no leverage</div>
+      <div class="cv-claim">
+        <div><b>61.4%</b><span>of calls right</span></div>
+        <div><b>+38.0%</b><span>a year</span></div>
+        <div><b>&minus;11.2%</b><span>max drawdown</span></div>
+      </div>
+      <div class="cv-foot">
+        <div><span class="cv-k">We looked at</span>the code, 3 years of L2 snapshots, the price data used to score each call, and the two documents making the claim</div>
+        <div><span class="cv-k">Scope</span>all eight checks, FC-1 to FC-8</div>
+      </div>
     </div>
 
     <section style="border-top:0">
@@ -711,7 +724,7 @@
           <div class="sub">Guessing would score 33.3%. This part is real, with less than a 1-in-1,000 chance of being luck.</div>
         </div>
         <div class="tile">
-          <div class="k">Worst fall from a peak</div>
+          <div class="k">Max drawdown</div>
           <div class="from">&minus;11.2% claimed</div>
           <div class="to">&minus;15.7%</div>
           <div class="sub">The bad stretches were deeper than the claim showed.</div>
@@ -804,7 +817,7 @@
       </div>
       <div class="wf-axis" aria-hidden="true"><span></span><div class="t"><span style="left:calc(6/46*100%)">0%</span><span style="left:calc(16/46*100%)">10%</span><span style="left:calc(26/46*100%)">20%</span><span style="left:calc(36/46*100%)">30%</span><span style="left:calc(46/46*100%)">40%</span></div><span></span></div>
 
-      <div class="call note">
+      <div class="call note" id="order">
         <div class="lab"><span aria-hidden="true">!</span> Why the order matters</div>
         <p>Several of these problems hit the same trades, so how much each one takes away depends on the order we apply them. <b>The final figure doesn't.</b> We applied them in the order shown. On its own, for example, the cherry-picking problem (FC-6) cuts the claim from +38.0% to +21.9%. Applied last, after the others, it takes off a further 1.9 points.</p>
       </div>
@@ -845,8 +858,7 @@
     </section>
 
     <section id="fc-2">
-      <div class="check-head"><span class="fc">FC-2</span><h2>Are the dead ones missing?</h2><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;1.8 points</b></p>
+      <div class="check-head"><span class="fc">FC-2</span><h2>Are the dead ones missing?</h2><span class="badge minor"><span class="i" aria-hidden="true">!</span>Minor &middot; &minus;1.8 points</span></div>
       <p class="asked"><b>What we asked:</b> was the list of markets built as it looked <i>at the time</i>, or from the ones still around today?</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
@@ -867,20 +879,19 @@
     </section>
 
     <section id="fc-3">
-      <div class="check-head"><span class="fc">FC-3</span><h2>Are the costs real?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;6.6 points</b></p>
+      <div class="check-head"><span class="fc">FC-3</span><h2>Are the costs real?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;6.6 points</span></div>
       <p class="asked"><b>What we asked:</b> where did the trading-fee figure come from, and is it charged correctly?</p>
-      <p>Exchanges charge less, and sometimes even pay a small rebate, when your order waits in line to be filled. They charge more when you trade immediately at the current price.</p>
+      <p>Exchanges charge less, and sometimes even pay a small rebate (the maker rebate), when your order waits in the order book to be filled. They charge more when you trade immediately at the current price.</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
-        <p>The test gave <b>every single trade</b> the waiting-order rebate. The client's own exchange statements show only <b>61%</b> of real trades got it. And the other 39% weren't spread evenly: they bunched up on the fast, chaotic moments, because that's when a waiting order doesn't get filled and the system has to trade immediately. <b>The cost mistake is biggest exactly where most of the profit came from.</b></p>
+        <p>The test gave <b>every single trade</b> the maker rebate. The client's own exchange statements show only <b>61%</b> of real trades got it. And the other 39% weren't spread evenly: they bunched up on the fast, chaotic moments, because that's when a waiting order doesn't get filled and the system has to trade immediately. <b>The cost mistake is biggest exactly where most of the profit came from.</b></p>
       </div>
       <div class="tscroll"><table>
         <thead><tr><th></th><th>Test assumed</th><th>Real trading</th></tr></thead>
         <tr><td>Trades that got the cheaper rate</td><td class="n">100%</td><td class="n bad">61%</td></tr>
         <tr><td>&hellip; on the fastest 1% of moments</td><td class="n">100%</td><td class="n bad">23%</td></tr>
-        <tr><td>Cost of a round trip, all trades</td><td class="n">paid 0.01%</td><td class="n bad">cost 0.044%</td></tr>
-        <tr><td>Cost of a round trip, fastest 1% of moments</td><td class="n">paid 0.01%</td><td class="n bad">cost 0.091%</td></tr>
+        <tr><td>Cost of a round trip, all trades</td><td class="n">earned 1.0 bp</td><td class="n bad">paid 4.4 bps</td></tr>
+        <tr><td>Cost of a round trip, fastest 1% of moments</td><td class="n">earned 1.0 bp</td><td class="n bad">paid 9.1 bps</td></tr>
       </table></div>
       <div class="call fix">
         <div class="lab"><span aria-hidden="true">&#10148;</span> The fix</div>
@@ -890,8 +901,8 @@
     </section>
 
     <section id="fc-4">
-      <div class="check-head"><span class="fc">FC-4</span><h2>Is the data clean?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;3.5 points</b> &middot; the finding that surprised the client most</p>
+      <div class="check-head"><span class="fc">FC-4</span><h2>Is the data clean?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;3.5 points</span></div>
+      <p class="impact">The finding that surprised the client most.</p>
       <p class="asked"><b>What we asked:</b> was every piece of data checked, and could one source quietly spoil the result?</p>
       <p>Nothing was wrong with either of the two data sources. The problem is that there were two, and <b>they weren't the same market</b>.</p>
       <div class="call wrong">
@@ -901,9 +912,9 @@
       </div>
       <div class="tscroll"><table>
         <thead><tr><th>Gap between the chart's price and the traded price</th><th></th></tr></thead>
-        <tr><td>Typical</td><td class="n">0.008%</td></tr>
-        <tr><td>Worst 1% of the time</td><td class="n">0.11%</td></tr>
-        <tr><td>Worst 1% of the time, during the fastest moments</td><td class="n bad">0.41%</td></tr>
+        <tr><td>Typical</td><td class="n">0.8 bp</td></tr>
+        <tr><td>Worst 1% of the time</td><td class="n">11 bps</td></tr>
+        <tr><td>Worst 1% of the time, during the fastest moments</td><td class="n bad">41 bps</td></tr>
       </table></div>
       <p>Re-marking every call against the real traded price, at the right time: <b>7.1%</b> of &ldquo;right&rdquo; calls became wrong and <b>1.4%</b> of &ldquo;wrong&rdquo; calls became right. Net, the hit rate fell by <b>5.7 points</b>.</p>
       <div class="call note">
@@ -918,15 +929,15 @@
     </section>
 
     <section id="fc-5">
-      <div class="check-head"><span class="fc">FC-5</span><h2>Is the data current?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;4.1 points</b> &middot; the finding that explains the known loss</p>
+      <div class="check-head"><span class="fc">FC-5</span><h2>Is the data current?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;4.1 points</span></div>
+      <p class="impact">The finding that explains the loss the client already knew about.</p>
       <p class="asked"><b>What we asked:</b> how old is the market picture at the moment the signal makes its call?</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
         <p>The test assumed the signal sees the market <b>instantly</b>. Live, it can't. From the client's own system logs, we measured how old its picture of the market really is:</p>
       </div>
       <div class="tscroll"><table>
-        <thead><tr><th>Age of the market picture when the call is made</th><th></th></tr></thead>
+        <thead><tr><th>Age of the L2 snapshot when the call is made</th><th></th></tr></thead>
         <tr><td>Usually</td><td class="n">0.24 seconds</td></tr>
         <tr><td>Worst 1% of the time</td><td class="n">1.9 seconds</td></tr>
         <tr><td>Worst 1% of the time, during the fastest moments</td><td class="n bad">6.2 seconds</td></tr>
@@ -934,7 +945,7 @@
       </table></div>
       <p><b>The delay is worst exactly when the market moves fastest.</b> On the moments that carried a third of the profit, the live system was typically looking at a picture <b>4.4 seconds old</b>. In a fast market, the buyers the signal &ldquo;sees&rdquo; have often already left. It reads a wall that is no longer there as strength.</p>
       <p><b>This is what happened in the client's known loss.</b> We didn't go looking for it; it came out of the measurements. A <i>buy</i> call into a move that had already happened, because the picture behind it was seconds old.</p>
-      <p><b>One event or a pattern?</b> We found every moment in the three years that looked like it: a very fast move, just after the waiting orders on one side thinned out sharply.</p>
+      <p><b>One event or a pattern?</b> We found every moment in the three years that looked like it: a very fast move, just after one side of the order book thinned out sharply.</p>
       <div class="tscroll"><table>
         <tr><td>Moments with the same shape, 2023&ndash;2025</td><td class="n">14</td></tr>
         <tr><td>Calls that flip the wrong way at the real delay</td><td class="n bad">9 of 14</td></tr>
@@ -950,8 +961,8 @@
     </section>
 
     <section id="fc-6">
-      <div class="check-head"><span class="fc">FC-6</span><h2>Was it cherry-picked?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Problem</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;1.9 points</b> in the chain (<b>&minus;16.1</b> on its own) &middot; the largest effect on the hit rate</p>
+      <div class="check-head"><span class="fc">FC-6</span><h2>Was it cherry-picked?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;1.9 points</span></div>
+      <p class="impact">&minus;16.1 points on its own (see <a href="#order">why the order matters</a>), and the biggest effect on the hit rate.</p>
       <p class="asked"><b>What we asked:</b> how many versions were tried, and was this one chosen before or after seeing how it did?</p>
       <div class="call wrong">
         <div class="lab"><span aria-hidden="true">&#10007;</span> What was wrong</div>
@@ -979,8 +990,8 @@
     </section>
 
     <section id="fc-7">
-      <div class="check-head"><span class="fc">FC-7</span><h2>Could you have traded it?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>Biggest problem</span></div>
-      <p class="impact">Effect on the yearly return: <b>&minus;17.9 points</b>, the largest correction in this report</p>
+      <div class="check-head"><span class="fc">FC-7</span><h2>Could you have traded it?</h2><span class="badge fail"><span class="i" aria-hidden="true">&#10007;</span>&minus;17.9 points</span></div>
+      <p class="impact">The biggest correction in this report.</p>
       <p class="asked"><b>What we asked:</b> could every trade really have happened, at the price used, at that size?</p>
       <p><b>First, where the profit came from.</b> We sorted every 15-minute window by how wild the price moves were:</p>
       <div class="tscroll"><table>
@@ -996,7 +1007,7 @@
       </div>
       <div class="tscroll"><table>
         <tr><td>Fast moments where the price moved past the order within 1 second</td><td class="n bad">71.4%</td></tr>
-        <tr><td>Typical distance the price had moved before the order could even wait in line</td><td class="n bad">0.19%</td></tr>
+        <tr><td>Typical distance the price had moved before the order could even sit in the order book</td><td class="n bad">19 bps</td></tr>
         <tr><td>Trades filled at a price never seen again in that window</td><td class="n bad">2,847 of 7,104</td></tr>
       </table></div>
       <p>We re-ran the test with one change: when the price had already moved away, the trade happens immediately <b>at the price that actually existed</b>. The client's own exchange data has both. Everything else was left alone. <b>+26.1% became +8.2%.</b></p>
