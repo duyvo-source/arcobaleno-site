@@ -567,6 +567,20 @@
   .plain-item .post-more .when-open{display:none}
   .plain-item > details[open] .post-more .when-open{display:inline}
   .plain-item > details[open] .post-more .when-closed{display:none}
+
+  /* phones (2026-10-06): tables shrink to the screen and headings wrap; the wide ones (class
+     "stack") become one block per row, each value labelled with its column heading */
+  @media (max-width:600px){
+    .tbl-scroll table,.tscroll table{min-width:0;width:100%}
+    .tbl-scroll th,.tscroll th,.tbl-scroll td,.tscroll td{white-space:normal}
+    table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+    table.stack tr{border-bottom:1px solid var(--rule);padding:10px 0}
+    table.stack td{border:0;padding:3px 0}
+    table.stack td[data-label]::before{content:attr(data-label);display:block;margin-top:5px;font-family:var(--mono);
+      font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    table.stack td:not([data-label]){font-weight:600}
+  }
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -628,16 +642,16 @@
       we say so in the quote.
     </p>
     <div class="tbl-scroll">
-      <table>
+      <table class="stack">
         <thead>
           <tr><th></th><th>Ideal</th><th>Workable</th><th>Ask us first</th></tr>
         </thead>
         <tbody>
-          <tr><td class="k">File format</td><td><b>Parquet</b></td><td>CSV, a database export</td><td>data we have to keep downloading live; a platform you can't export from</td></tr>
-          <tr><td class="k">Data size</td><td><b>Up to ~1&nbsp;GB</b></td><td>1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td>larger than ~25&nbsp;GB</td></tr>
-          <tr><td class="k">How detailed</td><td><b>Daily or hourly prices</b></td><td>minute bars; tick data or L2 order-book snapshots up to ~25&nbsp;GB, requoted</td><td>tick or L2 data over ~25&nbsp;GB</td></tr>
-          <tr><td class="k">Code</td><td><b>Python, with its history (e.g. Git)</b></td><td>R, MATLAB, C++</td><td>a program we can't open; a signal you can't show us</td></tr>
-          <tr><td class="k">Run time</td><td><b>Under 2 hours a run</b></td><td>2–6 hours, adds days</td><td>longer than that</td></tr>
+          <tr><td class="k">File format</td><td data-label="Ideal"><b>Parquet</b></td><td data-label="Workable">CSV, a database export</td><td data-label="Ask us first">data we have to keep downloading live; a platform you can't export from</td></tr>
+          <tr><td class="k">Data size</td><td data-label="Ideal"><b>Up to ~1&nbsp;GB</b></td><td data-label="Workable">1–4&nbsp;GB, adds a day or two or is requoted; 4–25&nbsp;GB, requoted on a larger machine</td><td data-label="Ask us first">larger than ~25&nbsp;GB</td></tr>
+          <tr><td class="k">How detailed</td><td data-label="Ideal"><b>Daily or hourly prices</b></td><td data-label="Workable">minute bars; tick data or L2 order-book snapshots up to ~25&nbsp;GB, requoted</td><td data-label="Ask us first">tick or L2 data over ~25&nbsp;GB</td></tr>
+          <tr><td class="k">Code</td><td data-label="Ideal"><b>Python, with its history (e.g. Git)</b></td><td data-label="Workable">R, MATLAB, C++</td><td data-label="Ask us first">a program we can't open; a signal you can't show us</td></tr>
+          <tr><td class="k">Run time</td><td data-label="Ideal"><b>Under 2 hours a run</b></td><td data-label="Workable">2–6 hours, adds days</td><td data-label="Ask us first">longer than that</td></tr>
         </tbody>
       </table>
     </div>

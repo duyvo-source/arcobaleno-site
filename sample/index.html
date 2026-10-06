@@ -707,6 +707,20 @@
   a.sample-cta .sc-t b{font-weight:600}
   a.sample-cta .arrow{font-family:var(--mono);font-size:20px;color:var(--right)}
   @media (max-width:600px){a.sample-cta{flex-wrap:wrap;gap:6px 12px} a.sample-cta .sc-k{flex:1} a.sample-cta .sc-t{flex:1 1 100%;order:2}}
+
+  /* phones (2026-10-06): tables shrink to the screen and headings wrap; the wide ones (class
+     "stack") become one block per row, each value labelled with its column heading */
+  @media (max-width:600px){
+    .tbl-scroll table,.tscroll table{min-width:0;width:100%}
+    .tbl-scroll th,.tscroll th,.tbl-scroll td,.tscroll td{white-space:normal}
+    table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+    table.stack tr{border-bottom:1px solid var(--rule);padding:10px 0}
+    table.stack td{border:0;padding:3px 0}
+    table.stack td[data-label]::before{content:attr(data-label);display:block;margin-top:5px;font-family:var(--mono);
+      font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    table.stack td:not([data-label]){font-weight:600}
+  }
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -1066,12 +1080,12 @@
       </div>
       <p><b>This is not an accusation.</b> Nobody did anything dishonest. It's the most common thing we find, and we find it in our own work (<a href="/#case-07">finding 7 on our front page</a>). &ldquo;Try the variations, keep the one that works&rdquo; is good instinct everywhere except here. The problem is arithmetic: <b>with 41 tries on the same data, the best one is mostly the luckiest one, and luck doesn't repeat.</b></p>
       <p><b>How we measured it.</b> The client's own history shows no settings were changed after 14 June 2025. So the last six months of 2025 are data no version was ever chosen on. We tested the shipped version, unchanged, on those months:</p>
-      <div class="tscroll"><table>
+      <div class="tscroll"><table class="stack">
         <thead><tr><th></th><th>Data it was chosen on</th><th>Untouched data</th></tr></thead>
-        <tr><td>Calls made</td><td class="n">7,104</td><td class="n">1,180</td></tr>
-        <tr><td>How often it's right</td><td class="n">61.4%</td><td class="n bad">53.1%</td></tr>
-        <tr><td>Return per year (before the other fixes)</td><td class="n">+38.0%</td><td class="n bad">+21.9%</td></tr>
-        <tr><td>Rank among the 41 versions</td><td class="n">1st</td><td class="n bad">17th</td></tr>
+        <tr><td>Calls made</td><td class="n" data-label="Data it was chosen on">7,104</td><td class="n" data-label="Untouched data">1,180</td></tr>
+        <tr><td>How often it's right</td><td class="n" data-label="Data it was chosen on">61.4%</td><td class="n bad" data-label="Untouched data">53.1%</td></tr>
+        <tr><td>Return per year (before the other fixes)</td><td class="n" data-label="Data it was chosen on">+38.0%</td><td class="n bad" data-label="Untouched data">+21.9%</td></tr>
+        <tr><td>Rank among the 41 versions</td><td class="n" data-label="Data it was chosen on">1st</td><td class="n bad" data-label="Untouched data">17th</td></tr>
       </table></div>
       <p><b>That last row is the finding.</b> On data it wasn't chosen on, the shipped version is ordinary: 17th of 41, in the middle of its own family.</p>
       <div class="call holds">
@@ -1098,11 +1112,11 @@
       <p class="impact">The biggest correction in this report.</p>
       <p class="asked"><b>What we asked:</b> could every trade really have happened, at the price used, at that size?</p>
       <p><b>First, where the profit came from.</b> We sorted every 15-minute window by how wild the price moves were:</p>
-      <div class="tscroll"><table>
+      <div class="tscroll"><table class="stack">
         <thead><tr><th>Windows, by how fast the market moved</th><th>Share of time</th><th>Share of claimed profit</th></tr></thead>
-        <tr><td>Fastest 1%</td><td class="n">0.8%</td><td class="n bad">34.1%</td></tr>
-        <tr><td>Fastest 5%</td><td class="n">4.9%</td><td class="n bad">61.3%</td></tr>
-        <tr><td>The other 95%</td><td class="n">95.1%</td><td class="n">38.7%</td></tr>
+        <tr><td>Fastest 1%</td><td class="n" data-label="Share of time">0.8%</td><td class="n bad" data-label="Share of claimed profit">34.1%</td></tr>
+        <tr><td>Fastest 5%</td><td class="n" data-label="Share of time">4.9%</td><td class="n bad" data-label="Share of claimed profit">61.3%</td></tr>
+        <tr><td>The other 95%</td><td class="n" data-label="Share of time">95.1%</td><td class="n" data-label="Share of claimed profit">38.7%</td></tr>
       </table></div>
       <p><b>A third of the profit came from less than 1% of the time.</b> Whatever the test assumed about those moments is very nearly the whole result.</p>
       <div class="call wrong">
@@ -1139,11 +1153,11 @@
         <p>&ldquo;+38.0% a year&rdquo; was stated to one decimal place, with <b>no range, no margin of error and no number of trades</b> beside it. FC-6 already showed what it really was: the best of 41 tries.</p>
       </div>
       <p>So we asked what the <i>corrected</i> number can support. We re-sampled the corrected results 10,000 times, a week at a time, to see how far the figure could move:</p>
-      <div class="tscroll"><table>
+      <div class="tscroll"><table class="stack">
         <thead><tr><th></th><th>Best estimate</th><th>Likely range (95%)</th></tr></thead>
-        <tr><td>Return per year</td><td class="n">+2.2%</td><td class="n bad">&minus;5.4% to +9.9%</td></tr>
-        <tr><td>Return for the risk taken (Sharpe ratio)</td><td class="n">0.14</td><td class="n bad">&minus;0.35 to 0.63</td></tr>
-        <tr><td>How often it's right (untouched data)</td><td class="n">53.1%</td><td class="n good">50.2% to 56.0%</td></tr>
+        <tr><td>Return per year</td><td class="n" data-label="Best estimate">+2.2%</td><td class="n bad" data-label="Likely range (95%)">&minus;5.4% to +9.9%</td></tr>
+        <tr><td>Return for the risk taken (Sharpe ratio)</td><td class="n" data-label="Best estimate">0.14</td><td class="n bad" data-label="Likely range (95%)">&minus;0.35 to 0.63</td></tr>
+        <tr><td>How often it's right (untouched data)</td><td class="n" data-label="Best estimate">53.1%</td><td class="n good" data-label="Likely range (95%)">50.2% to 56.0%</td></tr>
       </table></div>
       <p><b>These three rows don't say the same thing:</b></p>
       <ul class="plain">
