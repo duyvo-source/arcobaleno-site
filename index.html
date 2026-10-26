@@ -189,7 +189,7 @@
 }
 </style>
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23101413'/><g fill='none' stroke='%234C9DD0' stroke-width='5.2' stroke-linecap='round' stroke-linejoin='round'><path d='M51.8 22.2A22 22 0 1 1 45.2 14.4'/><path d='M17.2 31.2 27 41 56 12'/></g></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%231590F0'/><stop offset='1' stop-color='%2322CFFF'/></linearGradient></defs><rect width='64' height='64' rx='12' fill='%2306101C'/><path d='M6 41A28 28 0 0 1 58 41' fill='none' stroke='url(%23g)' stroke-width='7.5' stroke-linecap='round'/><path fill='%23FFFFFF' d='M50 17.5L52.6 25.4L60.5 28L52.6 30.6L50 38.5L47.4 30.6L39.5 28L47.4 25.4Z'/></svg>">
 
 <!-- Webfonts are self-hosted; build_site.py inlines fonts/fonts.css here. -->
 
@@ -652,6 +652,23 @@
       font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
     table.stack td:not([data-label]){font-weight:600}
   }
+
+  /* ---------- brand mark (2026-10-26): the ARC above the wordmark, replacing the check ----------
+     A single-hue arc -- the rainbow (arcobaleno) in one colour -- spanning the A to the O of
+     ARCOBALENO. width:0 + min-width:100% makes it take the wordmark's width without widening it.
+     The flare is white on dark, deep blue on light (a white flare vanishes on the light paper).
+     Favicon is the thick-stroke variant (build_site.py). Mascot B sits beside the home h1 only.
+     Decision + assets: assets/mascot-2026-10-26/README.md, DEPLOY.md 2026-10-26. */
+  :root{--arc1:#1590F0;--arc2:#22CFFF;--flare:#0E6FB8}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--flare:#FFFFFF}}
+  :root[data-theme="dark"]{--flare:#FFFFFF}
+  .arc-lock{display:inline-grid;gap:4px}
+  .arc{display:block;height:auto;width:0;min-width:100%}
+  .brand:has(.arc-lock){margin-bottom:24px}
+  .hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(16px,4vw,48px);align-items:center;margin-top:20px}
+  .hero-row h1{margin:0}
+  .hero-mascot{display:block;width:clamp(96px,22vw,240px);height:auto}
+  @media (max-width:34rem){.hero-row{grid-template-columns:minmax(0,1fr) 88px;gap:12px}.hero-mascot{width:88px}}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -666,13 +683,13 @@
 
   <header class="mast">
     <div class="brand">
-      <span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark mark-after" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg>
+      <span class="arc-lock"><svg class="arc arc-head" viewBox="312 340 694 300" aria-hidden="true" focusable="false"><defs><linearGradient id="ag-arc-head" x1="0" x2="1"><stop offset="0" stop-color="var(--arc1)"/><stop offset=".72" stop-color="var(--arc2)"/><stop offset="1" stop-color="var(--arc1)"/></linearGradient><radialGradient id="af-arc-head"><stop offset="0" stop-color="var(--flare)"/><stop offset=".35" stop-color="var(--arc2)" stop-opacity=".7"/><stop offset="1" stop-color="var(--arc2)" stop-opacity="0"/></radialGradient></defs><path fill="url(#ag-arc-head)" d="M312 635A354.2 354.2 0 0 1 1006 635A364.9 364.9 0 0 0 312 635Z"/><circle cx="852" cy="422" r="46" fill="url(#af-arc-head)"/><path fill="var(--flare)" d="M852 362L858 416L912 422L858 428L852 482L846 428L792 422L846 416Z"/></svg><span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span>
     </div>
     <div class="eyebrow">
       <span>Backtest Forensics</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
-    <h1>Know the number is real before the money goes in.</h1>
+    <div class="hero-row"><h1>Know the number is real before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-b.png" alt="" width="480" height="480"></div>
     <p class="standfirst">
       We check trading strategies and yield claims, so the number you vote on, invest on or raise on
       is one that holds up. <strong>That is the whole job.</strong>
@@ -1436,7 +1453,7 @@
         for them.
       </p>
       <div class="contact-block">
-        <div class="contact-who"><span class="cb-row"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span><svg class="mark cb-mark" viewBox="2.6 3.4 27.4 25.2" aria-hidden="true" focusable="false"><path class="ring" d="M25.9 11.1A11 11 0 1 1 22.6 7.2"></path><path class="chk" d="M8.6 15.6 13.5 20.5 28 6"></path></svg></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
+        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><svg class="arc arc-cb" viewBox="312 340 694 300" aria-hidden="true" focusable="false"><defs><linearGradient id="ag-arc-cb" x1="0" x2="1"><stop offset="0" stop-color="var(--arc1)"/><stop offset=".72" stop-color="var(--arc2)"/><stop offset="1" stop-color="var(--arc1)"/></linearGradient><radialGradient id="af-arc-cb"><stop offset="0" stop-color="var(--flare)"/><stop offset=".35" stop-color="var(--arc2)" stop-opacity=".7"/><stop offset="1" stop-color="var(--arc2)" stop-opacity="0"/></radialGradient></defs><path fill="url(#ag-arc-cb)" d="M312 635A354.2 354.2 0 0 1 1006 635A364.9 364.9 0 0 0 312 635Z"/><circle cx="852" cy="422" r="46" fill="url(#af-arc-cb)"/><path fill="var(--flare)" d="M852 362L858 416L912 422L858 428L852 482L846 428L792 422L846 416Z"/></svg><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
