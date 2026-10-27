@@ -593,6 +593,7 @@
   /* Closing contact box (2026-10-02): the header wordmark again, smaller, with one label line. */
   .contact-who .cb-row{display:flex;align-items:center;gap:14px}
   .contact-who .cb-wm{font-size:1.35rem}
+  .contact-who .cb-mascot{display:block;width:64px;height:64px;flex:none;margin-left:6px}   /* mascot W, 2026-10-27 */
   .contact-who svg.cb-mark{display:block;height:calc(1.35rem * 1.372);width:auto;flex:none}
   .contact-who svg.cb-mark .ring,.contact-who svg.cb-mark .chk{fill:none;stroke:var(--mark3);stroke-width:2.0}
   .contact-who svg.cb-mark .chk{stroke-linecap:round;stroke-linejoin:round}
@@ -657,7 +658,7 @@
      A single-hue arc -- the rainbow (arcobaleno) in one colour -- spanning the A to the O of
      ARCOBALENO. width:0 + min-width:100% makes it take the wordmark's width without widening it.
      The flare is white on dark, deep blue on light (a white flare vanishes on the light paper).
-     Favicon is the thick-stroke variant (build_site.py). Mascot C (2026-10-27, replaced B) sits beside the home h1 only.
+     Favicon is the thick-stroke variant (build_site.py). Mascot D (2026-10-27; C and B before) sits beside the home h1; mascot W sits in the contact box.
      Decision + assets: assets/mascot-2026-10-26/README.md, DEPLOY.md 2026-10-26. */
   :root{--arc1:#1590F0;--arc2:#22CFFF;--flare:#0E6FB8}
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--flare:#FFFFFF}}
@@ -723,7 +724,7 @@
       <span>Backtest Forensics</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
-    <div class="hero-row"><h1>Know the number is real before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-c.png" alt="" width="480" height="480"></div>
+    <div class="hero-row"><h1>Know the number is real before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-d.png" alt="" width="480" height="480"></div>
     <p class="standfirst">
       We check trading strategies and yield claims, so the number you vote on, invest on or raise on
       is one that holds up. <strong>That is the whole job.</strong>
@@ -1510,7 +1511,7 @@
         for them.
       </p>
       <div class="contact-block">
-        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
+        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span><img class="cb-mascot" src="/img/mascot-w.png" alt="" width="480" height="480"></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
