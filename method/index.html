@@ -591,6 +591,7 @@
   :root{--arc1:#1590F0;--arc2:#22CFFF;--flare:#0E6FB8}
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--flare:#FFFFFF}}
   :root[data-theme="dark"]{--flare:#FFFFFF}
+  /* 2026-10-27 (operator): arc removed from the pages -- the wordmark alone. Card and favicon keep it. */
   .arc-lock{display:inline-grid;gap:4px}
   .arc{display:block;height:auto;width:0;min-width:100%}
   .brand:has(.arc-lock){margin-bottom:24px}
@@ -678,7 +679,7 @@
 
   <header class="mast">
     <a class="brand" href="/">
-      <span class="arc-lock"><svg class="arc arc-head" viewBox="312 340 694 300" aria-hidden="true" focusable="false"><defs><linearGradient id="ag-arc-head" x1="0" x2="1"><stop offset="0" stop-color="var(--arc1)"/><stop offset=".72" stop-color="var(--arc2)"/><stop offset="1" stop-color="var(--arc1)"/></linearGradient><radialGradient id="af-arc-head"><stop offset="0" stop-color="var(--flare)"/><stop offset=".35" stop-color="var(--arc2)" stop-opacity=".7"/><stop offset="1" stop-color="var(--arc2)" stop-opacity="0"/></radialGradient></defs><path fill="url(#ag-arc-head)" d="M312 635A354.2 354.2 0 0 1 1006 635A364.9 364.9 0 0 0 312 635Z"/><circle cx="852" cy="422" r="46" fill="url(#af-arc-head)"/><path fill="var(--flare)" d="M852 362L858 416L912 422L858 428L852 482L846 428L792 422L846 416Z"/></svg><span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span>
+      <span class="arc-lock"><span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span>
     </a>
     <div class="eyebrow">
       <span>Backtest Forensics</span><span class="dot">/</span>
@@ -1248,7 +1249,7 @@
         and turn the work down</strong> — before any money changes hands.
       </p>
       <div class="contact-block">
-        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><svg class="arc arc-cb" viewBox="312 340 694 300" aria-hidden="true" focusable="false"><defs><linearGradient id="ag-arc-cb" x1="0" x2="1"><stop offset="0" stop-color="var(--arc1)"/><stop offset=".72" stop-color="var(--arc2)"/><stop offset="1" stop-color="var(--arc1)"/></linearGradient><radialGradient id="af-arc-cb"><stop offset="0" stop-color="var(--flare)"/><stop offset=".35" stop-color="var(--arc2)" stop-opacity=".7"/><stop offset="1" stop-color="var(--arc2)" stop-opacity="0"/></radialGradient></defs><path fill="url(#ag-arc-cb)" d="M312 635A354.2 354.2 0 0 1 1006 635A364.9 364.9 0 0 0 312 635Z"/><circle cx="852" cy="422" r="46" fill="url(#af-arc-cb)"/><path fill="var(--flare)" d="M852 362L858 416L912 422L858 428L852 482L846 428L792 422L846 416Z"/></svg><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
+        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
         <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
