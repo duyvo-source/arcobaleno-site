@@ -669,6 +669,39 @@
   .hero-row h1{margin:0}
   .hero-mascot{display:block;width:clamp(96px,22vw,240px);height:auto}
   @media (max-width:34rem){.hero-row{grid-template-columns:minmax(0,1fr) 88px;gap:12px}.hero-mascot{width:88px}}
+  /* Case 02 "Try it" panel (2026-10-27). */
+  :root{--cell:#D9DED8;--cell-scan:#BFC8C0}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cell:#2A322F;--cell-scan:#46524D}}
+  :root[data-theme="dark"]{--cell:#2A322F;--cell-scan:#46524D}
+  .try[hidden]{display:none}
+  .try{border:1px solid var(--rule-strong);background:var(--raised);margin:26px 0 8px;padding:18px 20px 16px;display:grid;gap:14px}
+  .try-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .try-steps{display:flex;flex-wrap:wrap;gap:8px}
+  .try-steps button{font:600 13px/1.2 var(--mono);color:var(--ink);background:transparent;border:1px solid var(--rule-strong);padding:9px 12px;cursor:pointer;text-align:left}
+  .try-steps button .try-n{color:var(--faint);margin-right:6px}
+  .try-steps button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .try-steps button[aria-pressed="true"] .try-n{color:inherit;opacity:.6}
+  .try-steps button:focus-visible{outline:2px solid var(--right);outline-offset:2px}
+  .try-chart{display:block;width:100%;height:auto}
+  .try-axis{font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--muted)}
+  .try-chart .c{fill:var(--cell);transition:fill .12s}
+  .try-chart .c.scan{fill:var(--cell-scan)}
+  .try-chart .c.bad{fill:var(--wrong)}
+  .try-chart .c.ok{fill:var(--right)}
+  .try-chart .avg{stroke:var(--wrong);stroke-width:2.2;transition:opacity .3s,stroke .3s}
+  .try-chart.s3 .avg{stroke:var(--faint);opacity:.35;stroke-dasharray:6 5}
+  .try-chart .ring{fill:none;stroke:var(--right);stroke-width:2.5;opacity:0;transition:opacity .2s}
+  .try-chart.s2 .ring{opacity:1}
+  .try-chart .flag{opacity:0;transition:opacity .25s}
+  .try-chart.s3 .flag.on{opacity:1}
+  .try-chart .flag line{stroke:var(--wrong);stroke-width:2.5}
+  .try-out{display:grid;gap:4px;min-height:7.2em}
+  .try-big{font-family:var(--mono);font-weight:600;font-size:clamp(1.2rem,3vw,1.5rem);font-variant-numeric:tabular-nums;line-height:1.25}
+  .try-big.wrong{color:var(--wrong)}.try-big.right{color:var(--right)}.try-big.muted{color:var(--ink)}
+  .try-cap{font-size:15.5px;line-height:1.5;color:var(--muted);max-width:40em}
+  .try-cap b{color:var(--ink);font-weight:600}
+  .try-fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.5}
+  @media (prefers-reduced-motion:reduce){.try-chart .c,.try-chart .avg,.try-chart .ring,.try-chart .flag{transition:none}}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -913,6 +946,29 @@
           The research already contained the right test. It had been run — on two pools, on one day.
           That's a spot check. Run across everything, it catches the bad day immediately.
         </p>
+        <div class="try" id="c02-try" hidden>
+          <div class="try-label">Try it</div>
+          <div class="try-steps" role="group" aria-label="Three ways to look at the data">
+            <button type="button" id="c02-b1" data-s="1" aria-pressed="true"><span class="try-n">1</span>What the software saw</button>
+            <button type="button" id="c02-b2" data-s="2" aria-pressed="false"><span class="try-n">2</span>Spot check</button>
+            <button type="button" id="c02-b3" data-s="3" aria-pressed="false"><span class="try-n">3</span>Check every day</button>
+          </div>
+          <div class="try-axis">Each square is one pool on one day. Below the grid: the 30 monthly averages that each included the bad day.</div>
+          <svg class="try-chart s1" id="c02-chart" viewBox="0 0 872 222" role="img" aria-labelledby="c02-chart-desc">
+            <desc id="c02-chart-desc">A grid of daily figures, one row per pool and one square per day. Below it, thirty
+              overlapping lines stand for the thirty monthly averages that each included the bad day.</desc>
+            <g id="c02-cells" transform="translate(4,4)"></g>
+            <g id="c02-rings" transform="translate(4,4)"></g>
+            <g id="c02-flag" class="flag" transform="translate(4,4)"></g>
+            <g id="c02-avgs" transform="translate(4,128)"></g>
+          </svg>
+          <div class="try-out" aria-live="polite">
+            <div class="try-big wrong" id="c02-big">+192.66% a year</div>
+            <div class="try-cap" id="c02-cap"></div>
+          </div>
+          <div class="try-fine">Illustration: the pools and days are drawn schematically. The numbers in the text are from the finding.</div>
+        </div>
+
         <div class="why">
           <span class="tag">Why it matters</span>
           A spot check and a real safeguard look the same when you read the code. The difference is
@@ -1524,6 +1580,78 @@
       }
     });
   });
+})();
+</script>
+
+<!-- Case 02 "Try it" panel (2026-10-27): the finding as three steps -- what the software saw, the spot
+     check that was actually run (two pools, one day), and a check of every day. The numbers in the text are
+     the published ones (172,635%, 0.91%, 30 monthly averages, +192.66%); the grid is a labelled illustration.
+     The panel is hidden in the markup and shown only by this script, so with JS off the case reads as before.
+     Source of the mechanism: research/runs/amm-lp-v1/spikes.py + VERDICT.md (30 consecutive 30-day windows,
+     windows containing a corrupt day are set aside, never patched). -->
+<script>
+(() => {
+  const root = document.getElementById("c02-try"); if (!root) return; root.hidden = false;
+  const POOLS = 8, DAYS = 72, BAD_POOL = 2, BAD_DAY = 40, SPOT_DAY = 14, SPOT_POOLS = [0, 5];
+  const STEP = 12, SIZE = 10, NS = "http://www.w3.org/2000/svg";
+  const total = POOLS * DAYS;
+  const el = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+  const chart = document.getElementById("c02-chart"), cellsG = document.getElementById("c02-cells");
+  const cells = [];
+  for (let p = 0; p < POOLS; p++) for (let d = 0; d < DAYS; d++) {
+    const r = el("rect", { x: d * STEP, y: p * STEP, width: SIZE, height: SIZE, class: "c" });
+    cellsG.append(r); cells.push(r);
+  }
+  const cell = (p, d) => cells[p * DAYS + d];
+  // spot check: two pools, one day
+  const rings = document.getElementById("c02-rings");
+  for (const p of SPOT_POOLS) rings.append(el("rect", { class: "ring", x: SPOT_DAY * STEP - 3, y: p * STEP - 3, width: SIZE + 6, height: SIZE + 6 }));
+  // the flag on the bad day
+  const flag = document.getElementById("c02-flag"), bx = BAD_DAY * STEP + SIZE / 2, by = BAD_POOL * STEP;
+  flag.append(el("line", { x1: bx, y1: by + SIZE + 2, x2: bx, y2: POOLS * STEP + 22 }));
+  // thirty monthly averages, each 30 days long, each containing the bad day
+  const avgs = document.getElementById("c02-avgs");
+  for (let k = 0; k < 30; k++) {
+    const start = BAD_DAY - 29 + k;
+    avgs.append(el("line", { class: "avg", x1: start * STEP, x2: (start + 30) * STEP - 2, y1: k * 3 + 1, y2: k * 3 + 1 }));
+  }
+
+  const big = document.getElementById("c02-big"), cap = document.getElementById("c02-cap");
+  const text = {
+    1: ["wrong", "+192.66% a year",
+        "Every safety check passed. They only looked at the <b>30 monthly averages</b> at the bottom, and by then the bad day was already inside each of them."],
+    2: ["muted", `2 of ${total} figures checked`,
+        "Both looked normal, so the check passed. The bad day was never looked at, and the result still read <b>+192.66% a year</b>."],
+    3: ["right", "1 bad day caught",
+        `<b>172,635%</b> for a pool that normally earned <b>0.91%</b>, found among ${total} figures, before any average is built. The 30 monthly averages that would have included it are set aside instead of trusted. Drawn as bars, if a typical day stood 6&nbsp;px tall, this one would stand about 300&nbsp;metres tall.`],
+  };
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timer = null;
+  function clearScan() { if (timer) { clearInterval(timer); timer = null; } cells.forEach(c => c.setAttribute("class", "c")); }
+  function show(s) {
+    clearScan();
+    document.querySelectorAll("#c02-try .try-steps button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.s == s)));
+    const [tone, b, c] = text[s];
+    flag.setAttribute("class", "flag");
+    if (s === 2) SPOT_POOLS.forEach(p => cell(p, SPOT_DAY).setAttribute("class", "c ok"));
+    if (s !== 3) { chart.setAttribute("class", "try-chart s" + s); big.className = "try-big " + tone; big.textContent = b; cap.innerHTML = c; return; }
+    // step 3: sweep every day, column by column, then flag the bad one
+    const finish = () => {
+      cell(BAD_POOL, BAD_DAY).setAttribute("class", "c bad"); flag.setAttribute("class", "flag on");
+      chart.setAttribute("class", "try-chart s3"); big.className = "try-big " + tone; big.textContent = b; cap.innerHTML = c;
+    };
+    if (reduce) return finish();
+    chart.setAttribute("class", "try-chart s1"); big.className = "try-big muted"; big.textContent = "Checking every day…"; cap.textContent = "";
+    let d = 0;
+    timer = setInterval(() => {
+      if (d > 0) for (let p = 0; p < POOLS; p++) cell(p, d - 1).setAttribute("class", (p === BAD_POOL && d - 1 === BAD_DAY) ? "c bad" : "c");
+      if (d === DAYS) { clearInterval(timer); timer = null; return finish(); }
+      for (let p = 0; p < POOLS; p++) cell(p, d).setAttribute("class", "c scan");
+      d++;
+    }, 18);
+  }
+  document.querySelectorAll("#c02-try .try-steps button").forEach(b => b.addEventListener("click", () => show(+b.dataset.s)));
+  show(1);
 })();
 </script>
 </body>

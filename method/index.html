@@ -594,6 +594,76 @@
   .arc-lock{display:inline-grid;gap:4px}
   .arc{display:block;height:auto;width:0;min-width:100%}
   .brand:has(.arc-lock){margin-bottom:24px}
+  /* "Try it" panels (2026-10-27): two extra colours for the drawings. */
+  :root{--cell:#D9DED8;--pink:#EFC9C1}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cell:#2A322F;--pink:#5A3530}}
+  :root[data-theme="dark"]{--cell:#2A322F;--pink:#5A3530}
+  /* ---- Try it panels ---- */
+  .try[hidden]{display:none}
+  .try{border:1px solid var(--rule-strong);background:var(--raised);margin:18px 0 16px;padding:16px 18px 14px;display:grid;gap:12px}
+  .try-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .try-steps{display:flex;flex-wrap:wrap;gap:8px}
+  .try-steps button{font:600 13px/1.2 var(--mono);color:var(--ink);background:transparent;border:1px solid var(--rule-strong);padding:9px 12px;cursor:pointer;text-align:left}
+  .try-steps button .try-n{color:var(--faint);margin-right:6px}
+  .try-steps button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .try-steps button[aria-pressed="true"] .try-n{color:inherit;opacity:.6}
+  .try-steps button:focus-visible{outline:2px solid var(--right);outline-offset:2px}
+  .stage{display:block;width:100%;max-width:600px;height:auto;overflow:visible}
+  .stage text{font-family:var(--mono)}
+  .stage .tick{font-size:15px;fill:var(--muted)}
+  .stage .lab{font-size:17px;fill:var(--ink);font-weight:600}
+  .stage .lab-w{font-size:17px;fill:var(--wrong);font-weight:600}
+  .stage .lab-r{font-size:16px;fill:var(--right);font-weight:600;transition:opacity .3s}
+  .stage .try-big-in{font-size:30px;fill:var(--ink);font-weight:600}
+  .stage .axis-l{stroke:var(--rule-strong);stroke-width:2}
+  .stage .dot-you{fill:var(--ink)}
+  .stage .dot-o{fill:var(--wrong);transition:r .25s}
+  .stage .ln-live{fill:none;stroke:var(--right);stroke-width:2.2;transition:opacity .4s}
+  .stage .ln-dead{fill:none;stroke:var(--wrong);stroke-width:2.2;transition:opacity .4s}
+  .stage .x-dead{font-size:16px;fill:var(--wrong);font-weight:600;transition:opacity .4s}
+  .stage .receipt{fill:var(--paper);stroke:var(--rule-strong);stroke-width:2}
+  .stage .tick-r{fill:var(--wrong);transition:opacity .2s}
+  .stage .bar-earn{fill:var(--right);transition:all .5s}
+  .stage .bar-cost{fill:var(--faint);transition:all .5s}
+  .stage .bar-copy{fill:var(--wrong);transition:all .5s}
+  .stage .cut{fill:none;stroke:var(--raised);stroke-width:5}
+  .stage .white{fill:var(--paper);stroke:var(--rule-strong);stroke-width:1.5;transition:fill .4s}
+  .stage .white.pink{fill:var(--pink)}
+  .stage .sock{fill:var(--wrong);transition:opacity .4s,transform .5s}
+  .stage .sock.caught{stroke:var(--right);stroke-width:4}
+  .stage .room{fill:var(--paper);stroke:var(--rule-strong);stroke-width:2}
+  .stage .door{fill:var(--faint)}
+  .stage .person{fill:var(--ink);transition:cx .9s ease-in,cy .9s ease-in,opacity .9s ease-in}
+  .stage .bar-try{fill:var(--faint);transition:opacity .3s}
+  .stage .bar-best{fill:var(--wrong)}
+  .stage .bar-held{fill:var(--right);transition:all .5s}
+  .stage .box{fill:var(--right);transition:fill .3s,opacity .4s}
+  .stage .box.dear{fill:var(--wrong)}
+  .stage .band{fill:var(--right-bg);stroke:var(--right);stroke-width:2;transition:opacity .4s}
+  .try-out{display:grid;gap:3px;min-height:6.4em}
+  .try-big{font-family:var(--mono);font-weight:600;font-size:clamp(1.1rem,2.8vw,1.4rem);font-variant-numeric:tabular-nums;line-height:1.25}
+  .try-big.wrong{color:var(--wrong)}.try-big.right{color:var(--right)}.try-big.ink{color:var(--ink)}
+  .try-cap{font-size:15px;line-height:1.5;color:var(--muted);max-width:40em}
+  .try-cap b{color:var(--ink);font-weight:600}
+  .try-fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.5}
+  .stage .ln-gross{fill:none;stroke:var(--right);stroke-width:2.5}
+  .stage .ln-net{fill:none;stroke:var(--wrong);stroke-width:2.5}
+  .stage .cost-gap{fill:var(--wrong-bg);opacity:.9}
+  .stage .day{fill:var(--faint);transition:opacity .3s}
+  .stage .day.spike{fill:var(--wrong);transition:opacity .4s}
+  .stage .day.spike.caught{stroke:var(--right);stroke-width:3}
+  .stage .cut-sm{fill:none;stroke:var(--raised);stroke-width:3}
+  .stage .scanbar{fill:var(--right);opacity:0;fill-opacity:.25}
+  .stage .avg-bar{fill:var(--cell);transition:all .5s}
+  .stage .avg-bar.pink{fill:var(--pink)}
+  .stage .avg-bar.aside{fill:none;stroke:var(--faint);stroke-width:1.5;stroke-dasharray:4 3}
+  .stage .ok-tick{font-size:13px;fill:var(--right);font-weight:600;transition:opacity .3s,y .5s}
+  .try-slider[hidden]{display:none}
+  @media (max-width:520px){.stage .tick{font-size:19px}}
+  .try-slider{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .try-slider input{flex:1 1 180px;accent-color:var(--wrong)}
+  .try-slider output{font-weight:600;color:var(--ink);min-width:4.5em;font-variant-numeric:tabular-nums}
+  @media (prefers-reduced-motion:reduce){.stage *{transition:none!important}}
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
@@ -768,6 +838,7 @@
             then the number was never really about the strategy. It was about that one computer, on
             that one day.
           </p>
+          <div class="try" hidden data-fc="1"></div>
           <p>
             <span class="punch">And if nobody else can get your number, every change you make
             afterwards &mdash; bigger size, new settings &mdash; is being judged against something that
@@ -796,6 +867,7 @@
             the way slipped through and is not in it, so the test only ever buys things it already knows
             survived. Nothing warns you. An absence does not announce itself.
           </p>
+          <div class="try" hidden data-fc="2"></div>
           <p>
             <span class="punch">The ones that slip through the net are the ones that failed. So the one
             thing their test can never show you is what failure costs.</span>
@@ -828,6 +900,7 @@
             In our own work we found one counted about twenty times too big. Three strategies had
             already been switched off because of it.
           </p>
+          <div class="try" hidden data-fc="3"></div>
           <p>
             <span class="punch">A cost that was copied instead of measured goes wrong in both
             directions. It flatters plans that do not work, and it quietly kills plans that do &mdash;
@@ -863,6 +936,7 @@
             and checking every row look identical when you read the code. The only difference is how many
             it ran on.
           </p>
+          <div class="try" hidden data-fc="4"></div>
           <p>
             <span class="punch">Anything checked by sampling is unchecked. The row that breaks
             everything is the strange one, and the strange row is exactly what a sample is least likely
@@ -890,6 +964,7 @@
             already empty. And that is not bad luck: it is what the strategy does every time the market
             moves faster than its picture updates.
           </p>
+          <div class="try" hidden data-fc="5"></div>
           <p>
             <span class="punch">Which means it will happen again &mdash; and your own backtest cannot tell
             you how often, because it is the thing that recorded those days as wins.</span>
@@ -922,6 +997,7 @@
             the plan try them &mdash; once. Peek, adjust, peek again, and those days are part of the
             search too.
           </p>
+          <div class="try" hidden data-fc="6"></div>
           <p>
             <span class="punch">Trying lots of things is not cheating &mdash; everybody does it. That is
             exactly why the only real test is data set aside before the searching started, and why you
@@ -949,6 +1025,7 @@
             time you got to the register it was gone. A backtest usually writes down the shelf price,
             because on paper nothing runs out and nobody else is in the store.
           </p>
+          <div class="try" hidden data-fc="7"></div>
           <p>
             <span class="punch">And the days that made most of the money are usually the fastest,
             wildest ones &mdash; which are exactly the days when the price on paper is least likely to
@@ -976,6 +1053,7 @@
             direction &mdash; which is still worth something, but it is a different thing to tell an
             investor.
           </p>
+          <div class="try" hidden data-fc="8"></div>
           <p>
             <span class="punch">A number with no wiggle room written next to it is a promise nobody has
             tested.</span>
@@ -1188,5 +1266,416 @@
   </div>
 
 </div>
+
+<!-- "Try it" panels for the eight checks (2026-10-27). Each check's everyday example as a few steps you can
+     click through. Numbers that appear in a check's text are the published ones; every other value is a labelled
+     illustration from a fixed seed, so every visitor sees the same picture. The panels are hidden in the markup and
+     filled by this script, so with JS off the page reads exactly as before. FC-4 follows our own guard: windows
+     containing a broken day are set aside, not rebuilt (research/runs/amm-lp-v1/spikes.py). -->
+<script>
+// "Try it" panels for the eight checks (method page). Each panel: step buttons, an SVG stage, a result line.
+// Numbers that appear in the text of a check are the published ones; everything else is a labelled illustration
+// drawn from a fixed seed, so every visitor sees the same picture.
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const el = (tag, attrs = {}, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.append(e);
+    return e;
+  };
+  const txt = (parent, x, y, s, cls = "", anchor = "start") => { const t = el("text", { x, y, class: cls, "text-anchor": anchor }, parent); t.textContent = s; return t; };
+  const rng = (seed) => () => { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
+  const normal = (r) => { let u = 0, v = 0; while (!u) u = r(); while (!v) v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+  const fmt = (n, d = 0) => n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const sgn = (n, d = 0) => (n >= 0 ? "+" : "−") + fmt(Math.abs(n), d);
+  // Animation timers belong to the panel that started them, and are cancelled when that panel changes step,
+  // so a half-finished animation can never draw over the step the visitor switched to.
+  let cur = null;
+  const within = (ctx, f) => { const prev = cur; cur = ctx; try { return f(); } finally { cur = prev; } };
+  const later = (ms, f) => {
+    if (reduce) { f(); return; }
+    const ctx = cur, t = setTimeout(() => { ctx.timers.delete(t); within(ctx, f); }, ms); ctx.timers.add(t);
+  };
+  const every = (ms, f) => {   // f returns false to stop
+    if (reduce) { while (f() !== false); return; }
+    const ctx = cur, t = setInterval(() => { if (within(ctx, f) === false) { clearInterval(t); ctx.ivs.delete(t); } }, ms); ctx.ivs.add(t);
+  };
+
+  function panel(root, spec) {
+    root.innerHTML = "";
+    root.className = "try";
+    root.hidden = false;   // the panel stays hidden on the page until this script fills it
+    const ctx = { timers: new Set(), ivs: new Set() };
+    const label = document.createElement("div"); label.className = "try-label"; label.textContent = "Try it"; root.append(label);
+    const steps = document.createElement("div"); steps.className = "try-steps"; steps.setAttribute("role", "group");
+    steps.setAttribute("aria-label", spec.aria); root.append(steps);
+    const svg = el("svg", { class: "stage", viewBox: `0 0 600 ${spec.h || 220}`, role: "img", "aria-label": spec.aria }); root.append(svg);
+    const out = document.createElement("div"); out.className = "try-out"; out.setAttribute("aria-live", "polite");
+    const big = document.createElement("div"); big.className = "try-big"; const cap = document.createElement("div"); cap.className = "try-cap";
+    out.append(big, cap); root.append(out);
+    if (spec.fine) { const f = document.createElement("div"); f.className = "try-fine"; f.textContent = spec.fine; root.append(f); }
+    const say = (tone, b, c) => { big.className = "try-big " + tone; big.textContent = b; cap.innerHTML = c; };
+    const buttons = spec.steps.map((st, i) => {
+      const b = document.createElement("button"); b.type = "button";
+      b.innerHTML = `<span class="try-n">${i + 1}</span>${st.label}`;
+      b.addEventListener("click", () => go(i));
+      steps.append(b); return b;
+    });
+    const state = {};
+    function go(i) {
+      ctx.timers.forEach(clearTimeout); ctx.timers.clear(); ctx.ivs.forEach(clearInterval); ctx.ivs.clear();
+      buttons.forEach((b, j) => b.setAttribute("aria-pressed", String(i === j)));
+      within(ctx, () => spec.steps[i].run({ svg, say, state }));
+    }
+    within(ctx, () => { spec.init && spec.init({ svg, state, root }); spec.after && spec.after(state, say); });
+    go(0);
+  }
+
+  // ---------- FC-1: the recipe -- same code, another computer ----------
+  const fc1 = {
+    aria: "The same recipe baked in different kitchens", h: 170,
+    fine: "Illustration: the numbers are made up for the picture. The point is that they differ.",
+    init({ svg, state }) {
+      const r = rng(11); state.vals = [12.4]; for (let i = 0; i < 11; i++) state.vals.push(12.4 + normal(r) * 3.2);
+      const g = el("g", {}, svg); state.g = g;
+      el("line", { x1: 30, x2: 570, y1: 110, y2: 110, class: "axis-l" }, svg);
+      for (const v of [0, 5, 10, 15, 20, 25]) { const x = 30 + v * 21.6; el("line", { x1: x, x2: x, y1: 106, y2: 114, class: "axis-l" }, svg); txt(svg, x, 136, v + "%", "tick", "middle"); }
+      state.x = (v) => 30 + v * 21.6;
+      state.n = 0;
+    },
+    steps: [
+      { label: "Your kitchen", run({ svg, say, state }) {
+          state.g.innerHTML = ""; state.n = 1;
+          const x = state.x(state.vals[0]);
+          el("circle", { cx: x, cy: 110, r: 9, class: "dot-you" }, state.g);
+          txt(state.g, x, 84, "your number: 12.4%", "lab", "middle");
+          say("ink", "12.4% a year", "You run the strategy and get your number. On your computer it comes out the same every time.");
+        } },
+      { label: "Bake it in another kitchen", run({ svg, say, state }) {
+          if (state.n >= state.vals.length) state.n = 1;
+          if (state.n === 1) { state.g.querySelectorAll(".dot-o,.lab-o").forEach(e => e.remove()); }
+          const v = state.vals[state.n++], x = state.x(v);
+          const d = el("circle", { cx: x, cy: 110, r: 0, class: "dot-o" }, state.g);
+          later(10, () => d.setAttribute("r", 7));
+          const others = state.n - 1;
+          say(others > 2 ? "wrong" : "ink", `${fmt(v, 1)}% a year`,
+            `Same code, same data, another computer. ${others === 1 ? "A different answer came back." : `${others} runs elsewhere, ${others} different answers.`} Press again to bake another.` +
+            (others > 2 ? " <b>Which one is the strategy?</b>" : ""));
+        } },
+    ],
+  };
+
+  // ---------- FC-2: the fishing net -- survivors only ----------
+  const fc2 = {
+    aria: "Twenty assets over five years, with and without the ones that died", h: 230,
+    fine: "Illustration: twenty made-up assets over five years. The averages are worked out from the lines you see.",
+    init({ svg, state }) {
+      const r = rng(7), assets = [];
+      for (let i = 0; i < 20; i++) {
+        const dies = [2, 5, 7, 9, 12, 14, 16, 18].includes(i), end = dies ? 0.25 + r() * 0.65 : 1;
+        const fin = dies ? -100 : 10 + r() * 110;
+        const pts = []; let v = 0;
+        for (let t = 0; t <= 20; t++) {
+          const f = t / 20; if (f > end + 1e-9) break;
+          const target = dies ? -100 * Math.pow(f / end, 1.6) : fin * f;
+          v = target + (t && f < end ? normal(r) * 7 : 0); pts.push([f, Math.max(-100, v)]);
+        }
+        pts[pts.length - 1][1] = dies ? -100 : fin;
+        assets.push({ dies, pts, fin });
+      }
+      state.assets = assets;
+      const X = (f) => 40 + f * 520, Y = (v) => 110 - v * 0.75;
+      el("line", { x1: 40, x2: 560, y1: Y(0), y2: Y(0), class: "axis-l" }, svg);
+      txt(svg, 40, 222, "5 years ago", "tick"); txt(svg, 560, 222, "today", "tick", "end");
+      txt(svg, 34, Y(0) + 4, "0%", "tick", "end"); txt(svg, 34, Y(-100) + 4, "−100%", "tick", "end"); txt(svg, 34, Y(120) + 4, "+120%", "tick", "end");
+      state.paths = assets.map(a => {
+        const p = el("polyline", { points: a.pts.map(([f, v]) => `${X(f)},${Y(v)}`).join(" "), class: a.dies ? "ln-dead" : "ln-live" }, svg);
+        if (a.dies) { const [f, v] = a.pts[a.pts.length - 1]; const m = txt(svg, X(f), Y(v) + 4, "✕", "x-dead", "middle"); a.mark = m; }
+        return p;
+      });
+      const avg = (xs) => xs.reduce((s, a) => s + a.fin, 0) / xs.length;
+      state.avgLive = avg(assets.filter(a => !a.dies)); state.avgAll = avg(assets);
+    },
+    steps: [
+      { label: "List built today", run({ svg, say, state }) {
+          state.assets.forEach((a, i) => { const hide = a.dies; state.paths[i].style.opacity = hide ? 0 : 1; if (a.mark) a.mark.style.opacity = hide ? 0 : 1; });
+          say("wrong", `Average: ${sgn(state.avgLive)}%`, "The list comes from asking the computer <b>today</b> what is available. Every line on it made it to today, so the test never meets a failure.");
+        } },
+      { label: "List as it was back then", run({ svg, say, state }) {
+          state.assets.forEach((a, i) => { state.paths[i].style.opacity = 1; if (a.mark) a.mark.style.opacity = 1; });
+          say("right", `Average: ${sgn(state.avgAll)}%`, "Eight of the twenty went under along the way. They were on the list five years ago, and the test has to pay for them. <b>What failure costs is exactly what the first list hid.</b>");
+        } },
+    ],
+  };
+
+  // ---------- FC-3: the ATM charge -- what $2 a trip does to the plan's result ----------
+  // Before costs the plan makes +$18,000 over six years (illustration). 5 trips a day x 365 x 6 = 10,950 trips.
+  // At $2 that is $21,900, so the plan ends at -$3,900. Break-even is $18,000 / 10,950 = about $1.64 a trip.
+  const fc3 = {
+    aria: "A plan's result over six years, before and after a charge on every trip", h: 230,
+    fine: "The $2, five a day and six years are from the example. The plan's +$18,000 before costs is an illustration.",
+    init({ svg, state, root }) {
+      const r = rng(3), N = 72, GAIN = 18000, TRIPS = 10950; state.N = N; state.TRIPS = TRIPS;
+      const gross = [0]; for (let i = 1; i <= N; i++) gross.push(gross[i - 1] + GAIN / N + normal(r) * 900);
+      const k = GAIN / gross[N]; state.gross = gross.map(v => v * k);   // ends exactly at +$18,000
+      const X = (i) => 70 + (i / N) * 430, Y = (v) => 104 - v / 300; state.X = X; state.Y = Y;
+      el("line", { x1: 70, x2: 500, y1: Y(0), y2: Y(0), class: "axis-l" }, svg);
+      for (const v of [20000, 0, -20000]) txt(svg, 62, Y(v) + 5, (v > 0 ? "+" : v < 0 ? "−" : "") + "$" + fmt(Math.abs(v) / 1000) + "k", "tick", "end");
+      txt(svg, 70, 228, "start", "tick"); txt(svg, 500, 228, "six years", "tick", "end");
+      state.gap = el("path", { class: "cost-gap" }, svg);
+      state.lnGross = el("polyline", { class: "ln-gross" }, svg);
+      state.lnNet = el("polyline", { class: "ln-net" }, svg);
+      state.endLab = txt(svg, 506, 0, "", "lab", "start");
+      state.grossLab = txt(svg, 506, Y(GAIN) + 5, "", "tick", "start");
+      // slider, shown in step 3
+      const row = document.createElement("label"); row.className = "try-slider"; row.hidden = true;
+      row.innerHTML = '<span>Cost per trip</span><input type="range" min="0.1" max="4" step="0.05" value="2"><output>$2.00</output>';
+      root.insertBefore(row, svg.nextSibling); state.row = row;
+      const input = row.querySelector("input"), out = row.querySelector("output");
+      input.addEventListener("input", () => { out.textContent = "$" + (+input.value).toFixed(2); state.draw(+input.value, 1); state.sayFor(+input.value); });
+      state.input = input;
+      state.draw = (fee, frac) => {
+        const pts = [], gpts = [], top = [];
+        const n = Math.round(state.N * frac);
+        for (let i = 0; i <= state.N; i++) {
+          const g = state.gross[i], net = g - fee * TRIPS * (i / state.N);
+          gpts.push(`${X(i)},${Y(g)}`);
+          if (i <= n) { pts.push(`${X(i)},${Y(net)}`); top.push([X(i), Y(g), Y(net)]); }
+        }
+        state.lnGross.setAttribute("points", gpts.join(" "));
+        state.lnNet.setAttribute("points", fee > 0 ? pts.join(" ") : "");
+        state.gap.setAttribute("d", fee > 0 && top.length > 1 ? "M" + top.map(t => `${t[0]},${t[1]}`).join("L") + "L" + top.reverse().map(t => `${t[0]},${t[2]}`).join("L") + "Z" : "");
+        const end = GAIN - fee * TRIPS;
+        state.endLab.textContent = fee > 0 && frac === 1 ? (end >= 0 ? "+" : "−") + "$" + fmt(Math.abs(end)) : "";
+        state.endLab.setAttribute("y", Y(end) + 5); state.endLab.setAttribute("class", end >= 0 ? "lab-r" : "lab-w");
+        state.grossLab.textContent = "+$18,000";
+      };
+    },
+    steps: [
+      { label: "Before costs", run({ say, state }) {
+          state.row.hidden = true; state.draw(0, 1);
+          say("right", "+$18,000 over six years", "The plan as it looks before anything is charged. A winner.");
+        } },
+      { label: "Add $2 a trip", run({ say, state }) {
+          state.row.hidden = true; state.input.value = 2; state.row.querySelector("output").textContent = "$2.00";
+          state.draw(2, 0);
+          let f = 0; every(25, () => { f = Math.min(1, f + 0.03); state.draw(2, f); return f < 1; });
+          say("wrong", "−$3,900 after charges", `Five trips a day, every day, for six years: ${fmt(state.TRIPS)} trips and <b>$21,900</b> in charges, more than the plan made. The $2 is now the biggest thing in the plan, and it turned a winner into a loser on its own.`);
+        } },
+      { label: "Was it really $2?", run({ say, state }) {
+          state.row.hidden = false; state.draw(+state.input.value, 1); state.sayFor(+state.input.value);
+        } },
+    ],
+    after(state, say) {
+      state.sayFor = (fee) => {
+        const end = 18000 - fee * state.TRIPS;
+        say(end >= 0 ? "right" : "wrong", `${end >= 0 ? "+" : "−"}$${fmt(Math.abs(end))} at $${fee.toFixed(2)} a trip`,
+          "Nobody looked at a receipt; the $2 was copied from somewhere. Move the slider: below about <b>$1.64</b> a trip this plan is a winner, above it a loser. The whole verdict rests on a number nobody measured.");
+      };
+    },
+  };
+
+  // ---------- FC-4: the red sock -- one broken day, thirty monthly averages ----------
+  // 90 days drawn; the broken day is day 59, so each of the 30 windows of 30 days ending on days 59..88 contains it.
+  // Every one of those averages is lifted by the same amount: evenly pink.
+  const fc4 = {
+    aria: "Ninety days of data with one broken day, and the thirty monthly averages built from them", h: 250,
+    fine: "Thirty monthly averages and nearly 200% a year are from the example. The days and bar heights are an illustration.",
+    init({ svg, state }) {
+      const r = rng(19), D = 90, BAD = 59; state.D = D; state.BAD = BAD;
+      const days = []; for (let i = 0; i < D; i++) days.push(0.5 + r() * 1.4);
+      state.days = days;
+      txt(svg, 0, 14, "every day that went in", "tick");
+      const dx = 600 / D; state.dayBars = days.map((v, i) => el("rect", { x: i * dx + 0.8, y: 80 - v * 14, width: dx - 1.6, height: v * 14, class: "day" }, svg));
+      state.spike = el("rect", { x: BAD * dx + 0.8, y: 22, width: dx - 1.6, height: 58, class: "day spike" }, svg);
+      el("path", { d: `M${BAD * dx - 3} 26 l${dx / 2 + 3} -5 l${dx / 2 + 3} 5`, class: "cut-sm" }, svg);
+      state.spikeLab = el("g", {}, svg);
+      txt(state.spikeLab, BAD * dx - 8, 32, "one broken day,", "lab-w", "end");
+      txt(state.spikeLab, BAD * dx - 8, 51, "thousands of times too big", "lab-w", "end");
+      state.empty = txt(svg, 300, 190, "nothing averaged yet: press 2", "tick", "middle");
+      state.scan = el("rect", { x: 0, y: 18, width: dx, height: 64, class: "scanbar" }, svg);
+      txt(svg, 0, 118, "the 30 monthly averages the checks looked at", "tick");
+      const bw = 600 / 30; state.avgBars = [];
+      for (let k = 0; k < 30; k++) {
+        const g = el("g", {}, svg);
+        const b = el("rect", { x: k * bw + 2, y: 230, width: bw - 4, height: 0, class: "avg-bar" }, g);
+        const t = txt(g, k * bw + bw / 2, 0, "✓", "ok-tick", "middle");
+        state.avgBars.push({ b, t });
+      }
+      state.setAvg = (lift, cls, ticks) => state.avgBars.forEach(({ b, t }, k) => {
+        const base = 0; let s = 0; for (let i = 30 + k; i < 60 + k; i++) s += (i === BAD ? 0 : days[i]);
+        const h = (s / 30) * 30 + lift;
+        b.setAttribute("y", 230 - h); b.setAttribute("height", h); b.setAttribute("class", "avg-bar " + cls);
+        t.setAttribute("y", 230 - h - 6); t.style.opacity = ticks ? 1 : 0;
+      });
+    },
+    steps: [
+      { label: "Into the wash", run({ say, state }) {
+          state.spike.style.opacity = 1; state.spikeLab.style.opacity = 1; state.spike.setAttribute("class", "day spike");
+          state.dayBars.forEach(b => (b.style.opacity = 1)); state.scan.style.opacity = 0;
+          state.setAvg(0, "empty", false); state.avgBars.forEach(({ b }) => b.setAttribute("height", 0)); state.empty.style.opacity = 1;
+          say("ink", "1 broken row in 90 days", "Easy to see while it's still a single day: one figure thousands of times bigger than that market ever moved.");
+        } },
+      { label: "Out of the wash", run({ say, state }) {
+          state.dayBars.forEach(b => (b.style.opacity = 0.25)); state.spike.style.opacity = 0.25; state.spikeLab.style.opacity = 0; state.scan.style.opacity = 0;
+          state.empty.style.opacity = 0; state.setAvg(0, "", false);
+          later(250, () => state.setAvg(46, "pink", true));
+          say("wrong", "Nearly 200% a year · every check passed", "The broken day sits inside all thirty averages, so each one is lifted by the same amount. No bar looks strange on its own: <b>every month is a bit pink</b>, and each passes its check.");
+        } },
+      { label: "Check every day going in", run({ say, state }) {
+          state.dayBars.forEach(b => (b.style.opacity = 1)); state.spike.style.opacity = 1; state.spikeLab.style.opacity = 0;
+          state.empty.style.opacity = 0; state.setAvg(46, "pink", true);
+          // our own guard sets aside every window containing a broken day (the true figure can't be known), so the
+          // averages are shown set aside here, not rebuilt
+          const finish = () => {
+            state.scan.style.opacity = 0; state.spike.setAttribute("class", "day spike caught"); state.spikeLab.style.opacity = 1;
+            later(400, () => state.setAvg(46, "aside", false));
+            say("right", "Caught going in", "Check every day before any average is built, not a sample, and the broken one is the first thing you find. The thirty averages that contain it are set aside instead of trusted, and the nearly-200% result goes with them.");
+          };
+          if (reduce) return finish();
+          say("ink", "Checking every day…", ""); state.scan.style.opacity = 1; let i = 0; const dx = 600 / state.D;
+          every(22, () => { state.scan.setAttribute("x", i * dx); if (++i > state.BAD) { finish(); return false; } });
+        } },
+    ],
+  };
+
+  // ---------- FC-5: the photo of an empty room ----------
+  const fc5 = {
+    aria: "The photo the strategy sees, next to the room right now", h: 200,
+    fine: "Illustration. The photo is always a second or two old.",
+    init({ svg, state }) {
+      const r = rng(5); state.people = [];
+      for (const [x0, name] of [[20, "the photo the strategy sees"], [320, "the room right now"]]) {
+        el("rect", { x: x0, y: 30, width: 260, height: 130, class: "room" }, svg);
+        txt(svg, x0 + 130, 20, name, "tick", "middle");
+      }
+      el("rect", { x: 576, y: 70, width: 6, height: 50, class: "door" }, svg); txt(svg, 579, 178, "door", "tick", "middle");
+      for (let i = 0; i < 22; i++) {
+        const x = 40 + r() * 220, y = 45 + r() * 100;
+        el("circle", { cx: x, cy: y, r: 6, class: "person" }, svg);
+        const live = el("circle", { cx: x + 300, cy: y, r: 6, class: "person" }, svg);
+        state.people.push({ live, x: x + 300, y });
+      }
+      state.note = txt(svg, 150, 190, "", "lab", "middle");
+    },
+    steps: [
+      { label: "A normal day", run({ say, state }) {
+          state.people.forEach(p => { p.live.setAttribute("cx", p.x); p.live.setAttribute("cy", p.y); p.live.style.opacity = 1; });
+          state.note.textContent = "";
+          say("ink", "Photo and room match", "Most days the picture is a second or two old and nothing has changed. A crowd of buyers in the photo means a crowd in the room.");
+        } },
+      { label: "Everyone runs for the door", run({ say, state }) {
+          state.people.forEach((p, i) => { p.live.setAttribute("cx", p.x); p.live.setAttribute("cy", p.y); p.live.style.opacity = 1;
+            later(50 + i * 30, () => { p.live.setAttribute("cx", 590); p.live.setAttribute("cy", 95); p.live.style.opacity = 0; }); });
+          state.note.textContent = "sees a crowd of buyers → buys";
+          say("wrong", "It bought into an empty room", "The photo still shows a crowd, which looks like safety. The crowd left seconds ago. <b>It happens every time the market moves faster than the picture updates.</b>");
+        } },
+    ],
+  };
+
+  // ---------- FC-6: forty tries, one shown ----------
+  const fc6 = {
+    aria: "Forty versions of a plan, the best one shown, then one try on data set aside", h: 210,
+    fine: "Illustration: forty made-up versions with no real edge at all.",
+    init({ svg, state }) {
+      const r = rng(23); state.vals = []; for (let i = 0; i < 40; i++) state.vals.push(normal(r) * 9);
+      state.best = state.vals.indexOf(Math.max(...state.vals));
+      state.held = 0.6;
+      const Y = (v) => 110 - v * 3.6; state.Y = Y;
+      el("line", { x1: 20, x2: 580, y1: Y(0), y2: Y(0), class: "axis-l" }, svg);
+      txt(svg, 14, Y(0) + 4, "0%", "tick", "end");
+      state.bars = state.vals.map((v, i) => el("rect", { x: 24 + i * 12.5, y: Math.min(Y(0), Y(v)), width: 9.5, height: Math.abs(Y(v) - Y(0)), class: i === state.best ? "bar-best" : "bar-try" }, svg));
+      state.heldBar = el("rect", { x: 24 + 40 * 12.5 + 14, y: Y(0), width: 14, height: 0, class: "bar-held" }, svg);
+      state.heldLab = txt(svg, 24 + 40 * 12.5 + 21, 205, "", "tick", "middle");
+    },
+    steps: [
+      { label: "What you're shown", run({ say, state }) {
+          state.bars.forEach((b, i) => (b.style.opacity = i === state.best ? 1 : 0)); state.heldBar.setAttribute("height", 0); state.heldLab.textContent = "";
+          say("wrong", `${sgn(state.vals[state.best], 1)}% a year`, "One version, written up. It looks like a mind reader's result.");
+        } },
+      { label: "All forty tries", run({ say, state }) {
+          state.bars.forEach((b, i) => later(i * 25, () => (b.style.opacity = 1))); state.heldBar.setAttribute("height", 0); state.heldLab.textContent = "";
+          say("ink", "1 shown, 39 not", "It was the best of forty. None of these versions has any real edge; picking the highest of forty is why it's high.");
+        } },
+      { label: "One shot on data set aside", run({ say, state }) {
+          state.bars.forEach(b => (b.style.opacity = 1));
+          const Y = state.Y, v = state.held;
+          state.heldBar.setAttribute("y", Y(0)); state.heldBar.setAttribute("height", 0);
+          later(150, () => { state.heldBar.setAttribute("y", Math.min(Y(0), Y(v))); state.heldBar.setAttribute("height", Math.max(2, Math.abs(Y(v) - Y(0)))); });
+          state.heldLab.textContent = "set aside";
+          say("right", `${sgn(v, 1)}% a year`, "The chosen version, run once on days that were set aside before the searching started. <b>That's its real score.</b>");
+        } },
+    ],
+  };
+
+  // ---------- FC-7: the shelf price ----------
+  const fc7 = {
+    aria: "Fifty items at the shelf price, then in a real store", h: 200,
+    fine: "$10, one left and fifty wanted are from the example. The higher prices after the first one are an illustration.",
+    init({ svg, state }) {
+      state.boxes = [];
+      for (let i = 0; i < 50; i++) state.boxes.push(el("rect", { x: 30 + (i % 25) * 22, y: 50 + Math.floor(i / 25) * 40, width: 18, height: 30, rx: 2, class: "box" }, svg));
+      state.price = (i) => (i === 0 ? 10 : 10.5 + i * 0.12);
+      state.lab = txt(svg, 300, 30, "", "lab", "middle");
+      state.note = txt(svg, 300, 150, "", "tick", "middle");
+    },
+    steps: [
+      { label: "On paper", run({ say, state }) {
+          state.boxes.forEach(b => { b.setAttribute("class", "box"); b.style.opacity = 1; }); state.lab.textContent = "50 × $10"; state.note.textContent = "";
+          say("wrong", "$500", "The backtest writes down the shelf price for all fifty. On paper nothing runs out and nobody else is in the store.");
+        } },
+      { label: "In a real store", run({ say, state }) {
+          let tot = 0; state.boxes.forEach((b, i) => { b.style.opacity = 1; tot += state.price(i); later(i * 18, () => b.setAttribute("class", i === 0 ? "box" : "box dear")); });
+          state.lab.textContent = "one left at $10"; state.note.textContent = "the rest cost more, and more as you take them";
+          say("ink", `$${fmt(tot, 2)}`, "There was one left at $10. The other forty-nine came from further back, at higher prices.");
+        } },
+      { label: "By the time you got there", run({ say, state }) {
+          let tot = 0; state.boxes.forEach((b, i) => { b.setAttribute("class", i === 0 ? "box" : "box dear"); tot += state.price(i + 1); });
+          later(100, () => (state.boxes[0].style.opacity = 0.15));
+          state.lab.textContent = "the $10 one is gone"; state.note.textContent = "someone else got there first";
+          say("wrong", `$${fmt(tot, 2)}`, "And the one at $10 was gone before you reached the register. The fastest, wildest days are the ones where the paper price was least real.");
+        } },
+    ],
+  };
+
+  // ---------- FC-8: one number or a range ----------
+  const fc8 = {
+    aria: "A headline result, then the same thing run again many times", h: 170,
+    fine: "61.4% and 45 to 75 are from the example. The reruns are an illustration.",
+    init({ svg, state }) {
+      const X = (v) => 30 + (v - 30) * 9; state.X = X;
+      el("line", { x1: 30, x2: 570, y1: 110, y2: 110, class: "axis-l" }, svg);
+      for (const v of [30, 40, 50, 60, 70, 80, 90]) { el("line", { x1: X(v), x2: X(v), y1: 106, y2: 114, class: "axis-l" }, svg); txt(svg, X(v), 136, v + "%", "tick", "middle"); }
+      state.band = el("rect", { x: X(45), y: 92, width: X(75) - X(45), height: 36, class: "band" }, svg);
+      state.bandLab = txt(svg, X(60), 160, "between 45% and 75%", "lab-r", "middle");
+      state.g = el("g", {}, svg);
+      el("circle", { cx: X(61.4), cy: 110, r: 9, class: "dot-you" }, svg);
+      txt(svg, X(61.4), 84, "61.4%", "lab", "middle");
+      const r = rng(41); state.reruns = []; for (let i = 0; i < 24; i++) state.reruns.push(Math.min(74.5, Math.max(45.5, 60 + normal(r) * 7.5)));
+    },
+    steps: [
+      { label: "The headline", run({ say, state }) {
+          state.g.innerHTML = ""; state.band.style.opacity = 0; state.bandLab.style.opacity = 0;
+          say("wrong", "61.4%", "One exact number, to one decimal place. It looks like a measurement.");
+        } },
+      { label: "Run it all again", run({ say, state }) {
+          state.g.innerHTML = ""; state.band.style.opacity = 0; state.bandLab.style.opacity = 0;
+          state.reruns.forEach((v, i) => later(i * 60, () => el("circle", { cx: state.X(v), cy: 110 + ((i % 5) - 2) * 7, r: 5, class: "dot-o" }, state.g)));
+          say("ink", "24 reruns, 24 answers", "Run the same thing again with ordinary variation and the answer moves around. 61.4% was one of them.");
+        } },
+      { label: "The honest answer", run({ say, state }) {
+          if (!state.g.childNodes.length) state.reruns.forEach((v, i) => el("circle", { cx: state.X(v), cy: 110 + ((i % 5) - 2) * 7, r: 5, class: "dot-o" }, state.g));
+          state.band.style.opacity = 1; state.bandLab.style.opacity = 1;
+          say("right", "Somewhere between 45% and 75%", "That's not a number, it's a direction. Still worth something, but a different thing to tell an investor.");
+        } },
+    ],
+  };
+
+  const specs = [fc1, fc2, fc3, fc4, fc5, fc6, fc7, fc8];
+  document.querySelectorAll(".try[data-fc]").forEach(root => panel(root, specs[+root.dataset.fc - 1]));
+})();
+</script>
 </body>
 </html>
