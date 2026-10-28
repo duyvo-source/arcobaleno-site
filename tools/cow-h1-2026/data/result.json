@@ -1,0 +1,53 @@
+{
+ "options": [],
+ "months": [
+  {
+   "month": "2026-01",
+   "avg_capital_usd": 18302999.668955717,
+   "sleeve_pct": 4.970941174699373,
+   "benchmark_pct": 3.9286109300438583,
+   "excess_pp": 1.0423302446555147,
+   "kpk_table3_pp": 1.03
+  },
+  {
+   "month": "2026-02",
+   "avg_capital_usd": 22044425.3595788,
+   "sleeve_pct": 4.610565431562437,
+   "benchmark_pct": 3.927977429098427,
+   "excess_pp": 0.6825880024640099,
+   "kpk_table3_pp": 0.34
+  },
+  {
+   "month": "2026-03",
+   "avg_capital_usd": 23251059.585156742,
+   "sleeve_pct": 4.376353584494242,
+   "benchmark_pct": 3.754712656689628,
+   "excess_pp": 0.6216409278046142,
+   "kpk_table3_pp": 0.89
+  },
+  {
+   "month": "2026-04",
+   "avg_capital_usd": 16742467.738144265,
+   "sleeve_pct": 3.8765497018725523,
+   "benchmark_pct": 3.6598134701134564,
+   "excess_pp": 0.21673623175909595,
+   "kpk_table3_pp": 0.2
+  },
+  {
+   "month": "2026-05",
+   "avg_capital_usd": 12675372.090772534,
+   "sleeve_pct": 4.214091750235072,
+   "benchmark_pct": 3.5820178734642814,
+   "excess_pp": 0.6320738767707907,
+   "kpk_table3_pp": 0.52
+  },
+  {
+   "month": "2026-06",
+   "avg_capital_usd": 15733792.580427883,
+   "sleeve_pct": 4.034958765545041,
+   "benchmark_pct": 3.541859785470358,
+   "excess_pp": 0.493098980074683,
+   "kpk_table3_pp": 0.42
+  }
+ ]
+}
