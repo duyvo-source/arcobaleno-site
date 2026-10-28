@@ -29,9 +29,10 @@ Two things we found along the way:
 - **stkGHO's yield came entirely from reward payouts** (Merkl, paid in stkGHO every few weeks), not from the staking
   contract itself. We spread each payout over the days since the previous one. Booking each payout on the day it was
   claimed gives figures that don't match KPK's (`python3 blend.py --claim-basis`).
-- **April's lower figure is the cost of the precautionary exits.** On 18 April, GHO and SyrupUSDC were sold for USDC
-  through CoW Protocol instead of being redeemed at full value. That cost about $13,500 (`exits.py` reads both
-  transactions). Without it, April would come out at +1.20 (`python3 blend.py --no-exits`).
+- **April's lower figure is the cost of the precautionary exits.** On 18 April, GHO and SyrupUSDC were swapped into
+  USDC through CoW Swap instead of being redeemed at full value; KPK described these exits and linked both transactions
+  in its [rsETH post](https://forum.cow.fi/t/3426). The cost wasn't stated there: it comes to about $13,500 (`exits.py`
+  reads both transactions). Without it, April would come out at +1.20 (`python3 blend.py --no-exits`).
 
 ## What this does not cover
 
