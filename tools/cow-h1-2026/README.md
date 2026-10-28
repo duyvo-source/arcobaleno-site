@@ -44,6 +44,10 @@ Two things we found along the way:
 
 ## How to run it
 
+**Download everything:** [cow-h1-2026.tar.gz](../cow-h1-2026.tar.gz)
+([sha256](../cow-h1-2026.tar.gz.sha256), [signature](../cow-h1-2026.tar.gz.asc), signed with our
+[release key](../arcobaleno-release-pubkey.asc)).
+
 Python 3.10 or later, plus `requests`. No keys needed; it uses free public endpoints.
 
     ./run_all.sh          # rebuild everything from the chain (about 10 minutes), then print the table
@@ -51,12 +55,12 @@ Python 3.10 or later, plus `requests`. No keys needed; it uses free public endpo
 
 | File | What it does |
 |---|---|
-| `daily.py` | Holdings of every managed wallet in each venue, plus each venue's share price, every day from 1 Jan to 1 Jul (Ethereum and Gnosis) |
-| `logs_stkgho.py` | Every stkGHO reward claim by the wallet, and stkGHO moving in and out |
-| `exits.py` | The cost of the two 18 April sales, read from their transactions |
-| `blend.py` | Monthly return over invested money, minus the Sky Savings Rate (sUSDS) over the same days, with KPK's table beside it |
-| `ocrpc.py`, `keccak.py` | Reading the chain, with no other libraries |
-| `data/` | What the first three scripts wrote on 28 October 2026, so `blend.py` can run offline |
+| [`daily.py`](daily.py) | Holdings of every managed wallet in each venue, plus each venue's share price, every day from 1 Jan to 1 Jul (Ethereum and Gnosis) |
+| [`logs_stkgho.py`](logs_stkgho.py) | Every stkGHO reward claim by the wallet, and stkGHO moving in and out |
+| [`exits.py`](exits.py) | The cost of the two 18 April sales, read from their transactions |
+| [`blend.py`](blend.py) | Monthly return over invested money, minus the Sky Savings Rate (sUSDS) over the same days, with KPK's table beside it |
+| [`ocrpc.py`](ocrpc.py), [`keccak.py`](keccak.py) | Reading the chain, with no other libraries |
+| `data/`: [daily](data/daily.json), [stkGHO claims](data/stkgho_logs.json), [exits](data/exits.json), [result](data/result.json) | What the first three scripts wrote on 28 October 2026, so `blend.py` can run offline |
 
 **Addresses:** wallets `0x523732d31B4432BcDD4BaaD108f7EBE54AD478b0`, `0x616dE58c011F8736fa20c7Ae5352F7f6FB9F0669`,
 `0x7F8987D6A8bee31bD7bE80E877732579E2582a28`, `0x9009B4411D0e1171cc042b77D7701f46B737Fdb9` (from KPK's public
