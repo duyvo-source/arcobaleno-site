@@ -1,0 +1,4 @@
+# GitHub Pages (Jekyll) settings. Only affects the README-rendered pages under /tools/.
+# The built pages (index, method, sample) have no front matter and are served as-is.
+title: Arcobaleno Research
+theme: jekyll-theme-primer
