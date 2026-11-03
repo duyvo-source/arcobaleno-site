@@ -18,12 +18,12 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta property="og:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Independent checks, fixed scope, fixed price.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Independent yield and trading checks — Arcobaleno Research">
 <meta name="twitter:description" content="We rebuild reported returns from public data and the code behind them, for DAO treasuries and trading strategies. Fixed price, and you get the scripts.">
 <meta name="twitter:image" content="https://arcobaleno.cloud/card.png">
-<meta name="twitter:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Backtest forensics, fixed scope, fixed price.">
+<meta name="twitter:image:alt" content="Arcobaleno Research — Know the number is real before the money goes in. Independent checks, fixed scope, fixed price.">
 
 <link rel="preload" href="/fonts/Archivo-latin-8f704806.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/SourceSerif4-latin-f2ea9c12.woff2" as="font" type="font/woff2" crossorigin>
@@ -263,7 +263,7 @@
   }
   .eyebrow .dot{color:var(--rule-strong)}
   /* The separator is a flex item in its own right, so when the eyebrow wraps it can be left
-     stranded at the end of line one -- "BACKTEST FORENSICS /" with the rest underneath. Below
+     stranded at the end of line one -- "INDEPENDENT CHECKS /" with the rest underneath. Below
      this width the two phrases stack, at which point the separator has nothing to separate, so
      it is removed rather than left dangling. */
   @media (max-width:34rem){
@@ -721,7 +721,7 @@
       <span class="arc-lock"><span class="wordmark" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span>
     </div>
     <div class="eyebrow">
-      <span>Backtest Forensics</span><span class="dot">/</span>
+      <span>Independent checks</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
     <div class="hero-row"><h1>Know the number is real before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-d.png" alt="" width="480" height="480"></div>
@@ -735,14 +735,51 @@
     </p>
 
     <div class="hero-cta">
-      <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">&rarr;</span></a>
+      <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Independent%20check%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">&rarr;</span></a>
       <span class="hero-cta-note">Start with a free 30-minute call. If what you have isn't enough to
         reproduce anything, we'll say so on that call and turn the work down.</span>
     </div>
   </header>
 
+  <section class="section-rule" id="dao">
+    <h2>For DAO treasuries</h2>
+    <p class="lede">
+      If an outside manager runs your treasury, its own reports are usually the only record of how the
+      money did. We check those reports against the blockchain, independently of the manager, and hand
+      over the scripts so anyone can re-run the check.
+    </p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">One-off check</div>
+        <div class="tier-price">$2,500</div>
+        <div class="tier-out">Check one report before a vote or a fee payment.</div>
+        <div class="tier-scope">One manager report, one period. We rebuild the reported returns from public on-chain data and show where they match, where they don&rsquo;t, and why. You get a short written report in plain language, plus the scripts.</div>
+        <div class="tier-days">Report within 10 working days of the manager&rsquo;s report</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Regular checks</div>
+        <div class="tier-price">$6,000 a quarter</div>
+        <div class="tier-out">Every monthly report checked, on a fixed schedule.</div>
+        <div class="tier-scope">$2,000 a month, sold a quarter at a time. The first quarter is $7,500, because it includes the one-time setup: we find the manager&rsquo;s addresses, map every position and build the scripts. Then we check each monthly report as it comes out.</div>
+        <div class="tier-days">Each quarter stands alone &middot; nothing to cancel</div>
+      </div>
+    </div>
+
+    <a class="needs-link" href="/tools/cow-h1-2026/" style="margin-top:22px">
+      <span class="sc-k">CoW DAO, H1 2026</span>
+      <span class="sc-t">KPK&rsquo;s figures hold up. Return above the benchmark, rebuilt from the chain: +0.61 points a year, against +0.57 reported.</span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="needs-link" href="/tools/ens-h1-2026/">
+      <span class="sc-k">ENS Endowment, H1 2026</span>
+      <span class="sc-t">The half-year yield reproduces within 2%. Month by month it doesn&rsquo;t: the gap is mostly March and April, where KPK&rsquo;s own monthly forum updates do match the chain.</span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <p class="tier-days" style="border-top:0;margin-top:10px">Public examples, unpaid, done on our own initiative</p>
+  </section>
+
   <section class="section-rule" id="costs">
-    <h2>What it costs</h2>
+    <h2>For trading strategies</h2>
     <p class="lede">
       Three fixed prices. Start small with a Triage; every finding comes with a script you can run yourself.
     </p>
@@ -1511,8 +1548,8 @@
         for them.
       </p>
       <div class="contact-block">
-        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span><img class="cb-mascot" src="/img/mascot-w.png" alt="" width="480" height="480"></span><span class="cb-sub">Backtest forensics &middot; Oslo</span></div>
-        <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Backtest%20forensics%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
+        <div class="contact-who"><span class="cb-row"><span class="arc-lock"><span class="wordmark cb-wm" role="img" aria-label="Arcobaleno Research"><span class="wm-a" aria-hidden="true">Arcobaleno</span><span class="wm-r" aria-hidden="true">Research</span></span></span><img class="cb-mascot" src="/img/mascot-w.png" alt="" width="480" height="480"></span><span class="cb-sub">Independent checks &middot; Oslo</span></div>
+        <a class="mailto" href="mailto:dvt@arcobaleno.cloud?subject=Independent%20check%20%E2%80%94%20scoping%20call">dvt@arcobaleno.cloud <span class="arrow">→</span></a>
       </div>
       <p class="contact-note">
         Start with a free 30-minute call. Tell us what the strategy is and what you have — code, data,
