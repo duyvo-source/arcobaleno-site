@@ -51,7 +51,7 @@ Two things we found along the way:
 
 Python 3.10 or later, plus `requests`. No keys needed; it uses free public endpoints.
 
-    ./run_all.sh          # rebuild everything from the chain (about 10 minutes), then print the table
+    ./run_all.sh          # rebuild everything from the chain (slow: can take hours on free endpoints), then print the table
     python3 blend.py      # print the table from the data/ folder shipped here, with no network
 
 | File | What it does |
