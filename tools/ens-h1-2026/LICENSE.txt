@@ -1,5 +1,5 @@
-This licence covers the CoW DAO H1 2026 recompute published at https://arcobaleno.cloud/tools/cow-h1-2026/
-(all files in that folder). Published 2026-10-28.
+This licence covers the ENS Endowment H1 2026 rebuild published at https://arcobaleno.cloud/tools/ens-h1-2026/
+(all files in that folder). Published 2026-10-30; this licence line corrected 2026-11-10.
 
 MIT License
 
