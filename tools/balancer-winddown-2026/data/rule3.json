@@ -1,0 +1,237 @@
+{
+ "rows": [
+  {
+   "name": "Treasury: kpk USDC Prime V2",
+   "ours": 1412785.8996095469,
+   "pub": 1412793,
+   "note": ""
+  },
+  {
+   "name": "Treasury: kpk USDC Yield V2",
+   "ours": 641739.2453149273,
+   "pub": 641743,
+   "note": ""
+  },
+  {
+   "name": "Treasury: ciUSDCv3",
+   "ours": 500005.4386102229,
+   "pub": 500008,
+   "note": ""
+  },
+  {
+   "name": "Treasury: stkAAVE",
+   "ours": 2749910.9451494603,
+   "pub": 2749911,
+   "note": ""
+  },
+  {
+   "name": "Treasury: COW",
+   "ours": 175130.2910146846,
+   "pub": 175130,
+   "note": ""
+  },
+  {
+   "name": "Treasury: SAFE",
+   "ours": 82626.63929461925,
+   "pub": 82627,
+   "note": ""
+  },
+  {
+   "name": "Treasury: weETH",
+   "ours": 988738.3207137047,
+   "pub": 988738,
+   "note": ""
+  },
+  {
+   "name": "Treasury: rETH",
+   "ours": 187074.04151783066,
+   "pub": 187074,
+   "note": ""
+  },
+  {
+   "name": "Treasury: sGHO + waEthLidoGHO",
+   "ours": 150457.60698082225,
+   "pub": 150458,
+   "note": ""
+  },
+  {
+   "name": "Treasury: dPOLc0 stake",
+   "ours": 10673.316714340752,
+   "pub": 10664,
+   "note": ""
+  },
+  {
+   "name": "Treasury: HOPR",
+   "ours": 7541.450992069298,
+   "pub": 7541,
+   "note": ""
+  },
+  {
+   "name": "Treasury: aEthUSDC+cUSDCv3",
+   "ours": 4827.43126940862,
+   "pub": 4828,
+   "note": ""
+  },
+  {
+   "name": "Treasury: BPT WETH leg",
+   "ours": 3193.2106721433006,
+   "pub": 3193,
+   "note": ""
+  },
+  {
+   "name": "Treasury: sDAI",
+   "ours": 2213934.905813315,
+   "pub": 2213250,
+   "note": ""
+  },
+  {
+   "name": "Buffers: buffer WETH",
+   "ours": 173029.24394143958,
+   "pub": 173004,
+   "note": ""
+  },
+  {
+   "name": "Buffers: buffer USDT",
+   "ours": 51655.477149505416,
+   "pub": 51656,
+   "note": ""
+  },
+  {
+   "name": "Buffers: buffer GHO",
+   "ours": 50408.52303089073,
+   "pub": 50409,
+   "note": ""
+  },
+  {
+   "name": "Buffers: buffer wstETH",
+   "ours": 70817.99997513725,
+   "pub": 70818,
+   "note": ""
+  },
+  {
+   "name": "Buffers: buffer USDC",
+   "ours": 51821.08224410336,
+   "pub": 51821,
+   "note": ""
+  },
+  {
+   "name": "AutoRange C (eth)",
+   "ours": 42229.29071702858,
+   "pub": 42228,
+   "note": ""
+  },
+  {
+   "name": "AutoRange (eth)",
+   "ours": 42172.23244713925,
+   "pub": 42172,
+   "note": ""
+  },
+  {
+   "name": "BTFSH",
+   "ours": 18827.038120384426,
+   "pub": 18833,
+   "note": ""
+  },
+  {
+   "name": "Innovation: wallet WETH",
+   "ours": 2667.898538383145,
+   "pub": 2667.812560632501,
+   "note": ""
+  },
+  {
+   "name": "Innovation: wallet USDC",
+   "ours": 1162.0937114503515,
+   "pub": 1162.0941982175425,
+   "note": ""
+  },
+  {
+   "name": "Innovation: wallet USDC base",
+   "ours": 3081.7436379328565,
+   "pub": 3082,
+   "note": ""
+  },
+  {
+   "name": "LDO: LDO",
+   "ours": 137709.08958034537,
+   "pub": 137709,
+   "note": "under review"
+  },
+  {
+   "name": "BizDev: USDC eth",
+   "ours": 22036.74361607443,
+   "pub": 22037,
+   "note": "under review"
+  },
+  {
+   "name": "BizDev: USDC polygon",
+   "ours": 33983.742172210914,
+   "pub": 33984,
+   "note": "under review"
+  },
+  {
+   "name": "BizDev: POL native",
+   "ours": 9951.995478169403,
+   "pub": 9943,
+   "note": "under review"
+  },
+  {
+   "name": "BizDev: USDC arbitrum",
+   "ours": 6667.361886724651,
+   "pub": 6667,
+   "note": "under review"
+  },
+  {
+   "name": "BizDev: USDC base",
+   "ours": 1381.3393385254751,
+   "pub": 1381,
+   "note": "under review"
+  },
+  {
+   "name": "Onchain: USDC",
+   "ours": 66062.9612911187,
+   "pub": 66152,
+   "note": ""
+  },
+  {
+   "name": "Onchain: ETH",
+   "ours": 89.19040942032434,
+   "pub": 89.0363310185785,
+   "note": "ETH to 2 decimals as published"
+  }
+ ],
+ "carried": [
+  {
+   "name": "AutoRange (base)",
+   "pub": 41943
+  },
+  {
+   "name": "HYPE on HyperEVM",
+   "pub": 3605
+  },
+  {
+   "name": "BizDev RPL/BOLD/ETH dust",
+   "pub": 184
+  }
+ ],
+ "ours": 9960125.79095308,
+ "pub": 9959416,
+ "prices": {
+  "USDC": 0.9995219526233539,
+  "WETH": 2548.2974120092667,
+  "USDT": 0.9992269697683994,
+  "GHO": 0.998363321361545,
+  "wstETH": 3178.1889874320395,
+  "stkAAVE": 140.66472872455023,
+  "COW": 0.1423309141523916,
+  "SAFE": 0.09777216933008062,
+  "weETH": 2818.216187934966,
+  "rETH": 2983.899421814704,
+  "HOPR": 0.012218710418285234,
+  "POL": 0.10058327082926563,
+  "LDO": 0.39287600537524364,
+  "WBTC": 79913.40437405843,
+  "PAXG": 4344.749929152741,
+  "AAVE": 138.74635905498556,
+  "DAI": 1.0000313850072835
+ }
+}

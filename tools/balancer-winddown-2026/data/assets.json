@@ -1,0 +1,386 @@
+[
+ {
+  "bucket": "Treasury",
+  "name": "kpk USDC Prime V2",
+  "chain": "ethereum",
+  "qty": 1413461.60122,
+  "sym": "USDC",
+  "pub_q": 1413462.89,
+  "pub_v": 1412793,
+  "val": 1412785.8996095469,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "kpk USDC Yield V2",
+  "chain": "ethereum",
+  "qty": 642046.173804,
+  "sym": "USDC",
+  "pub_q": 642047.11,
+  "pub_v": 641743,
+  "val": 641739.2453149273,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "ciUSDCv3",
+  "chain": "ethereum",
+  "qty": 500244.579219,
+  "sym": "USDC",
+  "pub_q": 500244.9,
+  "pub_v": 500008,
+  "val": 500005.4386102229,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "stkAAVE",
+  "chain": "ethereum",
+  "qty": 19549.399270760605,
+  "sym": "stkAAVE",
+  "pub_q": 19549.4,
+  "pub_v": 2749911,
+  "val": 2749910.9451494603,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "COW",
+  "chain": "ethereum",
+  "qty": 1230444.5036246672,
+  "sym": "COW",
+  "pub_q": 1230445,
+  "pub_v": 175130,
+  "val": 175130.2910146846,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "SAFE",
+  "chain": "ethereum",
+  "qty": 845093.648435581,
+  "sym": "SAFE",
+  "pub_q": 845094,
+  "pub_v": 82627,
+  "val": 82626.63929461925,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "weETH",
+  "chain": "ethereum",
+  "qty": 350.8383512047732,
+  "sym": "weETH",
+  "pub_q": 350.8384,
+  "pub_v": 988738,
+  "val": 988738.3207137047,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "rETH",
+  "chain": "ethereum",
+  "qty": 62.69448633227011,
+  "sym": "rETH",
+  "pub_q": 62.6945,
+  "pub_v": 187074,
+  "val": 187074.04151783066,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "sGHO + waEthLidoGHO",
+  "chain": "ethereum",
+  "qty": 150704.26142622269,
+  "sym": "GHO",
+  "pub_q": 150704.4,
+  "pub_v": 150458,
+  "val": 150457.60698082225,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "dPOLc0 stake",
+  "chain": "ethereum",
+  "qty": 106114.23377211603,
+  "sym": "POL",
+  "pub_q": 106114.23,
+  "pub_v": 10664,
+  "val": 10673.316714340752,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "HOPR",
+  "chain": "ethereum",
+  "qty": 617205.149635395,
+  "sym": "HOPR",
+  "pub_q": 617205,
+  "pub_v": 7541,
+  "val": 7541.450992069298,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "aEthUSDC+cUSDCv3",
+  "chain": "ethereum",
+  "qty": 4829.740114,
+  "sym": "USDC",
+  "pub_q": 4828.59,
+  "pub_v": 4828,
+  "val": 4827.43126940862,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "BPT WETH leg",
+  "chain": "ethereum",
+  "qty": 1.2530761351068267,
+  "sym": "WETH",
+  "pub_q": 1.2531,
+  "pub_v": 3193,
+  "val": 3193.2106721433006,
+  "under": false
+ },
+ {
+  "bucket": "Treasury",
+  "name": "sDAI",
+  "chain": "gnosis",
+  "qty": 2213865.4236308695,
+  "sym": "USDC",
+  "pub_q": 2213652.08,
+  "pub_v": 2213250,
+  "val": 2212807.091072855,
+  "under": false
+ },
+ {
+  "bucket": "Buffers",
+  "name": "buffer WETH",
+  "chain": "ethereum",
+  "qty": 27.195661298769014,
+  "sym": "WETH",
+  "pub_q": 67.8999,
+  "pub_v": 173004,
+  "val": 69302.63330553366,
+  "under": false
+ },
+ {
+  "bucket": "Buffers",
+  "name": "buffer USDT",
+  "chain": "ethereum",
+  "qty": 51695.43928691007,
+  "sym": "USDT",
+  "pub_q": 51695.4652,
+  "pub_v": 51656,
+  "val": 51655.477149505416,
+  "under": false
+ },
+ {
+  "bucket": "Buffers",
+  "name": "buffer GHO",
+  "chain": "ethereum",
+  "qty": 50491.16083526059,
+  "sym": "GHO",
+  "pub_q": 50491.1716,
+  "pub_v": 50409,
+  "val": 50408.52303089073,
+  "under": false
+ },
+ {
+  "bucket": "Buffers",
+  "name": "buffer wstETH",
+  "chain": "ethereum",
+  "qty": 22.282501215372292,
+  "sym": "wstETH",
+  "pub_q": 22.2825,
+  "pub_v": 70818,
+  "val": 70817.99997513725,
+  "under": false
+ },
+ {
+  "bucket": "Buffers",
+  "name": "buffer USDC",
+  "chain": "ethereum",
+  "qty": 51845.867024824525,
+  "sym": "USDC",
+  "pub_q": 51845.891,
+  "pub_v": 51821,
+  "val": 51821.08224410336,
+  "under": false
+ },
+ {
+  "bucket": "Innovation",
+  "name": "AutoRange C (eth)",
+  "chain": "ethereum",
+  "tokens": [
+   "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+   "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  ],
+  "raw": [
+   34255524600.401695,
+   3.1354824765127107e+18
+  ],
+  "share": 0.9995189451985677,
+  "pub_v": 42228
+ },
+ {
+  "bucket": "Innovation",
+  "name": "AutoRange (eth)",
+  "chain": "ethereum",
+  "tokens": [
+   "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+   "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  ],
+  "raw": [
+   34184932950.96741,
+   3.1407799874423634e+18
+  ],
+  "share": 0.9995079143154326,
+  "pub_v": 42172
+ },
+ {
+  "bucket": "Innovation",
+  "name": "AutoRange (base)",
+  "chain": "base",
+  "fail": "'NoneType' object is not subscriptable",
+  "pub_v": 41943
+ },
+ {
+  "bucket": "Innovation",
+  "name": "BTFSH",
+  "chain": "ethereum",
+  "tokens": [
+   "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+   "0x45804880de22913dafe09f4980848ece6ecbaf78",
+   "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+  ],
+  "raw": [
+   16824522.01807636,
+   1.2971071239500539e+17,
+   4820733736.704358
+  ],
+  "share": 0.37673341239495445,
+  "pub_v": 18833
+ },
+ {
+  "bucket": "Innovation",
+  "name": "wallet WETH",
+  "chain": "ethereum",
+  "qty": 1.0469337392920617,
+  "sym": "WETH",
+  "pub_q": 1.0469,
+  "pub_v": null,
+  "val": 2667.898538383145,
+  "under": false
+ },
+ {
+  "bucket": "Innovation",
+  "name": "wallet USDC",
+  "chain": "ethereum",
+  "qty": 1162.649513,
+  "sym": "USDC",
+  "pub_q": 1162.65,
+  "pub_v": null,
+  "val": 1162.0937114503515,
+  "under": false
+ },
+ {
+  "bucket": "Innovation",
+  "name": "wallet USDC base",
+  "chain": "base",
+  "qty": 3083.217562,
+  "sym": "USDC",
+  "pub_q": 3083.22,
+  "pub_v": 3082,
+  "val": 3081.7436379328565,
+  "under": false
+ },
+ {
+  "bucket": "LDO",
+  "name": "LDO",
+  "chain": "ethereum",
+  "qty": 350515.3984876646,
+  "sym": "LDO",
+  "pub_q": 350515.4,
+  "pub_v": 137709,
+  "val": 137709.08958034537,
+  "under": true
+ },
+ {
+  "bucket": "BizDev",
+  "name": "USDC eth",
+  "chain": "ethereum",
+  "qty": 22047.283262,
+  "sym": "USDC",
+  "pub_q": 22047.28,
+  "pub_v": 22037,
+  "val": 22036.74361607443,
+  "under": true
+ },
+ {
+  "bucket": "BizDev",
+  "name": "USDC polygon",
+  "chain": "polygon",
+  "qty": 33999.995781,
+  "sym": "USDC",
+  "pub_q": 34000.0,
+  "pub_v": 33984,
+  "val": 33983.742172210914,
+  "under": true
+ },
+ {
+  "bucket": "BizDev",
+  "name": "POL native",
+  "chain": "polygon",
+  "qty": 98942.84999999999,
+  "sym": "POL",
+  "pub_q": 98942.85,
+  "pub_v": 9943,
+  "val": 9951.995478169403,
+  "under": true
+ },
+ {
+  "bucket": "BizDev",
+  "name": "USDC arbitrum",
+  "chain": "arbitrum",
+  "qty": 6670.550726,
+  "sym": "USDC",
+  "pub_q": 6670.55,
+  "pub_v": 6667,
+  "val": 6667.361886724651,
+  "under": true
+ },
+ {
+  "bucket": "BizDev",
+  "name": "USDC base",
+  "chain": "base",
+  "qty": 1382.0,
+  "sym": "USDC",
+  "pub_q": 1382.0,
+  "pub_v": 1381,
+  "val": 1381.3393385254751,
+  "under": true
+ },
+ {
+  "bucket": "Onchain",
+  "name": "USDC",
+  "chain": "ethereum",
+  "qty": 66094.557621,
+  "sym": "USDC",
+  "pub_q": 66094.56,
+  "pub_v": 66152,
+  "val": 66062.9612911187,
+  "under": false
+ },
+ {
+  "bucket": "OpCo",
+  "name": "USDC",
+  "chain": "ethereum",
+  "qty": 763246.419261,
+  "sym": "USDC",
+  "pub_q": 763246.42,
+  "pub_v": 763010,
+  "val": 762881.5513125377,
+  "under": false
+ }
+]

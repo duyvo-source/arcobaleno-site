@@ -1,0 +1,1275 @@
+[
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BAL",
+"token": "0xba100000625a3754423978a60c9317c58a424e3D",
+"qty": 32152.95068685551,
+"today_rate": 0.124004,
+"usd_today_rate": 3987.0944969728307
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USDC",
+"token": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+"qty": 4823.941505,
+"today_rate": 0.999538,
+"usd_today_rate": 4821.71284402469
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WSTETH",
+"token": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+"qty": 0.20263545705297825,
+"today_rate": 2865.69,
+"usd_today_rate": 580.6904029221492
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "PEPE",
+"token": "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+"qty": 65369117.93545411,
+"today_rate": 4.88e-06,
+"usd_today_rate": 319.001295525016
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "TBTC",
+"token": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+"qty": 0.003471108030043228,
+"today_rate": 78193.0,
+"usd_today_rate": 271.4163501931701
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ALCX",
+"token": "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
+"qty": 93.03008524404876,
+"today_rate": 2.09,
+"usd_today_rate": 194.4328781600619
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "SPX",
+"token": "0xE0f63A424a4439cBE457D80E4f4b51aD25b2c56C",
+"qty": 459.36406804,
+"today_rate": 0.355776,
+"usd_today_rate": 163.43071067099905
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "QI",
+"token": "0x559b7bfC48a5274754b08819F75C5F27aF53D53b",
+"qty": 29238.837180483497,
+"today_rate": 0.00508663,
+"usd_today_rate": 148.72714636736276
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "VETH",
+"token": "0x38D64ce1Bdf1A9f24E0Ec469C9cAde61236fB4a0",
+"qty": 0.06140048388948389,
+"today_rate": 2412.43,
+"usd_today_rate": 148.12436934950762
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "OLAS",
+"token": "0x0001A500A6B18995B03f44bb040A5fFc28E45CB0",
+"qty": 2046.4572734444778,
+"today_rate": 0.05794,
+"usd_today_rate": 118.57173442337304
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ETHX",
+"token": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
+"qty": 0.04661396190838979,
+"today_rate": 2525.6,
+"usd_today_rate": 117.72822219582925
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "RPL",
+"token": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
+"qty": 78.98292607917263,
+"today_rate": 1.47,
+"usd_today_rate": 116.10490133638376
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "B-80BAL-20WETH",
+"token": "0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56",
+"qty": 129.5217148730798,
+"today_rate": 0.778732,
+"usd_today_rate": 100.86270406654316
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "CVC",
+"token": "0x41e5560054824eA6B0732E656E3Ad64E20e94E45",
+"qty": 2937.69136737,
+"today_rate": 0.02204974,
+"usd_today_rate": 64.775330850753
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USR",
+"token": "0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+"qty": 894.1668819436519,
+"today_rate": 0.066196,
+"usd_today_rate": 59.19027091714199
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "DNT",
+"token": "0x0AbdAce70D3790235af448C88547603b945604ea",
+"qty": 7291.4539566468675,
+"today_rate": 0.00721673,
+"usd_today_rate": 52.62045451255215
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "APU",
+"token": "0x594DaaD7D77592a2b97b725A7AD59D7E188b5bFa",
+"qty": 4269432.167019641,
+"today_rate": 1.172e-05,
+"usd_today_rate": 50.03774499747019
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WDAG",
+"token": "0x2E3CFE45E3EE7C017277f22e35d2f29edC99d570",
+"qty": 9661.52945103,
+"today_rate": 0.00455631,
+"usd_today_rate": 44.020923253022495
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "SD",
+"token": "0x30D20208d987713f46DFD34EF128Bb16C404D10f",
+"qty": 379.1846957330679,
+"today_rate": 0.112083,
+"usd_today_rate": 42.50015825184945
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "RDNT",
+"token": "0x137dDB47Ee24EaA998a535Ab00378d6BFa84F893",
+"qty": 85379.27269151628,
+"today_rate": 0.00048298,
+"usd_today_rate": 41.23648112454853
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ST-YETH",
+"token": "0x583019fF0f430721aDa9cfb4fac8F06cA104d0B4",
+"qty": 0.5744706245742406,
+"today_rate": 60.89,
+"usd_today_rate": 34.97951633032551
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WETH",
+"token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+"qty": 0.014250076028724752,
+"today_rate": 2295.8,
+"usd_today_rate": 32.71532454674629
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "VLR",
+"token": "0x4e107a0000DB66f0E9Fd2039288Bf811dD1f9c74",
+"qty": 57590.99037929857,
+"today_rate": 0.00038682,
+"usd_today_rate": 22.277346898520275
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ENJ",
+"token": "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
+"qty": 879.8866970089134,
+"today_rate": 0.02363373,
+"usd_today_rate": 20.795004627700465
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "APW",
+"token": "0x4104b135DBC9609Fc1A9490E61369036497660c8",
+"qty": 815.7016629781938,
+"today_rate": 0.01979195,
+"usd_today_rate": 16.14432652858126
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "$ADS",
+"token": "0x3106a0a076BeDAE847652F42ef07FD58589E001f",
+"qty": 23539.98525055994,
+"today_rate": 0.00064443,
+"usd_today_rate": 15.169872695018343
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BETS",
+"token": "0x94025780a1aB58868D9B2dBBB775f44b32e8E6e5",
+"qty": 491027.1524026722,
+"today_rate": 2.415e-05,
+"usd_today_rate": 11.858305730524535
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "O",
+"token": "0xb53ecF1345caBeE6eA1a65100Ebb153cEbcac40f",
+"qty": 3179394.2449863288,
+"today_rate": 1.27e-06,
+"usd_today_rate": 4.037830691132637
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "POLY",
+"token": "0x9992eC3cF6A55b00978cdDF2b27BC6882d88D1eC",
+"qty": 1690.011893403485,
+"today_rate": 0.00100531,
+"usd_today_rate": 1.6989858565574574
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USH",
+"token": "0xE60779CC1b2c1d0580611c526a8DF0E3f870EC48",
+"qty": 6311.544959562409,
+"today_rate": 0.00019705,
+"usd_today_rate": 1.2436899342817727
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "KEY",
+"token": "0x4CC19356f2D37338b9802aa8E8fc58B0373296E7",
+"qty": 128907.7199443066,
+"today_rate": 6.21e-06,
+"usd_today_rate": 0.800516940854144
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "TKX",
+"token": "0x667102BD3413bFEaa3Dffb48fa8288819E480a88",
+"qty": 0.001,
+"today_rate": 0.171556,
+"usd_today_rate": 0.00017155599999999998
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ERC20",
+"token": "0x8360aD17a6Aa8E9c1A1EE37B882ac7aF7Ef9a3Ab",
+"qty": 1.35011986955872e+58,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ERC20",
+"token": "0x57906051519A8F22374fc0A2736ABF2342623ee6",
+"qty": 1.35011986955872e+58,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ERC20",
+"token": "0x25983f12C6a0C1a4793c01C9911B1F5F01E71a3f",
+"qty": 1.35011986955872e+58,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ERC20",
+"token": "0xCbcCb13F219DaB192aCE18f1890b304c334B47BD",
+"qty": 1.35011986955872e+58,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ERC20",
+"token": "0xe3Fa941cd17e31693ed643CeD89Aa968DcaA4648",
+"qty": 1.35011986955872e+58,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "RVX",
+"token": "0x03DC2Da9091Beb261B80527fd56Be5A74dd95600",
+"qty": 123456789.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "EPOCH",
+"token": "0x97D0CfEB4FdE54B430307c9482d6f79C761Fe9B6",
+"qty": 502623.0971483125,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "GRAIN",
+"token": "0xF88Baf18FAB7e330fa0C4F83949E23F52FECECce",
+"qty": 195248.59094465256,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ZRS",
+"token": "0x75e88B8c2d34a52a6d36deAda664D7dc9116e4EF",
+"qty": 44121.81027987829,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "OATH",
+"token": "0x6F9C26Fa731C7Ea4139Fa669962Cf8F1CE6C8b0B",
+"qty": 41278.22074243044,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "MIMO",
+"token": "0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc",
+"qty": 21912.635693965254,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "TEMP",
+"token": "0xA36FDBBAE3c9d55a1d67EE5821d53B50B63A1aB9",
+"qty": 20691.905047382486,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "GEM",
+"token": "0x0447D3454b25935eeD47F65b4Bd22b9b23bE326a",
+"qty": 19772.332663761918,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "KEP",
+"token": "0x8E3A59427B1D87Db234Dd4ff63B25E4BF94672f4",
+"qty": 13388.500644737716,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ROOT",
+"token": "0x8d2658E0F52dF7875A7b3e58FC12F82F5e34dd61",
+"qty": 9267.947817071672,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ACX   [via www.across.cash]",
+"token": "0x527466d1e2031d0508f40218283748E2fA3b3054",
+"qty": 4891.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "TruMATIC-MATIC",
+"token": "0x74E5E53056526b2609d82E85486005EF2A2Db001",
+"qty": 2145.554606136103,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ShezUSD-sDAI",
+"token": "0xac035537edf62beEF0c7208181379F89deF22119",
+"qty": 1436.30443307965,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "aCRV",
+"token": "0x2b95A1Dcc3D405535f9ed33c219ab38E8d7e0884",
+"qty": 1261.151233994617,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ePyvDAI-16SEP22",
+"token": "0xCCE00da653eB50133455D4075fE8BcA36750492c",
+"qty": 846.6322498985867,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ePyvCurveLUSD-29APR22",
+"token": "0x0740A6CfB9468B8b53070C0B327099293DCCB82d",
+"qty": 768.3213430103738,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ePyvCurve-MIM-29APR22",
+"token": "0xC63958D9D01eFA6B8266b1df3862c6323CbDb52B",
+"qty": 691.7114810558313,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "SDEUSD",
+"token": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+"qty": 566.1693085541604,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "PSDN",
+"token": "0xA5B947687163FE88C3e6af5b17Ae69896F4abccf",
+"qty": 454.96514171967004,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ICE",
+"token": "0xf16e81dce15B08F326220742020379B855B87DF9",
+"qty": 427.7736884511103,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "GVEC",
+"token": "0xb2D007293a421471586D6BC3FBfEB1990fdFa2e6",
+"qty": 198.45256011598747,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ARCH",
+"token": "0x73C69d24ad28e2d43D03CBf35F79fE26EBDE1011",
+"qty": 150.30795334569004,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ECLP-R-sDAI",
+"token": "0x52b69d6b3eB0BD6b2b4A48a316Dfb0e1460E67E4",
+"qty": 68.39362118794436,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "PEPEBET",
+"token": "0x33Cf519030235F75A13F29aFcFF5D6ff4Fd10350",
+"qty": 31.2356989,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "NEXI",
+"token": "0xF77290d7D1D4087b014eAc54b9539504252ebF44",
+"qty": 2.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "saETH/wstETH",
+"token": "0x38fe2B73612527eFf3C5aC3bF2Dcb73784aD9274",
+"qty": 0.8300005951034508,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "shezETH/wstETH",
+"token": "0xDb1f2e1655477d08FB0992f82EEDe0053B8Cd382",
+"qty": 0.40913008859113076,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "DVSTETH",
+"token": "0x5E362eb2c0706Bd1d134689eC75176018385430B",
+"qty": 0.3822800633199417,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "qETH/WETH",
+"token": "0x40C806394d03d350420d13CD7d1DE1C806f34956",
+"qty": 0.28646006743454044,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "InstETH/wstETH",
+"token": "0xE3E0022d25194431a98e8bf5034D2617C96e1D44",
+"qty": 0.2599852468404472,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "aETH/wstETH",
+"token": "0x47a4f5440Ab097CF3ec7abEeDF1afeCC5749a4E2",
+"qty": 0.2428129100850003,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "MEVETH",
+"token": "0x24Ae2dA0f361AA4BE46b48EB19C91e02c5e4f27E",
+"qty": 0.2336559814937519,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "trenSTETH",
+"token": "0x4216d5900a6109bba48418b5e2AB6cc4e61Cf477",
+"qty": 0.22844960652013194,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "waWETH",
+"token": "0x59463BB67dDD04fe58ED291ba36C26d99A39fbc6",
+"qty": 0.17327536011873065,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "UNSHETH",
+"token": "0x0Ae38f7E10A43B5b2fB064B42a2f4514cbA909ef",
+"qty": 0.04116957716587956,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "YFIB",
+"token": "0x03829f5675F3b51D0F8C2A74417a757625aCF22f",
+"qty": 0.02,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "UCAP",
+"token": "0xbaA70614C7AAfB568a93E62a98D55696bcc85DFE",
+"qty": 0.01,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "yRise",
+"token": "0x6051C1354Ccc51b4d561e43b02735DEaE64768B8",
+"qty": 1e-06,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "FAM",
+"token": "0x9D24364b97270961b2948734aFe8d58832Efd43a",
+"qty": 3e-09,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "DIXT",
+"token": "0x43e6228b5bF22Eab754486082cA91FdD8585521A",
+"qty": 5e-12,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "QCORE",
+"token": "0x82866b4A71BA9d930Fe338C386B6A45a7133eb36",
+"qty": 2e-05,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "ethereum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ACX",
+"token": "0x44108f0223A3C3028F5Fe7AEC7f9bb2E66beF82F",
+"qty": 22113.78543149203,
+"today_rate": 0.04328761,
+"usd_today_rate": 957.2529193821086
+},
+{
+"chain": "ethereum",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "DAI",
+"token": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+"qty": 16.662491849269706,
+"today_rate": 1.0,
+"usd_today_rate": 16.662491849269706
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "EURA",
+"token": "0x4b1E2c2762667331Bc91648052F646d1b0d35984",
+"qty": 91.1899888276068,
+"today_rate": 1.12,
+"usd_today_rate": 102.13278748691963
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BCSPX",
+"token": "0x1e2C4fb7eDE391d116E6B41cD0608260e8801D59",
+"qty": 0.122564228039289,
+"today_rate": 679.39,
+"usd_today_rate": 83.26891088761255
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "SDAI",
+"token": "0xaf204776c7245bF4147c2612BF6e5972Ee483701",
+"qty": 52.21810881570537,
+"today_rate": 1.26,
+"usd_today_rate": 65.79481710778877
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "EURE",
+"token": "0x420CA0f9B9b604cE0fd9C18EF134C705e5Fa3430",
+"qty": 56.4707290087205,
+"today_rate": 1.12,
+"usd_today_rate": 63.24721648976696
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "EURE",
+"token": "0xcB444e90D8198415266c6a2724b7900fb12FC56E",
+"qty": 56.4707290087205,
+"today_rate": 1.12,
+"usd_today_rate": 63.24721648976696
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WETH",
+"token": "0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1",
+"qty": 0.014972498920052323,
+"today_rate": 2284.35,
+"usd_today_rate": 34.20242790802153
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "AURA",
+"token": "0x1509706a6c66CA549ff0cB464de88231DDBe213B",
+"qty": 377.9844524537872,
+"today_rate": 0.02674708,
+"usd_today_rate": 10.109980388537641
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "GIV",
+"token": "0x4f4F9b8D5B4d0Dc10506e5551B0513B61fD59e75",
+"qty": 24592.96986778038,
+"today_rate": 0.0004046,
+"usd_today_rate": 9.950315608503942
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BAL",
+"token": "0x7eF541E2a22058048904fE5744f9c7E4C57AF717",
+"qty": 31.64387549199029,
+"today_rate": 0.123009,
+"usd_today_rate": 3.8924814803942334
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "s-METESTSUP",
+"token": "0x7147A7405fCFe5CFa30c6d5363f9f357a317d082",
+"qty": 8785.478886000117,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "bb-ag-WXDAI",
+"token": "0x41211BBa6d37F5a74b22e667533F080C7C7f3F13",
+"qty": 324.46837894989295,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "crvUSD/sDAI",
+"token": "0xc9F00C3a713008DDf69b768d90d4978549bFDF94",
+"qty": 76.80939040539573,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "STABAL3",
+"token": "0x2086f52651837600180dE173B09470F54EF74910",
+"qty": 54.923309871336635,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "50bbagGNO-50bbagWETH",
+"token": "0xF48f01DCB2CbB3ee1f6AaB0e742c2D3941039d56",
+"qty": 0.07875659546182004,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "cagWBTC",
+"token": "0x110e2D3d4C94596f5698C753D5cd43221D3Ec78b",
+"qty": 0.01921181,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "XDAI",
+"token": "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d",
+"qty": 71.43339422012936,
+"today_rate": 0.999974,
+"usd_today_rate": 71.43153695187964
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "GNO",
+"token": "0x9C58BAcC331c9aa871AFD802DB6379a98e80CEdb",
+"qty": 1.0455951937935533,
+"today_rate": 103.91,
+"usd_today_rate": 108.64779658708811
+},
+{
+"chain": "gnosis",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WSTETH",
+"token": "0x6C76971f98945AE98dD7d4DFcA8711ebea946eA6",
+"qty": 0.036176999804264254,
+"today_rate": 2847.9,
+"usd_today_rate": 103.02847774256418
+},
+{
+"chain": "gnosis",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "BellaFi at https://bellafi.net",
+"token": "0xD0D8bff9335c90bd5FbFa0a06b5403843316fE61",
+"qty": 5000000.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "Claim USDC at https://cUSDC.cc",
+"token": "0x8C2Ce7793d5A986919bc7b77DF5D3b057B570321",
+"qty": 1000.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "worldcoin.pm",
+"token": "0x0fbbbc7d96FD274f6D7FD1f782702b99b725748C",
+"qty": 290.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "gnosis",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "Claim $sDAI rewards at https://sdai.app",
+"token": "0x2d0A3c3EA41700B451560E3A1a094cBf6323cCe4",
+"qty": 72500.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USDC",
+"token": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+"qty": 186.32054,
+"today_rate": 0.999622,
+"usd_today_rate": 186.25011083588
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "FBOMB",
+"token": "0x74ccbe53F77b08632ce0CB91D3A545bF6B8E0979",
+"qty": 3498.170621004504,
+"today_rate": 0.0145532,
+"usd_today_rate": 50.90957668160275
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BEETS-LEGACY",
+"token": "0xb4Bc46bc6cB217B59ea8F4530BaE26Bf69F677f0",
+"qty": 77.57921863618621,
+"today_rate": 0.0067498,
+"usd_today_rate": 0.5236442099505297
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "LARRY",
+"token": "0xad984fBd3Fb10d0B47D561bE7295685aF726fDb3",
+"qty": 1000000000.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "imxB",
+"token": "0x1d61313ce48Fa3C60DF3a4B567378B954fE6f9A6",
+"qty": 53219.7913195239,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "imxB",
+"token": "0xC70134c6858F3fe09d051f05dCDda215AcE5c153",
+"qty": 52595.776997904766,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "optibase.website \ud83d\udfe2",
+"token": "0x1c835F0118Ba23aceD5f5Ce2d866907658b2B31D",
+"qty": 7198.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "optibase.website \ud83d\udfe2",
+"token": "0x0F8978C1468C20Bb367115f7B796B17D7E8a02AE",
+"qty": 7198.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BEETS",
+"token": "0x97513e975a7fA9072c72C92d8000B0dB90b163c5",
+"qty": 3513.053842403343,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "OATH",
+"token": "0x39FdE572a18448F8139b7788099F0a0740f51205",
+"qty": 1352.7993997526971,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BICO",
+"token": "0xd6909e9e702024eb93312B989ee46794c0fB1C9D",
+"qty": 126.41616339616021,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "bb-dolbil",
+"token": "0x62cF35DB540152e94936dE63eFc90d880D4e241B",
+"qty": 52.228146895497666,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "Lilpepe",
+"token": "0x6e86024b10288259ecc2D5CD3fff3B5755B951a4",
+"qty": 10.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "PICKLE",
+"token": "0x0c5b4c92c948691EEBf185C17eeB9c230DC019E9",
+"qty": 7.527658008262968,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "SFRAX",
+"token": "0x2Dd1B4D4548aCCeA497050619965f91f78b3b532",
+"qty": 6.935858881053603,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "1",
+"token": "0xF5521ca6A3295bAbb4b2729931Cd358BE35da7e3",
+"qty": 1.6532256726581398,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "bpt-unibtc-wbtc",
+"token": "0x408e11EC9B1751c3d00589b61caE484e07FB9e44",
+"qty": 0.000125573340665074,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WGC",
+"token": "0x67631FF69130ea1a6c4feaA4A0Abf0a1E0148be7",
+"qty": 1.0,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "ACHIVX",
+"token": "0xfAf87e196A29969094bE35DfB0Ab9d0b8518dB84",
+"qty": 0.001,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WSTETH",
+"token": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+"qty": 0.002263242457680055,
+"today_rate": 2842.56,
+"usd_today_rate": 6.433402480503016
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "OVN",
+"token": "0x3b08fcd15280e7B5A6e404c4abb87F7C774D1B2e",
+"qty": 5.823e-15,
+"today_rate": 1.18,
+"usd_today_rate": 6.87114e-15
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "NFTE",
+"token": "0xc96f4F893286137aC17e07Ae7F217fFca5db3AB6",
+"qty": 74417.75667291236,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "SFRAX",
+"token": "0x2Dd1B4D4548aCCeA497050619965f91f78b3b532",
+"qty": 8.25419e-13,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "AURA",
+"token": "0x1509706a6c66CA549ff0cB464de88231DDBe213B",
+"qty": 1.7399e-13,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "Visit https://op-claim.com to claim rewards",
+"token": "0xA069a0ec5d506D788ed0c1a0E9e202598C702dEb",
+"qty": 2.678e-15,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "bpt-ankrgalaharm",
+"token": "0x004700ba0a4f5f22e1E78a277fCA55e36F47E09C",
+"qty": 2.95e-16,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x94Dd9C6152a2A0BBcB52d3297b723A6F01D5F9f7",
+"sym": "bpt-fraxethe",
+"token": "0xA71021492a3966EeC735Ed1B505aFa097c7cFe6f",
+"qty": 9.7e-17,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "USDC",
+"token": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+"qty": 236.933868,
+"today_rate": 0.999622,
+"usd_today_rate": 236.84430699789598
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "WRSETH",
+"token": "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1",
+"qty": 0.002119071980746852,
+"today_rate": 2355.63,
+"usd_today_rate": 4.991749530006707
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "WETH",
+"token": "0x4200000000000000000000000000000000000006",
+"qty": 2.27090531e-10,
+"today_rate": 2282.35,
+"usd_today_rate": 5.183000734278499e-07
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "sfrxUSD",
+"token": "0x5Bff88cA1442c2496f7E475E9e7786383Bc070c0",
+"qty": 3.628660514559542,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "waOptrETH",
+"token": "0x8e6a81b9d541A0CeA090818B62C4B2DE7f2A2Cf7",
+"qty": 0.001513076293164222,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "waOptwstETH",
+"token": "0xbaF95bB30CDab3d5b7a11B67EDeF5631bD62be86",
+"qty": 0.000573441391261379,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "sfrxETH",
+"token": "0x3Ec3849C33291a9eF4c5dB86De593EB4A37fDe45",
+"qty": 0.001384390092570121,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "optimism",
+"vault": "0x1D8e78300DB118dcE5d8176c93BeF1D6028d74EB",
+"sym": "ACHIVX",
+"token": "0xfAf87e196A29969094bE35DfB0Ab9d0b8518dB84",
+"qty": 0.001,
+"today_rate": 0.0,
+"usd_today_rate": 0.0
+},
+{
+"chain": "arbitrum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USDC",
+"token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+"qty": 818.362014,
+"direct": true
+},
+{
+"chain": "arbitrum",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WETH",
+"token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+"qty": 0.020663093516837094,
+"direct": true
+},
+{
+"chain": "base",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "BAL",
+"token": "0x4158734D47Fc9692176B5085E0F52ee0Da5d47F1",
+"qty": 112.26079077289533,
+"direct": true
+},
+{
+"chain": "base",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "USDC",
+"token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+"qty": 562.668542,
+"direct": true
+},
+{
+"chain": "base",
+"vault": "0x9e5D6427D2cdaDC68870197b099C2Df535Ec3c97",
+"sym": "WETH",
+"token": "0x4200000000000000000000000000000000000006",
+"qty": 1e-18,
+"direct": true
+}
+]
