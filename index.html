@@ -206,6 +206,7 @@
     --wrong-bg:#F3E2DE;
     --right:#1B5849;
     --right-bg:#DDE9E4;
+    --sig:#C8236A;--sig-bg:#F5C9DC;
     --shadow:0 1px 0 rgba(22,25,26,.06);
     --display:"Archivo","Helvetica Neue",Arial,sans-serif;
     --body:"Source Serif 4",Georgia,"Times New Roman",serif;
@@ -224,6 +225,7 @@
       --wrong-bg:#2E1C18;
       --right:#6FC3AC;
       --right-bg:#132A25;
+      --sig:#F06AA0;--sig-bg:#5A2440;
       --shadow:0 1px 0 rgba(0,0,0,.4);
     }
   }
@@ -239,6 +241,7 @@
     --wrong-bg:#2E1C18;
     --right:#6FC3AC;
     --right-bg:#132A25;
+    --sig:#F06AA0;--sig-bg:#5A2440;
     --shadow:0 1px 0 rgba(0,0,0,.4);
   }
 
@@ -403,7 +406,9 @@
   strong{font-weight:600}
   em{font-style:italic}
   code,.m{font-family:var(--mono);font-size:.87em;font-variant-numeric:tabular-nums}
-  a{color:var(--right);text-decoration-thickness:1px;text-underline-offset:2px}
+  a{color:var(--ink);text-decoration-color:var(--sig);text-decoration-thickness:2px;text-underline-offset:3px}
+  a:hover{color:var(--sig)}
+  mark.sig{background:linear-gradient(transparent 60%,var(--sig-bg) 60%);color:inherit;padding:0 .04em}
   a:focus-visible{outline:2px solid var(--right);outline-offset:3px;border-radius:2px}
 
   /* ---------- case entries ---------- */
@@ -549,14 +554,14 @@
   a.mailto{
     display:inline-flex;align-items:baseline;gap:10px;
     font-family:var(--mono);font-size:clamp(.95rem,2.2vw,1.12rem);font-weight:600;
-    color:var(--paper);background:var(--right);
+    color:var(--paper);background:var(--sig);
     padding:13px 20px;text-decoration:none;
-    border:1px solid var(--right);white-space:nowrap;
+    border:1px solid var(--sig);white-space:nowrap;
     transition:background .12s ease,color .12s ease;
   }
   a.mailto .arrow{font-weight:400;opacity:.75}
-  a.mailto:hover,a.mailto:focus-visible{background:var(--paper);color:var(--right)}
-  a.mailto:focus-visible{outline:2px solid var(--right);outline-offset:3px}
+  a.mailto:hover,a.mailto:focus-visible{background:var(--paper);color:var(--sig)}
+  a.mailto:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
   .contact-note{
     font-family:var(--mono);font-size:12px;color:var(--faint);
     margin-top:14px;line-height:1.7;
@@ -724,7 +729,7 @@
       <span>Independent checks</span><span class="dot">/</span>
       <span>Fixed scope, fixed price</span>
     </div>
-    <div class="hero-row"><h1>Know the number is real before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-d.png" alt="" width="480" height="480"></div>
+    <div class="hero-row"><h1>Know the number is <mark class="sig">real</mark> before the money goes in.</h1><img class="hero-mascot" src="/img/mascot-d.png" alt="" width="480" height="480"></div>
     <p class="standfirst">
       We check trading strategies and yield claims, so the number you vote on, invest on or raise on
       is one that holds up. <strong>That is the whole job.</strong>
