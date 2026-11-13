@@ -1,0 +1,14 @@
+OC-1 vault return  ·  oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)
+vault  0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b on ethereum  (syrupUSDC, asset USDC 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48)
+kind   standard (ERC-4626)
+period 2026-05-15 to 2026-09-05 (113 days, 113 steps of 1 day(s), 00:00 UTC)
+one share: 1.16425564 -> 1.18156858 USDC
+return:    1.4870% over the period = 4.887% a year (in USDC, after the vault's fees)
+deepest fall in share value: 0.000000%
+value changed on 113 of 113 steps; longest unchanged stretch 0 days
+largest per-share vs totals gap: 0.00000% (2026-05-15)
+second endpoint (https://gateway.tenderly.co/public/mainnet): 13/13 re-read blocks identical
+Morpho cross-check: did not run ([{'message': 'No results matching given parameters', 'status': 'NOT_FOUND', 'extensions': {}}])
+
+[CLEAN] no drop, no single-day jump, no long flat stretch, totals agree, sources agree, enough history.
+Not covered: dollar value, off-chain legs, per-depositor results (never read).

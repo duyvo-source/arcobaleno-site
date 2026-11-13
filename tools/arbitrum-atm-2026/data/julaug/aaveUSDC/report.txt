@@ -1,0 +1,14 @@
+OC-1 vault return  ·  oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)
+vault  0x7F6501d3B98eE91f9b9535E4b0ac710Fb0f9e0bc on arbitrum  (waArbUSDCn, asset USDC 0xaf88d065e77c8cc2239327c5edb3a432268e5831)
+kind   standard (ERC-4626)
+period 2026-05-15 to 2026-09-05 (113 days, 113 steps of 1 day(s), 00:00 UTC)
+one share: 1.16840054 -> 1.17744007 USDC
+return:    0.7737% over the period = 2.522% a year (in USDC, after the vault's fees)
+deepest fall in share value: 0.000000%
+value changed on 113 of 113 steps; longest unchanged stretch 0 days
+largest per-share vs totals gap: -0.00000% (2026-08-25)
+second endpoint: none known for arbitrum, so the chain reading rests on one endpoint (set ARC_RPC2_ARBITRUM)
+Morpho cross-check: did not run ([{'message': 'No results matching given parameters', 'status': 'NOT_FOUND', 'extensions': {}}])
+
+[CLEAN] no drop, no single-day jump, no long flat stretch, totals agree, sources agree, enough history.
+Not covered: dollar value, off-chain legs, per-depositor results (never read).

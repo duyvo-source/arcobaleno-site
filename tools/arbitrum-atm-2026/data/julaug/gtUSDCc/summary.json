@@ -1,0 +1,68 @@
+{
+ "version": "oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)",
+ "vault": "0x7e97fa6893871A2751B5fE961978DCCb2c201E65",
+ "chain": "arbitrum",
+ "rpc": "https://gateway.tenderly.co/public/arbitrum",
+ "meta": {
+  "asset": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+  "vault_decimals": 18,
+  "asset_decimals": 6,
+  "vault_symbol": "gtUSDCc",
+  "asset_symbol": "USDC",
+  "async": false,
+  "kind": "standard (ERC-4626)"
+ },
+ "step_days": 1,
+ "rpc_calls": 1854,
+ "findings": [],
+ "start": "2026-05-15",
+ "end": "2026-09-05",
+ "days": 113,
+ "start_value": 1.033134936943,
+ "end_value": 1.046708617038,
+ "total_return": 0.013138341962535716,
+ "steps": 113,
+ "annualised": 0.043093190511059865,
+ "tiny_falls": [],
+ "updates": 113,
+ "longest_flat": {
+  "days": 0,
+  "from": null,
+  "to": null
+ },
+ "max_drawdown": 0.0,
+ "largest_step": {
+  "date": "2026-08-02",
+  "return": 0.0003198263382224731,
+  "share_of_total": 0.0244986234718224
+ },
+ "max_mismatch": {
+  "date": "2026-08-30",
+  "gap": 9.827868175715793e-06
+ },
+ "assets_peak": [
+  "2026-05-19",
+  3641731.28279
+ ],
+ "assets_end": [
+  "2026-09-05",
+  840308.856517
+ ],
+ "compare": [
+  {
+   "line": "second endpoint: none known for arbitrum, so the chain reading rests on one endpoint (set ARC_RPC2_ARBITRUM)"
+  },
+  {
+   "source": "morpho",
+   "matched_dates": 114,
+   "of": 114,
+   "worst_gap": [
+    "2026-06-19",
+    9.450218385609332e-13
+   ],
+   "return_ours": 0.013138341962535716,
+   "return_theirs": 0.01313834196216801,
+   "line": "Morpho cross-check: 114/114 dates matched; largest gap 9.45e-13 (2026-06-19); return 2026-05-15..2026-09-05: ours 1.31383%, Morpho's 1.31383%"
+  }
+ ]
+}

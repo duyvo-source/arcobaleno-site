@@ -1,0 +1,59 @@
+{
+ "version": "oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)",
+ "vault": "0x940098b108fB7D0a7E374f6eDED7760787464609",
+ "chain": "arbitrum",
+ "rpc": "https://gateway.tenderly.co/public/arbitrum",
+ "meta": {
+  "asset": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+  "vault_decimals": 18,
+  "asset_decimals": 6,
+  "vault_symbol": "sUSDC",
+  "asset_symbol": "USDC",
+  "async": false,
+  "kind": "standard (ERC-4626)"
+ },
+ "step_days": 1,
+ "rpc_calls": 1862,
+ "findings": [],
+ "start": "2026-05-15",
+ "end": "2026-09-05",
+ "days": 113,
+ "start_value": 1.09649771081,
+ "end_value": 1.108487940785,
+ "total_return": 0.01093502508650257,
+ "steps": 113,
+ "annualised": 0.03577862418919575,
+ "tiny_falls": [],
+ "updates": 113,
+ "longest_flat": {
+  "days": 0,
+  "from": null,
+  "to": null
+ },
+ "max_drawdown": 0.0,
+ "largest_step": {
+  "date": "2026-05-22",
+  "return": 9.82230512827087e-05,
+  "share_of_total": 0.009031004770258083
+ },
+ "max_mismatch": {
+  "date": "2026-07-13",
+  "gap": 8.952838470577262e-13
+ },
+ "assets_peak": [
+  "2026-09-05",
+  234785746.251163
+ ],
+ "assets_end": [
+  "2026-09-05",
+  234785746.251163
+ ],
+ "compare": [
+  {
+   "line": "second endpoint: none known for arbitrum, so the chain reading rests on one endpoint (set ARC_RPC2_ARBITRUM)"
+  },
+  {
+   "line": "Morpho cross-check: did not run ([{'message': 'No results matching given parameters', 'status': 'NOT_FOUND', 'extensions': {}}])"
+  }
+ ]
+}

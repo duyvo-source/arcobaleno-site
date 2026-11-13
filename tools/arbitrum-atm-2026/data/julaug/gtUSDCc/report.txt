@@ -1,0 +1,14 @@
+OC-1 vault return  ·  oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)
+vault  0x7e97fa6893871A2751B5fE961978DCCb2c201E65 on arbitrum  (gtUSDCc, asset USDC 0xaf88d065e77c8cc2239327c5edb3a432268e5831)
+kind   standard (ERC-4626)
+period 2026-05-15 to 2026-09-05 (113 days, 113 steps of 1 day(s), 00:00 UTC)
+one share: 1.03313494 -> 1.04670862 USDC
+return:    1.3138% over the period = 4.309% a year (in USDC, after the vault's fees)
+deepest fall in share value: 0.000000%
+value changed on 113 of 113 steps; longest unchanged stretch 0 days
+largest per-share vs totals gap: 0.00098% (2026-08-30)
+second endpoint: none known for arbitrum, so the chain reading rests on one endpoint (set ARC_RPC2_ARBITRUM)
+Morpho cross-check: 114/114 dates matched; largest gap 9.45e-13 (2026-06-19); return 2026-05-15..2026-09-05: ours 1.31383%, Morpho's 1.31383%
+
+[CLEAN] no drop, no single-day jump, no long flat stretch, totals agree, sources agree, enough history.
+Not covered: dollar value, off-chain legs, per-depositor results (never read).

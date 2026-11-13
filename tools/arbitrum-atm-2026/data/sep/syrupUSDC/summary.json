@@ -1,0 +1,67 @@
+{
+ "version": "oc1 0.2 (2026-10-06, phase 1: chains, async vaults, second endpoint)",
+ "vault": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+ "chain": "ethereum",
+ "rpc": "https://eth.drpc.org",
+ "meta": {
+  "asset": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+  "vault_decimals": 6,
+  "asset_decimals": 6,
+  "vault_symbol": "syrupUSDC",
+  "asset_symbol": "USDC",
+  "async": false,
+  "kind": "standard (ERC-4626)"
+ },
+ "step_days": 1,
+ "rpc_calls": 785,
+ "findings": [
+  [
+   "THIN",
+   "only 62 days of history: too short to say much about a track record"
+  ]
+ ],
+ "start": "2026-08-01",
+ "end": "2026-10-02",
+ "days": 62,
+ "start_value": 1.176169661479,
+ "end_value": 1.18591044923,
+ "total_return": 0.008281787968201115,
+ "steps": 62,
+ "annualised": 0.04978791671831129,
+ "tiny_falls": [],
+ "updates": 62,
+ "longest_flat": {
+  "days": 0,
+  "from": null,
+  "to": null
+ },
+ "max_drawdown": 0.0,
+ "largest_step": {
+  "date": "2026-09-19",
+  "return": 0.00015073531872733525,
+  "share_of_total": 0.018274705157725397
+ },
+ "max_mismatch": {
+  "date": "2026-09-26",
+  "gap": 8.182343691487404e-13
+ },
+ "assets_peak": [
+  "2026-08-07",
+  1113331038.124501
+ ],
+ "assets_end": [
+  "2026-10-02",
+  1008491717.554106
+ ],
+ "compare": [
+  {
+   "checked": 13,
+   "endpoint": "https://gateway.tenderly.co/public/mainnet",
+   "bad": [],
+   "line": "second endpoint (https://gateway.tenderly.co/public/mainnet): 13/13 re-read blocks identical"
+  },
+  {
+   "line": "Morpho cross-check: did not run ([{'message': 'No results matching given parameters', 'status': 'NOT_FOUND', 'extensions': {}}])"
+  }
+ ]
+}
