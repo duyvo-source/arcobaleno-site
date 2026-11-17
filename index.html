@@ -6,8 +6,7 @@
 <title>Independent yield and trading checks — Arcobaleno Research</title>
 <meta name="description" content="We rebuild reported returns from public data and the code behind them, for DAO treasuries and trading strategies. Fixed price, and you get the scripts.">
 <link rel="canonical" href="https://arcobaleno.cloud/">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#101413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Arcobaleno Research">
@@ -213,40 +212,6 @@
     --body:"Source Serif 4",Georgia,"Times New Roman",serif;
     --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --paper:#101413;
-      --raised:#171C1A;
-      --ink:#E6EAE7;
-      --muted:#9BA5A0;
-      --faint:#78837E;
-      --rule:#28302D;
-      --rule-strong:#3A443F;
-      --wrong:#E8836C;
-      --wrong-bg:#2E1C18;
-      --right:#6FC3AC;
-      --right-bg:#132A25;
-      --near:#E2B861;--near-bg:#3A2D12;
-      --sig:#F06AA0;--sig-bg:#5A2440;
-      --shadow:0 1px 0 rgba(0,0,0,.4);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#101413;
-    --raised:#171C1A;
-    --ink:#E6EAE7;
-    --muted:#9BA5A0;
-    --faint:#78837E;
-    --rule:#28302D;
-    --rule-strong:#3A443F;
-    --wrong:#E8836C;
-    --wrong-bg:#2E1C18;
-    --right:#6FC3AC;
-    --right-bg:#132A25;
-    --near:#E2B861;--near-bg:#3A2D12;
-    --sig:#F06AA0;--sig-bg:#5A2440;
-    --shadow:0 1px 0 rgba(0,0,0,.4);
-  }
 
   *{box-sizing:border-box}
   body{
@@ -368,14 +333,6 @@
      all five are declared so the scale is documented and swappable in one place. */
   :root{
     --mark1:#0E2C4A; --mark2:#15477B; --mark3:#1C639E; --mark4:#3C88C2; --mark5:#6FB2E0;
-  }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
-    }
-  }
-  :root[data-theme="dark"]{
-    --mark1:#2E5F92; --mark2:#3B7EB4; --mark3:#4C9DD0; --mark4:#6CBAE6; --mark5:#96D5F2;
   }
   .brand{display:flex;align-items:center;gap:13px;margin-bottom:20px;text-decoration:none}
   .brand .mark{display:block;height:30px;width:auto;flex:none}
@@ -687,8 +644,6 @@
      Favicon is the thick-stroke variant (build_site.py). Mascot D (2026-10-27; C and B before) sits beside the home h1; mascot W sits in the contact box.
      Decision + assets: assets/mascot-2026-10-26/README.md, DEPLOY.md 2026-10-26. */
   :root{--arc1:#1590F0;--arc2:#22CFFF;--flare:#0E6FB8}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--flare:#FFFFFF}}
-  :root[data-theme="dark"]{--flare:#FFFFFF}
   /* 2026-10-27 (operator): arc removed from the pages -- the wordmark alone. Card and favicon keep it. */
   .arc-lock{display:inline-grid;gap:4px}
   .arc{display:block;height:auto;width:0;min-width:100%}
@@ -699,8 +654,6 @@
   @media (max-width:34rem){.hero-row{grid-template-columns:minmax(0,1fr) 88px;gap:12px}.hero-mascot{width:88px}}
   /* Case 02 "Try it" panel (2026-10-27). */
   :root{--cell:#E6E6EB;--cell-scan:#C9C9D0}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cell:#2A322F;--cell-scan:#46524D}}
-  :root[data-theme="dark"]{--cell:#2A322F;--cell-scan:#46524D}
   .try[hidden]{display:none}
   .try{border:1px solid var(--rule-strong);background:var(--raised);margin:26px 0 8px;padding:18px 20px 16px;display:grid;gap:14px}
   .try-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -733,7 +686,7 @@
 </style>
 <style>
   /* standalone reset — the Artifact host supplied these; a plain webserver does not */
-  html{color-scheme:light dark}
+  html{color-scheme:light}
   body{margin:0}
   img{max-width:100%}
   [hidden]{display:none!important}
