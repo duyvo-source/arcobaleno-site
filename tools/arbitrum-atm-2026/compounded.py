@@ -1,4 +1,4 @@
-"""Correction of 23 November 2026: the report's "30D MA Net APY" is a compounded rate.
+"""Correction of 19 November 2026: the report's "30D MA Net APY" is a compounded rate.
 
 Our 13 November check used the simple yearly rate. This script recomputes every scored line, July to September, with the
 compounded 30-day rate the report's word "APY" means, from the same daily share prices in data/, against the same chart

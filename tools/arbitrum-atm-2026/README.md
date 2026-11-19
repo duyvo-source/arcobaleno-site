@@ -2,7 +2,7 @@
 
 Arcobaleno Research · published 13 November 2026 · MIT licence (`LICENSE.txt`)
 
-## Correction, 23 November 2026 (version 2)
+## Correction, 19 November 2026 (version 2)
 
 The report calls its rates an **APY**, which is a compounded rate. Our first version used the simple yearly rate. With the
 compounded rate, worked out from the same daily share prices, every rate we can check is within **0.02 points** of the
