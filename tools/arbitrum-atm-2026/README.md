@@ -2,6 +2,18 @@
 
 Arcobaleno Research · published 13 November 2026 · MIT licence (`LICENSE.txt`)
 
+## Correction, 23 November 2026 (version 2)
+
+The report calls its rates an **APY**, which is a compounded rate. Our first version used the simple yearly rate. With the
+compounded rate, worked out from the same daily share prices, every rate we can check is within **0.02 points** of the
+report from July to September: the steady gaps of about 0.06 (Spark) and 0.1 (Maple) were our formula, not Entropy's.
+The headline comes out at **190 bps** (155 without USDai). Maple stays "unclear" only because one date can't be read off
+the chart. Gauntlet Core: +0.94 / +0.80 in August under the one fixed formula. **The result is unchanged: mostly holds.**
+
+`python3 compounded.py` prints every line both ways. The report is now version 2; version 1 stays at
+[report-arbitrum-atm-julaug-2026-v1.pdf](../report-arbitrum-atm-julaug-2026-v1.pdf). The tables below are version 1, kept
+as published. The match rule in `PREREG.md` is unchanged.
+
 ## What this checks
 
 The Arbitrum Treasury Management council's July & August 2026 report, prepared by Entropy Advisors, gives a 30-day APY for
@@ -55,7 +67,8 @@ To re-read the chain yourself (a few minutes per vault on free endpoints):
 |---|---|
 | [`oc1_vault_return.py`](oc1_vault_return.py), [`ocrpc.py`](ocrpc.py) | Reads a vault's share price every day and writes `series.csv` |
 | [`score_lines.py`](score_lines.py), [`score_sep.py`](score_sep.py) | Compare our 30-day rates with the report's, under the rule in `PREREG.md` |
-| [`headline.py`](headline.py) | The ~190 bps, with and without USDai |
+| [`headline.py`](headline.py) | The ~190 bps, with and without USDai (version 1, simple rate) |
+| [`compounded.py`](compounded.py) | Version 2: every line and the headline with the compounded rate |
 | [`digitize_apy_chart.py`](digitize_apy_chart.py), [`extract_q3_chart.py`](extract_q3_chart.py) | Read the report's chart values (needs the report itself, from the forum thread) |
 | [`reported_apy_digitised.txt`](reported_apy_digitised.txt), [`reported_apy_q3_vector.txt`](reported_apy_q3_vector.txt) | The values we read off the two charts |
 | `data/` | Our daily share prices and summaries for each vault |
